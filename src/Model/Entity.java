@@ -7,7 +7,7 @@ package Model;
 
 /**
  *
- * @author carlos and @ejcalvo33
+ * @author carlos and @ejcalvo
  */
 public class Entity {
     
