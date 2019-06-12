@@ -6,16 +6,11 @@
 package Model;
 
 /**
-<<<<<<< HEAD
  * This is the superclass of most major classes of software. Of course this 
  * class is abstract. But currently not implemented the abstract methods.
  * 
  * @version 1.0
  * @author Carlos Pavajeau - Cantte
-=======
- *
- * @author carlos and @ejcalvo
->>>>>>> 50acc4e93f883fad31a6884a8f887714375f2600
  */
 
 public abstract class Entity 
