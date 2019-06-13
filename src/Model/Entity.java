@@ -70,6 +70,8 @@ public abstract class Entity implements Comparable<Entity>
     {
         if (anObject != null && anObject instanceof Entity)
         {
+            if (this == anObject)
+                return true;
             Entity anEntity = (Entity)anObject;
             return compareTo(anEntity) == 0;
         }
