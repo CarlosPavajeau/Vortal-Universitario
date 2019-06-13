@@ -77,6 +77,24 @@ public abstract class Entity implements Comparable<Entity>
     }
 
     /**
+     * Returns a hashcode for this {@code Entity}. The result is
+     * the exclusive OR of the two halves of the pimitive {@code long}
+     * value held by this {@code  Entity} object. That is, the hashcode 
+     * is the value of the expression:
+     * 
+     * <blockquote>
+     *  {@code (int)(this.longValue()^(this.longValue()>>>32))}
+     * </blockquote>
+     * 
+     * @return a hash code value for this object.
+     */
+    @Override
+    public int hashCode() 
+    {
+        return Long.valueOf(GetCode()).hashCode();
+    }
+
+    /**
      * Compares the codes of two {@code Entity} objects
      * @param anEntity The object to compare this {@code Entity} against
      * @return the value {@code 0} if the code of this {@code Entity} is equal to the argument
