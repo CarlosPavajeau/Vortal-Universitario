@@ -1,4 +1,5 @@
-nbproject/*
+/nbproject/private/
 .vscode
 build
 *.class
+/dist/
