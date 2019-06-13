@@ -21,7 +21,7 @@ public abstract class Entity implements Comparable<Entity>
      * Initialize a new {@code Entity} with it's code. 
      * This code identifies the {@code Entity} in the software, also the code is
      * unique and not repeatable by other {@code Entity}.
-     * @param The code that is to be assigned to the object
+     * @param code that is to be assigned to the object
      */
     public Entity(long code)
     {
@@ -32,7 +32,7 @@ public abstract class Entity implements Comparable<Entity>
      * Initialize a new {@code Entity} with other {@code Entity}, this is the copy constructor.
      * This code identifies the {@code Entity} in the software, also the code is
      * unique and not repeatable by other {@code Entity}.
-     * @param an Entity
+     * @param anEntity
      */
     public Entity(Entity anEntity)
     {
@@ -87,6 +87,6 @@ public abstract class Entity implements Comparable<Entity>
     @Override
     public int compareTo(Entity anEntity)
     {
-        return Long.valueOf(GetCode()).compareTo(Long.valueOf(anEntity.GetCode()));
+        return Long.valueOf(GetCode()).compareTo(anEntity.GetCode());
     }
 }
