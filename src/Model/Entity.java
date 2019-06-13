@@ -29,6 +29,27 @@ public abstract class Entity implements Comparable<Entity>
     }
 
     /**
+     * Initialize a new {@code Entity} with other {@code Entity}, this is the copy constructor.
+     * This code identifies the {@code Entity} in the software, also the code is
+     * unique and not repeatable by other {@code Entity}.
+     * @param an Entity
+     */
+    public Entity(Entity anEntity)
+    {
+        this(anEntity.GetCode());
+    }
+
+    /**
+     * Initialize a new {@code Entity} empty.
+     * This code identifies the {@code Entity} in the software, also the code is
+     * unique and not repeatable by other {@code Entity}.
+     */
+    public Entity()
+    {
+        this(0);
+    }
+
+    /**
      * This method returns the code that has the object of the Entity class.
      * @return the code that has the {@code Entity} 
      */
