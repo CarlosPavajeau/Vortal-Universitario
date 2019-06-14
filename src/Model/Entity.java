@@ -50,7 +50,7 @@ public abstract class Entity implements Comparable<Entity>
     }
 
     /**
-     * This method returns the code that has the object of the {@code Entity} object.
+     * This method returns the code that has the object of type {@code Entity}.
      * @return the code that has the {@code Entity} 
      */
     public String GetCode()

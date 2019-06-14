@@ -45,7 +45,7 @@ public class Subject extends Entity
     }
 
     /**
-     * This method returns the name that has the object of the {@code Subject} object.
+     * This method returns the name that has the object of type {@code Subject}.
      * @return the code that has the {@code Subject}
      */
     public String GetName()
@@ -54,7 +54,7 @@ public class Subject extends Entity
     }
 
     /**
-     * This method returns the credits that has the object of the {@code Subject} object.
+     * This method returns the credits that has the object of type {@code Subject}.
      * @return the credits that has the {@code Subject}
      */
     public int GetCredits()
@@ -63,8 +63,8 @@ public class Subject extends Entity
     }
 
     /**
-     * This method returns the recommender semester that has the object of the
-     * {@code Subject} object.
+     * This method returns the recommender semester that has the object of type
+     * {@code Subject}.
      * @return the recommender semester that has the {@code Subject}
      */
     public int GetRecommendedSemester()
