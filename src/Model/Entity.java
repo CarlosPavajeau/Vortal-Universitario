@@ -15,7 +15,7 @@ package Model;
 
 public abstract class Entity implements Comparable<Entity>
 {
-    private long m_code;
+    private String m_code;
     
     /**
      * Initialize a new {@code Entity} with it's code. 
@@ -23,7 +23,7 @@ public abstract class Entity implements Comparable<Entity>
      * unique and not repeatable by other {@code Entity}.
      * @param code that is to be assigned to the object
      */
-    public Entity(long code)
+    public Entity(String code)
     {
         m_code = code;
     }
@@ -46,14 +46,14 @@ public abstract class Entity implements Comparable<Entity>
      */
     public Entity()
     {
-        this(0);
+        this("");
     }
 
     /**
      * This method returns the code that has the object of the {@code Entity} object.
      * @return the code that has the {@code Entity} 
      */
-    public long GetCode()
+    public String GetCode()
     {
         return m_code;
     }
@@ -93,7 +93,7 @@ public abstract class Entity implements Comparable<Entity>
     @Override
     public int hashCode() 
     {
-        return Long.valueOf(GetCode()).hashCode();
+        return GetCode().hashCode();
     }
 
     /**
@@ -107,6 +107,6 @@ public abstract class Entity implements Comparable<Entity>
     @Override
     public int compareTo(Entity anEntity)
     {
-        return Long.valueOf(GetCode()).compareTo(anEntity.GetCode());
+        return GetCode().compareTo(anEntity.GetCode());
     }
 }

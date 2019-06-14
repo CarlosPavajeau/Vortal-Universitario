@@ -25,9 +25,9 @@ public class Subject extends Entity
      * @param credits will be the number of credits of the subject
      * @param recommendedSemester will be te recommended semester of the subject
      */
-    public Subject(long id, String name, int credits, int recommendedSemester)
+    public Subject(String code, String name, int credits, int recommendedSemester)
     {
-        super(id);
+        super(code);
         m_name = name;
         m_credits = credits;
         m_recommendedSemester = recommendedSemester;
