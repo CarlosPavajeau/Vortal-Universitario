@@ -15,12 +15,12 @@ import java.util.ArrayList;
  */
 public class Pensum extends Entity
 {
-    String m_name;
-    String m_description;
-    String m_campus;
-    int m_semesters;
-    int m_credits;
-    ArrayList<Subject> m_subjects;
+    private String m_name;
+    private String m_description;
+    private String m_campus;
+    private int m_semesters;
+    private int m_credits;
+    private ArrayList<Subject> m_subjects;
 
     /**
      * Initialize a new {@code Pensum} with these characteristics.
@@ -33,7 +33,7 @@ public class Pensum extends Entity
      * @param credits minimum credits required or global credits of the {@code Pensum}
      * @param subjects subjects that belong or will belong to this {@code Pensum}
      */
-    Pensum(String code, String name, String description, String campus, int semesters, int credits, ArrayList<Subject> subjects)
+    public Pensum(String code, String name, String description, String campus, int semesters, int credits, ArrayList<Subject> subjects)
     {
         super(code);
         m_name = name;
@@ -48,7 +48,7 @@ public class Pensum extends Entity
      * This method returns the name that has the object of type {@code Pensum}.
      * @return the code that has the {@code Pensum}
      */
-    String GetName()
+    public String GetName()
     {
         return m_name;
     }
@@ -57,7 +57,7 @@ public class Pensum extends Entity
      * This method returns the description that has the object of type {@code Pensum}.
      * @return the description that has the {@code Pensum}
      */
-    String GetDescription()
+    public String GetDescription()
     {
         return m_description;
     }
@@ -66,7 +66,7 @@ public class Pensum extends Entity
      * This method returns the campus that has the object of type {@code Pensum}.
      * @return the campus that has the {@code Pensum}
      */
-    String GetCampus()
+    public String GetCampus()
     {
         return m_campus;
     }
@@ -75,7 +75,7 @@ public class Pensum extends Entity
      * This method returns the semesters that has the object of type {@code Pensum}.
      * @return the semesters that has the {@code Pensum}
      */
-    int GetSemesters()
+    public int GetSemesters()
     {
         return m_semesters;
     }
@@ -84,7 +84,7 @@ public class Pensum extends Entity
      * This method returns the credits that has the object of type {@code Pensum}.
      * @return the credits that has the {@code Pensum}
      */
-    int GetCredits()
+    public int GetCredits()
     {
         return m_credits;
     }
@@ -93,53 +93,77 @@ public class Pensum extends Entity
      * This method returns the subjects that has the object of type {@code Pensum}.
      * @return the subjects that has the {@code Pensum}
      */
-    ArrayList<Subject> GetSubjects()
+    public ArrayList<Subject> GetSubjects()
     {
         return m_subjects;
     }
 
     /**
      * This method sets a new name for this object {@code Pensum}
-     * @param name will be a new name of this {@code Subject}
+     * @param name will be a new name of this {@code Pensum}
      */
-    void SetName(String name)
+    public void SetName(String name)
     {
         m_name = name;
     }
 
     /**
      * This method sets a new description for this object {@code Pensum}
-     * @param description will be a new description of this {@code Subject}
+     * @param description will be a new description of this {@code Pensum}
      */
-    void SetDescription(String description)
+    public void SetDescription(String description)
     {
         m_description = description;
     }
 
     /**
      * This method sets a new campus for this object {@code Pensum}
-     * @param campus will be a new campus of this {@code Subject}
+     * @param campus will be a new campus of this {@code Pensum}
      */
-    void SetCampus(String campus)
+    public void SetCampus(String campus)
     {
         m_campus = campus;
     }
 
     /**
      * This method sets a new semesters for this object {@code Pensum}
-     * @param semesters will be a new semesters of this {@code Subject}
+     * @param semesters will be a new semesters of this {@code Pensum}
      */
-    void SetSemesters(int semesters)
+    public void SetSemesters(int semesters)
     {
         m_semesters = semesters;
     }
 
     /**
      * This method sets a new credits for this object {@code Pensum}
-     * @param credits will be a new credits of this {@code Subject}
+     * @param credits will be a new credits of this {@code Pensum}
      */
-    void SetCredits(int credits)
+    public void SetCredits(int credits)
     {
         m_credits = credits;
+    }
+
+    /**
+     * Add a new subject to this {@code Pensum} 
+     * @param subject to add to this {@code Pensum}
+     * @return {@code true} If this object does not already contain this {@code Subject}, 
+     * {@code false} otherwise
+     */
+    public boolean AddSubject(Subject subject)
+    {
+        if (m_subjects.contains(subject))
+            return false;
+        return m_subjects.add(subject);
+    }
+
+    /**
+     * Remove a new subject to this {@code Pensum} 
+     * @param subject to remove to this {@code Pensum}
+     * @return {@code true} If this object contains this {@code Subject}, 
+     * {@code false} otherwise
+     */
+    public boolean RemoveSubject(Subject subject)
+    {
+        return m_subjects.remove(subject);
     }
 }
