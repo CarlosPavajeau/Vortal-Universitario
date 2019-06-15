@@ -25,13 +25,13 @@ public class Pensum extends Entity
     /**
      * Initialize a new {@code Pensum} with these characteristics.
      * As in {@code Pensum} the code is unique. 
-     * @param code that is to be assigned to the object
-     * @param name it will be the name of the {@code Pensum}
-     * @param description will be the description of the {@code Pensum}
-     * @param campus it will be the campus where {@code Pensum} belongs
-     * @param semesters duration in semesters of {@code Pensum}
-     * @param credits minimum credits required or global credits of the {@code Pensum}
-     * @param subjects subjects that belong or will belong to this {@code Pensum}
+     * @param code that is to be assigned to the {@code Pensum}.
+     * @param name it will be the name of the {@code Pensum}.
+     * @param description will be the description of the {@code Pensum}.
+     * @param campus it will be the campus where {@code Pensum} belongs.
+     * @param semesters duration in semesters of {@code Pensum}.
+     * @param credits minimum credits required or global credits of the {@code Pensum}.
+     * @param subjects subjects that belong or will belong to this {@code Pensum}.
      */
     public Pensum(String code, String name, String description, String campus, int semesters, int credits, ArrayList<Subject> subjects)
     {
@@ -45,8 +45,8 @@ public class Pensum extends Entity
     }
 
     /**
-     * This method returns the name that has the object of type {@code Pensum}.
-     * @return the code that has the {@code Pensum}
+     * This method returns the name that this {@code Pensum} has.
+     * @return the name that this {@code Pensum} has.
      */
     public String GetName()
     {
@@ -54,8 +54,8 @@ public class Pensum extends Entity
     }
 
     /**
-     * This method returns the description that has the object of type {@code Pensum}.
-     * @return the description that has the {@code Pensum}
+     * This method returns the description that this {@code Pensum} has.
+     * @return the description that this {@code Pensum} has.
      */
     public String GetDescription()
     {
@@ -63,8 +63,8 @@ public class Pensum extends Entity
     }
 
     /**
-     * This method returns the campus that has the object of type {@code Pensum}.
-     * @return the campus that has the {@code Pensum}
+     * This method returns the campus that this {@code Pensum} has.
+     * @return the campus that this {@code Pensum} has.
      */
     public String GetCampus()
     {
@@ -72,8 +72,8 @@ public class Pensum extends Entity
     }
 
     /**
-     * This method returns the semesters that has the object of type {@code Pensum}.
-     * @return the semesters that has the {@code Pensum}
+     * This method returns the semesters that this {@code Pensum} has.
+     * @return the semesters that this {@code Pensum} has.
      */
     public int GetSemesters()
     {
@@ -81,8 +81,8 @@ public class Pensum extends Entity
     }
 
     /**
-     * This method returns the credits that has the object of type {@code Pensum}.
-     * @return the credits that has the {@code Pensum}
+     * This method returns the credits that this {@code Pensum} has.
+     * @return the credits that this {@code Pensum} has.
      */
     public int GetCredits()
     {
@@ -90,8 +90,8 @@ public class Pensum extends Entity
     }
 
     /**
-     * This method returns the subjects that has the object of type {@code Pensum}.
-     * @return the subjects that has the {@code Pensum}
+     * This method returns the subjects that this {@code Pensum} has.
+     * @return the subjects that this {@code Pensum} has.
      */
     public ArrayList<Subject> GetSubjects()
     {
@@ -99,8 +99,8 @@ public class Pensum extends Entity
     }
 
     /**
-     * This method sets a new name for this object {@code Pensum}
-     * @param name will be a new name of this {@code Pensum}
+     * This method sets a new name for this object {@code Pensum}.
+     * @param name will be a new name of this {@code Pensum}.
      */
     public void SetName(String name)
     {
@@ -108,8 +108,8 @@ public class Pensum extends Entity
     }
 
     /**
-     * This method sets a new description for this object {@code Pensum}
-     * @param description will be a new description of this {@code Pensum}
+     * This method sets a new description for this object {@code Pensum}.
+     * @param description will be a new description of this {@code Pensum}.
      */
     public void SetDescription(String description)
     {
@@ -117,8 +117,8 @@ public class Pensum extends Entity
     }
 
     /**
-     * This method sets a new campus for this object {@code Pensum}
-     * @param campus will be a new campus of this {@code Pensum}
+     * This method sets a new campus for this object {@code Pensum}.
+     * @param campus will be a new campus of this {@code Pensum}.
      */
     public void SetCampus(String campus)
     {
@@ -126,8 +126,8 @@ public class Pensum extends Entity
     }
 
     /**
-     * This method sets a new semesters for this object {@code Pensum}
-     * @param semesters will be a new semesters of this {@code Pensum}
+     * This method sets a new semesters for this object {@code Pensum}.
+     * @param semesters will be a new semesters of this {@code Pensum}.
      */
     public void SetSemesters(int semesters)
     {
@@ -135,8 +135,8 @@ public class Pensum extends Entity
     }
 
     /**
-     * This method sets a new credits for this object {@code Pensum}
-     * @param credits will be a new credits of this {@code Pensum}
+     * This method sets a new credits for this object {@code Pensum}.
+     * @param credits will be a new credits of this {@code Pensum}.
      */
     public void SetCredits(int credits)
     {
@@ -144,10 +144,10 @@ public class Pensum extends Entity
     }
 
     /**
-     * Add a subject to this {@code Pensum} 
-     * @param subject to add to this {@code Pensum}
+     * Add a subject to this {@code Pensum} .
+     * @param subject to add to this {@code Pensum}.
      * @return {@code true} If this object does not already contain this {@code Subject}, 
-     * {@code false} otherwise
+     * {@code false} otherwise.
      */
     public boolean AddSubject(Subject subject)
     {
@@ -157,10 +157,10 @@ public class Pensum extends Entity
     }
 
     /**
-     * Remove a new subject to this {@code Pensum} 
-     * @param subject to remove to this {@code Pensum}
+     * Remove a subject to this {@code Pensum}.
+     * @param subject to remove to this {@code Pensum}.
      * @return {@code true} If this object contains this {@code Subject}, 
-     * {@code false} otherwise
+     * {@code false} otherwise.
      */
     public boolean RemoveSubject(Subject subject)
     {

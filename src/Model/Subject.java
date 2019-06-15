@@ -20,10 +20,10 @@ public class Subject extends Entity
      /**
      * Initialize a new {@code Subject} with these characteristics.
      * As in {@code Entity} the code is unique. 
-     * @param code that is to be assigned to the object
-     * @param name it will be the name of the subject
-     * @param credits will be the number of credits of the subject
-     * @param recommendedSemester will be te recommended semester of the subject
+     * @param code that is to be assigned to the object.
+     * @param name it will be the name of the subject.
+     * @param credits will be the number of credits of the subject.
+     * @param recommendedSemester will be te recommended semester of the subject.
      */
     public Subject(String code, String name, int credits, int recommendedSemester)
     {
@@ -45,8 +45,8 @@ public class Subject extends Entity
     }
 
     /**
-     * This method returns the name that has the object of type {@code Subject}.
-     * @return the code that has the {@code Subject}
+     * This method returns the name that has this {@code Subject}.
+     * @return the code that has this {@code Subject}.
      */
     public String GetName()
     {
@@ -54,8 +54,8 @@ public class Subject extends Entity
     }
 
     /**
-     * This method returns the credits that has the object of type {@code Subject}.
-     * @return the credits that has the {@code Subject}
+     * This method returns the credits that has this {@code Subject}.
+     * @return the credits that has this {@code Subject}.
      */
     public int GetCredits()
     {
@@ -63,9 +63,9 @@ public class Subject extends Entity
     }
 
     /**
-     * This method returns the recommender semester that has the object of type
+     * This method returns the recommender semester that has this
      * {@code Subject}.
-     * @return the recommender semester that has the {@code Subject}
+     * @return the recommender semester that has this {@code Subject}.
      */
     public int GetRecommendedSemester()
     {
@@ -73,8 +73,8 @@ public class Subject extends Entity
     }
 
     /**
-     * This method sets a new name in the object {@code Subject}
-     * @param name will be a new name of this {@code Subject}
+     * This method sets a new name for this {@code Subject}.
+     * @param name will be a new name of this {@code Subject}.
      */
     public void SetName(String name)
     {
@@ -82,8 +82,8 @@ public class Subject extends Entity
     }
 
     /**
-     * This method sets a new credits in the object {@code Subject}
-     * @param credits will be a new credits of this object {@code Subject}
+     * This method sets a new credits for this {@code Subject}.
+     * @param credits will be a new credits of this object {@code Subject}.
      */
     public void SetCredits(int credits)
     {
@@ -91,9 +91,9 @@ public class Subject extends Entity
     }
 
     /**
-     * This method sets a recommended new semester in the object {@code Subject}
+     * This method sets a recommended new semester for this {@code Subject}.
      * @param recommendedSemester will be a recommended new semester of 
-     * this object {@code Subject}
+     * this object {@code Subject}.
      */
     public void SetRecommendedSemester(int recommendedSemester)
     {
