@@ -144,7 +144,7 @@ public class Pensum extends Entity
     }
 
     /**
-     * Add a new subject to this {@code Pensum} 
+     * Add a subject to this {@code Pensum} 
      * @param subject to add to this {@code Pensum}
      * @return {@code true} If this object does not already contain this {@code Subject}, 
      * {@code false} otherwise
