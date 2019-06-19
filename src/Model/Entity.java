@@ -15,7 +15,7 @@ package Model;
 
 public abstract class Entity implements Comparable<Entity>
 {
-    private String m_code;
+    private final String m_code;
     
     /**
      * Initialize a new {@code Entity} with it's code. 
@@ -101,8 +101,8 @@ public abstract class Entity implements Comparable<Entity>
      * @param anEntity The object to compare this {@code Entity} against.
      * @return the value {@code 0} if the code of this {@code Entity} is equal to the argument
      * {@code Entity}, a value less than {@code 0} if the code of this {@code Entity} is 
-     * numerically less than the argument {@code Entity} and a value greater than {@code 0}
-     * if the code of this {@code Entity} is numerically greater than the argument {@code Entity}.
+     * less than the argument {@code Entity} and a value greater than {@code 0}
+     * if the code of this {@code Entity} is greater than the argument {@code Entity}.
      */
     @Override
     public int compareTo(Entity anEntity)
