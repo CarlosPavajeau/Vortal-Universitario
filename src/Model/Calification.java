@@ -25,6 +25,8 @@ public class Calification
     {
         m_subject = subject;
         m_notes = new float[ACADEMICS_CORTS];
+        for (int i = 0; i < ACADEMICS_CORTS; i++)
+            m_notes[i] = -1;
     }
 
     /**
@@ -60,8 +62,20 @@ public class Calification
      * @param academicCut It will be the academic cut evaluated
      * @param note It will be the note of that academic cut.
      */
-    public void AddNote(int academicCut, float note) throws IndexOutOfBoundsException
+    public void AddNote(int academicCut, float note)
     {
         m_notes[academicCut] = note;
+    }
+
+    /**
+     * This method does the action of validate that this object {@code Calification} not has one note.
+     * @return {@code true} if this object {@code Clification} has one note. {@code false} otherwise.
+     */
+    public boolean HasNotes()
+    {
+        for (int i = 0; i < ACADEMICS_CORTS; i++)
+            if (GetNote(i) != -1)
+                return true;
+        return false;
     }
 }
