@@ -13,7 +13,7 @@ package Model;
  */
 public class AcademicSemester
 {
-    private int m_semester;
+    private final int m_semester;
     private int m_maxCredits;
     private int m_minCredits;
     
@@ -59,7 +59,7 @@ public class AcademicSemester
 
     /**
      * This method sets a new max credits for this object {@code AcademicSemester}.
-     * @param firstName will be a new max credits of this {@code AcademicSemester}.
+     * @param maxCredits will be a new max credits of this {@code AcademicSemester}.
      */
     public void SetMaxCredits(int maxCredits)
     {
@@ -68,7 +68,7 @@ public class AcademicSemester
 
     /**
      * This method sets a new minimum credits for this object {@code AcademicSemester}.
-     * @param firstName will be a new minimum credits of this {@code AcademicSemester}.
+     * @param minCredits will be a new minimum credits of this {@code AcademicSemester}.
      */
     public void SetMinCredits(int minCredits)
     {
