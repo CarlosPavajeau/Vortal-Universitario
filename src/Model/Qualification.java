@@ -7,11 +7,11 @@ package Model;
 
 
 /**
- * This is the class {@code Calification}. Represent a calification.
+ * This is the class {@code Qualification}. Represent a qualification.
  * @version 1.0
  * @author Carlos Pavajeau - Cantte
  */
-public class Calification
+public class Qualification
 {
     private static final int ACADEMICS_CORTS = 3;
     private static final int NOTE_EMPTY = -1;
@@ -20,28 +20,28 @@ public class Calification
     private float[] m_notes;
 
     /**
-     * Initialize a new {@code Calification} with these characteristics.
+     * Initialize a new {@code Qualification} with these characteristics.
      * @param subject that is to be assigned to the object.
      */
-    public Calification(Subject subject)
+    public Qualification(Subject subject)
     {
         this(subject, new float[]{NOTE_EMPTY, NOTE_EMPTY, NOTE_EMPTY});
     }
 
     /**
-     * Initialize a new {@code Calification} with these characteristics.
+     * Initialize a new {@code Qualification} with these characteristics.
      * @param subject that is to be assigned to the object.
-     * @param notes it will be the notes that this {@code Calification} has.
+     * @param notes it will be the notes that this {@code Qualification} has.
      */
-    public Calification(Subject subject, float[] notes)
+    public Qualification(Subject subject, float[] notes)
     {
         m_subject = subject;
         m_notes = notes;
     }
 
     /**
-     * This method returns the subject that this {@code Calification} has. 
-     * @return the subject that this {@code Calification} has.
+     * This method returns the subject that this {@code Qualification} has. 
+     * @return the subject that this {@code Qualification} has.
      */
     public Subject GetSubject()
     {
@@ -49,8 +49,8 @@ public class Calification
     }
 
     /**
-     * This method returns the notes that this {@code Calification} has. 
-     * @return the notes that this {@code Calification} has.
+     * This method returns the notes that this {@code Qualification} has. 
+     * @return the notes that this {@code Qualification} has.
      */
     public float[] GetNotes()
     {
@@ -58,9 +58,9 @@ public class Calification
     }
 
     /**
-     * This method returns one note that this {@code Calification} has.
+     * This method returns one note that this {@code Qualification} has.
      * @param cort is a academic cut 
-     * @return one note that this {@code Calification} has.
+     * @return one note that this {@code Qualification} has.
      */
     public float GetNote(int cort)
     {
@@ -68,7 +68,7 @@ public class Calification
     }
 
     /**
-     * This method add a new note for this {@code Calification}
+     * This method add a new note for this {@code Qualification}
      * @param academicCut It will be the academic cut evaluated
      * @param note It will be the note of that academic cut.
      */
@@ -78,8 +78,8 @@ public class Calification
     }
 
     /**
-     * This method does the action of validate that this object {@code Calification} not has one note.
-     * @return {@code true} if this object {@code Clification} has one note. {@code false} otherwise.
+     * This method does the action of validate that this object {@code Qualification} not has one note.
+     * @return {@code true} if this object {@code Qualification} has one note. {@code false} otherwise.
      */
     public boolean HasNotes()
     {
@@ -90,8 +90,8 @@ public class Calification
     }
 
     /**
-     * This method return the current average that have this {@code Calification}.
-     * @return the current average of this {@code Calification}.
+     * This method return the current average that have this {@code Qualification}.
+     * @return the current average of this {@code Qualification}.
      */
     public float GetAverage()
     {
