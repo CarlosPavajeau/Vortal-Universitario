@@ -14,6 +14,8 @@ package Model;
 public class Calification
 {
     private static final int ACADEMICS_CORTS = 3;
+    private static final int NOTE_EMPTY = -1;
+
     private Subject m_subject;
     private float[] m_notes;
 
@@ -23,10 +25,18 @@ public class Calification
      */
     public Calification(Subject subject)
     {
+        this(subject, new float[]{NOTE_EMPTY, NOTE_EMPTY, NOTE_EMPTY});
+    }
+
+    /**
+     * Initialize a new {@code Calification} with these characteristics.
+     * @param subject that is to be assigned to the object.
+     * @param notes it will be the notes that this {@code Calification} has.
+     */
+    public Calification(Subject subject, float[] notes)
+    {
         m_subject = subject;
-        m_notes = new float[ACADEMICS_CORTS];
-        for (int i = 0; i < ACADEMICS_CORTS; i++)
-            m_notes[i] = -1;
+        m_notes = notes;
     }
 
     /**
@@ -73,9 +83,40 @@ public class Calification
      */
     public boolean HasNotes()
     {
-        for (int i = 0; i < ACADEMICS_CORTS; i++)
-            if (GetNote(i) != -1)
+        for (float note : m_notes)
+            if (!IsNoteEmpty(note))
                 return true;
         return false;
+    }
+
+    /**
+     * This method return the current average that have this {@code Calification}.
+     * @return the current average of this {@code Calification}.
+     */
+    public float GetAverage()
+    {
+        float average = 0.0f;
+        for (int i = 0; i < ACADEMICS_CORTS; i++)
+        {
+            if (!IsNoteEmpty(m_notes[i]))
+            {
+                if (i < ACADEMICS_CORTS - 1)/**First or second academic cut*/
+                    average += m_notes[i] * 0.3; /**30% */
+                else /**Third academic cut */
+                    average += m_notes[i] * 0.4; /**40% */
+            }
+        }
+
+        return average;
+    }
+
+    /**
+     * This method validate if this note is not empty.
+     * @param note to validate.
+     * @return {@code true} if note == {@code NOTE_EMPTY}. {@code false} otherwise.
+     */
+    private boolean IsNoteEmpty(float note)
+    {
+        return note == NOTE_EMPTY;
     }
 }
