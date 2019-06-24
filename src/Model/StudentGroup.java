@@ -122,8 +122,8 @@ public class StudentGroup extends Entity
      */
     private void SetType(String type)
     {
-        if (TypeGroup.MORNIN.GetType().toUpperCase().equals(type.toUpperCase()))
-            m_type = TypeGroup.MORNIN;
+        if (TypeGroup.MORNING.GetType().toUpperCase().equals(type.toUpperCase()))
+            m_type = TypeGroup.MORNING;
         else if (TypeGroup.AFTERNOON.GetType().toUpperCase().equals(type.toUpperCase()))
             m_type = TypeGroup.AFTERNOON;
         else
