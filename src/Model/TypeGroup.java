@@ -12,7 +12,7 @@ package Model;
  */
 public enum TypeGroup
 {
-    MORNIN("Mañana"),
+    MORNING("Mañana"),
     AFTERNOON("Tarde"),
     EVENING("Noche");
 
