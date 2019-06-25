@@ -24,7 +24,7 @@ public class Student extends Person
 
     /**
      * Initialize a new {@code Student} with these characteristics.
-     * As in {@code Student} the code is unique. 
+     * As in {@code Entity} the code is unique. 
      * @param code that is to be assigned to the object. In this case, the code will be 
      * ID or DNI (T.I. - C.C.) of {@code Student}.
      * @param firstName will be the first name that have this {@code Student}.
@@ -107,7 +107,7 @@ public class Student extends Person
      */
     public float GetSemesterAverage(int semester) throws IndexOutOfBoundsException
     {
-        return m_semesterAverage.get(semester-1).floatValue();
+        return GetSemesterAverage().get(semester-1).floatValue();
     }
 
     /**

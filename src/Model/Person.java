@@ -27,7 +27,7 @@ public class Person extends Entity
 
     /**
      * Initialize a new {@code Person} with these characteristics.
-     * As in {@code Person} the code is unique. 
+     * As in {@code Entity} the code is unique. 
      * @param code that is to be assigned to the object. In this case, the code will be 
      * ID or DNI (T.I. - C.C.) of {@code Person}.
      * @param firstName will be the first name that have this {@code Person}.

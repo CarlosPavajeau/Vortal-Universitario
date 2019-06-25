@@ -101,9 +101,9 @@ public class StudentGroup extends Entity
      */
     public boolean AddStudent(Student student)
     {
-        if (m_students.contains(student))
+        if (GetStudents().contains(student))
             return false;
-        return m_students.add(student);
+        return GetStudents().add(student);
     }
 
     /**
@@ -113,7 +113,7 @@ public class StudentGroup extends Entity
      */
     public boolean DeleteStudent(Student student)
     {
-        return m_students.remove(student);
+        return GetStudents().remove(student);
     }
 
     /**
