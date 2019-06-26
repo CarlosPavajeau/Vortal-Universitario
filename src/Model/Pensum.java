@@ -13,7 +13,7 @@ import java.util.ArrayList;
  * @version 1.0
  * @author Carlos Pavajeau - Cantte
  */
-public class Pensum extends Entity
+public abstract class Pensum extends Entity
 {
     private String m_name;
     private String m_description;

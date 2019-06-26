@@ -14,7 +14,7 @@ import java.util.GregorianCalendar;
  * @version 1.0
  * @author Carlos Pavajeau - Cantte
  */
-public class Person extends Entity
+public abstract class Person extends Entity
 {
     private String m_firstName;
     private String m_secondName;
