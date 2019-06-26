@@ -15,7 +15,7 @@ import java.util.ArrayList;
  */
 public class Professor extends Person
 {
-    ArrayList<AcademicCharge> m_academicCharges;
+    ArrayList<AcademicLoad> m_academicLoads;
 
     /**
      * Initialize a new {@code Professor} with these characteristics.
@@ -46,54 +46,72 @@ public class Professor extends Person
      * @param secondLastName will be the second last name that have this {@code Professor}.
      * @param dateOfBorn will be the date of born that have this {@code Professor}.
      * @param sex will be the sex that have this {@code Professor}.
-     * @param numsGroup
-     * @param limitsOfStudents
-     * @param typesGroup
-     * @param subjects
+     * @param numsGroup will be the numbers of the groups of academic charges.
+     * @param limitsOfStudents it will be the limit of students in each group.
+     * @param typesGroup it will be the group type of each group.
+     * @param subjects it will be the subject of each group.
      */
     public Professor(String code, String firstName, String secondName, String lastName, String secondLastName,
                      String dateOfBorn, String sex, int[][] numsGroup, int[][] limitsOfStudents, String[][] typesGroup, 
                      Subject[] subjects)
     {
         super(code, firstName, secondName, lastName, secondLastName, dateOfBorn, sex);
-        m_academicCharges = new ArrayList<>();
+        m_academicLoads = new ArrayList<>();
         if (subjects != null && subjects.length > 0)
         {
             for (int i = 0; i < subjects.length; ++i)
-                m_academicCharges.add(new AcademicCharge(numsGroup[i], limitsOfStudents[i], typesGroup[i], subjects[i]));
+                m_academicLoads.add(new AcademicLoad(numsGroup[i], limitsOfStudents[i], typesGroup[i], subjects[i]));
         }
     }
 
-    public ArrayList<AcademicCharge> GetAcademicCharges()
+    /**
+     * This method returns the academic loads that this {@code Professor} has. 
+     * @return the academic loads that this {@code Professor} has.
+     */
+    public ArrayList<AcademicLoad> GetAcademicLoads()
     {
-        return m_academicCharges;
+        return m_academicLoads;
     }
 
     /**
-     * 
-     * @param numsGroup
-     * @param limitsOfStudents
-     * @param typesGroup
-     * @param subject
-     * @return
+     * This method assigns a new academic load for this {@code Professor}.
+     * @param numsGroup will be the numbers of the groups of academic loads.
+     * @param limitsOfStudents it will be the limit of students in each group.
+     * @param typesGroup it will be the group type of each group.
+     * @param subject it will be the subject in all groups.
+     * @return {@code true} if this {@code Professor} did not have this {@code AcademicLoad}.
+     * {@code false} otherwise.
      */
     public boolean AddAcademicCharge(int[] numsGroup, int[] limitsOfStudents, String[] typesGroup, Subject subject)
     {
-        AcademicCharge academicCharge = new AcademicCharge(numsGroup, limitsOfStudents, typesGroup, subject);
-        if (GetAcademicCharges().contains(academicCharge))
+        AcademicLoad academicCharge = new AcademicLoad(numsGroup, limitsOfStudents, typesGroup, subject);
+        if (GetAcademicLoads().contains(academicCharge))
             return false;
-        return GetAcademicCharges().add(academicCharge);
+        return GetAcademicLoads().add(academicCharge);
     }
 
     /**
-     * 
-     * @param numGroup
-     * @param limitOfStudents
-     * @param typeGroup
-     * @param subject
-     * @return
+     * This method eliminates an academic load from this {@code Professor}. 
+     * Only deletes a {@code StudentGroup}, if you want to eliminate all the {@code AcademicLoad} related to a subject, 
+     * look at the overloaded method.
+     * @param numGroup it will be the number of the group to be eliminated.
+     * @param subject it will be the subject related to the group to be eliminated.
+     * @return {@code true} if this {@code Professor} have this {@code AcademicLoad}.
+     * {@code false} otherwise.
      */
-    public boolean RemoveAcademicCharge(int numGroup, int limitOfStudents, String typeGroup, Subject subject)
+    public boolean RemoveAcademicCharge(int numGroup, Subject subject)
+    {
+        return false;
+    }
+
+    /**
+     * This method eliminates an academic load from this {@code Professor}. 
+     * delete all groups related to this subject.
+     * @param subject it will be the subject related to the group to be eliminated.
+     * @return {@code true} if this {@code Professor} have this {@code AcademicLoad}.
+     * {@code false} otherwise.
+     */
+    public boolean RemoveAcademicCharge(Subject subject)
     {
         return false;
     }
