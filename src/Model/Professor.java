@@ -52,7 +52,7 @@ public class Professor extends Person
      * @param subjects it will be the subject of each group.
      */
     public Professor(String code, String firstName, String secondName, String lastName, String secondLastName,
-                     String dateOfBorn, String sex, int[][] numsGroup, int[][] limitsOfStudents, String[][] typesGroup, 
+                     String dateOfBorn, String sex, int[][] numGroups, int[][] limitOfStudents, String[][] typeGroups, 
                      Subject[] subjects)
     {
         super(code, firstName, secondName, lastName, secondLastName, dateOfBorn, sex);
@@ -60,7 +60,7 @@ public class Professor extends Person
         if (subjects != null && subjects.length > 0)
         {
             for (int i = 0; i < subjects.length; ++i)
-                m_academicLoads.add(new AcademicLoad(numsGroup[i], limitsOfStudents[i], typesGroup[i], subjects[i]));
+                m_academicLoads.add(new AcademicLoad(numGroups[i], limitOfStudents[i], typeGroups[i], subjects[i]));
         }
     }
 
@@ -82,7 +82,7 @@ public class Professor extends Person
      * @return {@code true} if this {@code Professor} did not have this {@code AcademicLoad}.
      * {@code false} otherwise.
      */
-    public boolean AddAcademicCharge(int[] numsGroup, int[] limitsOfStudents, String[] typesGroup, Subject subject)
+    public boolean AddAcademicLoad(int[] numsGroup, int[] limitsOfStudents, String[] typesGroup, Subject subject)
     {
         AcademicLoad academicCharge = new AcademicLoad(numsGroup, limitsOfStudents, typesGroup, subject);
         if (GetAcademicLoads().contains(academicCharge))
@@ -99,7 +99,7 @@ public class Professor extends Person
      * @return {@code true} if this {@code Professor} have this {@code AcademicLoad}.
      * {@code false} otherwise.
      */
-    public boolean RemoveAcademicCharge(int numGroup, Subject subject)
+    public boolean RemoveAcademicLoad(int numGroup, Subject subject)
     {
         return false;
     }
@@ -111,7 +111,7 @@ public class Professor extends Person
      * @return {@code true} if this {@code Professor} have this {@code AcademicLoad}.
      * {@code false} otherwise.
      */
-    public boolean RemoveAcademicCharge(Subject subject)
+    public boolean RemoveAcademicLoad(Subject subject)
     {
         return false;
     }
