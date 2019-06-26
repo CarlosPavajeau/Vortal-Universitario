@@ -8,23 +8,23 @@ package Model;
 import java.util.ArrayList;
 
 /**
- * This is the class {@code AcademicCharge}, represent a academic charge.
+ * This is the class {@code AcademicLoad}, represent a academic charge.
  * @version 1.0
  * @author Carlos Pavajeau - Cantte
  */
-public class AcademicCharge
+public class AcademicLoad
 {
     private ArrayList<StudentGroup> m_groups;
     private Subject m_subject;
 
     /**
-     * Initialize a new {@code AcademicCharge} with these characteristics.
+     * Initialize a new {@code AcademicLoad} with these characteristics.
      * @param numsGroup
      * @param limitsOfStudents
      * @param typesGroup
      * @param subject
      */
-    public AcademicCharge(int[] numsGroup, int[] limitsOfStudents, String[] typesGroup, Subject subject)
+    public AcademicLoad(int[] numsGroup, int[] limitsOfStudents, String[] typesGroup, Subject subject)
     {
         m_subject = subject;
         for (int i = 0; i < numsGroup.length; i++)
