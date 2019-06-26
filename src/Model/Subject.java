@@ -38,10 +38,7 @@ public class Subject extends Entity
      */
     public Subject()
     {
-        super();
-        m_name = "";
-        m_credits = 0;
-        m_recommendedSemester = 0;
+        this("", "", 0, 0);
     }
 
     /**
