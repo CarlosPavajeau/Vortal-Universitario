@@ -101,7 +101,7 @@ public class StudentGroup extends Entity
      */
     public boolean AddStudent(Student student)
     {
-        if (GetStudents().contains(student))
+        if (GetStudents().contains(student) || IsFull())
             return false;
         return GetStudents().add(student);
     }
@@ -118,6 +118,32 @@ public class StudentGroup extends Entity
 
     /**
      * 
+     */
+    public void CloseGroup()
+    {
+
+    }
+
+    /**
+     * 
+     * @return
+     */
+    public boolean IsEmpty()
+    {
+        return m_students.isEmpty();
+    }
+
+    /**
+     * 
+     * @return
+     */
+    public boolean IsFull()
+    {
+        return m_students.size() >= GetLimitOfStudents();
+    }
+
+    /**
+     * 
      * @param type
      */
     private void SetType(String type)
@@ -129,6 +155,4 @@ public class StudentGroup extends Entity
         else
             m_type = TypeGroup.EVENING;
     }
-
-
 }
