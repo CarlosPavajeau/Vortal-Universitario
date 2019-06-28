@@ -19,32 +19,32 @@ public class AcademicLoad
 
     /**
      * Initialize a new {@code AcademicLoad} with these characteristics.
-     * @param numsGroup
-     * @param limitsOfStudents
-     * @param typesGroup
-     * @param subject
+     @param numsGroup will be the numbers of the groups for this {@code AcademicLoad}.
+     * @param limitsOfStudents it will be the limit of students for this {@code AcademicLoad}.
+     * @param typesGroup it will be the group type of each group of this {@code AcademicLoad}.
+     * @param subjects it will be the subject of this {{@code AcademicLoad}}.
      */
     public AcademicLoad(int[] numsGroup, int[] limitsOfStudents, String[] typesGroup, Subject subject)
     {
         m_subject = subject;
         for (int i = 0; i < numsGroup.length; i++)
         {
-            m_groups.add(new StudentGroup(GetSubjet().GetCode() + "-" + numsGroup[i], numsGroup[i], limitsOfStudents[i], typesGroup[i]));
+            m_groups.add(new StudentGroup(GetSubject().GetCode() + "-" + numsGroup[i], numsGroup[i], limitsOfStudents[i], typesGroup[i]));
         }
     }
 
     /**
-     * 
-     * @return
+     * This method returns the {@code Subject} that this {@code AcademicLoad} has.
+     * @return the {@code Subject} that this {@code AcademicLoad} has.
      */
-    public Subject GetSubjet()
+    public Subject GetSubject()
     {
         return m_subject;
     }
 
     /**
-     * 
-     * @return
+     * This method returns the student groups that this {@code AcademicLoad} has.
+     * @return the student groups that this {@code AcademicLoad} has.
      */
     public ArrayList<StudentGroup> GetGroups()
     {
@@ -52,14 +52,37 @@ public class AcademicLoad
     }
 
     /**
-     * 
-     * @param studentGroup
-     * @return
+     * This method add a new {@code StudentGroup} for this {@code AcademicLoad}.
+     * @param numGroup
+     * @param limitOfStudents
+     * @param typeGroup
+     * @return {@code true}
      */
-    public boolean AddStudentGroup(StudentGroup studentGroup)
+    public boolean AddStudentGroup(int numGroup, int limitOfStudents, String typeGroup)
     {
+        StudentGroup studentGroup = new StudentGroup(GetSubject().GetCode() + "-" + numGroup, numGroup, limitOfStudents, typeGroup);
         if (m_groups.contains(studentGroup))
             return false;
         return m_groups.add(studentGroup);
+    }
+
+    /**
+     * 
+     * @param numGroup
+     * @return
+     */
+    public boolean RemoveStudentGroup(int numGroup)
+    {
+        return false;
+    }
+
+    /**
+     * 
+     * @param numGroup
+     * @return
+     */
+    private StudentGroup SearchGroup(int numGroup)
+    {
+        return null;
     }
 }
