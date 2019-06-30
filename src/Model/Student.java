@@ -27,12 +27,12 @@ public class Student extends Person
      * As in {@code Entity} the code is unique. 
      * @param code that is to be assigned to the object. In this case, the code will be 
      * ID or DNI (T.I. - C.C.) of {@code Student}.
-     * @param firstName will be the first name that have this {@code Student}.
-     * @param secondName will be the second name that have this {@code Student}.
-     * @param lastName will be the last name that have this {@code Student}.
-     * @param secondLastName will be the second last name that have this {@code Student}.
-     * @param dateOfBorn will be the date of born that have this {@code Student}.
-     * @param sex will be the sex that have this {@code Student}.
+     * @param firstName will be the first name that will have this {@code Student}.
+     * @param secondName will be the second name that will have this {@code Student}.
+     * @param lastName will be the last name that will have this {@code Student}.
+     * @param secondLastName will be the second last name that will have this {@code Student}.
+     * @param dateOfBorn will be the date of born that will have this {@code Student}.
+     * @param sex will be the sex that will have this {@code Student}.
      */
     public Student(String code, String firstName, String secondName, String lastName, String secondLastName,
                    String dateOfBorn, String sex)
@@ -45,17 +45,17 @@ public class Student extends Person
      * As in {@code Student} the code is unique. 
      * @param code that is to be assigned to the object. In this case, the code will be 
      * ID or DNI (T.I. - C.C.) of {@code Student}.
-     * @param firstName will be the first name that have this {@code Student}.
-     * @param secondName will be the second name that have this {@code Student}.
-     * @param lastName will be the last name that have this {@code Student}.
-     * @param secondLastName will be the second last name that have this {@code Student}.
-     * @param dateOfBorn will be the date of born that have this {@code Student}.
-     * @param sex will be the sex that have this {@code Student}.
-     * @param qualifications will be the qualificationx that have this {@code Student}.
-     * @param semesterAverage will be the semester average that have this {@code Student}.
-     * @param generalAverage will be the general average that have this {@code Student}.
-     * @param registeredCredits will be the registered credits that have this {@code Student}.
-     * @param currentSemester will be the current semester that have this {@code Student}.
+     * @param firstName will be the first name that will have this {@code Student}.
+     * @param secondName will be the second name that will have this {@code Student}.
+     * @param lastName will be the last name that will have this {@code Student}.
+     * @param secondLastName will be the second last name that will have this {@code Student}.
+     * @param dateOfBorn will be the date of born that will have this {@code Student}.
+     * @param sex will be the sex that will have this {@code Student}.
+     * @param qualifications will be the qualificationx that will have this {@code Student}.
+     * @param semesterAverage will be the semester average that will have this {@code Student}.
+     * @param generalAverage will be the general average that will have this {@code Student}.
+     * @param registeredCredits will be the registered credits that will have this {@code Student}.
+     * @param currentSemester will be the current semester that will have this {@code Student}.
      * @param isMatriculateIn will be the pensum where this {@code Student} be matriculate.
      */
     public Student(String code, String firstName, String secondName, String lastName, String secondLastName,
@@ -155,29 +155,33 @@ public class Student extends Person
     }
 
     /**
-     * 
-     * @param subject
-     * @return
+     * This method add a new {@code Subject} for this {@code Student}.
+     * @param subject the {@code Subject} to add.
+     * @return {@code true} if this {@code Student} does not have the {@code Subject} 
+     * and can register the {@code Subject}, that is, have credits available.
+     * {@code false} otherwise.
      */
     public boolean MatriculateSubject(Subject subject)
     {
         Qualification qualification = new Qualification(subject);
-        if (m_qualifications.contains(qualification))
+        if (m_qualifications.contains(qualification) || !CanRegisterThisSubject(subject))
             return false;
+        m_registeredCredits += qualification.GetSubject().GetCredits();
         return m_qualifications.add(qualification);
     }
 
     /**
-     * 
-     * @param subject
-     * @return
+     * This method remove one {@code Subject} that has this {@code Student}.
+     * @param subject the {@code Subject} to remove.
+     * @return {@code true} if this {@code Student} has the subject. 
+     * {@code false} otherwise.
      */
     public boolean CancelSubject(Subject subject)
     {
-        Qualification Qualification = m_qualifications.get(m_qualifications.indexOf(new Qualification(subject)));
-        if (Qualification.HasNotes())
+        Qualification qualification = m_qualifications.get(m_qualifications.indexOf(new Qualification(subject)));
+        if (qualification.HasNotes())
             return false;
-        return m_qualifications.remove(Qualification);
+        return m_qualifications.remove(qualification);
     }
 
     /**
@@ -202,5 +206,26 @@ public class Student extends Person
     public void UpdateCurrentSemester()
     {
         ++m_currentSemester;
+    }
+
+    /**
+     * This method validates if this {@code Student} can register a more {@code Subject}.
+     * @param subject the {@code Subject} to validate.
+     * @return {@code true} if this {@code Student} has available credits.
+     * {@code false} otherwise. 
+     */
+    private boolean CanRegisterThisSubject(Subject subject)
+    {
+        return subject.GetCredits() <= GetAvailableCredits();
+    }
+
+    /**
+     * This method returns the available credits that has this {@code Student}.
+     * @return the available credits tha has this {@code Student}.
+     */
+    private int GetAvailableCredits()
+    {
+        AcademicSemester academicSemester = new AcademicSemester(GetCurrentSemester(), 0, 0);
+        return academicSemester.GetMaxCredits() - GetRegisteredCredits();
     }
 }
