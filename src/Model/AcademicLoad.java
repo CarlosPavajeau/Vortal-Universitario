@@ -15,21 +15,21 @@ import java.util.ArrayList;
 public class AcademicLoad
 {
     private ArrayList<StudentGroup> m_groups;
-    private Subject m_subject;
+    private final Subject m_subject;
 
     /**
      * Initialize a new {@code AcademicLoad} with these characteristics.
-     @param numsGroup will be the numbers of the groups for this {@code AcademicLoad}.
+     * @param groupNumbers will be the groups numbers for this {@code AcademicLoad}.
      * @param limitsOfStudents it will be the limit of students for this {@code AcademicLoad}.
      * @param typesGroup it will be the group type of each group of this {@code AcademicLoad}.
      * @param subjects it will be the subject of this {{@code AcademicLoad}}.
      */
-    public AcademicLoad(int[] numsGroup, int[] limitsOfStudents, String[] typesGroup, Subject subject)
+    public AcademicLoad(int[] groupNumbers, int[] limitsOfStudents, String[] typesGroup, Subject subject)
     {
         m_subject = subject;
-        for (int i = 0; i < numsGroup.length; i++)
+        for (int i = 0; i < groupNumbers.length; i++)
         {
-            m_groups.add(new StudentGroup(GetSubject().GetCode() + "-" + numsGroup[i], numsGroup[i], limitsOfStudents[i], typesGroup[i]));
+            m_groups.add(new StudentGroup(GenerateStudentGroupCode(groupNumbers[i]), groupNumbers[i], limitsOfStudents[i], typesGroup[i]));
         }
     }
 
@@ -53,36 +53,50 @@ public class AcademicLoad
 
     /**
      * This method add a new {@code StudentGroup} for this {@code AcademicLoad}.
-     * @param numGroup
-     * @param limitOfStudents
-     * @param typeGroup
+     * @param groupNumber will be the group number for a new {@code StudentGroup}.
+     * @param limitOfStudents will be the limit of students for a new {@code StudentGroup}.
+     * @param typeGroup will be the type group for a new {@code StudentGroup}.
      * @return {@code true}
      */
-    public boolean AddStudentGroup(int numGroup, int limitOfStudents, String typeGroup)
+    public boolean AddStudentGroup(int groupNumber, int limitOfStudents, String typeGroup)
     {
-        StudentGroup studentGroup = new StudentGroup(GetSubject().GetCode() + "-" + numGroup, numGroup, limitOfStudents, typeGroup);
+        StudentGroup studentGroup = new StudentGroup(GenerateStudentGroupCode(groupNumber), groupNumber, limitOfStudents, typeGroup);
         if (m_groups.contains(studentGroup))
             return false;
         return m_groups.add(studentGroup);
     }
 
     /**
-     * 
-     * @param numGroup
-     * @return
+     * This method remove one {@code StudentGroup} of this {@code AcademicLoad}.
+     * @param groupNumber the group to remove.
+     * @return {@code true} if this {@code AcademicLoad} contains the group. 
+     * {@code false} otherwise.
      */
-    public boolean RemoveStudentGroup(int numGroup)
+    public boolean RemoveStudentGroup(int groupNumber)
     {
-        return false;
+        return m_groups.remove(new StudentGroup(GenerateStudentGroupCode(groupNumber)));
     }
 
     /**
      * 
-     * @param numGroup
+     * @param groupNumber
      * @return
      */
-    private StudentGroup SearchGroup(int numGroup)
+    public StudentGroup SearchGroup(int groupNumber)
     {
-        return null;
+        StudentGroup studentGroup = new StudentGroup(GenerateStudentGroupCode(groupNumber), groupNumber, 0, "Mañana");
+        studentGroup = m_groups.get(m_groups.indexOf(studentGroup));
+        return studentGroup;
+    }
+
+    /**
+     * This method generates the code that has a {@code StudentGroup} from 
+     * the code of this {@code Subject} and the group number.
+     * @param groupNumber is the number of the group from which the code is generated.
+     * @return a {@code String} that contains the generated code.
+     */
+    private String GenerateStudentGroupCode(int groupNumber)
+    {
+        return GetSubject().GetCode() + "-" + groupNumber;
     }
 }
