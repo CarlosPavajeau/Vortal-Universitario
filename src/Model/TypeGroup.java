@@ -14,7 +14,8 @@ public enum TypeGroup
 {
     MORNING("Mañana"),
     AFTERNOON("Tarde"),
-    EVENING("Noche");
+    EVENING("Noche"),
+    NONE("NONE");
 
     private final String m_type;
 
