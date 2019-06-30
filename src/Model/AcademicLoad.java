@@ -84,7 +84,7 @@ public class AcademicLoad
      */
     public StudentGroup SearchGroup(int groupNumber)
     {
-        StudentGroup studentGroup = new StudentGroup(GenerateStudentGroupCode(groupNumber), groupNumber, 0, "Mañana");
+        StudentGroup studentGroup = new StudentGroup(GenerateStudentGroupCode(groupNumber));
         studentGroup = m_groups.get(m_groups.indexOf(studentGroup));
         return studentGroup;
     }
