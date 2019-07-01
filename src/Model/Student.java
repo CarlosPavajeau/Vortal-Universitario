@@ -130,6 +130,15 @@ public class Student extends Person
     }
 
     /**
+     * 
+     * @param generalAverage
+     */
+    public void SetGeneralAverage(float generalAverage)
+    {
+        m_generalAverage = generalAverage;
+    }
+
+    /**
      * This method registers this {@code Student} in a Pensum.
      * @param pensum it is the code of the Pensum where to register this {@code Student}
      * @return {@code true} if this {@code Student} was not registered in a Pensum.
@@ -155,7 +164,7 @@ public class Student extends Person
     }
 
     /**
-     * This method add a new {@code Subject} for this {@code Student}.
+     * This method adds a new {@code Subject} for this {@code Student}.
      * @param subject the {@code Subject} to add.
      * @return {@code true} if this {@code Student} does not have the {@code Subject} 
      * and can register the {@code Subject}, that is, have credits available.
@@ -171,7 +180,7 @@ public class Student extends Person
     }
 
     /**
-     * This method remove one {@code Subject} that has this {@code Student}.
+     * This method removes one {@code Subject} that has this {@code Student}.
      * @param subject the {@code Subject} to remove.
      * @return {@code true} if this {@code Student} has the subject. 
      * {@code false} otherwise.
@@ -181,27 +190,35 @@ public class Student extends Person
         Qualification qualification = m_qualifications.get(m_qualifications.indexOf(new Qualification(subject)));
         if (qualification.HasNotes())
             return false;
+        m_registeredCredits -= qualification.GetSubject().GetCredits();
         return m_qualifications.remove(qualification);
     }
 
     /**
-     * 
+     * This method updates the general average of this {@code Student}.
      */
     public void UpdateGeneralAverage()
     {
-
+        float newAverage = 0.0f;
+        for (Float average : m_semesterAverage)
+            newAverage += average.floatValue();
+        newAverage /= m_semesterAverage.size();
+        SetGeneralAverage(newAverage);
     }
 
     /**
-     * 
+     * This method adds a new semester average for this {@code Student}.
      */
     public void AddNewSemesterAverage()
     {
-
+        float newSemesterAverage = 0.0f;
+        for (Qualification qualification : m_qualifications)
+            newSemesterAverage += qualification.GetAverage() * (qualification.GetSubject().GetCredits() / GetRegisteredCredits());
+        m_semesterAverage.add(Float.valueOf(newSemesterAverage));
     }
 
     /**
-     * 
+     * This method updates the current semester of this {@code Student}.
      */
     public void UpdateCurrentSemester()
     {
