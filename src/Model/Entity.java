@@ -58,13 +58,6 @@ public abstract class Entity implements Comparable<Entity>
         return m_code;
     }
 
-    /**
-     * This method returns {@code true} if the objects be {@code Entity} or the objects has
-     * equals codes.
-     * @param anObject The object to compare this {@code Entity} against.
-     * @return {@code true} if the given object represents a {@code Entity} with
-     *  a equivalent code. {@code false} otherwise.
-     */
     @Override
     public boolean equals(Object anObject) 
     {
@@ -83,12 +76,6 @@ public abstract class Entity implements Comparable<Entity>
         return true;
     }
 
-    /**
-     * Returns a hashcode for this {@code Entity}. The result is
-     * the exclusive OR of the two halves of the pimitive {@code long}
-     * value held by this {@code  Entity} object
-     * @return a hash code value for this object.
-     */
     @Override
     public int hashCode() 
     {
@@ -98,14 +85,6 @@ public abstract class Entity implements Comparable<Entity>
         return result;
     }
 
-    /**
-     * Compares the codes of two {@code Entity} objects.
-     * @param anEntity The object to compare this {@code Entity} against.
-     * @return the value {@code 0} if the code of this {@code Entity} is equal to the argument
-     * {@code Entity}, a value less than {@code 0} if the code of this {@code Entity} is 
-     * less than the argument {@code Entity} and a value greater than {@code 0}
-     * if the code of this {@code Entity} is greater than the argument {@code Entity}.
-     */
     @Override
     public int compareTo(Entity anEntity)
     {
