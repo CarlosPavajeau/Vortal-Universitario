@@ -5,6 +5,8 @@
 
 package Model;
 
+import java.util.Locale;
+
 /**
  * This is the superclass of most major classes of software. Of course this 
  * class is abstract. But currently not implemented the abstract methods.
@@ -66,34 +68,36 @@ public abstract class Entity implements Comparable<Entity>
      *  a equivalent code. {@code false} otherwise.
      */
     @Override
-    public boolean equals(Object anObject)
+    public boolean equals(Object anObject) 
     {
-        if (anObject != null && anObject instanceof Entity)
-        {
-            if (this == anObject)
-                return true;
-            Entity anEntity = (Entity)anObject;
-            return compareTo(anEntity) == 0;
-        }
-        return false;
+        if (this == anObject)
+            return true;
+        if (anObject == null)
+            return false;
+        if (getClass() != anObject.getClass())
+            return false;
+        Entity other = (Entity) anObject;
+        if (GetCode() == null) {
+            if (other.GetCode() != null)
+                return false;
+        } else if (!GetCode().equals(other.GetCode()))
+            return false;
+        return true;
     }
 
     /**
      * Returns a hashcode for this {@code Entity}. The result is
      * the exclusive OR of the two halves of the pimitive {@code long}
-     * value held by this {@code  Entity} object. That is, the hashcode 
-     * is the value of the expression:
-     * 
-     * <blockquote>
-     *  {@code (int)(this.longValue()^(this.longValue()>>>32))}
-     * </blockquote>
-     * 
+     * value held by this {@code  Entity} object
      * @return a hash code value for this object.
      */
     @Override
     public int hashCode() 
     {
-        return GetCode().hashCode();
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((GetCode() == null) ? 0 : GetCode().hashCode());
+        return result;
     }
 
     /**
