@@ -5,8 +5,6 @@
 
 package Model;
 
-import java.util.Locale;
-
 /**
  * This is the superclass of most major classes of software. Of course this 
  * class is abstract. But currently not implemented the abstract methods.
