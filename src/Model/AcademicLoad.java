@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * @version 1.0
  * @author Carlos Pavajeau - Cantte
  */
-public class AcademicLoad
+public class AcademicLoad implements Comparable<AcademicLoad>
 {
     private ArrayList<StudentGroup> m_groups;
     private final Subject m_subject;
@@ -98,5 +98,38 @@ public class AcademicLoad
     private String GenerateStudentGroupCode(int groupNumber)
     {
         return GetSubject().GetCode() + "-" + groupNumber;
+    }
+
+    @Override
+    public int compareTo(AcademicLoad o) 
+    {
+        return GetSubject().compareTo(o.GetSubject());
+    }
+
+    @Override
+    public int hashCode() 
+    {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((GetSubject() == null) ? 0 : GetSubject().hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) 
+    {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        AcademicLoad other = (AcademicLoad) obj;
+        if (GetSubject() == null) {
+            if (other.GetSubject() != null)
+                return false;
+        } else if (!GetSubject().equals(other.GetSubject()))
+            return false;
+        return true;
     }
 }
