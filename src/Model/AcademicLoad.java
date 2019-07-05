@@ -101,21 +101,6 @@ public class AcademicLoad implements Comparable<AcademicLoad>
     }
 
     @Override
-    public int compareTo(AcademicLoad o) 
-    {
-        return GetSubject().compareTo(o.GetSubject());
-    }
-
-    @Override
-    public int hashCode() 
-    {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((GetSubject() == null) ? 0 : GetSubject().hashCode());
-        return result;
-    }
-
-    @Override
     public boolean equals(Object obj) 
     {
         if (this == obj)
@@ -131,5 +116,20 @@ public class AcademicLoad implements Comparable<AcademicLoad>
         } else if (!GetSubject().equals(other.GetSubject()))
             return false;
         return true;
+    }
+
+    @Override
+    public int hashCode() 
+    {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((GetSubject() == null) ? 0 : GetSubject().hashCode());
+        return result;
+    }
+
+    @Override
+    public int compareTo(AcademicLoad o) 
+    {
+        return GetSubject().compareTo(o.GetSubject());
     }
 }
