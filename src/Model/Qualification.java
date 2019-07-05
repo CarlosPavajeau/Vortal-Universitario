@@ -11,7 +11,7 @@ package Model;
  * @version 1.0
  * @author Carlos Pavajeau - Cantte
  */
-public class Qualification
+public class Qualification implements Comparable<Qualification>
 {
     private static final int ACADEMICS_CORTS = 3;
     private static final int NOTE_EMPTY = -1;
@@ -118,5 +118,38 @@ public class Qualification
     private boolean IsNoteEmpty(float note)
     {
         return note == NOTE_EMPTY;
+    }
+
+    @Override
+    public boolean equals(Object obj) 
+    {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Qualification other = (Qualification) obj;
+        if (GetSubject() == null) {
+            if (other.GetSubject() != null)
+                return false;
+        } else if (!GetSubject().equals(other.GetSubject()))
+            return false;
+        return true;
+    }
+
+    @Override
+    public int hashCode() 
+    {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((GetSubject() == null) ? 0 : GetSubject().hashCode());
+        return result;
+    }
+
+    @Override
+    public int compareTo(Qualification o) 
+    {
+        return GetSubject().compareTo(o.GetSubject());
     }
 }
