@@ -13,7 +13,7 @@ import java.util.ArrayList;
  * @version 1.0
  * @author Carlos Pavajeau - Cantte
  */
-public class Student extends Person
+public class Student extends Person implements SubjectManager
 {
     private ArrayList<Qualification> m_qualifications;
     private ArrayList<Float> m_semesterAverage;
@@ -170,7 +170,8 @@ public class Student extends Person
      * and can register the {@code Subject}, that is, have credits available.
      * {@code false} otherwise.
      */
-    public boolean MatriculateSubject(Subject subject)
+    @Override
+    public boolean AddSubject(Subject subject)
     {
         Qualification qualification = new Qualification(subject);
         if (m_qualifications.contains(qualification) || !CanRegisterThisSubject(subject))
@@ -185,7 +186,8 @@ public class Student extends Person
      * @return {@code true} if this {@code Student} has the subject. 
      * {@code false} otherwise.
      */
-    public boolean CancelSubject(Subject subject)
+    @Override
+    public boolean RemoveSubject(Subject subject)
     {
         Qualification qualification = m_qualifications.get(m_qualifications.indexOf(new Qualification(subject)));
         if (qualification.HasNotes())
