@@ -6,6 +6,9 @@
 package Model;
 
 import java.util.ArrayList;
+import java.util.Set;
+
+import Model.Exceptions.ExceededCreditsException;
 
 /**
  * This is the class {@code Student}, represent a Student. Derive of {@code Person}.
@@ -16,6 +19,7 @@ import java.util.ArrayList;
 public class Student extends Person implements SubjectManager
 {
     private ArrayList<Qualification> m_qualifications;
+    Set<Qualification> ad;
     private ArrayList<Float> m_semesterAverage;
     private float m_generalAverage;
     private int m_registeredCredits;
@@ -163,29 +167,19 @@ public class Student extends Person implements SubjectManager
         return pensum.equals(m_isMatriculateIn);
     }
 
-    /**
-     * This method adds a new {@code Subject} for this {@code Student}.
-     * @param subject the {@code Subject} to add.
-     * @return {@code true} if this {@code Student} does not have the {@code Subject} 
-     * and can register the {@code Subject}, that is, have credits available.
-     * {@code false} otherwise.
-     */
     @Override
-    public boolean AddSubject(Subject subject)
+    public boolean AddSubject(Subject subject) throws ExceededCreditsException
     {
+        if (!CanAddThisSubject(subject))
+            throw new ExceededCreditsException("Créditos insuficientes...");
+
         Qualification qualification = new Qualification(subject);
-        if (m_qualifications.contains(qualification) || !CanRegisterThisSubject(subject))
+        if (m_qualifications.contains(qualification))
             return false;
         m_registeredCredits += qualification.GetSubject().GetCredits();
         return m_qualifications.add(qualification);
     }
 
-    /**
-     * This method removes one {@code Subject} that has this {@code Student}.
-     * @param subject the {@code Subject} to remove.
-     * @return {@code true} if this {@code Student} has the subject. 
-     * {@code false} otherwise.
-     */
     @Override
     public boolean RemoveSubject(Subject subject)
     {
@@ -194,6 +188,19 @@ public class Student extends Person implements SubjectManager
             return false;
         m_registeredCredits -= qualification.GetSubject().GetCredits();
         return m_qualifications.remove(qualification);
+    }
+
+    @Override
+    public boolean CanAddThisSubject(Subject subject)
+    {
+        return subject.GetCredits() <= GetAvailableCredits();
+    }
+
+    @Override
+    public int GetAvailableCredits()
+    {
+        AcademicSemester academicSemester = new AcademicSemester(GetCurrentSemester(), 0, 0);
+        return academicSemester.GetMaxCredits() - GetRegisteredCredits();
     }
 
     /**
@@ -225,26 +232,5 @@ public class Student extends Person implements SubjectManager
     public void UpdateCurrentSemester()
     {
         ++m_currentSemester;
-    }
-
-    /**
-     * This method validates if this {@code Student} can register a more {@code Subject}.
-     * @param subject the {@code Subject} to validate.
-     * @return {@code true} if this {@code Student} has available credits.
-     * {@code false} otherwise. 
-     */
-    private boolean CanRegisterThisSubject(Subject subject)
-    {
-        return subject.GetCredits() <= GetAvailableCredits();
-    }
-
-    /**
-     * This method returns the available credits that has this {@code Student}.
-     * @return the available credits tha has this {@code Student}.
-     */
-    private int GetAvailableCredits()
-    {
-        AcademicSemester academicSemester = new AcademicSemester(GetCurrentSemester(), 0, 0);
-        return academicSemester.GetMaxCredits() - GetRegisteredCredits();
     }
 }

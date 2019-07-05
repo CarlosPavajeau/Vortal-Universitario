@@ -7,6 +7,8 @@ package Model;
 
 import java.util.ArrayList;
 
+import Model.Exceptions.ExceededCreditsException;
+
 /**
  * This is the class {@code Pensum}, represent a Pensum. Derive of {@code Entity}.
  * @see {@code Entity}
@@ -20,6 +22,7 @@ public abstract class Pensum extends Entity implements SubjectManager
     private String m_campus;
     private int m_semesters;
     private int m_credits;
+    private int m_globalLessonLoad;
     private ArrayList<Subject> m_subjects;
 
     /**
@@ -30,17 +33,18 @@ public abstract class Pensum extends Entity implements SubjectManager
      * @param description will be the description of the {@code Pensum}.
      * @param campus it will be the campus where {@code Pensum} belongs.
      * @param semesters duration in semesters of {@code Pensum}.
-     * @param credits minimum credits required or global credits of the {@code Pensum}.
+     * @param globalLessonLoad minimum credits required or global credits of the {@code Pensum}.
      * @param subjects subjects that belong or will belong to this {@code Pensum}.
      */
-    public Pensum(String code, String name, String description, String campus, int semesters, int credits, ArrayList<Subject> subjects)
+    public Pensum(String code, String name, String description, String campus, int semesters, int globalLessonLoad, ArrayList<Subject> subjects)
     {
         super(code);
         m_name = name;
         m_description = description;
         m_campus = campus;
         m_semesters = semesters;
-        m_credits = credits;
+        m_globalLessonLoad = globalLessonLoad;
+        m_credits = 0;
         m_subjects = subjects;
     }
 
@@ -87,6 +91,15 @@ public abstract class Pensum extends Entity implements SubjectManager
     public int GetCredits()
     {
         return m_credits;
+    }
+
+    /**
+     * 
+     * @return
+     */
+    public int GetGlobalLessonLoad()
+    {
+        return m_globalLessonLoad;
     }
 
     /**
@@ -138,32 +151,42 @@ public abstract class Pensum extends Entity implements SubjectManager
      * This method sets a new credits for this object {@code Pensum}.
      * @param credits will be a new credits of this {@code Pensum}.
      */
-    public void SetCredits(int credits)
+    public void SetGlobalLessonLoad(int globalLessonLoad)
     {
-        m_credits = credits;
+        m_globalLessonLoad = globalLessonLoad;
     }
-
-    /**
-     * Add a subject to this {@code Pensum} .
-     * @param subject to add to this {@code Pensum}.
-     * @return {@code true} If this object does not already contain this {@code Subject}, 
-     * {@code false} otherwise.
-     */
-    public boolean AddSubject(Subject subject)
+    
+    @Override
+    public boolean AddSubject(Subject subject) throws ExceededCreditsException
     {
-        if (m_subjects.contains(subject))
+        if (!CanAddThisSubject(subject))
+            throw new ExceededCreditsException("Créditos insufucientes...");
+        else if (m_subjects.contains(subject))
             return false;
+        m_credits += subject.GetCredits();
         return m_subjects.add(subject);
     }
 
-    /**
-     * Remove a subject to this {@code Pensum}.
-     * @param subject to remove to this {@code Pensum}.
-     * @return {@code true} If this object contains this {@code Subject}, 
-     * {@code false} otherwise.
-     */
+    @Override
     public boolean RemoveSubject(Subject subject)
     {
-        return m_subjects.remove(subject);
+        if (m_subjects.remove(subject))
+        {
+            m_credits -= subject.GetCredits();
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean CanAddThisSubject(Subject subject)
+    {
+        return subject.GetCredits() <= GetAvailableCredits();
+    }
+
+    @Override
+    public int GetAvailableCredits()
+    {
+        return GetGlobalLessonLoad() - GetCredits();
     }
 }
