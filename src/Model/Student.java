@@ -16,7 +16,7 @@ import Model.Exceptions.ExceededCreditsException;
  * @version 1.0
  * @author Carlos Pavajeau - Cantte
  */
-public class Student extends Person implements SubjectManager
+public class Student extends Person implements SubjectHandler
 {
     private ArrayList<Qualification> m_qualifications;
     Set<Qualification> ad;

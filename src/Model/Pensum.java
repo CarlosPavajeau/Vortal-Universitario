@@ -15,7 +15,7 @@ import Model.Exceptions.ExceededCreditsException;
  * @version 1.0
  * @author Carlos Pavajeau - Cantte
  */
-public abstract class Pensum extends Entity implements SubjectManager
+public abstract class Pensum extends Entity implements SubjectHandler
 {
     private String m_name;
     private String m_description;
