@@ -12,7 +12,7 @@ import Model.Exceptions.ExceededCreditsException;
  * @version 1.0
  * @author Carlos Pavajeau - Cantte
  */
-interface SubjectManager
+interface SubjectHandler
 {
     /**
      * This method adds a new {@code Subject} to each object that implements this interface.
