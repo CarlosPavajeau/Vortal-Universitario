@@ -26,13 +26,13 @@ public class UnderGraduate extends Pensum
      * @param description will be the description of the {@code UnderGraduate}.
      * @param campus it will be the campus where {@code UnderGraduate} belongs.
      * @param semesters duration in semesters of {@code UnderGraduate}.
-     * @param credits minimum credits required or global credits of the {@code UnderGraduate}.
+     * @param globalLessonLoad minimum credits required or global credits of the {@code UnderGraduate}.
      * @param subjects subjects that belong or will belong to this {@code UnderGraduate}.
      * @param titleToGrand it will the title to grand.
      */
-    public UnderGraduate(String code, String name, String description, String campus, int semesters, int credits, ArrayList<Subject> subjects, String titleToGrand)
+    public UnderGraduate(String code, String name, String description, String campus, int semesters, int globalLessonLoad, ArrayList<Subject> subjects, String titleToGrand)
     {
-        super(code, name, description, campus, semesters, credits, subjects);
+        super(code, name, description, campus, semesters, globalLessonLoad, subjects);
         m_titleToGrand = titleToGrand;
     }
 
