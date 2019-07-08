@@ -6,7 +6,11 @@
 package Model.Exceptions;
 
 /**
- * This is the class {@code ExceededCreditsExeption}. Is an {@code Exception}.
+ * This is the exception {@code ExceededCreditsExeption}. It's a {@code Exception}. 
+ * This exception is when the objects that implement the 
+ * interface {@code SubjectHandler} try to add a new subject and do not have the 
+ * credits available to add it.
+ * 
  * @version 1.0
  * @author Carlos Pavajeau - Cantte
  */

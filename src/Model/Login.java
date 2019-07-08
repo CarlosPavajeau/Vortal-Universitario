@@ -7,7 +7,9 @@ package Model;
 
 
 /**
- * This is the class {@code Login}. It's use is to store the access data of each user.
+ * This is the class {@code Login}. Its use is to store the access data 
+ * of each user, this access data is his username and password.
+ * 
  * @version 1.0
  * @author Carlos Pavajeau - Cantte
  */

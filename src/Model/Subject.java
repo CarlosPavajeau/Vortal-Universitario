@@ -6,7 +6,12 @@
 package Model;
 
 /**
- * This is the class {@code Subject}, represent a subject. Derive of {@code Entity}.
+ * This is the class {@code Subject}, represents a subject, has a code that 
+ * represents it, in addition to the credits it grants when it is approved by 
+ * a {@code Student} and the semester where it is recommended 
+ * to a {@code Student } register it.
+ * Derive of {@code Entity}.
+ * 
  * @see {@code Entity}
  * @version 1.0
  * @author Carlos Pavajeau - Cantte

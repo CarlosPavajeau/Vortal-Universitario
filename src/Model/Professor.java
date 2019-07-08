@@ -8,7 +8,9 @@ package Model;
 import java.util.ArrayList;
 
 /**
- * This is the class {@code Professor}, represent a professor or a teacher. Derive of {@code Person}.
+ * This is the class {@code Professor}, represents a university professor who in 
+ * addition to the data of a person has academic loads. Derived from {@code Person}.
+ * 
  * @see {@code Person}
  * @version 1.0
  * @author Carlos Pavajeau - Cantte

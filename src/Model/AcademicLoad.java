@@ -8,7 +8,10 @@ package Model;
 import java.util.ArrayList;
 
 /**
- * This is the class {@code AcademicLoad}, represent a academic charge.
+ * This is the class {@code AcademicLoad}, it represents an academic load. Its 
+ * use is to store {@code StudentGroup}s and a {@code Subject} assigned to 
+ * those {@code StudentGroup}s to be assigned to a {@code Professor}.
+ * 
  * @version 1.0
  * @author Carlos Pavajeau - Cantte
  */

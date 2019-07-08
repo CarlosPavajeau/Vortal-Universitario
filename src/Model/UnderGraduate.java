@@ -8,8 +8,11 @@ package Model;
 import java.util.ArrayList;
 
 /**
- * This is the class {@code UnderGraduate}, represent a Undergraduate pensum. 
+ * This is the class {@code UnderGraduate}, it represents an undergraduate pensum, in which 
+ * a degree is awarded when it is approved in its entirety.
+ * 
  * Derive of {@code Pensum}.
+ * 
  * @see {@code Pensum}
  * @version 1.0
  * @author Carlos Pavajeau - Cantte

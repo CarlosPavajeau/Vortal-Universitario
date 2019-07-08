@@ -8,8 +8,10 @@ package Model;
 import java.util.ArrayList;
 
 /**
- * This is the class {@code PostGraduate}, represent a Postgraduate pensum. 
+ * This is the class {@code PostGraduate}, it represents a postgraduate pensum, in which 
+ * a degree is previously required to be enrolled in it.
  * Derive of {@code Pensum}.
+ * 
  * @see {@code Pensum}
  * @version 1.0
  * @author Carlos Pavajeau - Cantte

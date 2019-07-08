@@ -10,7 +10,12 @@ import java.util.ArrayList;
 import Model.Exceptions.ExceededCreditsException;
 
 /**
- * This is the class {@code Pensum}, represent a Pensum. Derive of {@code Entity}.
+ * This is the class {@code Pensum}, it represents a Pensum or an academic curriculum, in 
+ * this {@code Pensum} there are stored {@code Subject}'s which must be given in a certain campus 
+ * and with a certain number of semesters.
+ * Note: The {@code Subject}'s may belong to different {@code Pensum} but these can only 
+ * be added once.
+ * 
  * @see {@code Entity}
  * @version 1.0
  * @author Carlos Pavajeau - Cantte
@@ -149,7 +154,7 @@ public abstract class Pensum extends Entity implements SubjectHandler
 
     /**
      * This method sets a new credits for this object {@code Pensum}.
-     * @param credits will be a new credits of this {@code Pensum}.
+     * @param globalLessonLoad will be a new credits of this {@code Pensum}.
      */
     public void SetGlobalLessonLoad(int globalLessonLoad)
     {

@@ -9,7 +9,10 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 /**
- * This is the class {@code Person}, represent a Person. Derive of {@code Entity}.
+ * This is the class {@code Person}, represent a person and his data as his first and 
+ * second name, his last name and second last name, his age and date of birth, his 
+ * sex and his login data. Derive of {@code Entity}.
+ * 
  * @see {@code Entity}
  * @version 1.0
  * @author Carlos Pavajeau - Cantte

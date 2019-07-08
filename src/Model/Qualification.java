@@ -7,7 +7,10 @@ package Model;
 
 
 /**
- * This is the class {@code Qualification}. Represent a qualification.
+ * This is the class {@code Qualification}. Represents a 3-grade grade assigned
+ * to a {@code Subject}, this class is used by the {@code Student}s 
+ * to keep track of the grades they receive.
+ * 
  * @version 1.0
  * @author Carlos Pavajeau - Cantte
  */

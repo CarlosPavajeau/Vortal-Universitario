@@ -8,7 +8,10 @@ package Model;
 import java.util.ArrayList;
 
 /**
- * This is the class {@code StudentGroup}, represent a Student group. Derive of {@code Entity}.
+ * This is the class {@code StudentGroup}, represents a group of students, which 
+ * stores {@code Student}s that are enrolled in a subject.
+ * Derived from {@code Entity}.
+ * 
  * @see {@code Entity}
  * @version 1.0
  * @author Carlos Pavajeau - Cantte

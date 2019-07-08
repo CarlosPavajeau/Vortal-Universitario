@@ -6,13 +6,15 @@
 package Model;
 
 /**
- * This is the superclass of most major classes of software. Of course this 
- * class is abstract. But currently not implemented the abstract methods.
+ * This is the superclass of most classes of this software. Of course, 
+ * this class is abstract, but abstract methods are not implemented. Represents 
+ * a unique object that is represented by its code. This code is used for searches, 
+ * updates and / or deletions. It is worth mentioning that the code is unique for each 
+ * object {@code Entity}
  * 
  * @version 1.0
  * @author Carlos Pavajeau - Cantte
  */
-
 public abstract class Entity implements Comparable<Entity>
 {
     private final String m_code;

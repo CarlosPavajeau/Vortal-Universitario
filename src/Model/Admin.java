@@ -7,7 +7,8 @@ package Model;
 
 
 /**
- * This is the class {@code Admin}. Represent the superuser of the application.
+ * This is the class {@code Admin}. Represent the superuser of the application that has
+ * all control on this software.
  * Derive of {@code Entity}
  * @see {@code Entity}
  * @version 1.0

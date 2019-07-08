@@ -6,12 +6,14 @@
 package Model;
 
 import java.util.ArrayList;
-import java.util.Set;
 
 import Model.Exceptions.ExceededCreditsException;
 
 /**
- * This is the class {@code Student}, represent a Student. Derive of {@code Person}.
+ * This is the class {@code Student}, it represents a student with 
+ * his attributes such as his qualifications, averages and other data that a
+ * university student has. Derive of {@code Person}.
+ * 
  * @see {@code Person}
  * @version 1.0
  * @author Carlos Pavajeau - Cantte
@@ -19,7 +21,7 @@ import Model.Exceptions.ExceededCreditsException;
 public class Student extends Person implements SubjectHandler
 {
     private ArrayList<Qualification> m_qualifications;
-    Set<Qualification> ad;
+    //private ArrayList<Subject> m_curseSubjects;
     private ArrayList<Float> m_semesterAverage;
     private float m_generalAverage;
     private int m_registeredCredits;

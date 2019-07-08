@@ -7,7 +7,10 @@ package Model;
 
 
 /**
- * This is the class {@code AcademicSemester}. Represent an academic semester
+ *This is the class {@code AcademicSemester}. Represents an academic semester. its use
+ * is to regulate the minimum and maximum credits that a {@code Student} can enroll
+ * in a given semester, more precisely, the semester in which it is.
+ * 
  * @version 1.0
  * @author Carlos Pavajeau - Cantte
  */
