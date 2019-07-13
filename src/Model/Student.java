@@ -21,7 +21,7 @@ import Model.Exceptions.ExceededCreditsException;
 public class Student extends Person implements SubjectHandler
 {
     private ArrayList<Qualification> m_qualifications;
-    //private ArrayList<Subject> m_curseSubjects;
+    private ArrayList<Qualification> m_curseSubjects;
     private ArrayList<Float> m_semesterAverage;
     private float m_generalAverage;
     private int m_registeredCredits;
@@ -43,7 +43,7 @@ public class Student extends Person implements SubjectHandler
     public Student(String code, String firstName, String secondName, String lastName, String secondLastName,
                    String dateOfBorn, String sex)
     {
-        this(code, firstName, secondName, lastName, secondLastName, dateOfBorn, sex, null, null, 0.0f, 0, 0, "");
+        this(code, firstName, secondName, lastName, secondLastName, dateOfBorn, sex, null, null, null, 0.0f, 0, 0, "");
     }
 
     /**
@@ -65,11 +65,12 @@ public class Student extends Person implements SubjectHandler
      * @param isMatriculateIn will be the pensum where this {@code Student} be matriculate.
      */
     public Student(String code, String firstName, String secondName, String lastName, String secondLastName,
-                   String dateOfBorn, String sex, ArrayList<Qualification> qualifications, ArrayList<Float> semesterAverage,
+                   String dateOfBorn, String sex, ArrayList<Qualification> qualifications, ArrayList<Qualification> curseSubjects, ArrayList<Float> semesterAverage,
                    float generalAverage, int registeredCredits, int currentSemester, String isMatriculateIn)
     {
         super(code, firstName, secondName, lastName, secondLastName, dateOfBorn, sex);
         m_qualifications = (qualifications != null) ? qualifications : new ArrayList<>();
+        m_curseSubjects = (curseSubjects != null) ? curseSubjects : new ArrayList<>();
         m_semesterAverage = (semesterAverage != null) ? semesterAverage : new ArrayList<>();
         m_generalAverage = generalAverage;
         m_registeredCredits = registeredCredits;
@@ -133,6 +134,15 @@ public class Student extends Person implements SubjectHandler
     public float GetQualification(Subject subject, int cort) throws IndexOutOfBoundsException
     {
         return m_qualifications.get(m_qualifications.indexOf(new Qualification(subject))).GetNote(cort);
+    }
+
+    /**
+     * This method returns all cursed subjects if this {@code Student}.
+     * @return all cursed subjects of this {@code Student}.
+     */
+    public ArrayList<Qualification> GetCurseSubjects()
+    {
+        return m_curseSubjects;
     }
 
     /**
