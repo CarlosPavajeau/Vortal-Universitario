@@ -8,7 +8,7 @@ package View;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
-import java.awt.Insets;
+import java.awt.Font;
 import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
@@ -24,20 +24,21 @@ public class Button extends JButton
         super();
         setBackground(Color.WHITE);
         setIcon(new ImageIcon(getClass().getResource(typeButton.GetSRC())));
-        setRolloverIcon(new ImageIcon(getClass().getResource(typeButton.GetRolloverSRC())));
-        setPressedIcon(new ImageIcon(getClass().getResource(typeButton.GetPressedSRC())));
         setHorizontalTextPosition(SwingConstants.CENTER);
         setVerticalTextPosition(SwingConstants.BOTTOM);
-        setIconTextGap(2);
+        setFont(new Font("Microsoft Sans Serif", 0, 12));
+        setIconTextGap(-2);
         setText(typeButton.GetText());
         setBorder(null);
         setBorderPainted(false);
         setContentAreaFilled(false);
         setCursor(new Cursor(Cursor.HAND_CURSOR));
-        setMargin(new Insets(0, 0, 0, 0));
+        setMargin(null);
         setMaximumSize(new Dimension(typeButton.GetWidth(), typeButton.GetHeigth()));
         setMinimumSize(new Dimension(typeButton.GetWidth(), typeButton.GetHeigth()));
         setPreferredSize(new Dimension(typeButton.GetWidth(), typeButton.GetHeigth()));
+        setRolloverIcon(new ImageIcon(getClass().getResource(typeButton.GetRolloverSRC())));
+        setPressedIcon(new ImageIcon(getClass().getResource(typeButton.GetPressedSRC())));
         addActionListener(l);
     }
 }
