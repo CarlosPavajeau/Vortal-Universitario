@@ -5,6 +5,8 @@
 
 package View;
 
+import java.awt.EventQueue;
+
 /**
  * This is the main class, here the application starts.
  * @version 1.0
@@ -15,6 +17,9 @@ public class Main
 {
     public static void main(String[] args) 
     {
-        
+        EventQueue.invokeLater(() -> 
+        {
+            new MainWindow().setVisible(true);
+        });
     }
 }
