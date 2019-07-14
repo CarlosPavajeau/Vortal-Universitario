@@ -17,7 +17,7 @@ public enum TypeButton
     /**100x100 buttons */
     BUTTON_ICON_ACCESS_DATA_MANAGER("Icon_AccessDataManager", "", TypeButton.BUTTON_WITH_SIZE_100x100),
     BUTTON_ICON_ADD_OR_DELETE_STUDENT("Icon_Add-DeleteStudent", "", TypeButton.BUTTON_WITH_SIZE_100x100),
-    BUTTON_ICON_ADD_SUBJECT("Icon_AddSubject", "", TypeButton.BUTTON_WITH_SIZE_100x100),
+    BUTTON_ICON_ADD_SUBJECT("Icon_AddSubject", "Añadir asignatura", TypeButton.BUTTON_WITH_SIZE_100x100),
     BUTTON_ICON_CURRENT_PROGRESS("Icon_CurrentProgress", "", TypeButton.BUTTON_WITH_SIZE_100x100),
     BUTTON_ICON_DATA_MANAGER("Icon_DataManager", "", TypeButton.BUTTON_WITH_SIZE_100x100),
     BUTTON_ICON_DELETE_SUBJECT("Icon_DeleteSubject", "", TypeButton.BUTTON_WITH_SIZE_100x100),
@@ -43,16 +43,18 @@ public enum TypeButton
     private static final int BUTTON_WITH_SIZE_50x50 = 1;
     private static final int BUTTON_WITH_SIZE_100x100 = 2;
 
-    private static final int STANDARD_BUTTON_SIZE_1 = 200; 
-    private static final int STANDARD_BUTTON_SIZE_2 = 50;
+    private static final int STANDARD_BUTTON_SIZE_WIDTH = 200; 
+    private static final int STANDARD_BUTTON_SIZE_HEIGHT = 50;
     
-    private static final int BUTTONS_WITH_ICONS100x100_SIZE = 100;
+    private static final int BUTTONS_WITH_ICONS100x100_WIDTH = 100;
+    private static final int BUTTONS_WITH_ICONS100x100_HEIGHT = 120;
 
-    private static final int BUTTONS_WITH_ICONS50x50_SIZE = 50;
+    private static final int BUTTONS_WITH_ICONS50x50_WIDTH = 50;
+    private static final int BUTTONS_WITH_ICONS50x50_HEIGHT = 70;
 
     private static final String BUTTON_EXT = ".png";
-    private static final String BUTTON_ROLLOVER_SUFFIX = "_MouseOn";
-    private static final String BUTTON_PRESSED_SUFFIX = "_Click";
+    private static final String BUTTON_ROLLOVER_SUFFIX = "MouseOn";
+    private static final String BUTTON_PRESSED_SUFFIX = "Click";
 
     private TypeButton(String buttonName, String tex, int typeButton)
     {
@@ -65,8 +67,8 @@ public enum TypeButton
             m_pressedSrc = STANDARD_BUTTONS_SRC + buttonName + 
                             BUTTON_PRESSED_SUFFIX + BUTTON_EXT;
 
-            m_width = STANDARD_BUTTON_SIZE_1;
-            m_heigth = STANDARD_BUTTON_SIZE_2;
+            m_width = STANDARD_BUTTON_SIZE_WIDTH;
+            m_heigth = STANDARD_BUTTON_SIZE_HEIGHT;
         }
         else if (typeButton == TypeButton.BUTTON_WITH_SIZE_50x50)
         {
@@ -77,7 +79,8 @@ public enum TypeButton
             m_pressedSrc = BUTTONS_WITH_ICONS50x50_SRC + buttonName + 
                             BUTTON_PRESSED_SUFFIX + BUTTON_EXT;
 
-            m_width = m_heigth = BUTTONS_WITH_ICONS50x50_SIZE;
+            m_width = BUTTONS_WITH_ICONS50x50_WIDTH;
+            m_heigth = BUTTONS_WITH_ICONS50x50_HEIGHT;
         }
         else
         {
@@ -88,7 +91,8 @@ public enum TypeButton
             m_pressedSrc = BUTTONS_WITH_ICONS100x100_SRC + buttonName + 
                             BUTTON_PRESSED_SUFFIX + BUTTON_EXT;
 
-            m_width = m_heigth = BUTTONS_WITH_ICONS100x100_SIZE;
+            m_width = BUTTONS_WITH_ICONS100x100_WIDTH;
+            m_heigth = BUTTONS_WITH_ICONS100x100_HEIGHT;
         } 
         m_text = tex;
     }
