@@ -33,7 +33,7 @@ public class DBConnectionHandler
     public void CreateDB() throws SQLException, ClassNotFoundException
     {
         Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
-        m_connection = DriverManager.getConnection("jdbc:derby:\\DB\\Derby.DB;create=true");
+        m_connection = DriverManager.getConnection("jdbc:derby:DB/Derby.DB;create=true");
         if (m_connection != null)
         {
             CreatePersonTable();
@@ -55,7 +55,7 @@ public class DBConnectionHandler
     public boolean ConectWithDB() throws SQLException, ClassNotFoundException
     {
         Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
-        m_connection = DriverManager.getConnection("jdbc:derby:.\\DB\\Derby.DB");
+        m_connection = DriverManager.getConnection("jdbc:derby:DB/Derby.DB");
         return m_connection != null;
     }
 
@@ -114,7 +114,7 @@ public class DBConnectionHandler
      */
     private void CreatePersonTable() throws SQLException
     {
-        ExecuteCommand(CREATE_TABLE_COMMAND);
+        ExecuteCommand(CREATE_TABLE_COMMAND + TableNames.PERSON_TABLE.GetTableName() + TableFields.PERSON_TABLE_FIELDS.GetFields());
     }
 
     /**
@@ -123,7 +123,7 @@ public class DBConnectionHandler
      */
     private void CreateLoginTable() throws SQLException
     {
-        ExecuteCommand(CREATE_TABLE_COMMAND);
+        ExecuteCommand(CREATE_TABLE_COMMAND + TableNames.LOGIN_TABLE.GetTableName() + "");
     }
 
     /**
@@ -132,7 +132,7 @@ public class DBConnectionHandler
      */
     private void CreateAcademicLoadTable() throws SQLException
     {
-        ExecuteCommand(CREATE_TABLE_COMMAND);
+        ExecuteCommand(CREATE_TABLE_COMMAND + TableNames.ACADEMIC_LOAD_TABLE.GetTableName() + "");
     }
 
     /**
@@ -141,7 +141,7 @@ public class DBConnectionHandler
      */
     private void CreateStudentGroupTable() throws SQLException
     {
-        ExecuteCommand(CREATE_TABLE_COMMAND);
+        ExecuteCommand(CREATE_TABLE_COMMAND + TableNames.STUDENT_GROUP_TABLE.GetTableName() + "");
     }
 
     /**
@@ -150,7 +150,7 @@ public class DBConnectionHandler
      */
     private void CreateQualificationTable() throws SQLException
     {
-        ExecuteCommand(CREATE_TABLE_COMMAND);
+        ExecuteCommand(CREATE_TABLE_COMMAND + TableNames.QUALIFICATION_TABLE.GetTableName() + "");
     }
 
     /**
@@ -168,7 +168,7 @@ public class DBConnectionHandler
      */
     private void CreatePensumTable() throws SQLException
     {
-        ExecuteCommand(CREATE_TABLE_COMMAND);
+        ExecuteCommand(CREATE_TABLE_COMMAND + TableNames.PENSUM_TABLE.GetTableName() + "");
     }
 
     /**
@@ -177,7 +177,7 @@ public class DBConnectionHandler
      */
     private void CreateSubjectTable() throws SQLException
     {
-        ExecuteCommand(CREATE_TABLE_COMMAND);
+        ExecuteCommand(CREATE_TABLE_COMMAND + TableNames.SUBJECT_TABLE.GetTableName() + "");
     }
 
     /**

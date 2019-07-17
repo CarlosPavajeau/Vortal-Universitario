@@ -1,0 +1,35 @@
+/*
+ * Copyright (C) 2019-2019 Carlos Pavajeau - Euder Calvo
+ * 
+ */
+
+package Data;
+
+/**
+ * 
+ */
+public enum TableNames
+{
+    PERSON_TABLE("People"),
+    QUALIFICATION_TABLE("Student_Qualifications"),
+    PENSUM_TABLE("Pensums"),
+    SUBJECT_TABLE("Subjects"),
+    LOGIN_TABLE("Login"),
+    ACADEMIC_LOAD_TABLE("Academic_Loads"),
+    STUDENT_GROUP_TABLE("Student_Groups"),
+    STUDENTS_ENROLLED_TABLE("Student_Enrolled"),
+    STUDENTS_ENROLLED_IN_GROUP("Student_Enrolled_In_Group")
+    ;
+
+    private final String m_tableName;
+
+    private TableNames(String tableName)
+    {
+        m_tableName = tableName;
+    }
+
+    public String GetTableName()
+    {
+        return m_tableName;
+    }
+}
