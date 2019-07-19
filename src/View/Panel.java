@@ -6,6 +6,7 @@
 package View;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Rectangle;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -33,9 +34,9 @@ public abstract class Panel extends JPanel
     {
         m_buttons = new ArrayList<>();
         setBackground(Color.WHITE);
-        setMaximumSize(new java.awt.Dimension(1000, 700));
-        setMinimumSize(new java.awt.Dimension(1000, 700));
-        setPreferredSize(new java.awt.Dimension(1000, 700));
+        setMaximumSize(new Dimension(1000, 700));
+        setMinimumSize(new Dimension(1000, 700));
+        setPreferredSize(new Dimension(1000, 700));
         setBorder(new RoundRectBorder());
         setLayout(null);
     }
