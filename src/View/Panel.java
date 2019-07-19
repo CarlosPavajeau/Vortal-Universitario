@@ -6,7 +6,6 @@
 package View;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Rectangle;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -26,6 +25,7 @@ public abstract class Panel extends JPanel
 
     public Panel()
     {
+        super();
         initComponents();
     }
 
@@ -33,10 +33,11 @@ public abstract class Panel extends JPanel
     {
         m_buttons = new ArrayList<>();
         setBackground(Color.WHITE);
-        setSize(new Dimension(1300, 1000));
-        setPreferredSize(new Dimension(1300, 1000));
+        setMaximumSize(new java.awt.Dimension(1000, 700));
+        setMinimumSize(new java.awt.Dimension(1000, 700));
+        setPreferredSize(new java.awt.Dimension(1000, 700));
         setBorder(new RoundRectBorder());
-        setBounds(new Rectangle(0, 0, 0, 0));
+        setLayout(null);
     }
 
     public List<Button> GetButtons()
@@ -44,10 +45,12 @@ public abstract class Panel extends JPanel
         return m_buttons;
     }
 
-    public void AddButton(TypeButton button, ActionListener l)
+    public void AddButton(TypeButton typeButton, ActionListener l, int x, int y)
     {
-        m_buttons.add(new Button(button, l));
-        add(new Button(button, l));
+        Button button = new Button(typeButton, l);
+        m_buttons.add(button);
+        button.setBounds(new Rectangle(x, y, typeButton.GetWidth(), typeButton.GetHeigth()));
+        add(button);
     }
     
 }
