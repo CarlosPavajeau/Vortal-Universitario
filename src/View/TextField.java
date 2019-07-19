@@ -28,6 +28,7 @@ public class TextField extends JTextField
         setFont(new Font("Microsoft Sans Serif", 0, 16));
         setForeground(Color.GRAY);
         setPreferredSize(new Dimension(width, height));
+        setSize(new Dimension(width, height));
         setHorizontalAlignment(JTextField.CENTER);
         setText(m_defaultText);
         setBorder(new RoundRectBorder());

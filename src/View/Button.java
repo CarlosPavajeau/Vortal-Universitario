@@ -39,6 +39,6 @@ public class Button extends JButton
         setPreferredSize(new Dimension(typeButton.GetWidth(), typeButton.GetHeigth()));
         setRolloverIcon(new ImageIcon(getClass().getResource(typeButton.GetRolloverSRC())));
         setPressedIcon(new ImageIcon(getClass().getResource(typeButton.GetPressedSRC())));
-        addActionListener(l);
+        if (l != null) addActionListener(l);
     }
 }
