@@ -37,6 +37,7 @@ public abstract class Panel extends JPanel
         setMaximumSize(new Dimension(1000, 700));
         setMinimumSize(new Dimension(1000, 700));
         setPreferredSize(new Dimension(1000, 700));
+        setSize(new Dimension(1000, 700));
         setBorder(new RoundRectBorder());
         setLayout(null);
     }
