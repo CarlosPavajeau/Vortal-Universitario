@@ -14,12 +14,18 @@ public class RegisterSubjectPanel extends FormPanel
     
     public RegisterSubjectPanel()
     {
-        super();
+        super("REGISTRO DE ASIGNATURA");
         initComponents();
     }
 
     private void initComponents()
     {
         
+    }
+
+    @Override
+    public void InitFields() 
+    {
+
     }
 }

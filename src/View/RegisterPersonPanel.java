@@ -14,12 +14,18 @@ public class RegisterPersonPanel extends FormPanel
     
     public RegisterPersonPanel()
     {
-        super();
+        super("REGISTRO DE PERSONA");
         initComponents();
     }
 
     private void initComponents()
     {
         
+    }
+
+    @Override
+    public void InitFields() 
+    {
+
     }
 }

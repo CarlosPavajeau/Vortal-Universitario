@@ -14,12 +14,18 @@ public class RegisterPensumPanel extends FormPanel
     
     public RegisterPensumPanel()
     {
-        super();
+        super("REGISTRO DE PENSUM");
         initComponents();
     }
 
     private void initComponents()
     {
         
+    }
+
+    @Override
+    public void InitFields() 
+    {
+
     }
 }

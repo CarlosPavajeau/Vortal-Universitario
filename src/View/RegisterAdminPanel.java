@@ -14,12 +14,20 @@ public class RegisterAdminPanel extends FormPanel
     
     public RegisterAdminPanel()
     {
-        super();
+        super("REGISTRO DE ADMINISTRADOR");
         initComponents();
     }
 
     private void initComponents()
     {
         
+    }
+
+    @Override
+    public void InitFields() 
+    {
+        AddTextField(new TextField(300, 50, "Digite su ID", TextField.OBLIGATORY_FIELD + TextField.NUMERIC_FIELD), "Identificación: ", 50, 150);
+        AddTextField(new TextField(300, 50, "Digite su usuario", TextField.OBLIGATORY_FIELD), "Usuario: ", 50, 250);
+        AddTextField(new TextField(300, 50, "Digite su contraseña", TextField.OBLIGATORY_FIELD), "Contraseña: ", 50, 350);
     }
 }
