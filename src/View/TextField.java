@@ -20,11 +20,24 @@ public class TextField extends JTextField
 {
     private static final long serialVersionUID = -1322371677583567319L;
 
+    public static final int OBLIGATORY_FIELD = 1;
+    public static final int NUMERIC_FIELD = 2;
+    public static final int ALPHA_FIELD = 4;
+    
     private final String m_defaultText;
+    private final int m_typeField;
 
-    public TextField(int width, int height, String defaultText)
+    /**
+     * 
+     * @param width
+     * @param height
+     * @param defaultText
+     * @param typeField
+     */
+    public TextField(int width, int height, String defaultText, int typeField)
     {
         m_defaultText = defaultText;
+        m_typeField = typeField;
         setFont(new Font("Microsoft Sans Serif", 0, 16));
         setForeground(Color.GRAY);
         setPreferredSize(new Dimension(width, height));
@@ -46,6 +59,60 @@ public class TextField extends JTextField
         });
     }
 
+    /**
+     * 
+     * @return
+     */
+    public boolean IsValidField()
+    {
+        switch (m_typeField)
+        {
+            case TextField.OBLIGATORY_FIELD: 
+                return ValidateObligatoryField();
+            case TextField.ALPHA_FIELD: 
+                return ValidateAlphaField();
+            case TextField.NUMERIC_FIELD: 
+                return ValidateNumericField();
+            case TextField.ALPHA_FIELD + TextField.OBLIGATORY_FIELD: 
+                return ValidateObligatoryField() && ValidateAlphaField();
+            case TextField.NUMERIC_FIELD + TextField.OBLIGATORY_FIELD: 
+                return ValidateObligatoryField() && ValidateNumericField();
+            default:
+                return true;
+        }
+    }
+
+    /**
+     * 
+     * @return
+     */
+    private boolean ValidateObligatoryField()
+    {
+        return !(getText().isEmpty() || getText().equals(m_defaultText));
+    }
+
+    /**
+     * 
+     * @return
+     */
+    private boolean ValidateAlphaField()
+    {
+        return getText().matches("[a-zA-Z]+");
+    }
+
+    /**
+     * 
+     * @return
+     */
+    private boolean ValidateNumericField()
+    {
+        return getText().matches("(\\d+)");
+    }
+
+    /**
+     * 
+     * @param evt
+     */
     private void TextFieldFocusGained(FocusEvent evt) 
     {
         if (getText().equals(m_defaultText))
@@ -55,6 +122,10 @@ public class TextField extends JTextField
         }
     }
 
+    /**
+     * 
+     * @param evt
+     */
     private void TextFieldFocusLost(FocusEvent evt)
     {
         if (getText().equals(""))
