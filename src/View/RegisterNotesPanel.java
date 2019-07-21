@@ -15,12 +15,6 @@ public class RegisterNotesPanel extends FormPanel
     public RegisterNotesPanel()
     {
         super("REGISTRO DE NOTAS");
-        initComponents();
-    }
-
-    private void initComponents()
-    {
-
     }
 
     @Override

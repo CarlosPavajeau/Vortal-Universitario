@@ -15,12 +15,6 @@ public class RegisterPensumPanel extends FormPanel
     public RegisterPensumPanel()
     {
         super("REGISTRO DE PENSUM");
-        initComponents();
-    }
-
-    private void initComponents()
-    {
-        
     }
 
     @Override

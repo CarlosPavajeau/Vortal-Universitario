@@ -15,12 +15,6 @@ public class RegisterSubjectPanel extends FormPanel
     public RegisterSubjectPanel()
     {
         super("REGISTRO DE ASIGNATURA");
-        initComponents();
-    }
-
-    private void initComponents()
-    {
-        
     }
 
     @Override

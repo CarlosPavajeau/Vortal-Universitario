@@ -15,12 +15,6 @@ public class RegisterAcademicLoadPanel extends FormPanel
     public RegisterAcademicLoadPanel()
     {
         super("REGISTRO DE CARGA ACADEMICA");
-        initComponents();
-    }
-
-    private void initComponents()
-    {
-
     }
 
     @Override

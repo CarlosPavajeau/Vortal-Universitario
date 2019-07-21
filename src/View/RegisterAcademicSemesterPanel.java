@@ -15,12 +15,6 @@ public class RegisterAcademicSemesterPanel extends FormPanel
     public RegisterAcademicSemesterPanel()
     {
         super("REGISTRO DE SEMESTRE ACADEMICO");
-        initComponents();
-    }
-
-    private void initComponents()
-    {
-        
     }
 
     @Override
