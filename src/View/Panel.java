@@ -47,7 +47,7 @@ public abstract class Panel extends JPanel
         return m_buttons;
     }
 
-    public void AddButton(TypeButton typeButton, ActionListener l, int x, int y)
+    public void AddButton(TypeButton typeButton, int x, int y, ActionListener l)
     {
         Button button = new Button(typeButton, l);
         m_buttons.add(button);
