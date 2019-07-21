@@ -18,7 +18,7 @@ public abstract class FormPanel extends Panel
 {
     private static final long serialVersionUID = -8968908404958389317L;
     
-    private List<TextField> m_fields;
+    private List<Field> m_fields;
     private List<JLabel> m_labels;
     private final String m_title;
 
@@ -34,19 +34,20 @@ public abstract class FormPanel extends Panel
         m_fields = new ArrayList<>();
         m_labels = new ArrayList<>();
         SetTitle();
+        InitFields();
     }
 
-    public List<TextField> GetTextFields()
+    public List<Field> GetTextFields()
     {
         return m_fields;
     }
 
-    public void AddTextField(TextField textField, String text, int x, int y)
+    public void AddField(Field textField, String text, int x, int y)
     {
         JLabel ltext = new JLabel(text);
         ltext.setFont(new Font("Microsoft Sans Serif", 0, 16));
-        ltext.setBounds(x, y, 120, 50);
-        textField.setBounds(x + ltext.getWidth(), y, textField.getWidth(), textField.getHeight());
+        ltext.setBounds(x, y, 250, 20);
+        textField.setBounds(x, y + ltext.getHeight(), textField.getWidth(), textField.getHeight());
         add(ltext);
         add(textField);
         m_labels.add(ltext);
@@ -55,13 +56,13 @@ public abstract class FormPanel extends Panel
 
     public boolean ValidateFields()
     {
-        for (TextField textField : GetTextFields())
+        for (Field textField : GetTextFields())
             if (!textField.IsValidField())
                 return false;
         return true;
     }
 
-    public abstract void InitFields();
+    protected abstract void InitFields();
 
     private void SetTitle()
     {
