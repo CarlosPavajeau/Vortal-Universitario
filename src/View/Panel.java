@@ -6,8 +6,9 @@
 package View;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.Rectangle;
+import java.awt.Point;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
@@ -51,8 +52,32 @@ public abstract class Panel extends JPanel
     {
         Button button = new Button(typeButton, l);
         m_buttons.add(button);
-        button.setBounds(new Rectangle(x, y, typeButton.GetWidth(), typeButton.GetHeigth()));
-        add(button);
+        AddComponent(button, x, y);
     }
-    
+
+    public void AddComponent(Component component, int x, int y)
+    {
+        component.setLocation(new Point(x, y));
+        add(component);
+    }
+
+    protected void AddCenterComponentX(Component component, int y)
+    {
+        AddComponent(component, Panel.WhereCenterX(this, component), y);
+    }
+
+    protected void AddCenterComponentY(Component component, int x)
+    {
+        AddComponent(component, x, Panel.WhereCenterY(this, component));
+    }
+
+    protected static int WhereCenterX(Panel panel, Component component)
+    {
+        return (panel.getWidth() - component.getWidth()) / 2;
+    }
+
+    protected static int WhereCenterY(Panel panel, Component component)
+    {
+        return (panel.getHeight() - component.getHeight()) / 2; 
+    }
 }

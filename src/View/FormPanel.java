@@ -6,6 +6,7 @@
 package View;
 
 import java.awt.Font;
+import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,12 +47,26 @@ public abstract class FormPanel extends Panel
     {
         JLabel ltext = new JLabel(text);
         ltext.setFont(new Font("Microsoft Sans Serif", 0, 16));
-        ltext.setBounds(x, y, 250, 20);
-        textField.setBounds(x, y + ltext.getHeight(), textField.getWidth(), textField.getHeight());
-        add(ltext);
-        add(textField);
+        ltext.setSize(250, 20);
         m_labels.add(ltext);
         m_fields.add(textField);
+        AddComponent(ltext, x, y);
+        AddComponent(textField, x, y + ltext.getHeight());
+    }
+
+    protected void AddCenterField(Field textField, String text, int y)
+    {
+        AddField(textField, text, Panel.WhereCenterX(this, textField), y);
+    }
+
+    protected void AddRegisterButton(TypeButton typeButton)
+    {
+        AddActionButton(typeButton, 750);
+    }
+
+    protected void AddActionButton(TypeButton typeButton, int whereX)
+    {
+        AddButton(typeButton, whereX, 600, (ActionEvent evt) -> { RegisterButtonAction(evt); });
     }
 
     public boolean ValidateFields()
@@ -63,13 +78,15 @@ public abstract class FormPanel extends Panel
     }
 
     protected abstract void InitFields();
+    protected abstract void RegisterButtonAction(ActionEvent evt);
 
     private void SetTitle()
     {
         JLabel title = new JLabel(m_title);
         title.setFont(new Font("Microsoft Sans Serif", 0, 25));
+        title.setHorizontalAlignment(JLabel.CENTER);
         title.setBounds(0, 5, 700, 100);
-        int x = ((getHeight() - title.getHeight() - getInsets().top - getInsets().bottom) / 2);
+        int x = (getWidth() - title.getWidth()) / 2;
         title.setBounds(x, 5, 700, 100);
         add(title);
     }
