@@ -3,7 +3,7 @@
  * 
  */
 
-package Model.DataBaseHandler;
+package Model.DataConnectionHandler;
 
 /**
  * 
