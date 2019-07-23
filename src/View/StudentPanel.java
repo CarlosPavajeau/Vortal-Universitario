@@ -20,6 +20,10 @@ public class StudentPanel extends Panel
 
     private void initComponents()
     {
-        
+        AddButton(TypeButton.BUTTON_ICON_SUBJECT_HANDLER, 50, 100, null);
+        AddButton(TypeButton.BUTTON_ICON_DATA_MANAGER, 200, 100, null);
+        AddButton(TypeButton.BUTTON_ICON_VIEW_PROGRESS, 350, 100, null);
+        AddButton(TypeButton.BUTTON_LOGOUT, 775, 625, null);
+        AddCenterComponentY(new Button(TypeButton.BUTTON_ICON_ACCESS_DATA_MANAGER, null), 500);
     }
 }

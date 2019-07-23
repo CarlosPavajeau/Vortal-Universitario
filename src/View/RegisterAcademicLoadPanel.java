@@ -5,6 +5,8 @@
 
 package View;
 
+import java.awt.event.ActionEvent;
+
 /**
  * 
  */
@@ -14,12 +16,22 @@ public class RegisterAcademicLoadPanel extends FormPanel
 
     public RegisterAcademicLoadPanel()
     {
-        super("REGISTRO DE CARGA ACADEMICA");
+        super("REGISTRO Y ASIGNACIÓN DE CARGA ACADEMICA");
     }
 
     @Override
     public void InitFields() 
     {
-
+        AddField(new TextField(300, 50, "Digite el código del profesor", TextField.OBLIGATORY_FIELD + TextField.NUMERIC_FIELD), "Código del profesor: ", 50, 150);
+        AddField(new TextField(300, 50, "Digite el código de la asignatura", TextField.OBLIGATORY_FIELD + TextField.NUMERIC_FIELD), "Código de la asignatura: ", 400, 150);
+        AddField(new TextField(300, 50, "Digite el número del grupo", TextField.OBLIGATORY_FIELD + TextField.NUMERIC_FIELD), "Número del grupo: ", 50, 250);
+        AddField(new TextField(300, 50, "Digite el límite de estudiantes", TextField.OBLIGATORY_FIELD + TextField.NUMERIC_FIELD), "Límite de estudiantes: ", 400, 250);
+        AddRegisterButton(TypeButton.BUTTON_REGISTER);
     }
+
+    @Override
+    protected void RegisterButtonAction(ActionEvent evt) 
+    {
+		
+	}
 }

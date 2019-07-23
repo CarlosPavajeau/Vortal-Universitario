@@ -33,7 +33,7 @@ public class RegisterPersonPanel extends FormPanel
         AddField(new TextField(300, 50, "Digite su primer apellido", TextField.OBLIGATORY_FIELD + TextField.ALPHA_FIELD), "", 50, 315);
         AddField(new TextField(300, 50, "Digite su segundo apellido", TextField.ALPHA_FIELD), "", 400, 315);
         AddField(new TextField(200, 50, "aaaa/mm/dd", TextField.OBLIGATORY_FIELD), "Fecha de nacimiento: ", 50, 415);
-        AddButton(TypeButton.BUTTON_REGISTER, 750, 600, (ActionEvent evt) -> { RegisterButton(evt); });
+        AddRegisterButton(TypeButton.BUTTON_REGISTER);
         JRadioButton e = new JRadioButton("Femenino");
         e.setBounds(new Rectangle(400, 400, 200, 50));
         e.setFont(new Font("Microsoft Sans Serif", 0, 16));
@@ -41,7 +41,8 @@ public class RegisterPersonPanel extends FormPanel
         add(e);
     }
 
-    public void RegisterButton(ActionEvent evt)
+    @Override
+    protected void RegisterButtonAction(ActionEvent evt)
     {
         if (!ValidateFields())
             System.out.println("Error: Campos invalidos");
