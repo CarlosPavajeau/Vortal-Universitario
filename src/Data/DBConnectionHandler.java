@@ -5,6 +5,7 @@
 
 package Data;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -13,7 +14,7 @@ import java.sql.SQLException;
 /**
  * 
  */
-public class DBConnectionHandler
+public class DBConnectionHandler implements DataConnection
 {
     private static final String CREATE_TABLE_COMMAND = "CREATE TABLE ";
 
@@ -199,4 +200,58 @@ public class DBConnectionHandler
         pst.execute();
         pst.close();
     }
+
+    @Override
+    public boolean Insert(Object anObject) throws SQLException 
+    {
+        return false;
+    }
+
+    @Override
+    public Object Select(Object anObject) throws SQLException 
+    {
+        return null;
+    }
+
+    @Override
+    public boolean Update(Object anObject) throws SQLException 
+    {
+        return false;
+    }
+
+    @Override
+    public boolean Delete(Object anObject) throws SQLException 
+    {
+        return false;
+    }
+
+    @Override
+    public boolean IsItRegistered(Object anObject) throws SQLException 
+    {
+        return false;
+    }
+
+    @Override
+    public boolean ThereIsRecords() throws SQLException 
+    {
+        return false;
+    }
+
+    @Override
+    public void CreateDataConnection() throws SQLException, ClassNotFoundException, IOException 
+    {
+
+    }
+
+    @Override
+    public void CloseDataConnection() throws SQLException, IOException 
+    {
+
+    }
+
+    @Override
+    public boolean ConnectWithData() throws SQLException, IOException 
+    {
+        return false;
+	}
 }
