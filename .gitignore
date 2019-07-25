@@ -2,4 +2,5 @@
 .vscode
 build
 *.class
+*.dat
 /dist/
