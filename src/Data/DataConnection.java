@@ -14,12 +14,12 @@ import java.sql.SQLException;
 public interface DataConnection
 {
     void CreateDataConnection() throws SQLException, ClassNotFoundException, IOException;
-    void CloseDataConnection() throws SQLException, IOException;
-    boolean ConnectWithData() throws SQLException, IOException;
-    boolean Insert(Object anObject) throws SQLException, IOException;
-    Object Select(Object anObject) throws SQLException, IOException;
-    boolean Update(Object anObject) throws SQLException, IOException;
-    boolean Delete(Object anObject) throws SQLException, IOException;
-    boolean IsItRegistered(Object anObject) throws SQLException, IOException;
-    boolean ThereIsRecords() throws SQLException, IOException;
+    void CloseDataConnection() throws SQLException, ClassNotFoundException, IOException;
+    boolean ConnectWithData() throws SQLException, ClassNotFoundException, IOException;
+    boolean Insert(Object anObject) throws SQLException, IOException, ClassNotFoundException;
+    Object Select(Object anObject) throws SQLException, IOException, ClassNotFoundException;
+    boolean Update(Object anObject) throws SQLException, ClassNotFoundException, IOException;
+    boolean Delete(Object anObject) throws SQLException, ClassNotFoundException, IOException;
+    boolean IsItRegistered(Object anObject) throws SQLException, IOException, ClassNotFoundException;
+    boolean ThereIsRecords() throws SQLException, ClassNotFoundException, IOException;
 }

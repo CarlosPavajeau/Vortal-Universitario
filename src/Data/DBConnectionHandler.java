@@ -17,6 +17,13 @@ import java.sql.SQLException;
 public class DBConnectionHandler implements DataConnection
 {
     private static final String CREATE_TABLE_COMMAND = "CREATE TABLE ";
+    private static final String INSERT_COMMAND = "INSERT ";
+    private static final String SELECT_COMMAND = "SELECT ";
+    private static final String UPDATE_COMMAND = "UPDATE ";
+    private static final String DELETE_COMMAND = "DELETE ";
+    private static final String FROM_COMMAND = "FROM ";
+    private static final String WHERE_COMMAND = "WHERE ";
+
 
     private Connection m_connection;
     
@@ -208,7 +215,7 @@ public class DBConnectionHandler implements DataConnection
     }
 
     @Override
-    public Object Select(Object anObject) throws SQLException 
+    public Object Select(Object anObject) throws SQLException, ClassNotFoundException 
     {
         return null;
     }
