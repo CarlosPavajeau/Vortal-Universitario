@@ -19,22 +19,22 @@ public enum TypeButton
     BUTTON_ICON_MORTARBOARD("Icon_Mortarboard", "", TypeButton.BUTTON_WITH_SIZE_50x50),
     /**100x100 buttons */
     BUTTON_ICON_ACCESS_DATA_MANAGER("Icon_AccessDataManager", "Gestión de datos de acceso", TypeButton.BUTTON_WITH_SIZE_100x100),
-    BUTTON_ICON_ADD_OR_DELETE_STUDENT("Icon_Add-DeleteStudent", "", TypeButton.BUTTON_WITH_SIZE_100x100),
+    BUTTON_ICON_ADD_OR_DELETE_STUDENT("Icon_Add-DeleteStudent", "Añadir/Borrar estudiante", TypeButton.BUTTON_WITH_SIZE_100x100),
     BUTTON_ICON_ADD_SUBJECT("Icon_AddSubject", "Añadir asignatura", TypeButton.BUTTON_WITH_SIZE_100x100),
-    BUTTON_ICON_CURRENT_PROGRESS("Icon_CurrentProgress", "", TypeButton.BUTTON_WITH_SIZE_100x100),
+    BUTTON_ICON_CURRENT_PROGRESS("Icon_CurrentProgress", "Ver Progreso", TypeButton.BUTTON_WITH_SIZE_100x100),
     BUTTON_ICON_DATA_MANAGER("Icon_DataManager", "Gestión de datos", TypeButton.BUTTON_WITH_SIZE_100x100),
-    BUTTON_ICON_DELETE_SUBJECT("Icon_DeleteSubject", "", TypeButton.BUTTON_WITH_SIZE_100x100),
-    BUTTON_ICON_PERSON("Icon_Person", "", TypeButton.BUTTON_WITH_SIZE_100x100),
-    BUTTON_ICON_PERSONAL_DATA_MANAGER("Icon_PersonalDataManager", "", TypeButton.BUTTON_WITH_SIZE_100x100),
-    BUTTON_ICON_REGISTER_NOTES("Icon_RegisterNotes", "", TypeButton.BUTTON_WITH_SIZE_100x100),
-    BUTTON_ICON_SUBJECT_HANDLER("Icon_SubjectHandler", "", TypeButton.BUTTON_WITH_SIZE_100x100),
-    BUTTON_ICON_VIEW_PROGRESS("Icon_ViewProgress", "", TypeButton.BUTTON_WITH_SIZE_100x100),
-    BUTTON_ICON_VIEW_QUALIFICATIONS("Icon_ViewQualifications", "", TypeButton.BUTTON_WITH_SIZE_100x100),
-    BUTTON_ICON_VIEW_STUDENT_SUBJECTS("Icon_ViewStudentSubjects", "", TypeButton.BUTTON_WITH_SIZE_100x100),
+    BUTTON_ICON_DELETE_SUBJECT("Icon_DeleteSubject", "Eliminar Asignatura", TypeButton.BUTTON_WITH_SIZE_100x100),
+    BUTTON_ICON_PERSON("Icon_Person", "Persona", TypeButton.BUTTON_WITH_SIZE_100x100),
+    BUTTON_ICON_PERSONAL_DATA_MANAGER("Icon_PersonalDataManager", "Gestión de datos personales", TypeButton.BUTTON_WITH_SIZE_100x100),
+    BUTTON_ICON_REGISTER_NOTES("Icon_RegisterNotes", "Registrar notas", TypeButton.BUTTON_WITH_SIZE_100x100),
+    BUTTON_ICON_SUBJECT_HANDLER("Icon_SubjectHandler", "Gestión de asignaturas", TypeButton.BUTTON_WITH_SIZE_100x100),
+    BUTTON_ICON_VIEW_PROGRESS("Icon_ViewProgress", "Ver progreso", TypeButton.BUTTON_WITH_SIZE_100x100),
+    BUTTON_ICON_VIEW_QUALIFICATIONS("Icon_ViewQualifications", "Ver calificaciones", TypeButton.BUTTON_WITH_SIZE_100x100),
+    BUTTON_ICON_VIEW_STUDENT_SUBJECTS("Icon_ViewStudentSubjects", "Ver asignaturas de estudiante", TypeButton.BUTTON_WITH_SIZE_100x100),
     /**200x200 buttons */
-    BUTTON_ICON_I_AM_ADMIN("I'm_Admin", "", TypeButton.BUTTON_WITH_SIZE_200x200),
-    BUTTON_ICON_I_AM_PROFESSOR("I'm_Professor", "", TypeButton.BUTTON_WITH_SIZE_200x200),
-    BUTTON_ICON_I_AM_STUDENT("I'm_Student", "", TypeButton.BUTTON_WITH_SIZE_200x200)
+    BUTTON_ICON_I_AM_ADMIN("I'm_Admin", "Soy Administrador", TypeButton.BUTTON_WITH_SIZE_200x200),
+    BUTTON_ICON_I_AM_PROFESSOR("I'm_Professor", "Soy Professor", TypeButton.BUTTON_WITH_SIZE_200x200),
+    BUTTON_ICON_I_AM_STUDENT("I'm_Student", "Soy Estudiante", TypeButton.BUTTON_WITH_SIZE_200x200)
     ;
 
     private final String m_src;
