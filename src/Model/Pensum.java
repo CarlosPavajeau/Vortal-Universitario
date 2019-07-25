@@ -22,6 +22,8 @@ import Model.Exceptions.ExceededCreditsException;
  */
 public abstract class Pensum extends Entity implements SubjectHandler
 {
+    private static final long serialVersionUID = -5371456265746468553L;
+    
     private String m_name;
     private String m_description;
     private String m_campus;

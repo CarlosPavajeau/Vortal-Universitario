@@ -19,6 +19,8 @@ import java.util.GregorianCalendar;
  */
 public abstract class Person extends Entity
 {
+    private static final long serialVersionUID = -7773874238710016793L;
+    
     private String m_firstName;
     private String m_secondName;
     private String m_lastName;

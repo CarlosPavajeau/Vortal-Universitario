@@ -5,18 +5,21 @@
 
 package Model;
 
+import java.io.Serializable;
+
 /**
  * This is the superclass of most classes of this software. Of course, 
  * this class is abstract, but abstract methods are not implemented. Represents 
  * a unique object that is represented by its code. This code is used for searches, 
- * updates and / or deletions. It is worth mentioning that the code is unique for each 
+ * updates and/or deletions. It is worth mentioning that the code is unique for each 
  * object {@code Entity}
  * 
  * @version 1.0
  * @author Carlos Pavajeau - Cantte
  */
-public abstract class Entity implements Comparable<Entity>
+public abstract class Entity implements Comparable<Entity>, Serializable
 {
+    private static final long serialVersionUID = 274736873469220325L;
     private final String m_code;
     
     /**

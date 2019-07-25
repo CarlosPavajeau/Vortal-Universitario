@@ -24,7 +24,7 @@ public class StudentGroupDataHandler extends EntityDataHandler
     }
 
     @Override
-    public Object Select(String objectID) throws SQLException 
+    public Object Select(Object anObject) throws SQLException 
     {
         return null;
     }

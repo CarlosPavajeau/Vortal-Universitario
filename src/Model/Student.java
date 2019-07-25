@@ -20,6 +20,8 @@ import Model.Exceptions.ExceededCreditsException;
  */
 public class Student extends Person implements SubjectHandler
 {
+    private static final long serialVersionUID = 188478517140819571L;
+    
     private ArrayList<Qualification> m_qualifications;
     private ArrayList<Qualification> m_curseSubjects;
     private ArrayList<Float> m_semesterAverage;

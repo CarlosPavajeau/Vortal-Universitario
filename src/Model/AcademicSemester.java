@@ -5,6 +5,7 @@
 
 package Model;
 
+import java.io.Serializable;
 
 /**
  *This is the class {@code AcademicSemester}. Represents an academic semester. its use
@@ -14,8 +15,10 @@ package Model;
  * @version 1.0
  * @author Carlos Pavajeau - Cantte
  */
-public class AcademicSemester
+public class AcademicSemester implements Comparable<AcademicSemester>, Serializable
 {
+    private static final long serialVersionUID = 1473598109107440457L;
+
     private final int m_semester;
     private int m_maxCredits;
     private int m_minCredits;
@@ -76,5 +79,11 @@ public class AcademicSemester
     public void SetMinCredits(int minCredits)
     {
         m_minCredits = minCredits;
+    }
+
+    @Override
+    public int compareTo(AcademicSemester o) 
+    {
+        return Integer.compare(GetSemester(), o.GetSemester());
     }
 }

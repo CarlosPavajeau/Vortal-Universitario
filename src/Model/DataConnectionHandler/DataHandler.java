@@ -16,7 +16,7 @@ import Data.FileConnectionHandler;
 /**
  * 
  */
-public abstract class DataHandler implements DBHandler
+public  class DataHandler implements DataConnectionHandler
 {
     private DataConnection m_dataConnection;
 
@@ -40,30 +40,54 @@ public abstract class DataHandler implements DBHandler
     /**
      * 
      * @throws SQLException
+     * @throws IOException
      * @throws ClassNotFoundException
      */
-    public void CreateDataConnection() throws SQLException, ClassNotFoundException, IOException
+    public void CloseDB() throws SQLException, IOException, ClassNotFoundException
     {
-        m_dataConnection.CreateDataConnection();
+        m_dataConnection.CloseDataConnection();
     }
 
-    /**
-     * 
-     * @return
-     * @throws SQLException
-     * @throws ClassNotFoundException
-     */
-    public boolean ConnectWithDB() throws SQLException, ClassNotFoundException, IOException
+    @Override
+    public boolean Insert(Object anObject) throws ClassNotFoundException, SQLException, IOException
+    {
+        return m_dataConnection.Insert(anObject);
+    }
+
+    @Override
+    public Object Select(Object anObject) throws ClassNotFoundException, SQLException, IOException 
+    {
+        return m_dataConnection.Select(anObject);
+    }
+
+    @Override
+    public boolean Update(Object anObject) throws ClassNotFoundException, SQLException, IOException 
+    {
+        return m_dataConnection.Update(anObject);
+    }
+
+    @Override
+    public boolean Delete(Object anObject) throws ClassNotFoundException, SQLException, IOException 
+    {
+        return m_dataConnection.Delete(anObject);
+    }
+
+    @Override
+    public void CloseDataConnection() throws SQLException, ClassNotFoundException, IOException 
+    {
+        m_dataConnection.CloseDataConnection();
+    }
+
+    @Override
+    public boolean ConnectWithData() throws SQLException, ClassNotFoundException, IOException 
     {
         return m_dataConnection.ConnectWithData();
     }
 
-    /**
-     * 
-     * @throws SQLException
-     */
-    public void CloseDB() throws SQLException, IOException
+    @Override
+    public void CreateDataConnection() throws SQLException, ClassNotFoundException, IOException 
     {
-        m_dataConnection.CloseDataConnection();
+        m_dataConnection.CreateDataConnection();
     }
+    
 }

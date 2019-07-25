@@ -18,6 +18,8 @@ import java.util.ArrayList;
  */
 public class StudentGroup extends Entity
 {
+    private static final long serialVersionUID = 8673155443301130624L;
+    
     private final int m_groupNumber;
     private final int m_limitOfStudents;
     private ArrayList<Student> m_students;

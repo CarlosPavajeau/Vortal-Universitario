@@ -18,6 +18,8 @@ package Model;
  */
 public class Subject extends Entity
 {
+    private static final long serialVersionUID = -3463036382757628148L;
+    
     private String m_name;
     private int m_credits;
     private int m_recommendedSemester;

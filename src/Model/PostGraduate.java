@@ -18,6 +18,8 @@ import java.util.ArrayList;
  */
 public class PostGraduate extends Pensum
 {
+    private static final long serialVersionUID = -7189561827535755483L;
+    
     private String m_requiredTitle;
 
     /**

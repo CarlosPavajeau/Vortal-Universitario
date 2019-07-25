@@ -64,4 +64,15 @@ public class Login
     {
         m_password = password;
     }
+
+    /**
+     * 
+     * @param a
+     * @param b
+     * @return
+     */
+    public static boolean ValidateLogin(Login a, Login b)
+    {
+        return a.GetUser().equals(b.GetUser()) && a.GetPassword().equals(b.GetPassword());
+    }
 }

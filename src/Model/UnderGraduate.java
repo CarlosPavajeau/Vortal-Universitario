@@ -19,6 +19,8 @@ import java.util.ArrayList;
  */
 public class UnderGraduate extends Pensum
 {
+    private static final long serialVersionUID = 5032281764008717464L;
+    
     private String m_titleToGrand;
 
     /**

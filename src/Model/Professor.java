@@ -17,6 +17,8 @@ import java.util.ArrayList;
  */
 public class Professor extends Person
 {
+    private static final long serialVersionUID = 8586935019723181036L;
+    
     ArrayList<AcademicLoad> m_academicLoads;
 
     /**

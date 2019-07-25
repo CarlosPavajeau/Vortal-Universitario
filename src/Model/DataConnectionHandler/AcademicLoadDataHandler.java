@@ -5,6 +5,7 @@
 
 package Model.DataConnectionHandler;
 
+import java.io.FileNotFoundException;
 import java.sql.SQLException;
 
 /**
@@ -17,6 +18,11 @@ public class AcademicLoadDataHandler extends EntityDataHandler
         super();
     }
 
+    public AcademicLoadDataHandler(String fileName) throws FileNotFoundException
+    {
+        super(fileName);
+    }
+
     @Override
     public boolean Insert(Object anObject) throws SQLException 
     {
@@ -24,7 +30,7 @@ public class AcademicLoadDataHandler extends EntityDataHandler
     }
 
     @Override
-    public Object Select(String objectID) throws SQLException 
+    public Object Select(Object objectID) throws SQLException 
     {
         return null;
     }

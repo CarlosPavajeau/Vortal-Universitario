@@ -16,6 +16,8 @@ package Model;
  */
 public class Admin extends Entity
 {
+    private static final long serialVersionUID = 3986258342534801127L;
+    
     private Login m_login;
 
     /**
