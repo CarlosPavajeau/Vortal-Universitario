@@ -14,12 +14,6 @@ public class ProfessorPanel extends Panel
     
     public ProfessorPanel()
     {
-        super();
-        initComponents();
-    }
-
-    private void initComponents()
-    {
-        
+        super("BIENVENIDO PROFESOR");
     }
 }

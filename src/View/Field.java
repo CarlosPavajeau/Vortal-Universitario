@@ -77,6 +77,11 @@ public abstract class Field extends JPasswordField
         }
     }
 
+    public void Clear()
+    {
+        TextFieldFocusLost(null);
+    }
+
     /**
      * 
      * @return

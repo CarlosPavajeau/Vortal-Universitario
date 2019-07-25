@@ -8,11 +8,13 @@ package View;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Point;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
@@ -24,11 +26,14 @@ public abstract class Panel extends JPanel
     private static final long serialVersionUID = 6607745560865183345L;
 
     private List<Button> m_buttons;
+    private final String m_title;
 
-    public Panel()
+    public Panel(String title)
     {
         super();
+        m_title = title;
         initComponents();
+        SetTitle();
     }
 
     private void initComponents()
@@ -79,5 +84,16 @@ public abstract class Panel extends JPanel
     protected static int WhereCenterY(Panel panel, Component component)
     {
         return (panel.getHeight() - component.getHeight()) / 2; 
+    }
+
+    private void SetTitle()
+    {
+        JLabel title = new JLabel(m_title);
+        title.setFont(new Font("Microsoft Sans Serif", 0, 25));
+        title.setHorizontalAlignment(JLabel.CENTER);
+        title.setBounds(0, 5, 700, 100);
+        int x = (getWidth() - title.getWidth()) / 2;
+        title.setBounds(x, 5, 700, 100);
+        add(title);
     }
 }

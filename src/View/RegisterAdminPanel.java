@@ -31,7 +31,5 @@ public class RegisterAdminPanel extends FormPanel
     @Override
     protected void RegisterButtonAction(ActionEvent evt)
     {
-        if (!ValidateFields())
-            System.out.println("Error: Campos invalidos");
     }
 }

@@ -21,12 +21,10 @@ public abstract class FormPanel extends Panel
     
     private List<Field> m_fields;
     private List<JLabel> m_labels;
-    private final String m_title;
 
     public FormPanel(String title)
     {
-        super();
-        m_title = title;
+        super(title);
         initComponents();
     }
 
@@ -34,11 +32,10 @@ public abstract class FormPanel extends Panel
     {
         m_fields = new ArrayList<>();
         m_labels = new ArrayList<>();
-        SetTitle();
         InitFields();
     }
 
-    public List<Field> GetTextFields()
+    public List<Field> GetFields()
     {
         return m_fields;
     }
@@ -52,6 +49,14 @@ public abstract class FormPanel extends Panel
         m_fields.add(textField);
         AddComponent(ltext, x, y);
         AddComponent(textField, x, y + ltext.getHeight());
+    }
+
+    public boolean ValidateFields()
+    {
+        for (Field textField : GetFields())
+            if (!textField.IsValidField())
+                return false;
+        return true;
     }
 
     protected void AddCenterField(Field textField, String text, int y)
@@ -69,25 +74,12 @@ public abstract class FormPanel extends Panel
         AddButton(typeButton, whereX, 600, (ActionEvent evt) -> { RegisterButtonAction(evt); });
     }
 
-    public boolean ValidateFields()
+    protected void ClearFields()
     {
-        for (Field textField : GetTextFields())
-            if (!textField.IsValidField())
-                return false;
-        return true;
+        for (Field field : GetFields())
+            field.Clear();
     }
 
     protected abstract void InitFields();
     protected abstract void RegisterButtonAction(ActionEvent evt);
-
-    private void SetTitle()
-    {
-        JLabel title = new JLabel(m_title);
-        title.setFont(new Font("Microsoft Sans Serif", 0, 25));
-        title.setHorizontalAlignment(JLabel.CENTER);
-        title.setBounds(0, 5, 700, 100);
-        int x = (getWidth() - title.getWidth()) / 2;
-        title.setBounds(x, 5, 700, 100);
-        add(title);
-    }
 }

@@ -30,6 +30,6 @@ public class LoginPanel extends FormPanel
     @Override
     protected void RegisterButtonAction(ActionEvent evt) 
     {
-        System.out.println("Login!");	
+
 	}
 }

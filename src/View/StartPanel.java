@@ -16,15 +16,12 @@ public class StartPanel extends Panel
 
     public StartPanel()
     {
-        super();
+        super("BIENVENIDO, SELECIONE LA OPCIÓN QUE DESEE");
         initComponents();
     }
 
     private void initComponents()
     {
-        AddButton(TypeButton.BUTTON_ICON_I_AM_ADMIN, 100, 100, null);
-        AddButton(TypeButton.BUTTON_ICON_I_AM_STUDENT, 500, 100, null);
-        AddButton(TypeButton.BUTTON_ICON_I_AM_PROFESSOR, 100, 400, null);
         AddButton(TypeButton.BUTTON_EXIT, 775, 625, (ActionEvent evt) -> { ExitButtonAction(evt); });
     }
 

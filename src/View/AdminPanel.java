@@ -15,7 +15,7 @@ public class AdminPanel extends Panel
     
     public AdminPanel()
     {
-        super();
+        super("BIENVENIDO ADMINISTRADOR");
         initComponents();
     }
 

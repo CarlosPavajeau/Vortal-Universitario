@@ -7,6 +7,7 @@ package View;
 
 import java.awt.Color;
 import java.awt.Frame;
+import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,6 +29,7 @@ public class MainWindow extends JFrame
     {
         super();
         initComponents();
+        InitPanels();
     }
 
     private void initComponents() 
@@ -41,5 +43,90 @@ public class MainWindow extends JFrame
         setBackground(Color.WHITE);
         setExtendedState(Frame.MAXIMIZED_BOTH);
         setUndecorated(true);
+    }
+
+    private void InitFormPanels()
+    {
+        m_panels.add(new RegisterAcademicLoadPanel());
+        m_panels.add(new RegisterAcademicSemesterPanel());
+        m_panels.add(new RegisterAdminPanel());
+        m_panels.add(new RegisterNotesPanel());
+        m_panels.add(new RegisterPensumPanel());
+        m_panels.add(new RegisterPersonPanel());
+        m_panels.add(new RegisterSubjectPanel());
+    }
+
+    private void InitPanels()
+    {
+        InitStartPanel();
+        InitStudentPanel();
+        InitProfessorPanel();
+        InitAdminPanel();
+        InitLoginPanel();
+        InitFormPanels();
+        AddPanels();
+    }
+
+    private void AddPanels()
+    {
+        for (Panel panel : m_panels)
+        {
+            panel.setVisible(false);
+            add(panel);
+        }
+    }
+
+    private void InitStartPanel()
+    {
+        Panel startPanel = new StartPanel();
+        Button imProfessorButton = new Button(TypeButton.BUTTON_ICON_I_AM_PROFESSOR, (ActionEvent evt) -> { LoginAction(evt); });
+        Button imStudentButton = new Button(TypeButton.BUTTON_ICON_I_AM_STUDENT, (ActionEvent evt) -> { LoginAction(evt); });
+        Button imAdminButton = new Button(TypeButton.BUTTON_ICON_I_AM_ADMIN, (ActionEvent evt) -> { LoginAction(evt); });
+        startPanel.AddComponent(imProfessorButton, 100, 100);
+        startPanel.AddComponent(imStudentButton, 700, 100);
+        startPanel.AddCenterComponentX(imAdminButton, 400);
+        m_panels.add(startPanel);
+    }
+
+    private void InitStudentPanel()
+    {
+        Panel studentPanel = new StudentPanel();
+        studentPanel.AddCenterComponentY(new Button(TypeButton.BUTTON_ICON_SUBJECT_HANDLER, null), 275);
+        studentPanel.AddCenterComponentY(new Button(TypeButton.BUTTON_ICON_DATA_MANAGER, null), 425);
+        studentPanel.AddCenterComponentY(new Button(TypeButton.BUTTON_ICON_VIEW_PROGRESS, null), 575);
+        studentPanel.AddButton(TypeButton.BUTTON_LOGOUT, 775, 625, (ActionEvent evt) -> { ChangePanel(1, 0); });
+        m_panels.add(studentPanel);
+    }
+
+    private void InitProfessorPanel()
+    {
+        Panel professorPanel = new ProfessorPanel();
+        professorPanel.AddButton(TypeButton.BUTTON_LOGOUT, 775, 625, (ActionEvent evt) -> { ChangePanel(2, 0); });
+        m_panels.add(professorPanel);
+    }
+
+    private void InitAdminPanel()
+    {
+        Panel adminPanel = new AdminPanel();
+        adminPanel.AddButton(TypeButton.BUTTON_LOGOUT, 775, 625, (ActionEvent evt) -> { ChangePanel(3, 0); });
+        m_panels.add(adminPanel);
+    }
+
+    private void InitLoginPanel()
+    {
+        Panel loginPanel = new LoginPanel();
+        loginPanel.AddButton(TypeButton.BUTTON_ICON_RETURN, 5, 5, (ActionEvent evt) -> { ChangePanel(4, 0); });
+        m_panels.add(loginPanel);
+    }
+
+    private void LoginAction(ActionEvent evt)
+    {
+        ChangePanel(0, 4);   
+    }
+
+    private void ChangePanel(int i, int j)
+    {
+        m_panels.get(i).setVisible(false);
+        m_panels.get(j).setVisible(true);
     }
 }
