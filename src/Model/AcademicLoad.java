@@ -5,6 +5,7 @@
 
 package Model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -15,8 +16,10 @@ import java.util.ArrayList;
  * @version 1.0
  * @author Carlos Pavajeau - Cantte
  */
-public class AcademicLoad implements Comparable<AcademicLoad>
+public class AcademicLoad implements Comparable<AcademicLoad>, Serializable
 {
+    private static final long serialVersionUID = 8554588546116642636L;
+    
     private ArrayList<StudentGroup> m_groups;
     private final Subject m_subject;
 

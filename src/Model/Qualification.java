@@ -5,6 +5,7 @@
 
 package Model;
 
+import java.io.Serializable;
 
 /**
  * This is the class {@code Qualification}. Represents a 3-grade grade assigned
@@ -14,8 +15,10 @@ package Model;
  * @version 1.0
  * @author Carlos Pavajeau - Cantte
  */
-public class Qualification implements Comparable<Qualification>
+public class Qualification implements Comparable<Qualification>, Serializable
 {
+    private static final long serialVersionUID = -3976167163648817646L;
+    
     private static final int ACADEMICS_CORTS = 3;
     private static final int NOTE_EMPTY = -1;
 

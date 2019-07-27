@@ -5,6 +5,7 @@
 
 package Model;
 
+import java.io.Serializable;
 
 /**
  * This is the class {@code Login}. Its use is to store the access data 
@@ -13,8 +14,10 @@ package Model;
  * @version 1.0
  * @author Carlos Pavajeau - Cantte
  */
-public class Login
+public class Login implements Serializable
 {
+    private static final long serialVersionUID = 6453223500086846374L;
+    
     private String m_user;
     private String m_password;
 
@@ -74,5 +77,38 @@ public class Login
     public static boolean ValidateLogin(Login a, Login b)
     {
         return a.GetUser().equals(b.GetUser()) && a.GetPassword().equals(b.GetPassword());
+    }
+
+    @Override
+    public int hashCode() 
+    {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((m_password == null) ? 0 : m_password.hashCode());
+        result = prime * result + ((m_user == null) ? 0 : m_user.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) 
+    {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Login other = (Login) obj;
+        if (m_password == null) {
+            if (other.m_password != null)
+                return false;
+        } else if (!m_password.equals(other.m_password))
+            return false;
+        if (m_user == null) {
+            if (other.m_user != null)
+                return false;
+        } else if (!m_user.equals(other.m_user))
+            return false;
+        return true;
     }
 }

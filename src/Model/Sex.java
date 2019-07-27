@@ -5,12 +5,14 @@
 
 package Model;
 
+import java.io.Serializable;
+
 /**
  * This is the enum {@code Sex}, represent one sex.
  * @version 1.0
  * @author Carlos Pavajeau - Cantte
  */
-public enum Sex
+public enum Sex implements Serializable
 {
     /**Male sex*/
     MALE("Masculino"),
