@@ -25,9 +25,9 @@ public class LoginDataHandler extends DataHandler
     }
 
     @Override
-    public boolean Insert(Object anObject) throws SQLException 
+    public boolean Insert(Object anObject) throws SQLException, ClassNotFoundException, IOException 
     {
-        return false;
+        return super.Insert(anObject);
     }
 
     @Override
@@ -37,16 +37,14 @@ public class LoginDataHandler extends DataHandler
     }
 
     @Override
-    public boolean Update(Object anObject) throws SQLException 
+    public boolean Update(Object anObject) throws SQLException, ClassNotFoundException, IOException 
     {
-        return false;
+        return super.Update(anObject);
     }
 
     @Override
-    public boolean Delete(Object anObject) throws SQLException 
+    public boolean Delete(Object anObject) throws SQLException, ClassNotFoundException, IOException 
     {
-        return false;
+        return super.Delete(anObject);
     }
-
-    
 }

@@ -5,6 +5,8 @@
 
 package Model.DataConnectionHandler;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.SQLException;
 
 /**
@@ -17,28 +19,32 @@ public class PersonDataHandler extends EntityDataHandler
         super();
     }
 
-    @Override
-    public boolean Insert(Object anObject) throws SQLException 
+    public PersonDataHandler(String fileName) throws FileNotFoundException
     {
-        return false;
+        super(fileName);
     }
 
     @Override
-    public Object Select(Object anObject) throws SQLException 
+    public boolean Insert(Object anObject) throws SQLException, ClassNotFoundException, IOException 
     {
-        return null;
+        return super.Insert(anObject);
     }
 
     @Override
-    public boolean Update(Object anObject) throws SQLException 
+    public Object Select(Object anObject) throws SQLException, ClassNotFoundException, IOException 
     {
-        return false;
+        return super.Select(anObject);
     }
 
     @Override
-    public boolean Delete(Object anObject) throws SQLException 
+    public boolean Update(Object anObject) throws SQLException, ClassNotFoundException, IOException 
     {
-        return false;
+        return super.Update(anObject);
     }
-    
+
+    @Override
+    public boolean Delete(Object anObject) throws SQLException, ClassNotFoundException, IOException 
+    {
+        return super.Delete(anObject);
+    }
 }

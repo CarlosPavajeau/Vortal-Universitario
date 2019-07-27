@@ -5,6 +5,8 @@
 
 package Model.DataConnectionHandler;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.SQLException;
 
 /**
@@ -17,24 +19,32 @@ public class PensumDataHandler extends EntityDataHandler
         super();
     }
 
-    @Override
-    public boolean Insert(Object anObject) throws SQLException {
-        return false;
+    public PensumDataHandler(String fileName) throws FileNotFoundException
+    {
+        super(fileName);
     }
 
     @Override
-    public Object Select(Object anObject) throws SQLException {
-        return null;
+    public boolean Insert(Object anObject) throws SQLException, ClassNotFoundException, IOException 
+    {
+        return super.Insert(anObject);
     }
 
     @Override
-    public boolean Update(Object anObject) throws SQLException {
-        return false;
+    public Object Select(Object anObject) throws SQLException, ClassNotFoundException, IOException 
+    {
+        return super.Select(anObject);
     }
 
     @Override
-    public boolean Delete(Object anObject) throws SQLException {
-        return false;
+    public boolean Update(Object anObject) throws SQLException, ClassNotFoundException, IOException 
+    {
+        return super.Update(anObject);
     }
-    
+
+    @Override
+    public boolean Delete(Object anObject) throws SQLException, ClassNotFoundException, IOException 
+    {
+        return super.Delete(anObject);
+    }
 }
