@@ -42,7 +42,13 @@ public class MainWindow extends JFrame
         REGISTER_NOTES_PANEL,
         REGISTER_PENSUM_PANEL,
         REGISTER_PERSON_PANEL,
-        REGISTER_SUBJECT_PANEL
+        REGISTER_SUBJECT_PANEL,
+        DATA_HANDLER_PANEL,
+        STUDENT_HANDLER_PANEL,
+        PROFESSOR_HANDLER_PANEL,
+        SUBJECT_HANDLER_PANEL,
+        PENSUM_HANDLER_PANEL,
+        ACADEMIC_SEMESTER_HANDLER_PANEL
     }
 
     public MainWindow() 
@@ -77,14 +83,25 @@ public class MainWindow extends JFrame
         m_panels.add(new RegisterSubjectPanel());
     }
 
+    private void InitHandlingPanels()
+    {
+        m_panels.add(new DataHandlerPanel());
+        m_panels.add(new StudentHandlerPanel());
+        m_panels.add(new ProfessorHandlerPanel());
+        m_panels.add(new SubjectHandlerPanel());
+        m_panels.add(new PensumHandlerPanel());
+        m_panels.add(new AcademicSemesterHandlerPanel());
+    }
+
     private void InitPanels()
     {
-        InitStartPanel();
-        InitStudentPanel();
-        InitProfessorPanel();
-        InitAdminPanel();
-        InitLoginPanel();
+        m_panels.add(new StartPanel());
+        m_panels.add(new StudentPanel());
+        m_panels.add(new ProfessorPanel());
+        m_panels.add(new AdminPanel());
+        m_panels.add(new LoginPanel());
         InitFormPanels();
+        InitHandlingPanels();
         AddPanels();
     }
 
@@ -96,59 +113,7 @@ public class MainWindow extends JFrame
             add(panel);
         }
     }
-
-    private void InitStartPanel()
-    {
-        Panel startPanel = new StartPanel();
-        Button imProfessorButton = new Button(TypeButton.BUTTON_ICON_I_AM_PROFESSOR, (ActionEvent evt) -> { LoginAction(evt, TypeUser.PROFESSOR); });
-        Button imStudentButton = new Button(TypeButton.BUTTON_ICON_I_AM_STUDENT, (ActionEvent evt) -> { LoginAction(evt, TypeUser.STUDENT); });
-        Button imAdminButton = new Button(TypeButton.BUTTON_ICON_I_AM_ADMIN, (ActionEvent evt) -> { LoginAction(evt, TypeUser.ADMIN); });
-        startPanel.AddComponent(imProfessorButton, 100, 100);
-        startPanel.AddComponent(imStudentButton, 700, 100);
-        startPanel.AddCenterComponentX(imAdminButton, 400);
-        m_panels.add(startPanel);
-    }
-
-    private void InitStudentPanel()
-    {
-        Panel studentPanel = new StudentPanel();
-        studentPanel.AddCenterComponentY(new Button(TypeButton.BUTTON_ICON_SUBJECT_HANDLER, null), 275);
-        studentPanel.AddCenterComponentY(new Button(TypeButton.BUTTON_ICON_DATA_MANAGER, null), 425);
-        studentPanel.AddCenterComponentY(new Button(TypeButton.BUTTON_ICON_VIEW_PROGRESS, null), 575);
-        studentPanel.AddButton(TypeButton.BUTTON_LOGOUT, 775, 625, (ActionEvent evt) -> { ChangePanel(Panels.STUDENT_PANEL, Panels.START_PANEL); });
-        m_panels.add(studentPanel);
-    }
-
-    private void InitProfessorPanel()
-    {
-        Panel professorPanel = new ProfessorPanel();
-        professorPanel.AddCenterComponentY(new Button(TypeButton.BUTTON_ICON_DATA_MANAGER, null), 350);
-        professorPanel.AddCenterComponentY(new Button(TypeButton.BUTTON_ICON_STUDENT_HANDLER, null), 500);
-        professorPanel.AddButton(TypeButton.BUTTON_LOGOUT, 775, 625, (ActionEvent evt) -> { ChangePanel(Panels.PROFESSOR_PANEL, Panels.START_PANEL); });
-        m_panels.add(professorPanel);
-    }
-
-    private void InitAdminPanel()
-    {
-        Panel adminPanel = new AdminPanel();
-        adminPanel.AddCenterComponentY(new Button(TypeButton.BUTTON_ICON_DATA_MANAGER, null), 60);
-        adminPanel.AddCenterComponentY(new Button(TypeButton.BUTTON_ICON_STUDENT_HANDLER, null), 185);
-        adminPanel.AddCenterComponentY(new Button(TypeButton.BUTTON_ICON_SUBJECT_HANDLER, null), 310);
-        adminPanel.AddCenterComponentY(new Button(TypeButton.BUTTON_ICON_ACADEMIC_SEMESTER_HANDLER, null), 435);
-        adminPanel.AddCenterComponentY(new Button(TypeButton.BUTTON_ICON_PENSUM_HANDLER, null), 560);
-        adminPanel.AddCenterComponentY(new Button(TypeButton.BUTTON_ICON_STUDENT_GROUP_HANDLER, null), 685);
-        adminPanel.AddCenterComponentY(new Button(TypeButton.BUTTON_ICON_PROFESSOR_HANDLER, null), 810);
-        adminPanel.AddButton(TypeButton.BUTTON_LOGOUT, 775, 625, (ActionEvent evt) -> { ChangePanel(Panels.ADMIN_PANEL, Panels.START_PANEL); });
-        m_panels.add(adminPanel);
-    }
-
-    private void InitLoginPanel()
-    {
-        FormPanel loginPanel = new LoginPanel();
-        loginPanel.AddButton(TypeButton.BUTTON_ICON_RETURN, 5, 5, (ActionEvent evt) -> { loginPanel.ClearFields(); ChangePanel(Panels.LOGIN_PANEL, Panels.START_PANEL); });
-        m_panels.add(loginPanel);
-    }
-
+    
     private void Start()
     {
         try 
@@ -158,10 +123,10 @@ public class MainWindow extends JFrame
             {
                 dataConnectionHandler.CreateDataConnection();
                 dataConnectionHandler.CloseDataConnection();
-                MainWindow.ChangePanel(Panels.REGISTER_ADMIN_PANEL, Panels.REGISTER_ADMIN_PANEL);
+                MainWindow.ShowPanel(Panels.REGISTER_ADMIN_PANEL);
             }
             else
-                MainWindow.ChangePanel(Panels.START_PANEL, Panels.START_PANEL);
+                MainWindow.ShowPanel(Panels.START_PANEL);
         } 
         catch (Exception e) 
         {
@@ -169,7 +134,7 @@ public class MainWindow extends JFrame
 		}
     }
 
-    private void LoginAction(ActionEvent evt, TypeUser user)
+    public static void LoginAction(ActionEvent evt, TypeUser user)
     {
         LoginPanel loginPanel = (LoginPanel)m_panels.get(4);
         loginPanel.SetUser(user);
