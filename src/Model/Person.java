@@ -188,7 +188,7 @@ public abstract class Person extends Entity
     /**
      * This method sets an age for this object {@code Person}.
      */
-    private final void SetAge()
+    private void SetAge()
     {
         Calendar currentlyDate = new GregorianCalendar();
         m_age = (byte)(currentlyDate.get(Calendar.YEAR) - m_dateOfBorn.get(Calendar.YEAR));
@@ -197,7 +197,7 @@ public abstract class Person extends Entity
     /**
      * This method sets a date of born for this object {@code Person}.
      */
-    private final void GenerateDateOfBorn(String dateOfBorn)
+    private void GenerateDateOfBorn(String dateOfBorn)
     {
         String[] dates = dateOfBorn.split("/");
         m_dateOfBorn = new GregorianCalendar(Integer.parseInt(dates[0]), Integer.parseInt(dates[1]) - 1, Integer.parseInt(dates[2]));
@@ -206,7 +206,7 @@ public abstract class Person extends Entity
     /**
      * This method generates and return a one type sex.
      */
-    private final Sex GenerateSex(String sex)
+    private Sex GenerateSex(String sex)
     {
         if (Sex.MALE.GetSex().toUpperCase().equals(sex.toUpperCase()))
             return Sex.MALE;

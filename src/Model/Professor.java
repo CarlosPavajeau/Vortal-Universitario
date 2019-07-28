@@ -50,9 +50,9 @@ public class Professor extends Person
      * @param secondLastName will be the second last name that have this {@code Professor}.
      * @param dateOfBorn will be the date of born that have this {@code Professor}.
      * @param sex will be the sex that have this {@code Professor}.
-     * @param numsGroup will be the numbers of the groups of academic charges.
-     * @param limitsOfStudents it will be the limit of students in each group.
-     * @param typesGroup it will be the group type of each group.
+     * @param numGroups will be the numbers of the groups of academic charges.
+     * @param limitOfStudents it will be the limit of students in each group.
+     * @param typeGroups it will be the group type of each group.
      * @param subjects it will be the subject of each group.
      */
     public Professor(String code, String firstName, String secondName, String lastName, String secondLastName,
