@@ -5,6 +5,10 @@
 
 package View;
 
+import java.awt.event.ActionEvent;
+
+import View.MainWindow.Panels;
+
 /**
  * 
  */
@@ -15,5 +19,14 @@ public class StudentPanel extends Panel
     public StudentPanel()
     {
         super("BIENVENIDO ESTUDIANTE");
+    }
+
+    @Override
+    protected void InitPanel() 
+    {
+        AddCenterComponentY(new Button(TypeButton.BUTTON_ICON_SUBJECT_HANDLER, null), 275);
+        AddCenterComponentY(new Button(TypeButton.BUTTON_ICON_DATA_MANAGER, null), 425);
+        AddCenterComponentY(new Button(TypeButton.BUTTON_ICON_VIEW_PROGRESS, null), 575);
+        AddButton(TypeButton.BUTTON_LOGOUT, 775, 625, (ActionEvent evt) -> { MainWindow.ChangePanel(Panels.STUDENT_PANEL, Panels.START_PANEL); });
     }
 }
