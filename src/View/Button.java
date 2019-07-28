@@ -28,8 +28,11 @@ public class Button extends JButton
         setVerticalTextPosition(SwingConstants.BOTTOM);
         setFont(new Font("Microsoft Sans Serif", 0, 12));
         setIconTextGap(3);
-        setText(typeButton.GetText());
-        setToolTipText(typeButton.GetText());
+        if (!typeButton.GetText().isEmpty())
+        {
+            setText(typeButton.GetText());
+            setToolTipText(typeButton.GetText());
+        }
         setBorder(null);
         setBorderPainted(false);
         setContentAreaFilled(false);
