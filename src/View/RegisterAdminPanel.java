@@ -32,8 +32,6 @@ public class RegisterAdminPanel extends FormPanel
         AddField(new TextField(300, 50, "Digite su ID", TextField.OBLIGATORY_FIELD + TextField.NUMERIC_FIELD), "Identificación: ", 50, 150);
         AddField(new TextField(300, 50, "Digite su usuario", TextField.OBLIGATORY_FIELD), "Usuario: ", 50, 250);
         AddField(new PasswordField(300, 50, "Digite su contraseña"), "Contraseña: ", 50, 350);
-        AddRegisterButton(TypeButton.BUTTON_REGISTER);
-        AddButton(TypeButton.BUTTON_EXIT, 50, 600, (ActionEvent evt) -> { Exit(evt); });
     }
 
     @Override
@@ -71,5 +69,12 @@ public class RegisterAdminPanel extends FormPanel
     private void Exit(ActionEvent evt)
     {
         System.exit(0);
+    }
+
+    @Override
+    protected void InitPanel() 
+    {
+        AddRegisterButton(TypeButton.BUTTON_REGISTER);
+        AddButton(TypeButton.BUTTON_EXIT, 50, 600, (ActionEvent evt) -> { Exit(evt); });
     }
 }

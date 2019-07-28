@@ -7,6 +7,8 @@ package View;
 
 import java.awt.event.ActionEvent;
 
+import View.MainWindow.Panels;
+
 /**
  * 
  */
@@ -27,7 +29,6 @@ public class RegisterNotesPanel extends FormPanel
         AddField(new TextField(100, 50, "1° corte", TextField.OBLIGATORY_FIELD + TextField.NUMERIC_FIELD), "Notas: ", 50, 350);
         AddField(new TextField(100, 50, "2° corte", TextField.OBLIGATORY_FIELD + TextField.NUMERIC_FIELD), "", 165, 350);
         AddField(new TextField(100, 50, "3° corte", TextField.OBLIGATORY_FIELD + TextField.NUMERIC_FIELD), "", 280, 350);
-        AddRegisterButton(TypeButton.BUTTON_REGISTER);
     }
 
     @Override
@@ -35,5 +36,17 @@ public class RegisterNotesPanel extends FormPanel
     {
         if (!ValidateFields())
             System.out.println("Error: Campos invalidos");
+    }
+
+    @Override
+    protected void ReturnButtonAction() 
+    {
+        MainWindow.ChangePanel(Panels.REGISTER_NOTES_PANEL, Panels.PROFESSOR_PANEL);
+    }
+
+    @Override
+    protected void InitPanel() 
+    {
+        AddRegisterButton(TypeButton.BUTTON_REGISTER);
     }
 }

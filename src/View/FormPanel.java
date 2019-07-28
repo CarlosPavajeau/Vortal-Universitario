@@ -33,6 +33,8 @@ public abstract class FormPanel extends Panel
         m_fields = new ArrayList<>();
         m_labels = new ArrayList<>();
         InitFields();
+        if (!(this instanceof RegisterAdminPanel))
+            AddReturnButton();
     }
 
     public List<Field> GetFields()

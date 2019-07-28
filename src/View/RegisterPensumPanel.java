@@ -7,6 +7,8 @@ package View;
 
 import java.awt.event.ActionEvent;
 
+import View.MainWindow.Panels;
+
 /**
  * 
  */
@@ -31,7 +33,6 @@ public class RegisterPensumPanel extends FormPanel
                 TextField.OBLIGATORY_FIELD + TextField.NUMERIC_FIELD), "Carga lectiva global", 50, 450);
         AddField(new TextField(300, 50, "Digite el título", TextField.OBLIGATORY_FIELD + TextField.ALPHA_FIELD),
                 "Título (Requerido/A otorgar): ", 400, 450);
-        AddRegisterButton(TypeButton.BUTTON_REGISTER);
     }
 
     @Override
@@ -39,4 +40,16 @@ public class RegisterPensumPanel extends FormPanel
     {
 		
 	}
+
+    @Override
+    protected void ReturnButtonAction() 
+    {
+        MainWindow.ChangePanel(Panels.REGISTER_PENSUM_PANEL, Panels.PENSUM_HANDLER_PANEL);
+    }
+
+    @Override
+    protected void InitPanel() 
+    {
+        AddRegisterButton(TypeButton.BUTTON_REGISTER);
+    }
 }

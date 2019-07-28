@@ -7,6 +7,8 @@ package View;
 
 import java.awt.event.ActionEvent;
 
+import View.MainWindow.Panels;
+
 /**
  * 
  */
@@ -26,7 +28,6 @@ public class RegisterAcademicLoadPanel extends FormPanel
         AddField(new TextField(300, 50, "Digite el código de la asignatura", TextField.OBLIGATORY_FIELD + TextField.NUMERIC_FIELD), "Código de la asignatura: ", 400, 150);
         AddField(new TextField(300, 50, "Digite el número del grupo", TextField.OBLIGATORY_FIELD + TextField.NUMERIC_FIELD), "Número del grupo: ", 50, 250);
         AddField(new TextField(300, 50, "Digite el límite de estudiantes", TextField.OBLIGATORY_FIELD + TextField.NUMERIC_FIELD), "Límite de estudiantes: ", 400, 250);
-        AddRegisterButton(TypeButton.BUTTON_REGISTER);
     }
 
     @Override
@@ -34,4 +35,16 @@ public class RegisterAcademicLoadPanel extends FormPanel
     {
 		
 	}
+
+    @Override
+    protected void ReturnButtonAction()
+    {
+        MainWindow.ChangePanel(Panels.REGISTER_ACADEMIC_LOAD_PANEL, Panels.PROFESSOR_HANDLER_PANEL);   
+    }
+
+    @Override
+    protected void InitPanel() 
+    {
+        AddRegisterButton(TypeButton.BUTTON_REGISTER);
+    }
 }

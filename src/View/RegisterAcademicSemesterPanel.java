@@ -7,6 +7,8 @@ package View;
 
 import java.awt.event.ActionEvent;
 
+import View.MainWindow.Panels;
+
 /**
  * 
  */
@@ -25,7 +27,6 @@ public class RegisterAcademicSemesterPanel extends FormPanel
         AddField(new TextField(300, 50, "Digite el número del semestre", TextField.OBLIGATORY_FIELD + TextField.NUMERIC_FIELD), "Número de semeste: ", 50, 150);
         AddField(new TextField(300, 50, "Digite los créditos mínimos", TextField.OBLIGATORY_FIELD + TextField.NUMERIC_FIELD), "Créditos mínimos: ", 50, 250);
         AddField(new TextField(300, 50, "Digite los créditos máximos", TextField.OBLIGATORY_FIELD + TextField.NUMERIC_FIELD), "Cŕeditos máximos: ", 400, 250);
-        AddRegisterButton(TypeButton.BUTTON_REGISTER);
     }
 
     @Override
@@ -33,4 +34,16 @@ public class RegisterAcademicSemesterPanel extends FormPanel
     {
 		
 	}
+
+    @Override
+    protected void ReturnButtonAction() 
+    {
+        MainWindow.ChangePanel(Panels.REGISTER_ACADEMIC_SEMESTER_PANEL, Panels.ACADEMIC_SEMESTER_HANDLER_PANEL);
+    }
+
+    @Override
+    protected void InitPanel() 
+    {
+        AddRegisterButton(TypeButton.BUTTON_REGISTER);
+    }
 }

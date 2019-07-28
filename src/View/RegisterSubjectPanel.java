@@ -7,6 +7,8 @@ package View;
 
 import java.awt.event.ActionEvent;
 
+import View.MainWindow.Panels;
+
 /**
  * 
  */
@@ -26,7 +28,6 @@ public class RegisterSubjectPanel extends FormPanel
         AddField(new TextField(300, 50, "Digite el nombre", TextField.OBLIGATORY_FIELD + TextField.ALPHA_FIELD), "Nombre de asignatura: ",400, 150);
         AddField(new TextField(300, 50, "Digite el número de créditos", TextField.OBLIGATORY_FIELD + TextField.ALPHA_FIELD), "Número de créditos", 50, 250);
         AddField(new TextField(300, 50, "Digite el semestre recomendado", TextField.OBLIGATORY_FIELD + TextField.ALPHA_FIELD), "Semestre recomendado", 400, 250);
-        AddRegisterButton(TypeButton.BUTTON_REGISTER);
     }
 
     @Override
@@ -34,5 +35,17 @@ public class RegisterSubjectPanel extends FormPanel
     {
         if (!ValidateFields())
             System.out.println("Error: Campos invalidos");
+    }
+
+    @Override
+    protected void ReturnButtonAction() 
+    {
+        MainWindow.ChangePanel(Panels.REGISTER_SUBJECT_PANEL, Panels.SUBJECT_HANDLER_PANEL);
+    }
+
+    @Override
+    protected void InitPanel() 
+    {
+        AddRegisterButton(TypeButton.BUTTON_REGISTER);
     }
 }
