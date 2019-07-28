@@ -59,6 +59,11 @@ public abstract class FormPanel extends Panel
         return true;
     }
 
+    protected String GetContentField(int i)
+    {
+        return String.valueOf(GetFields().get(i).getPassword());
+    }
+
     protected void AddCenterField(Field textField, String text, int y)
     {
         AddField(textField, text, Panel.WhereCenterX(this, textField), y);
