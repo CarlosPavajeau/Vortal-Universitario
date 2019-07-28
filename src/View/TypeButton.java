@@ -20,7 +20,7 @@ public enum TypeButton
     /**100x100 buttons */
     BUTTON_ICON_ACCESS_DATA_MANAGER("Icon_AccessDataManager", "Gestión de datos de acceso", TypeButton.BUTTON_WITH_SIZE_100x100),
     BUTTON_ICON_ACADEMIC_SEMESTER_HANDLER("Icon_AcademicSemesterHandler", "Gestión de semestres académicos", TypeButton.BUTTON_WITH_SIZE_100x100),
-    BUTTON_ICON_ADD_ACADEMIC_SEMESTER("", "", TypeButton.BUTTON_WITH_SIZE_100x100),
+    BUTTON_ICON_ADD_ACADEMIC_SEMESTER("Icon_AddAcademicSemester", "Añadir semestre academico", TypeButton.BUTTON_WITH_SIZE_100x100),
     BUTTON_ICON_ADD_OR_DELETE_STUDENT("Icon_Add-DeleteStudent", "Añadir/Borrar estudiante", TypeButton.BUTTON_WITH_SIZE_100x100),
     BUTTON_ICON_ADD_PENSUM("Icon_AddPensum", "Añadir PENSUM", TypeButton.BUTTON_WITH_SIZE_100x100),
     BUTTON_ICON_ADD_PROFESSOR("Icon_AddProfessor", "Añadir profesor", TypeButton.BUTTON_WITH_SIZE_100x100),
