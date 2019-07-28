@@ -14,16 +14,11 @@ import java.sql.SQLException;
  */
 public class AcademicSemesterDataHandler extends DataHandler
 {
-    public AcademicSemesterDataHandler()
+    public AcademicSemesterDataHandler() throws FileNotFoundException
     {
-        super();
+        super("AcademicSemester.dat");
     }
-
-    public AcademicSemesterDataHandler(String fileName) throws FileNotFoundException
-    {
-        super(fileName);
-    }
-
+    
     @Override
     public boolean Insert(Object anObject) throws SQLException, ClassNotFoundException, IOException 
     {

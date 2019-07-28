@@ -14,11 +14,6 @@ import java.sql.SQLException;
  */
 public abstract class EntityDataHandler extends DataHandler
 {
-    public EntityDataHandler()
-    {
-        super();
-    }
-
     public EntityDataHandler(String fileName) throws FileNotFoundException
     {
         super(fileName);

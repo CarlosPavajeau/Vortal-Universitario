@@ -14,11 +14,7 @@ import java.sql.SQLException;
  */
 public class AcademicLoadDataHandler extends EntityDataHandler
 {
-    public AcademicLoadDataHandler()
-    {
-        super();
-    }
-
+    
     public AcademicLoadDataHandler(String fileName) throws FileNotFoundException
     {
         super(fileName);

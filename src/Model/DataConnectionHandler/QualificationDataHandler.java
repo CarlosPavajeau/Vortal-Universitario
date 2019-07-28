@@ -14,11 +14,7 @@ import java.sql.SQLException;
  */
 public class QualificationDataHandler extends EntityDataHandler
 {
-    public QualificationDataHandler()
-    {
-        super();
-    }
-
+    
     public QualificationDataHandler(String fileName) throws FileNotFoundException
     {
         super(fileName);

@@ -13,6 +13,11 @@ import java.sql.SQLException;
  */
 public interface DataConnectionHandler
 {
+    String CONNECTION_WITH_FILES = "Files";
+    String CONNECTION_WITH_DATABASE = "DB";
+
+    String DEFAULT_CONNECTION_MODE = CONNECTION_WITH_FILES;
+
     /**
      * 
      * @throws SQLException

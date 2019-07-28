@@ -14,10 +14,6 @@ import java.sql.SQLException;
  */
 public class LoginDataHandler extends DataHandler
 {
-    public LoginDataHandler()
-    {
-        super();
-    }
 
     public LoginDataHandler(String fileName) throws FileNotFoundException
     {

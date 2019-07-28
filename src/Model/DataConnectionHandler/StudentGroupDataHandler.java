@@ -14,11 +14,6 @@ import java.sql.SQLException;
  */
 public class StudentGroupDataHandler extends EntityDataHandler
 {
-    public StudentGroupDataHandler()
-    {
-        super();
-    }
-
     public StudentGroupDataHandler(String fileName) throws FileNotFoundException
     {
         super(fileName);

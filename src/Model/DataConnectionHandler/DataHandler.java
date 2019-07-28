@@ -26,15 +26,7 @@ public  class DataHandler implements DataConnectionHandler
      */
     public DataHandler(String fileName) throws FileNotFoundException
     {
-        m_dataConnection = new FileConnectionHandler(fileName);
-    }
-    
-    /**
-     * 
-     */
-    public DataHandler()
-    {
-        m_dataConnection = new DBConnectionHandler();
+        SetModeConnection(fileName);    
     }
 
     /**
@@ -88,6 +80,14 @@ public  class DataHandler implements DataConnectionHandler
     public void CreateDataConnection() throws SQLException, ClassNotFoundException, IOException 
     {
         m_dataConnection.CreateDataConnection();
+    }
+
+    private void SetModeConnection(String fileName) throws FileNotFoundException
+    {
+        if (DEFAULT_CONNECTION_MODE.equals(CONNECTION_WITH_FILES))
+            m_dataConnection = new FileConnectionHandler(fileName);
+        else
+            m_dataConnection = new DBConnectionHandler();
     }
     
 }

@@ -14,16 +14,11 @@ import java.sql.SQLException;
  */
 public class SubjectDataHandler extends EntityDataHandler
 {
-    public SubjectDataHandler()
+    public SubjectDataHandler() throws FileNotFoundException
     {
-        super();
+        super("Subjects.dat");
     }
-
-    public SubjectDataHandler(String fileName) throws FileNotFoundException
-    {
-        super(fileName);
-    }
-
+    
     @Override
     public boolean Insert(Object anObject) throws SQLException, ClassNotFoundException, IOException 
     {

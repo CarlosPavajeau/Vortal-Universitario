@@ -14,16 +14,11 @@ import java.sql.SQLException;
  */
 public class PensumDataHandler extends EntityDataHandler
 {
-    public PensumDataHandler()
+    public PensumDataHandler() throws FileNotFoundException
     {
-        super();
+        super("Pensum.dat");
     }
-
-    public PensumDataHandler(String fileName) throws FileNotFoundException
-    {
-        super(fileName);
-    }
-
+    
     @Override
     public boolean Insert(Object anObject) throws SQLException, ClassNotFoundException, IOException 
     {
