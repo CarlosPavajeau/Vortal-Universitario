@@ -79,7 +79,7 @@ public abstract class Field extends JPasswordField
 
     public void Clear()
     {
-        TextFieldFocusLost(null);
+        SetDefaultValues();
     }
 
     /**
@@ -132,10 +132,16 @@ public abstract class Field extends JPasswordField
     private void TextFieldFocusLost(FocusEvent evt)
     {
         if (String.valueOf(getPassword()).isEmpty())
-        {
-            setEchoChar((char)0);
-            setForeground(Color.GRAY);
-            setText(m_defaultText);
-        }
+            SetDefaultValues();
+    }
+
+    /**
+     * 
+     */
+    private void SetDefaultValues()
+    {
+        setEchoChar((char)0);
+        setForeground(Color.GRAY);
+        setText(m_defaultText);
     }
 }
