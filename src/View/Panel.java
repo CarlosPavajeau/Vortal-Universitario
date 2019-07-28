@@ -10,6 +10,7 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Point;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +34,7 @@ public abstract class Panel extends JPanel
         super();
         m_title = title;
         initComponents();
+        InitPanel();
         SetTitle();
     }
 
@@ -68,6 +70,18 @@ public abstract class Panel extends JPanel
             
         add(component);
     }
+
+    protected void AddReturnButton()
+    {
+        AddButton(TypeButton.BUTTON_ICON_RETURN, 5, 0, (ActionEvent evt) -> { ReturnButtonAction(); });
+    }
+
+    protected void ReturnButtonAction()
+    {
+        
+    }
+
+    protected abstract void InitPanel();
 
     protected void AddCenterComponentX(Component component, int y)
     {
