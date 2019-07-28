@@ -40,4 +40,28 @@ public class Admin extends Entity
     {
         return m_login;
     }
+
+    @Override
+    public int hashCode()
+    {
+        final int prime = 31;
+        int result = prime + ((m_login == null) ? 0 : m_login.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) 
+    {
+        if (this == obj)
+            return true;
+        if (getClass() != obj.getClass())
+            return false;
+        Admin other = (Admin) obj;
+        if (m_login == null) {
+            if (other.m_login != null)
+                return false;
+        } else if (!m_login.equals(other.m_login))
+            return false;
+        return true;
+    }
 }
