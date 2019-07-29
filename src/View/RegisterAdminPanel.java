@@ -61,9 +61,7 @@ public class RegisterAdminPanel extends FormPanel
             }
         }
         else
-        {
             JOptionPane.showMessageDialog(this, "Campos invalidos");
-        }
     }
 
     private void Exit(ActionEvent evt)

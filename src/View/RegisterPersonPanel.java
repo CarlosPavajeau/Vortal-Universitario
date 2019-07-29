@@ -51,10 +51,9 @@ public class RegisterPersonPanel extends FormPanel
             {
                 DataConnectionHandler dataConnectionHandler = new PersonDataHandler();
                 if (!dataConnectionHandler.ConnectWithData())
-                {
                     dataConnectionHandler.CreateDataConnection();
-                }
                 dataConnectionHandler.ConnectWithData();
+
                 String code, firstName, secondName, lastName, secondLastName, sex, dateOfBorn;
 
                 code = GetContentField(0);
@@ -71,6 +70,7 @@ public class RegisterPersonPanel extends FormPanel
 
                 if (dataConnectionHandler.Insert(e))
                 {
+                    JOptionPane.showMessageDialog(this, "Registro de persona exitoso");
                     MainWindow.ChangePanel(Panels.REGISTER_PERSON_PANEL, Panels.ADMIN_PANEL);
                     dataConnectionHandler.CloseDataConnection();
                 }
@@ -78,11 +78,13 @@ public class RegisterPersonPanel extends FormPanel
                     JOptionPane.showMessageDialog(this, "Estudiante/Professor ya registrado");
                     
                 ClearFields();
-            } catch (Exception e) 
+            } catch (Exception exception) 
             {
-                e.printStackTrace();
+                exception.printStackTrace();
             }
         }
+        else
+            JOptionPane.showMessageDialog(this, "Campos invalidos");
     }
 
     @Override

@@ -7,6 +7,11 @@ package View;
 
 import java.awt.event.ActionEvent;
 
+import javax.swing.JOptionPane;
+
+import Model.AcademicSemester;
+import Model.DataConnectionHandler.AcademicSemesterDataHandler;
+import Model.DataConnectionHandler.DataConnectionHandler;
 import View.MainWindow.Panels;
 
 /**
@@ -32,7 +37,46 @@ public class RegisterAcademicSemesterPanel extends FormPanel
     @Override
     protected void RegisterButtonAction(ActionEvent evt) 
     {
-		
+        if (ValidateFields())
+        {
+            try
+            {
+                DataConnectionHandler dataConnectionHandler = new AcademicSemesterDataHandler();
+                if (!dataConnectionHandler.ConnectWithData())
+                    dataConnectionHandler.CreateDataConnection();
+                dataConnectionHandler.ConnectWithData();
+
+                int semester, minCredits, maxCredits;
+
+                semester = Integer.valueOf(GetContentField(0));
+                minCredits = Integer.valueOf(GetContentField(1));
+                maxCredits = Integer.valueOf(GetContentField(2));
+
+                if (maxCredits >= minCredits)
+                {
+                    AcademicSemester academicSemester = new AcademicSemester(semester, maxCredits, minCredits);
+
+                    if (dataConnectionHandler.Insert(academicSemester))
+                    {
+                        JOptionPane.showMessageDialog(this, "Semestre académico registrado con éxito!");
+                        MainWindow.ChangePanel(Panels.REGISTER_ACADEMIC_SEMESTER_PANEL, Panels.ACADEMIC_SEMESTER_HANDLER_PANEL);
+                        dataConnectionHandler.CloseDataConnection();
+                    }
+                    else
+                        JOptionPane.showMessageDialog(this, "Semestre académico ya registrado");
+
+                    ClearFields();
+                }
+                else
+                    JOptionPane.showMessageDialog(this, "Campos inválidos, revise el número de créditos");
+            }
+            catch (Exception exception)
+            {
+                exception.printStackTrace();
+            }
+        }
+        else
+            JOptionPane.showMessageDialog(this, "Campos inválidos");
 	}
 
     @Override

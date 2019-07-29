@@ -5,6 +5,8 @@
 
 package View;
 
+import java.awt.event.ActionEvent;
+
 import View.MainWindow.Panels;
 
 /**
@@ -22,7 +24,7 @@ public class ProfessorHandlerPanel extends Panel
     @Override
     protected void InitPanel() 
     {
-        AddCenterComponentY(new Button(TypeButton.BUTTON_ICON_ADD_PROFESSOR, null), 200);
+        AddCenterComponentY(new Button(TypeButton.BUTTON_ICON_ADD_PROFESSOR, (ActionEvent evt) -> { MainWindow.ChangePanel(Panels.PROFESSOR_HANDLER_PANEL, Panels.REGISTER_PERSON_PANEL); }), 200);
         AddCenterComponentY(new Button(TypeButton.BUTTON_ICON_DELETE_PROFESSOR, null), 350);
         AddCenterComponentY(new Button(TypeButton.BUTTON_ICON_ADD_SUBJECT, null), 500);
         AddCenterComponentY(new Button(TypeButton.BUTTON_ICON_DELETE_SUBJECT, null), 650);
