@@ -7,6 +7,8 @@ package View;
 
 import java.awt.event.ActionEvent;
 
+import Model.DataConnectionHandler.DataConnectionHandler;
+import Model.DataConnectionHandler.PersonDataHandler;
 import View.LoginPanel.TypeUser;
 
 /**
@@ -31,10 +33,33 @@ public class StartPanel extends Panel
         AddComponent(imStudentButton, 700, 100);
         AddCenterComponentX(imAdminButton, 400);
         AddButton(TypeButton.BUTTON_EXIT, 775, 625, (ActionEvent evt) -> { ExitButtonAction(evt); });
+        EnableButtons();
     }
 
     private void ExitButtonAction(ActionEvent evt)
     {
         System.exit(0);
+    }
+
+    public void EnableButtons()
+    {
+        try
+        {
+            DataConnectionHandler dataConnectionHandler = new PersonDataHandler();
+            if (!dataConnectionHandler.ConnectWithData())
+            {
+                GetButtons().get(0).setEnabled(false);
+                GetButtons().get(1).setEnabled(false);
+            }
+            else
+            {
+                GetButtons().get(0).setEnabled(true);
+                GetButtons().get(1).setEnabled(true);   
+            }
+        }
+        catch (Exception exception)
+        {
+
+        }
     }
 }

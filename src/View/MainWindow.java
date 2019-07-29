@@ -161,7 +161,12 @@ public class MainWindow extends JFrame
     {
         try
         {
-            m_panels.get(i.ordinal()).setVisible(visibility);
+            Panel panel = m_panels.get(i.ordinal());
+
+            if (panel instanceof StartPanel)
+                ((StartPanel)panel).EnableButtons();
+
+            panel.setVisible(visibility);
         }
         catch (IndexOutOfBoundsException exception)
         {

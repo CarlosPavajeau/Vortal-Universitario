@@ -10,8 +10,13 @@ import java.awt.event.ActionEvent;
 import javax.swing.JOptionPane;
 
 import Model.Admin;
+import Model.Person;
+import Model.Professor;
+import Model.Student;
 import Model.DataConnectionHandler.DataConnectionHandler;
 import Model.DataConnectionHandler.LoginDataHandler;
+import Model.DataConnectionHandler.PersonDataHandler;
+
 import static View.MainWindow.Panels;;
 
 /**
@@ -76,14 +81,26 @@ public class LoginPanel extends FormPanel
                     }
                     case STUDENT:
                     {
-                        dataConnectionHandler = new LoginDataHandler("Student.dat");
-                        //MainWindow.ChangePanel(4, 1);
+                        dataConnectionHandler = new PersonDataHandler();
+                        dataConnectionHandler.ConnectWithData();
+                        Person person = new Student(user);
+                        person = (Student)dataConnectionHandler.Select(person);
+                        if (person != null)
+                            MainWindow.ChangePanel(Panels.LOGIN_PANEL, Panels.STUDENT_PANEL);
+                        else
+                            JOptionPane.showMessageDialog(this, "Datos incorrectos");
                         break;
                     }
                     case PROFESSOR:
                     {
-                        dataConnectionHandler = new LoginDataHandler("Professor.dat");
-                        //MainWindow.ChangePanel(4, 2);
+                        dataConnectionHandler = new PersonDataHandler();
+                        dataConnectionHandler.ConnectWithData();
+                        Person person = new Professor(user);
+                        person = (Professor)dataConnectionHandler.Select(person);
+                        if (person != null)
+                            MainWindow.ChangePanel(Panels.LOGIN_PANEL, Panels.PROFESSOR_PANEL);
+                        else
+                            JOptionPane.showMessageDialog(this, "Datos incorrectos");
                         break;
                     }
                     default:
