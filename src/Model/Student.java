@@ -80,6 +80,11 @@ public class Student extends Person implements SubjectHandler
         m_isMatriculateIn = isMatriculateIn;
     }
 
+    public Student(String code)
+    {
+        this(code, "", "", "", "", "0000/00/00", "Otro");
+    }
+
     /**
      * This method returns the general average that this {@code Student} has. 
      * @return the general average that this {@code Student} has.

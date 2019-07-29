@@ -70,7 +70,7 @@ public abstract class Entity implements Comparable<Entity>, Serializable
             return true;
         if (anObject == null)
             return false;
-        if (getClass() != anObject.getClass())
+        if (!(anObject instanceof Entity))
             return false;
         Entity other = (Entity) anObject;
         if (GetCode() == null) {

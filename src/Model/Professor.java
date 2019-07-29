@@ -68,6 +68,11 @@ public class Professor extends Person
         }
     }
 
+    public Professor(String code)
+    {
+        this(code, "", "", "", "", "0000/00/00", "Otro");
+    }
+
     /**
      * This method returns the academic loads that this {@code Professor} has. 
      * @return the academic loads that this {@code Professor} has.

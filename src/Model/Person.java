@@ -56,6 +56,11 @@ public abstract class Person extends Entity
         m_login = new Login(code, code);
     }
 
+    public Person(String code)
+    {
+        this(code, "", "", "", "", "0000/00/00", "Other");
+    }
+
     /**
      * This method returns the first name that this {@code Person} has. 
      * @return the first name that this {@code Person} has.
