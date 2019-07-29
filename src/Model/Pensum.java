@@ -52,7 +52,7 @@ public abstract class Pensum extends Entity implements SubjectHandler
         m_semesters = semesters;
         m_globalLessonLoad = globalLessonLoad;
         m_credits = 0;
-        m_subjects = subjects;
+        m_subjects = (subjects != null) ? subjects : new ArrayList<>();
     }
 
     /**
