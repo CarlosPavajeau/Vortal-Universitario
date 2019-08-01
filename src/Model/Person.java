@@ -213,9 +213,9 @@ public abstract class Person extends Entity
      */
     private Sex GenerateSex(String sex)
     {
-        if (Sex.MALE.GetSex().toUpperCase().equals(sex.toUpperCase()))
+        if (Sex.MALE.GetSex().equals(sex))
             return Sex.MALE;
-        else if (Sex.FEMALE.GetSex().toUpperCase().equals(sex.toUpperCase()))
+        else if (Sex.FEMALE.GetSex().equals(sex))
             return Sex.FEMALE;
         else
             return Sex.OTHER;
