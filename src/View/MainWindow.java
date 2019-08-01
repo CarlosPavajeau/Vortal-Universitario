@@ -18,6 +18,7 @@ import javax.swing.WindowConstants;
 import Model.DataConnectionHandler.DataConnectionHandler;
 import Model.DataConnectionHandler.LoginDataHandler;
 import View.LoginPanel.TypeUser;
+import View.RegisterPersonPanel.TypePerson;
 
 /**
  * 
@@ -43,12 +44,14 @@ public class MainWindow extends JFrame
         REGISTER_PENSUM_PANEL,
         REGISTER_PERSON_PANEL,
         REGISTER_SUBJECT_PANEL,
+        REGISTER_STUDENT_GROUP_PANEL,
         DATA_HANDLER_PANEL,
         STUDENT_HANDLER_PANEL,
         PROFESSOR_HANDLER_PANEL,
         SUBJECT_HANDLER_PANEL,
         PENSUM_HANDLER_PANEL,
-        ACADEMIC_SEMESTER_HANDLER_PANEL
+        ACADEMIC_SEMESTER_HANDLER_PANEL,
+        STUDENT_GROUP_HANDLER_PANEL
     }
 
     public MainWindow() 
@@ -81,6 +84,7 @@ public class MainWindow extends JFrame
         m_panels.add(new RegisterPensumPanel());
         m_panels.add(new RegisterPersonPanel());
         m_panels.add(new RegisterSubjectPanel());
+        m_panels.add(new RegisterStudentGroupPanel());
     }
 
     private void InitHandlingPanels()
@@ -91,6 +95,7 @@ public class MainWindow extends JFrame
         m_panels.add(new SubjectHandlerPanel());
         m_panels.add(new PensumHandlerPanel());
         m_panels.add(new AcademicSemesterHandlerPanel());
+        m_panels.add(new StudentGroupHandlerPanel());
     }
 
     private void InitPanels()
@@ -136,41 +141,63 @@ public class MainWindow extends JFrame
 
     public static void LoginAction(ActionEvent evt, TypeUser user)
     {
-        LoginPanel loginPanel = (LoginPanel)m_panels.get(4);
-        loginPanel.SetUser(user);
+        ((LoginPanel)GetPanel(Panels.LOGIN_PANEL)).SetUser(user);
         MainWindow.ChangePanel(Panels.START_PANEL, Panels.LOGIN_PANEL);   
     }
 
-    public static void ChangePanel(Panels i, Panels j)
+    public static void ChangePanel(Panels from, Panels to)
     {
-        MainWindow.HidePanel(i);
-        MainWindow.ShowPanel(j);
+        if (to == Panels.REGISTER_PERSON_PANEL)
+        {
+            RegisterPersonPanel personPanel = (RegisterPersonPanel)GetPanel(to);
+
+            if (from == Panels.PROFESSOR_HANDLER_PANEL)
+                personPanel.SetTypePerson(TypePerson.PROFESSOR);
+            else
+                personPanel.SetTypePerson(TypePerson.STUDENT);
+        }
+
+        MainWindow.HidePanel(from);
+        MainWindow.ShowPanel(to);
     }
 
-    private static void HidePanel(Panels i)
+    private static void HidePanel(Panels panel)
     {
-        MainWindow.ChangePanelVisibilitiy(i, false);
+        MainWindow.ChangePanelVisibilitiy(panel, false);
     }
 
-    private static void ShowPanel(Panels j)
+    private static void ShowPanel(Panels panel)
     {
-        MainWindow.ChangePanelVisibilitiy(j, true);
+        MainWindow.ChangePanelVisibilitiy(panel, true);
     }
 
-    private static void ChangePanelVisibilitiy(Panels i, boolean visibility)
+    private static void ChangePanelVisibilitiy(Panels panel, boolean visibility)
     {
         try
         {
-            Panel panel = m_panels.get(i.ordinal());
+            Panel aPanel = GetPanel(panel);
 
-            if (panel instanceof StartPanel)
-                ((StartPanel)panel).EnableButtons();
+            if (aPanel instanceof StartPanel)
+                ((StartPanel)aPanel).EnableButtons();
 
-            panel.setVisible(visibility);
+            aPanel.setVisible(visibility);
         }
         catch (IndexOutOfBoundsException exception)
         {
+            exception.printStackTrace();
+        }
+    }
 
+    private static Panel GetPanel(Panels panel)
+    {
+        try
+        {
+            return m_panels.get(panel.ordinal());
+        }
+        catch (IndexOutOfBoundsException exception)
+        {
+            exception.printStackTrace();
+            return null;
         }
     }
 }
