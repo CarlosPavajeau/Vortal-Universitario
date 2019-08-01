@@ -40,7 +40,7 @@ public class AdminPanel extends Panel
                             (ActionEvent evt) -> { MainWindow.ChangePanel(Panels.ADMIN_PANEL, Panels.PENSUM_HANDLER_PANEL); }), 
                             560);
         AddCenterComponentY(new Button(TypeButton.BUTTON_ICON_STUDENT_GROUP_HANDLER, 
-                            (ActionEvent evt) -> { MainWindow.ChangePanel(Panels.ADMIN_PANEL, Panels.DATA_HANDLER_PANEL); }), 
+                            (ActionEvent evt) -> { MainWindow.ChangePanel(Panels.ADMIN_PANEL, Panels.STUDENT_GROUP_HANDLER_PANEL); }), 
                             685);
         AddCenterComponentY(new Button(TypeButton.BUTTON_ICON_PROFESSOR_HANDLER, 
                             (ActionEvent evt) -> { MainWindow.ChangePanel(Panels.ADMIN_PANEL, Panels.PROFESSOR_HANDLER_PANEL); }), 
