@@ -41,6 +41,7 @@ public class RegisterNotesPanel extends FormPanel
     @Override
     protected void ReturnButtonAction() 
     {
+        super.ReturnButtonAction();
         MainWindow.ChangePanel(Panels.REGISTER_NOTES_PANEL, Panels.PROFESSOR_PANEL);
     }
 

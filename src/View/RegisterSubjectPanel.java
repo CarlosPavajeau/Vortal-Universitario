@@ -66,7 +66,7 @@ public class RegisterSubjectPanel extends FormPanel
                 else
                     JOptionPane.showMessageDialog(this, "Asignatura ya registrada");
 
-                ClearFields();
+                    ClearFormPanel();
 
             }
             catch (Exception exception)
@@ -81,6 +81,7 @@ public class RegisterSubjectPanel extends FormPanel
     @Override
     protected void ReturnButtonAction() 
     {
+        super.ReturnButtonAction();
         MainWindow.ChangePanel(Panels.REGISTER_SUBJECT_PANEL, Panels.SUBJECT_HANDLER_PANEL);
     }
 

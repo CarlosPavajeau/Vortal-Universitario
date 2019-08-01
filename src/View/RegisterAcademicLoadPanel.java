@@ -39,6 +39,7 @@ public class RegisterAcademicLoadPanel extends FormPanel
     @Override
     protected void ReturnButtonAction()
     {
+        super.ReturnButtonAction();
         MainWindow.ChangePanel(Panels.REGISTER_ACADEMIC_LOAD_PANEL, Panels.PROFESSOR_HANDLER_PANEL);   
     }
 

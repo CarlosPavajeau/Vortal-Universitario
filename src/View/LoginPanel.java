@@ -113,7 +113,7 @@ public class LoginPanel extends FormPanel
             }
             finally
             {
-                ClearFields();
+                ClearFormPanel();
             }
         }
         else
@@ -131,7 +131,7 @@ public class LoginPanel extends FormPanel
     @Override
     protected void ReturnButtonAction()
     {
-        ClearFields(); 
+        super.ClearFormPanel();
         MainWindow.ChangePanel(Panels.LOGIN_PANEL, Panels.START_PANEL);
     }
 }

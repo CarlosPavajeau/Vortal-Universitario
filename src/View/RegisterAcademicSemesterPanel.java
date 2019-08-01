@@ -65,7 +65,7 @@ public class RegisterAcademicSemesterPanel extends FormPanel
                     else
                         JOptionPane.showMessageDialog(this, "Semestre académico ya registrado");
 
-                    ClearFields();
+                    ClearFormPanel();
                 }
                 else
                     JOptionPane.showMessageDialog(this, "Campos inválidos, revise el número de créditos");
@@ -82,6 +82,7 @@ public class RegisterAcademicSemesterPanel extends FormPanel
     @Override
     protected void ReturnButtonAction() 
     {
+        super.ReturnButtonAction();
         MainWindow.ChangePanel(Panels.REGISTER_ACADEMIC_SEMESTER_PANEL, Panels.ACADEMIC_SEMESTER_HANDLER_PANEL);
     }
 

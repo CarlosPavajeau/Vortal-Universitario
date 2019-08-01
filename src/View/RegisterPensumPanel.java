@@ -78,7 +78,7 @@ public class RegisterPensumPanel extends FormPanel
                 else
                     JOptionPane.showMessageDialog(this, "PEMSUM ya registrado");
 
-                ClearFields();
+                ClearFormPanel();
             }
             catch (Exception exception)
             {
@@ -92,6 +92,7 @@ public class RegisterPensumPanel extends FormPanel
     @Override
     protected void ReturnButtonAction() 
     {
+        super.ReturnButtonAction();
         MainWindow.ChangePanel(Panels.REGISTER_PENSUM_PANEL, Panels.PENSUM_HANDLER_PANEL);
     }
 

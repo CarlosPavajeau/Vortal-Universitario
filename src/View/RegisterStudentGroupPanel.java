@@ -37,6 +37,7 @@ public class RegisterStudentGroupPanel extends FormPanel
     @Override
     protected void ReturnButtonAction() 
     {
+        super.ReturnButtonAction();
         MainWindow.ChangePanel(Panels.REGISTER_STUDENT_GROUP_PANEL, Panels.STUDENT_GROUP_HANDLER_PANEL);
     }
 

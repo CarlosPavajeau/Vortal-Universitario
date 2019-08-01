@@ -103,7 +103,7 @@ public class RegisterPersonPanel extends FormPanel
     @Override
     protected void ReturnButtonAction() 
     {
-        ClearFormPanel();
+        super.ReturnButtonAction();
         MainWindow.ChangePanel(Panels.REGISTER_PERSON_PANEL, Panels.ADMIN_PANEL);
     }
 

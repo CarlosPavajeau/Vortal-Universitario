@@ -51,7 +51,7 @@ public class RegisterAdminPanel extends FormPanel
                 Admin admin = new Admin(code, user, password);
                 dataConnectionHandler.Insert(admin);
                 dataConnectionHandler.CloseDataConnection();
-                ClearFields();
+                ClearFormPanel();
                 JOptionPane.showMessageDialog(this, "Registro de administrador exitoso!");
                 MainWindow.ChangePanel(Panels.REGISTER_ADMIN_PANEL, Panels.START_PANEL);
             } 
