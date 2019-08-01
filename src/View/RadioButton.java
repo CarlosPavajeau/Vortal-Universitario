@@ -38,9 +38,4 @@ public class RadioButton extends JRadioButton
         setBorder(null);
         setFocusPainted(false);
     }
-
-    public void Clear()
-    {
-        setSelected(false);
-    }
 }

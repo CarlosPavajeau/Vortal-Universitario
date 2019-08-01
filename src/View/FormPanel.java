@@ -127,7 +127,6 @@ public abstract class FormPanel extends Panel
 
     private void ClearRadioButtons()
     {
-        for (RadioButton radioButton : GetRadioButtons())
-            radioButton.Clear();
+        m_buttonGroup.clearSelection();
     }
 }
