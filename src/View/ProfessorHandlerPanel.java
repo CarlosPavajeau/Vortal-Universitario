@@ -26,7 +26,7 @@ public class ProfessorHandlerPanel extends Panel
     {
         AddCenterComponentY(new Button(TypeButton.BUTTON_ICON_ADD_PROFESSOR, (ActionEvent evt) -> { MainWindow.ChangePanel(Panels.PROFESSOR_HANDLER_PANEL, Panels.REGISTER_PERSON_PANEL); }), 200);
         AddCenterComponentY(new Button(TypeButton.BUTTON_ICON_DELETE_PROFESSOR, null), 350);
-        AddCenterComponentY(new Button(TypeButton.BUTTON_ICON_ADD_SUBJECT, null), 500);
+        AddCenterComponentY(new Button(TypeButton.BUTTON_ICON_ADD_SUBJECT, (ActionEvent evt) -> { MainWindow.ChangePanel(Panels.PROFESSOR_HANDLER_PANEL, Panels.REGISTER_ACADEMIC_LOAD_PANEL); }), 500);
         AddCenterComponentY(new Button(TypeButton.BUTTON_ICON_DELETE_SUBJECT, null), 650);
         AddReturnButton();
     }
