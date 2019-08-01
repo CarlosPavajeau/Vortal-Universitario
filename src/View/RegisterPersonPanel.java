@@ -22,10 +22,29 @@ import View.MainWindow.Panels;
 public class RegisterPersonPanel extends FormPanel
 {
     private static final long serialVersionUID = 4949141375919823301L;
+
+    public static enum TypePerson
+    {
+        STUDENT,
+        PROFESSOR
+    }
     
+    private TypePerson m_typePerson;
+
     public RegisterPersonPanel()
     {
         super("REGISTRO DE PERSONA");
+        m_typePerson = TypePerson.STUDENT;
+    }
+
+    public TypePerson GetTypePerson()
+    {
+        return m_typePerson;
+    }
+
+    public void SetTypePerson(TypePerson typePerson)
+    {
+        m_typePerson = typePerson;
     }
 
     @Override
@@ -37,15 +56,16 @@ public class RegisterPersonPanel extends FormPanel
         AddField(new TextField(300, 50, "Digite su primer apellido", TextField.OBLIGATORY_FIELD + TextField.ALPHA_FIELD), "", 50, 315);
         AddField(new TextField(300, 50, "Digite su segundo apellido", TextField.ALPHA_FIELD), "", 400, 315);
         AddField(new TextField(200, 50, "aaaa/mm/dd", TextField.OBLIGATORY_FIELD), "Fecha de nacimiento: ", 50, 415);
-        AddField(new TextField(200, 50, "Digite el sexo", TextField.OBLIGATORY_FIELD + TextField.ALPHA_FIELD), "Sexo: ", 400, 415);
-        AddField(new TextField(200, 50, "Digite el tipo de persona (Estudiante/Profesor)", TextField.OBLIGATORY_FIELD + TextField.ALPHA_FIELD), "Tipo: ", 50, 515);
+        AddRadioButton("Masculino", 400, 415);
+        AddRadioButton("Femenino", 520, 415);
+        AddRadioButton("Otro", 640, 415);
         AddRegisterButton(TypeButton.BUTTON_REGISTER);
     }
 
     @Override
     protected void RegisterButtonAction(ActionEvent evt)
     {
-        if (ValidateFields())
+        if (ValidateFields() && ValidateRadioButtons())
         {
             try 
             {
@@ -54,33 +74,26 @@ public class RegisterPersonPanel extends FormPanel
                     dataConnectionHandler.CreateDataConnection();
                 dataConnectionHandler.ConnectWithData();
 
-                String code, firstName, secondName, lastName, secondLastName, sex, dateOfBorn;
-
-                code = GetContentField(0);
-                firstName = GetContentField(1);
-                secondName = GetContentField(2);
-                lastName = GetContentField(3);
-                secondLastName = GetContentField(4);
-                dateOfBorn = GetContentField(5);
-                sex = GetContentField(6);
-
-                Person e = (GetContentField(7).equals("Profesor")) ? 
-                            new Professor(code, firstName, secondName, lastName, secondLastName, dateOfBorn, sex) : 
-                            new Student(code, firstName, secondName, lastName, secondLastName, dateOfBorn, sex);
-
+                Person e = (GetTypePerson() == TypePerson.PROFESSOR) ? 
+                            new Professor(GetCode(), GetFirstName(), GetSecondName(), GetLastName(), 
+                                          GetSecondLastName(), GetDateOfBorn(), GetSex()) : 
+                            new Student(GetCode(), GetFirstName(), GetSecondName(), GetLastName(), 
+                                        GetSecondLastName(), GetDateOfBorn(), GetSex());
+                
                 if (dataConnectionHandler.Insert(e))
                 {
                     JOptionPane.showMessageDialog(this, "Registro de persona exitoso");
                     MainWindow.ChangePanel(Panels.REGISTER_PERSON_PANEL, Panels.ADMIN_PANEL);
                     dataConnectionHandler.CloseDataConnection();
+                    ClearFormPanel();
                 }
                 else
                     JOptionPane.showMessageDialog(this, "Estudiante/Professor ya registrado");
-                    
-                ClearFields();
+
             } catch (Exception exception) 
             {
                 exception.printStackTrace();
+                ClearFormPanel();
             }
         }
         else
@@ -90,6 +103,7 @@ public class RegisterPersonPanel extends FormPanel
     @Override
     protected void ReturnButtonAction() 
     {
+        ClearFormPanel();
         MainWindow.ChangePanel(Panels.REGISTER_PERSON_PANEL, Panels.ADMIN_PANEL);
     }
 
@@ -97,5 +111,47 @@ public class RegisterPersonPanel extends FormPanel
     protected void InitPanel() 
     {
         AddRegisterButton(TypeButton.BUTTON_REGISTER);
+    }
+
+    private String GetCode()
+    {
+        return GetContentField(0);
+    }
+
+    private String GetFirstName()
+    {
+        return GetContentField(1);
+    }
+
+    private String GetSecondName()
+    {
+        return GetContentField(2);
+    }
+
+    private String GetLastName()
+    {
+        return GetContentField(3);
+    }
+
+    private String GetSecondLastName()
+    {
+        return GetContentField(4);
+    }
+
+    private String GetDateOfBorn()
+    {
+        return GetContentField(5);
+    }
+
+    private String GetSex()
+    {
+        if (GetRadioButtons().get(0).isSelected())
+            return "Masculino";
+        else if (GetRadioButtons().get(1).isSelected())
+            return "Femenino";
+        else if (GetRadioButtons().get(2).isSelected())
+            return "Otro";
+        else 
+            return null;
     }
 }
