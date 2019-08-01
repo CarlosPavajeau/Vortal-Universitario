@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.ButtonGroup;
 import javax.swing.JLabel;
 
 /**
@@ -20,7 +21,8 @@ public abstract class FormPanel extends Panel
     private static final long serialVersionUID = -8968908404958389317L;
     
     private List<Field> m_fields;
-    private List<JLabel> m_labels;
+    private List<RadioButton> m_radioButtons;
+    private ButtonGroup m_buttonGroup;
 
     public FormPanel(String title)
     {
@@ -31,7 +33,8 @@ public abstract class FormPanel extends Panel
     private void initComponents()
     {
         m_fields = new ArrayList<>();
-        m_labels = new ArrayList<>();
+        m_radioButtons = new ArrayList<>(0);
+        m_buttonGroup = new ButtonGroup();
         InitFields();
         if (!(this instanceof RegisterAdminPanel))
             AddReturnButton();
@@ -42,15 +45,27 @@ public abstract class FormPanel extends Panel
         return m_fields;
     }
 
+    public List<RadioButton> GetRadioButtons()
+    {
+        return m_radioButtons;
+    }
+
     public void AddField(Field textField, String text, int x, int y)
     {
         JLabel ltext = new JLabel(text);
         ltext.setFont(new Font("Microsoft Sans Serif", 0, 16));
         ltext.setSize(250, 20);
-        m_labels.add(ltext);
         m_fields.add(textField);
         AddComponent(ltext, x, y);
         AddComponent(textField, x, y + ltext.getHeight());
+    }
+
+    public void AddRadioButton(String text, int x, int y)
+    {
+        RadioButton radioButton = new RadioButton(text);
+        m_radioButtons.add(radioButton);
+        m_buttonGroup.add(radioButton);
+        AddComponent(radioButton, x, y);
     }
 
     public boolean ValidateFields()
@@ -59,6 +74,14 @@ public abstract class FormPanel extends Panel
             if (!textField.IsValidField())
                 return false;
         return true;
+    }
+
+    public boolean ValidateRadioButtons()
+    {
+        for (RadioButton radioButton : GetRadioButtons())
+            if (radioButton.isSelected())
+                return true;
+        return false;
     }
 
     protected String GetContentField(int i)
@@ -81,12 +104,24 @@ public abstract class FormPanel extends Panel
         AddButton(typeButton, whereX, 600, (ActionEvent evt) -> { RegisterButtonAction(evt); });
     }
 
-    protected void ClearFields()
+    protected void ClearFormPanel()
+    {
+        ClearFields();
+        ClearRadioButtons();
+    }
+
+    protected abstract void InitFields();
+    protected abstract void RegisterButtonAction(ActionEvent evt);
+
+    private void ClearFields()
     {
         for (Field field : GetFields())
             field.Clear();
     }
 
-    protected abstract void InitFields();
-    protected abstract void RegisterButtonAction(ActionEvent evt);
+    private void ClearRadioButtons()
+    {
+        for (RadioButton radioButton : GetRadioButtons())
+            radioButton.Clear();
+    }
 }
