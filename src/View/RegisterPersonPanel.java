@@ -104,7 +104,10 @@ public class RegisterPersonPanel extends FormPanel
     protected void ReturnButtonAction() 
     {
         super.ReturnButtonAction();
-        MainWindow.ChangePanel(Panels.REGISTER_PERSON_PANEL, Panels.ADMIN_PANEL);
+        if (GetTypePerson() == TypePerson.PROFESSOR)
+            MainWindow.ChangePanel(Panels.REGISTER_PERSON_PANEL, Panels.PROFESSOR_HANDLER_PANEL);
+        else
+            MainWindow.ChangePanel(Panels.REGISTER_PERSON_PANEL, Panels.STUDENT_HANDLER_PANEL);
     }
 
     @Override
