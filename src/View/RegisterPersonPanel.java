@@ -56,9 +56,7 @@ public class RegisterPersonPanel extends FormPanel
         AddField(new TextField(300, 50, "Digite su primer apellido", TextField.OBLIGATORY_FIELD + TextField.ALPHA_FIELD), "", 50, 315);
         AddField(new TextField(300, 50, "Digite su segundo apellido", TextField.ALPHA_FIELD), "", 400, 315);
         AddField(new TextField(200, 50, "aaaa/mm/dd", TextField.OBLIGATORY_FIELD), "Fecha de nacimiento: ", 50, 415);
-        AddRadioButton("Masculino", 400, 415);
-        AddRadioButton("Femenino", 520, 415);
-        AddRadioButton("Otro", 640, 415);
+        AddRadioButtons("Sexo: ", 400, 415, "Masculino", "Femenino", "Otro");
         AddRegisterButton(TypeButton.BUTTON_REGISTER);
     }
 
