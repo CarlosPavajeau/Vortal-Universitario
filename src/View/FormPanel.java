@@ -54,15 +54,30 @@ public abstract class FormPanel extends Panel
     {
         JLabel ltext = new JLabel(text);
         ltext.setFont(new Font("Microsoft Sans Serif", 0, 16));
-        ltext.setSize(250, 20);
+        ltext.setSize(text.length() * 16, 20);
         m_fields.add(textField);
         AddComponent(ltext, x, y);
         AddComponent(textField, x, y + ltext.getHeight());
     }
 
-    public void AddRadioButton(String text, int x, int y)
+    public void AddRadioButtons(String text, int x, int y, String... ops)
     {
-        RadioButton radioButton = new RadioButton(text);
+        JLabel ltext = new JLabel(text);
+        ltext.setFont(new Font("Microsoft Sans Serif", 0, 16));
+        ltext.setSize(text.length() * 16, 50);
+        AddComponent(ltext, x, y);
+
+        int auxX = x + ltext.getWidth();
+        for (String op : ops)
+        {
+            AddRadioButton(op, auxX, y);
+            auxX += RadioButton.RADIO_BUTTON_WIDTH;
+        }
+    }
+
+    public void AddRadioButton(String textButton, int x, int y)
+    {
+        RadioButton radioButton = new RadioButton(textButton);
         m_radioButtons.add(radioButton);
         m_buttonGroup.add(radioButton);
         AddComponent(radioButton, x, y);
