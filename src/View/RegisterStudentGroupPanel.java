@@ -26,6 +26,8 @@ public class RegisterStudentGroupPanel extends FormPanel
     protected void InitFields() 
     {
         AddField(new TextField(300, 50, "Digite el número del grupo", TextField.OBLIGATORY_FIELD + TextField.NUMERIC_FIELD), "Número del grupo: ", 50, 150);
+        AddField(new TextField(300, 50, "Digite el límite de estudianes", TextField.OBLIGATORY_FIELD + TextField.NUMERIC_FIELD), "Límite de estudiantes:", 400, 150);
+        AddRadioButtons("Tipo: ", 50, 300, "Mañana", "Tarde", "Noche");
     }
 
     @Override
@@ -44,7 +46,7 @@ public class RegisterStudentGroupPanel extends FormPanel
     @Override
     protected void InitPanel() 
     {
-		
+        AddRegisterButton(TypeButton.BUTTON_REGISTER);	
 	}
     
 }
