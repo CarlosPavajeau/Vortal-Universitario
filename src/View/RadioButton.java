@@ -24,6 +24,9 @@ public class RadioButton extends JRadioButton
     private static final String ROLLOVER_ICON_RADIO_BUTTON = "/View/Assets/Icons/15x15/Icon_RadioButtonMouseOn.png";
     private static final String SELECT_ICON_RADIO_BUTTON = "/View/Assets/Icons/15x15/Icon_RadioButtonSelect.png";
 
+    public static final byte RADIO_BUTTON_WIDTH = 120;
+    public static final byte RADIO_BUTTON_HEIGHT = 50;
+
     public RadioButton(String text)
     {
         super(text);
@@ -33,7 +36,7 @@ public class RadioButton extends JRadioButton
         setFont(new Font("Microsoft Sans Serif", 0, 16));
         setBackground(Color.WHITE);
         setCursor(new Cursor(Cursor.HAND_CURSOR));
-        setSize(new Dimension(120, 50));
+        setSize(new Dimension(RadioButton.RADIO_BUTTON_WIDTH, RadioButton.RADIO_BUTTON_HEIGHT));
         setBorderPainted(false);
         setBorder(null);
         setFocusPainted(false);
