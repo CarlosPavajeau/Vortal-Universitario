@@ -40,13 +40,13 @@ public class RegisterPensumPanel extends FormPanel
                 TextField.OBLIGATORY_FIELD + TextField.NUMERIC_FIELD), "Carga lectiva global: ", 50, 450);
         AddField(new TextField(300, 50, "Digite el título", TextField.OBLIGATORY_FIELD + TextField.ALPHA_FIELD),
                 "Título (Requerido/A otorgar): ", 400, 450);
-        AddField(new TextField(300, 50, "Digite el tipo(Pregrado/Posgrado)", TextField.OBLIGATORY_FIELD + TextField.ALPHA_FIELD), "Tipo: ", 50, 550);
+        AddRadioButtons("Tipo: ", 50, 550, "Pregrado", "Posgrado");
     }
 
     @Override
     protected void RegisterButtonAction(ActionEvent evt) 
     {
-        if (ValidateFields())
+        if (ValidateFields() && ValidateRadioButtons())
         {
             try
             {
@@ -58,15 +58,15 @@ public class RegisterPensumPanel extends FormPanel
                 String code, name, description, campus, title;
                 int semesters, globalLessonLoad;
 
-                code = GetContentField(0);
-                name = GetContentField(1);
-                description = (GetContentField(2).equals("Descripción (Opcional)")) ? "" : GetContentField(2);
-                campus = GetContentField(3);
-                semesters = Integer.parseInt(GetContentField(4));
-                globalLessonLoad = Integer.parseInt(GetContentField(5));
-                title = GetContentField(6);
+                code = GetCode();
+                name = GetName();
+                description = GetDescription();
+                campus = GetCampus();
+                semesters = GetSemesters();
+                globalLessonLoad = GetGlobalLessonLoad();
+                title = GetTitle();
 
-                Pensum pensum = (GetContentField(7).equals("Pregrado")) ? new UnderGraduate(code, name, description, campus, semesters, globalLessonLoad, null, title) : 
+                Pensum pensum = (GetRadioButtons().get(0).isSelected()) ? new UnderGraduate(code, name, description, campus, semesters, globalLessonLoad, null, title) : 
                                                                           new PostGraduate(code, name, description, campus, semesters, globalLessonLoad, null, title);
 
                 if (dataConnectionHandler.Insert(pensum))
@@ -100,5 +100,40 @@ public class RegisterPensumPanel extends FormPanel
     protected void InitPanel() 
     {
         AddRegisterButton(TypeButton.BUTTON_REGISTER);
+    }
+
+    private String GetCode()
+    {
+        return GetContentField(0);
+    }
+
+    private String GetName()
+    {
+        return GetContentField(1);
+    }
+
+    private String GetDescription()
+    {
+        return GetFields().get(2).IsValidField() ? GetContentField(2) : "";
+    }
+
+    private String GetCampus()
+    {
+        return GetContentField(3);
+    }
+
+    private int GetSemesters()
+    {
+        return Integer.valueOf(GetContentField(4));
+    }
+
+    private int GetGlobalLessonLoad()
+    {
+        return Integer.valueOf(GetContentField(5));
+    }
+
+    private String GetTitle()
+    {
+        return GetContentField(6);
     }
 }
