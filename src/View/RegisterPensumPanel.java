@@ -6,6 +6,7 @@
 package View;
 
 import java.awt.event.ActionEvent;
+import java.io.IOException;
 
 import javax.swing.JOptionPane;
 
@@ -50,11 +51,6 @@ public class RegisterPensumPanel extends FormPanel
         {
             try
             {
-                DataConnectionHandler dataConnectionHandler = new PensumDataHandler();
-                if (!dataConnectionHandler.ConnectWithData())
-                    dataConnectionHandler.CreateDataConnection();
-                dataConnectionHandler.ConnectWithData();
-
                 String code, name, description, campus, title;
                 int semesters, globalLessonLoad;
 
@@ -69,20 +65,20 @@ public class RegisterPensumPanel extends FormPanel
                 Pensum pensum = (GetRadioButtons().get(0).isSelected()) ? new UnderGraduate(code, name, description, campus, semesters, globalLessonLoad, null, title) : 
                                                                           new PostGraduate(code, name, description, campus, semesters, globalLessonLoad, null, title);
 
-                if (dataConnectionHandler.Insert(pensum))
+                DataConnectionHandler dataConnectionHandler = new PensumDataHandler();
+
+                if (SaveData(pensum, dataConnectionHandler))
                 {
                     JOptionPane.showMessageDialog(this, "Registro de PEMSUM exitoso!");
                     MainWindow.ChangePanel(Panels.REGISTER_PENSUM_PANEL, Panels.PENSUM_HANDLER_PANEL);
-                    dataConnectionHandler.CloseDataConnection();
+                    ClearFormPanel();
                 }
                 else
-                    JOptionPane.showMessageDialog(this, "PEMSUM ya registrado");
-
-                ClearFormPanel();
+                    JOptionPane.showMessageDialog(this, "PEMSUM ya registrado. Digite otro código.");
             }
-            catch (Exception exception)
+            catch (IOException exception)
             {
-
+               
             }
         }
         else

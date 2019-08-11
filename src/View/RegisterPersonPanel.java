@@ -55,7 +55,7 @@ public class RegisterPersonPanel extends FormPanel
         AddField(new TextField(300, 50, "Digite su segundo nombre", TextField.ALPHA_FIELD), "", 400, 250);
         AddField(new TextField(300, 50, "Digite su primer apellido", TextField.OBLIGATORY_FIELD + TextField.ALPHA_FIELD), "", 50, 315);
         AddField(new TextField(300, 50, "Digite su segundo apellido", TextField.ALPHA_FIELD), "", 400, 315);
-        AddField(new TextField(200, 50, "aaaa/mm/dd", TextField.OBLIGATORY_FIELD), "Fecha de nacimiento: ", 50, 415);
+        AddField(new TextField(200, 50, "aaaa/mm/dd", TextField.OBLIGATORY_FIELD + TextField.DATE_FIELD), "Fecha de nacimiento: ", 50, 415);
         AddRadioButtons("Sexo: ", 400, 415, "Masculino", "Femenino", "Otro");
         AddRegisterButton(TypeButton.BUTTON_REGISTER);
     }
@@ -67,22 +67,18 @@ public class RegisterPersonPanel extends FormPanel
         {
             try 
             {
-                DataConnectionHandler dataConnectionHandler = new PersonDataHandler();
-                if (!dataConnectionHandler.ConnectWithData())
-                    dataConnectionHandler.CreateDataConnection();
-                dataConnectionHandler.ConnectWithData();
-
-                Person e = (GetTypePerson() == TypePerson.PROFESSOR) ? 
+                Person person = (GetTypePerson() == TypePerson.PROFESSOR) ? 
                             new Professor(GetCode(), GetFirstName(), GetSecondName(), GetLastName(), 
                                           GetSecondLastName(), GetDateOfBorn(), GetSex()) : 
                             new Student(GetCode(), GetFirstName(), GetSecondName(), GetLastName(), 
                                         GetSecondLastName(), GetDateOfBorn(), GetSex());
-                
-                if (dataConnectionHandler.Insert(e))
+
+                DataConnectionHandler dataConnectionHandler = new PersonDataHandler();
+                 
+                if (SaveData(person, dataConnectionHandler))
                 {
                     JOptionPane.showMessageDialog(this, "Registro de persona exitoso");
                     MainWindow.ChangePanel(Panels.REGISTER_PERSON_PANEL, Panels.ADMIN_PANEL);
-                    dataConnectionHandler.CloseDataConnection();
                     ClearFormPanel();
                 }
                 else

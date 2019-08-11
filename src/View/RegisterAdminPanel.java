@@ -41,16 +41,15 @@ public class RegisterAdminPanel extends FormPanel
         {
             try
             {
-                DataConnectionHandler dataConnectionHandler = new LoginDataHandler("Admin.dat");
-                dataConnectionHandler.CreateDataConnection();
-
                 String code, user, password;
-                code = GetContentField(0);
-                user = GetContentField(1);
-                password = GetContentField(2);
+                code = GetCode();
+                user = GetUser();
+                password = GetPassword();
+
                 Admin admin = new Admin(code, user, password);
-                dataConnectionHandler.Insert(admin);
-                dataConnectionHandler.CloseDataConnection();
+                DataConnectionHandler dataConnectionHandler = new LoginDataHandler("Admin.dat");
+                
+                SaveData(admin, dataConnectionHandler);
                 ClearFormPanel();
                 JOptionPane.showMessageDialog(this, "Registro de administrador exitoso!");
                 MainWindow.ChangePanel(Panels.REGISTER_ADMIN_PANEL, Panels.START_PANEL);
@@ -74,5 +73,20 @@ public class RegisterAdminPanel extends FormPanel
     {
         AddRegisterButton(TypeButton.BUTTON_REGISTER);
         AddButton(TypeButton.BUTTON_EXIT, 50, 600, (ActionEvent evt) -> { Exit(evt); });
+    }
+
+    private String GetCode()
+    {
+        return GetContentField(0);
+    }
+
+    private String GetUser()
+    {
+        return GetContentField(1);
+    }
+
+    private String GetPassword()
+    {
+        return GetContentField(2);
     }
 }
