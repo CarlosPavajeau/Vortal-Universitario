@@ -20,9 +20,11 @@ public abstract class Field extends JPasswordField
 {
     private static final long serialVersionUID = -6658030860003762208L;
 
-    public static final int OBLIGATORY_FIELD = 1;
-    public static final int NUMERIC_FIELD = 2;
-    public static final int ALPHA_FIELD = 4;
+    public static final int OBLIGATORY_FIELD    = 0x00000001;
+    public static final int NUMERIC_FIELD       = 0x00000002;
+    public static final int ALPHA_FIELD         = 0x00000004;
+    public static final int DATE_FIELD          = 0x00000008;
+    public static final int FLOAT_FIELD         = 0x00000010;
     
     private final String m_defaultText;
     private final int m_typeField;
@@ -64,14 +66,22 @@ public abstract class Field extends JPasswordField
         {
             case TextField.OBLIGATORY_FIELD: 
                 return ValidateObligatoryField();
-            case TextField.ALPHA_FIELD: 
-                return ValidateAlphaField();
+            case TextField.ALPHA_FIELD:
+                return ((ValidateObligatoryField()) ? ValidateAlphaField() : true); 
             case TextField.NUMERIC_FIELD: 
-                return ValidateNumericField();
+                return ((ValidateObligatoryField()) ? ValidateNumericField() : true);
+            case TextField.DATE_FIELD:
+                return ((ValidateObligatoryField()) ? ValidateDateField() : true);
+            case TextField.FLOAT_FIELD:
+                return ((ValidateObligatoryField()) ? ValidateFloatField() : true);
             case TextField.ALPHA_FIELD + TextField.OBLIGATORY_FIELD: 
                 return ValidateObligatoryField() && ValidateAlphaField();
             case TextField.NUMERIC_FIELD + TextField.OBLIGATORY_FIELD: 
                 return ValidateObligatoryField() && ValidateNumericField();
+            case TextField.DATE_FIELD + TextField.OBLIGATORY_FIELD:
+                return ValidateObligatoryField() && ValidateDateField();
+            case TextField.FLOAT_FIELD + TextField.OBLIGATORY_FIELD:
+                return ValidateObligatoryField() && ValidateFloatField();
             default:
                 return true;
         }
@@ -107,6 +117,20 @@ public abstract class Field extends JPasswordField
     private boolean ValidateNumericField()
     {
         return String.valueOf(getPassword()).matches("(\\d+)");
+    }
+
+    /**
+     * 
+     * @return
+     */
+    private boolean ValidateDateField()
+    {
+        return String.valueOf(getPassword()).matches("\\d{4}/\\d{2}/\\d{2}");
+    }
+
+    private boolean ValidateFloatField()
+    {
+        return String.valueOf(getPassword()).matches("(\\d+)\\.(\\d+)");
     }
 
     /**
