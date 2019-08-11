@@ -44,7 +44,6 @@ public class MainWindow extends JFrame
         REGISTER_PENSUM_PANEL,
         REGISTER_PERSON_PANEL,
         REGISTER_SUBJECT_PANEL,
-        REGISTER_STUDENT_GROUP_PANEL,
         DATA_HANDLER_PANEL,
         STUDENT_HANDLER_PANEL,
         PROFESSOR_HANDLER_PANEL,
@@ -84,7 +83,6 @@ public class MainWindow extends JFrame
         m_panels.add(new RegisterPensumPanel());
         m_panels.add(new RegisterPersonPanel());
         m_panels.add(new RegisterSubjectPanel());
-        m_panels.add(new RegisterStudentGroupPanel());
     }
 
     private void InitHandlingPanels()

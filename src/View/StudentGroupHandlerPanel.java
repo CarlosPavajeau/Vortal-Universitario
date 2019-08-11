@@ -25,9 +25,6 @@ public class StudentGroupHandlerPanel extends Panel
     @Override
     protected void InitPanel() 
     {
-        AddCenterComponentY(new Button(TypeButton.BUTTON_ICON_ADD_STUDENT_GROUP, 
-                            (ActionEvent evt) -> { MainWindow.ChangePanel(Panels.STUDENT_GROUP_HANDLER_PANEL, Panels.REGISTER_STUDENT_GROUP_PANEL); }), 
-                            350);
         AddCenterComponentY(new Button(TypeButton.BUTTON_ICON_DELETE_STUDENTGROUP, null), 500);
         AddReturnButton();
     }
