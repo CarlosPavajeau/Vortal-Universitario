@@ -7,11 +7,15 @@ package View;
 
 import java.awt.Font;
 import java.awt.event.ActionEvent;
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JLabel;
+
+import Model.DataConnectionHandler.DataConnectionHandler;
 
 /**
  * 
@@ -64,7 +68,7 @@ public abstract class FormPanel extends Panel
     {
         JLabel ltext = new JLabel(text);
         ltext.setFont(new Font("Microsoft Sans Serif", 0, 16));
-        ltext.setSize(text.length() * 16, 50);
+        ltext.setSize(text.length() * 10, 50);
         AddComponent(ltext, x, y);
 
         int auxX = x + ltext.getWidth();
@@ -99,9 +103,42 @@ public abstract class FormPanel extends Panel
         return false;
     }
 
+    protected boolean SaveData(Object anObject, DataConnectionHandler dataConnectionHandler)
+    {
+        boolean result = false;
+
+        try 
+        {
+            if (!dataConnectionHandler.ConnectWithData()) 
+            {
+                dataConnectionHandler.CreateDataConnection();
+                dataConnectionHandler.ConnectWithData();
+            }
+
+            result = dataConnectionHandler.Insert(anObject);
+            dataConnectionHandler.CloseDataConnection();
+
+        } catch (ClassNotFoundException | SQLException | IOException e) 
+        {
+            System.err.println("Error: Ocurrio un error al establecer una conexion con los datos.");
+        }
+
+        return result;
+    }
+
     protected String GetContentField(int i)
     {
         return String.valueOf(GetFields().get(i).getPassword());
+    }
+
+    protected int GetIntContentField(int i)
+    {
+        return Integer.parseInt(GetContentField(i));
+    }
+
+    protected float GetFloatContentField(int i)
+    {
+        return Float.parseFloat(GetContentField(i));
     }
 
     protected void AddCenterField(Field textField, String text, int y)
