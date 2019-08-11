@@ -41,26 +41,21 @@ public class RegisterAcademicSemesterPanel extends FormPanel
         {
             try
             {
-                DataConnectionHandler dataConnectionHandler = new AcademicSemesterDataHandler();
-                if (!dataConnectionHandler.ConnectWithData())
-                    dataConnectionHandler.CreateDataConnection();
-                dataConnectionHandler.ConnectWithData();
-
                 int semester, minCredits, maxCredits;
 
-                semester = Integer.valueOf(GetContentField(0));
-                minCredits = Integer.valueOf(GetContentField(1));
-                maxCredits = Integer.valueOf(GetContentField(2));
+                semester = GetSemester();
+                minCredits = GetMinCredits();
+                maxCredits = GetMaxCredits();
 
-                if (maxCredits >= minCredits)
+                if ((maxCredits > 0 && minCredits > 0) || maxCredits >= minCredits)
                 {
                     AcademicSemester academicSemester = new AcademicSemester(semester, maxCredits, minCredits);
+                    DataConnectionHandler dataConnectionHandler = new AcademicSemesterDataHandler();
 
-                    if (dataConnectionHandler.Insert(academicSemester))
+                    if (SaveData(academicSemester, dataConnectionHandler))
                     {
                         JOptionPane.showMessageDialog(this, "Semestre académico registrado con éxito!");
                         MainWindow.ChangePanel(Panels.REGISTER_ACADEMIC_SEMESTER_PANEL, Panels.ACADEMIC_SEMESTER_HANDLER_PANEL);
-                        dataConnectionHandler.CloseDataConnection();
                     }
                     else
                         JOptionPane.showMessageDialog(this, "Semestre académico ya registrado");
@@ -90,5 +85,20 @@ public class RegisterAcademicSemesterPanel extends FormPanel
     protected void InitPanel() 
     {
         AddRegisterButton(TypeButton.BUTTON_REGISTER);
+    }
+
+    private int GetSemester() 
+    {
+        return Integer.valueOf(GetContentField(0));
+    }
+
+    private int GetMinCredits()
+    {
+        return Integer.valueOf(GetContentField(1));
+    }
+
+    private int GetMaxCredits() 
+    {
+        return Integer.valueOf(GetContentField(2));    
     }
 }
