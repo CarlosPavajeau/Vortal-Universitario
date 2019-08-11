@@ -41,6 +41,15 @@ public class Subject extends Entity
     }
 
     /**
+     * 
+     * @param code
+     */
+    public Subject(String code)
+    {
+        this(code, "", 0, 0);
+    }
+
+    /**
      * Initialize a new {@code Subject} empty.
      */
     public Subject()

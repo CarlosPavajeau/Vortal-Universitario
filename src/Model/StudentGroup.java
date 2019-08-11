@@ -32,7 +32,7 @@ public class StudentGroup extends Entity
      * @param limitOfStudents will be the limit of students that will have this {@code StudentGroup}.
      * @param typeGroup will be the type of group that will have this {@code StudentGroup}.
      */
-    public StudentGroup(String code, int groupNumber, int limitOfStudents, String typeGroup)
+    public StudentGroup(String code, int groupNumber, int limitOfStudents, TypeGroup typeGroup)
     {
         this(code, groupNumber, limitOfStudents, typeGroup, new ArrayList<Student>());
     }
@@ -45,13 +45,13 @@ public class StudentGroup extends Entity
      * @param typeGroup will be the type of group that will have this {@code StudentGroup}.
      * @param students it will be the students who will have this {@code StudentGroup}.
      */
-    public StudentGroup(String code, int groupNumber, int limitOfStudents, String typeGroup, ArrayList<Student> students)
+    public StudentGroup(String code, int groupNumber, int limitOfStudents, TypeGroup typeGroup, ArrayList<Student> students)
     {
         super(code);
         m_groupNumber = groupNumber;
         m_limitOfStudents = limitOfStudents;
         m_students = students;
-        SetType(typeGroup);
+        m_type = typeGroup;
     }
 
     /**
@@ -61,7 +61,7 @@ public class StudentGroup extends Entity
      */
     public StudentGroup(String code)
     {
-        this(code, 0, 0, "NONE");
+        this(code, 0, 0, TypeGroup.NONE);
     }
 
     /**
@@ -104,14 +104,9 @@ public class StudentGroup extends Entity
      * This method sets the type of group for this {@code StudentGroup}.
      * @param type the type of group to process.
      */
-    public final void SetType(String type)
+    public final void SetType(TypeGroup type)
     {
-        if (TypeGroup.MORNING.GetType().toUpperCase().equals(type.toUpperCase()))
-            m_type = TypeGroup.MORNING;
-        else if (TypeGroup.AFTERNOON.GetType().toUpperCase().equals(type.toUpperCase()))
-            m_type = TypeGroup.AFTERNOON;
-        else
-            m_type = TypeGroup.EVENING;
+        m_type = type;
     }
 
     /**
@@ -165,4 +160,36 @@ public class StudentGroup extends Entity
     {
         return m_students.size() >= GetLimitOfStudents();
     }
+
+    @Override
+    public int hashCode() 
+    {
+        final int prime = 31;
+        int result = super.hashCode();
+        result = prime * result + m_groupNumber;
+        result = prime * result + m_limitOfStudents;
+        result = prime * result + ((m_type == null) ? 0 : m_type.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) 
+    {
+        if (this == obj)
+            return true;
+        if (!super.equals(obj))
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        StudentGroup other = (StudentGroup) obj;
+        if (m_groupNumber != other.m_groupNumber)
+            return false;
+        if (m_limitOfStudents != other.m_limitOfStudents)
+            return false;
+        if (m_type != other.m_type)
+            return false;
+        return true;
+    }
+
+    
 }

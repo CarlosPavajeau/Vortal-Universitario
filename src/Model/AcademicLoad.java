@@ -7,6 +7,7 @@ package Model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * This is the class {@code AcademicLoad}, it represents an academic load. Its 
@@ -20,7 +21,7 @@ public class AcademicLoad implements Comparable<AcademicLoad>, Serializable
 {
     private static final long serialVersionUID = 8554588546116642636L;
     
-    private ArrayList<StudentGroup> m_groups;
+    private List<StudentGroup> m_groups;
     private final Subject m_subject;
 
     /**
@@ -30,13 +31,19 @@ public class AcademicLoad implements Comparable<AcademicLoad>, Serializable
      * @param typesGroup it will be the group type of each group of this {@code AcademicLoad}.
      * @param subjects it will be the subject of this {{@code AcademicLoad}}.
      */
-    public AcademicLoad(int[] groupNumbers, int[] limitsOfStudents, String[] typesGroup, Subject subject)
+    public AcademicLoad(int[] groupNumbers, int[] limitsOfStudents, TypeGroup[] typesGroup, Subject subject)
     {
         m_subject = subject;
-        for (int i = 0; i < groupNumbers.length; i++)
-        {
-            m_groups.add(new StudentGroup(GenerateStudentGroupCode(groupNumbers[i]), groupNumbers[i], limitsOfStudents[i], typesGroup[i]));
-        }
+        m_groups = new ArrayList<>();
+    }
+
+    /**
+     * 
+     * @param subject
+     */
+    public AcademicLoad(Subject subject)
+    {
+        this(null, null, null, subject);
     }
 
     /**
@@ -52,7 +59,7 @@ public class AcademicLoad implements Comparable<AcademicLoad>, Serializable
      * This method returns the student groups that this {@code AcademicLoad} has.
      * @return the student groups that this {@code AcademicLoad} has.
      */
-    public ArrayList<StudentGroup> GetGroups()
+    public List<StudentGroup> GetGroups()
     {
         return m_groups;
     }
@@ -64,7 +71,7 @@ public class AcademicLoad implements Comparable<AcademicLoad>, Serializable
      * @param typeGroup will be the type group for a new {@code StudentGroup}.
      * @return {@code true}
      */
-    public boolean AddStudentGroup(int groupNumber, int limitOfStudents, String typeGroup)
+    public boolean AddStudentGroup(int groupNumber, int limitOfStudents, TypeGroup typeGroup)
     {
         StudentGroup studentGroup = new StudentGroup(GenerateStudentGroupCode(groupNumber), groupNumber, limitOfStudents, typeGroup);
         if (m_groups.contains(studentGroup))

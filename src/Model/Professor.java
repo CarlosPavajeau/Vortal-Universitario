@@ -56,7 +56,7 @@ public class Professor extends Person
      * @param subjects it will be the subject of each group.
      */
     public Professor(String code, String firstName, String secondName, String lastName, String secondLastName,
-                     String dateOfBorn, String sex, int[][] numGroups, int[][] limitOfStudents, String[][] typeGroups, 
+                     String dateOfBorn, String sex, int[][] numGroups, int[][] limitOfStudents, TypeGroup[][] typeGroups, 
                      Subject[] subjects)
     {
         super(code, firstName, secondName, lastName, secondLastName, dateOfBorn, sex);
@@ -84,19 +84,26 @@ public class Professor extends Person
 
     /**
      * This method assigns a new academic load for this {@code Professor}.
-     * @param numsGroup will be the numbers of the groups of academic loads.
-     * @param limitsOfStudents it will be the limit of students in each group.
-     * @param typesGroup it will be the group type of each group.
+     * @param groupNumber will be the numbers of the group of academic loads.
+     * @param limitOfStudents it will be the limit of students in each group.
+     * @param typeGroup it will be the group type of group.
      * @param subject it will be the subject in all groups.
      * @return {@code true} if this {@code Professor} did not have this {@code AcademicLoad}.
      * {@code false} otherwise.
      */
-    public boolean AddAcademicLoad(int[] numsGroup, int[] limitsOfStudents, String[] typesGroup, Subject subject)
+    public boolean AddAcademicLoad(int groupNumber, int limitOfStudents, TypeGroup typeGroup, Subject subject)
     {
-        AcademicLoad academicCharge = new AcademicLoad(numsGroup, limitsOfStudents, typesGroup, subject);
-        if (GetAcademicLoads().contains(academicCharge))
-            return false;
-        return GetAcademicLoads().add(academicCharge);
+        int index = GetAcademicLoads().indexOf(new AcademicLoad(subject));
+        AcademicLoad academicLoad = null;
+        if (index != -1)
+            academicLoad = GetAcademicLoads().get(index);   
+        else
+        {
+            academicLoad = new AcademicLoad(subject);
+            GetAcademicLoads().add(academicLoad);
+        }
+
+        return academicLoad.AddStudentGroup(groupNumber, limitOfStudents, typeGroup);
     }
 
     /**
