@@ -74,7 +74,11 @@ public class LoginPanel extends FormPanel
                         Admin admin = new Admin("", user, password);
                         admin = (Admin)dataConnectionHandler.Select(admin);
                         if (admin != null)
+                        {
+                            AdminPanel adminPanel = (AdminPanel)MainWindow.GetPanel(Panels.ADMIN_PANEL);
+                            adminPanel.SetAdmin(admin);
                             MainWindow.ChangePanel(Panels.LOGIN_PANEL, Panels.ADMIN_PANEL);
+                        }
                         else
                             JOptionPane.showMessageDialog(this, "Datos incorrectos");
                         break;
