@@ -7,6 +7,7 @@ package View;
 
 import java.awt.event.ActionEvent;
 
+import Model.Admin;
 import View.MainWindow.Panels;
 
 /**
@@ -15,10 +16,23 @@ import View.MainWindow.Panels;
 public class AdminPanel extends Panel
 {
     private static final long serialVersionUID = 1369914050610515081L;
+
+    private Admin m_admin;
     
     public AdminPanel()
     {
         super("BIENVENIDO ADMINISTRADOR");
+        m_admin = null;
+    }
+
+    public void SetAdmin(Admin admin)
+    {
+        m_admin = admin;
+    }
+
+    public Admin GetAdmin()
+    {
+        return m_admin;
     }
 
     @Override
