@@ -43,7 +43,7 @@ public abstract class Person extends Entity
      * @param sex will be the sex that have this {@code Person}.
      */
     public Person(String code, String firstName, String secondName, String lastName, String secondLastName,
-                  String dateOfBorn, String sex)
+                  String dateOfBorn, Sex sex)
     {
         super(code);
         m_firstName = firstName;
@@ -52,13 +52,13 @@ public abstract class Person extends Entity
         m_secondLastName = secondLastName;
         GenerateDateOfBorn(dateOfBorn);
         SetAge();
-        m_sex = GenerateSex(sex);
+        m_sex = sex;
         m_login = new Login(code, code);
     }
 
     public Person(String code)
     {
-        this(code, "", "", "", "", "0000/00/00", "Other");
+        this(code, "", "", "", "", "0000/00/00", Sex.OTHER);
     }
 
     /**
@@ -185,9 +185,9 @@ public abstract class Person extends Entity
      * This method sets a new sex for this object {@code Person}.
      * @param sex will be a new sex of this {@code Person}.
      */
-    public void SetSex(String sex)
+    public void SetSex(Sex sex)
     {
-        m_sex = GenerateSex(sex);
+        m_sex = sex;
     }
 
     /**
@@ -206,18 +206,5 @@ public abstract class Person extends Entity
     {
         String[] dates = dateOfBorn.split("/");
         m_dateOfBorn = new GregorianCalendar(Integer.parseInt(dates[0]), Integer.parseInt(dates[1]) - 1, Integer.parseInt(dates[2]));
-    }
-
-    /**
-     * This method generates and return a one type sex.
-     */
-    private Sex GenerateSex(String sex)
-    {
-        if (Sex.MALE.GetSex().equals(sex))
-            return Sex.MALE;
-        else if (Sex.FEMALE.GetSex().equals(sex))
-            return Sex.FEMALE;
-        else
-            return Sex.OTHER;
     }
 }
