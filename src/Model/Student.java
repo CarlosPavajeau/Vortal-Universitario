@@ -43,7 +43,7 @@ public class Student extends Person implements SubjectHandler
      * @param sex will be the sex that will have this {@code Student}.
      */
     public Student(String code, String firstName, String secondName, String lastName, String secondLastName,
-                   String dateOfBorn, String sex)
+                   String dateOfBorn, Sex sex)
     {
         this(code, firstName, secondName, lastName, secondLastName, dateOfBorn, sex, null, null, null, 0.0f, 0, 0, "");
     }
@@ -67,7 +67,7 @@ public class Student extends Person implements SubjectHandler
      * @param isMatriculateIn will be the pensum where this {@code Student} be matriculate.
      */
     public Student(String code, String firstName, String secondName, String lastName, String secondLastName,
-                   String dateOfBorn, String sex, ArrayList<Qualification> qualifications, ArrayList<Qualification> curseSubjects, ArrayList<Float> semesterAverage,
+                   String dateOfBorn, Sex sex, ArrayList<Qualification> qualifications, ArrayList<Qualification> curseSubjects, ArrayList<Float> semesterAverage,
                    float generalAverage, int registeredCredits, int currentSemester, String isMatriculateIn)
     {
         super(code, firstName, secondName, lastName, secondLastName, dateOfBorn, sex);
@@ -80,9 +80,13 @@ public class Student extends Person implements SubjectHandler
         m_isMatriculateIn = isMatriculateIn;
     }
 
+    /**
+     * 
+     * @param code
+     */
     public Student(String code)
     {
-        this(code, "", "", "", "", "0000/00/00", "Otro");
+        super(code);
     }
 
     /**
