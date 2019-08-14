@@ -54,7 +54,8 @@ public class RegisterAcademicLoadPanel extends FormPanel
                 Professor professor = null;
                 if (!dataConnectionHandler.ConnectWithData() || !subjectConnectionHandler.ConnectWithData())
                 {
-                    System.err.println("ERROR, NO EXISTEN DATOS");
+                    JOptionPane.showMessageDialog(this, "Error: No existen datos");
+                    MainWindow.ChangePanel(Panels.REGISTER_ACADEMIC_LOAD_PANEL, Panels.PROFESSOR_HANDLER_PANEL);
                 }
 
                 subject = (Subject)subjectConnectionHandler.Select(new Subject(GetSubjectCode()));
