@@ -6,6 +6,7 @@
 package Model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * This is the class {@code Professor}, represents a university professor who in 
@@ -19,7 +20,7 @@ public class Professor extends Person
 {
     private static final long serialVersionUID = 8586935019723181036L;
     
-    ArrayList<AcademicLoad> m_academicLoads;
+    List<AcademicLoad> m_academicLoads;
 
     /**
      * Initialize a new {@code Professor} with these characteristics.
@@ -34,7 +35,7 @@ public class Professor extends Person
      * @param sex will be the sex that have this {@code Professor}.
      */
     public Professor(String code, String firstName, String secondName, String lastName, String secondLastName,
-                  String dateOfBorn, String sex)
+                  String dateOfBorn, Sex sex)
     {
         this(code, firstName, secondName, lastName, secondLastName, dateOfBorn, sex, null, null, null, null);
     }
@@ -56,7 +57,7 @@ public class Professor extends Person
      * @param subjects it will be the subject of each group.
      */
     public Professor(String code, String firstName, String secondName, String lastName, String secondLastName,
-                     String dateOfBorn, String sex, int[][] numGroups, int[][] limitOfStudents, TypeGroup[][] typeGroups, 
+                     String dateOfBorn, Sex sex, int[][] numGroups, int[][] limitOfStudents, TypeGroup[][] typeGroups, 
                      Subject[] subjects)
     {
         super(code, firstName, secondName, lastName, secondLastName, dateOfBorn, sex);
@@ -68,16 +69,20 @@ public class Professor extends Person
         }
     }
 
+    /**
+     * 
+     * @param code
+     */
     public Professor(String code)
     {
-        this(code, "", "", "", "", "0000/00/00", "Otro");
+        super(code);
     }
 
     /**
      * This method returns the academic loads that this {@code Professor} has. 
      * @return the academic loads that this {@code Professor} has.
      */
-    public ArrayList<AcademicLoad> GetAcademicLoads()
+    public List<AcademicLoad> GetAcademicLoads()
     {
         return m_academicLoads;
     }
@@ -117,18 +122,26 @@ public class Professor extends Person
      */
     public boolean RemoveAcademicLoad(int numGroup, Subject subject)
     {
-        return false;
+        int index = GetAcademicLoads().indexOf(new AcademicLoad(subject));
+
+        if (index != -1)
+        {
+            AcademicLoad academicLoad = GetAcademicLoads().get(index);
+            return academicLoad.RemoveStudentGroup(numGroup);
+        }
+        else
+            return false;
     }
 
     /**
      * This method eliminates an academic load from this {@code Professor}. 
-     * delete all groups related to this subject.
+     * Delete all groups related to this subject.
      * @param subject it will be the subject related to the group to be eliminated.
      * @return {@code true} if this {@code Professor} have this {@code AcademicLoad}.
      * {@code false} otherwise.
      */
     public boolean RemoveAcademicLoad(Subject subject)
     {
-        return false;
+        return GetAcademicLoads().remove(new AcademicLoad(subject));
     }
 }
