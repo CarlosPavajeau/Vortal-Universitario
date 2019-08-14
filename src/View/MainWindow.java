@@ -159,6 +159,19 @@ public class MainWindow extends JFrame
         MainWindow.ShowPanel(to);
     }
 
+    public static Panel GetPanel(Panels panel)
+    {
+        try
+        {
+            return m_panels.get(panel.ordinal());
+        }
+        catch (IndexOutOfBoundsException exception)
+        {
+            exception.printStackTrace();
+            return null;
+        }
+    }
+
     private static void HidePanel(Panels panel)
     {
         MainWindow.ChangePanelVisibilitiy(panel, false);
@@ -183,19 +196,6 @@ public class MainWindow extends JFrame
         catch (IndexOutOfBoundsException exception)
         {
             exception.printStackTrace();
-        }
-    }
-
-    private static Panel GetPanel(Panels panel)
-    {
-        try
-        {
-            return m_panels.get(panel.ordinal());
-        }
-        catch (IndexOutOfBoundsException exception)
-        {
-            exception.printStackTrace();
-            return null;
         }
     }
 }
