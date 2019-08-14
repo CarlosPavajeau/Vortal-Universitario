@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 
 import Model.Person;
 import Model.Professor;
+import Model.Sex;
 import Model.Student;
 import Model.DataConnectionHandler.DataConnectionHandler;
 import Model.DataConnectionHandler.PersonDataHandler;
@@ -140,15 +141,9 @@ public class RegisterPersonPanel extends FormPanel
         return GetContentField(5);
     }
 
-    private String GetSex()
+    private Sex GetSex()
     {
-        if (GetRadioButtons().get(0).isSelected())
-            return "Masculino";
-        else if (GetRadioButtons().get(1).isSelected())
-            return "Femenino";
-        else if (GetRadioButtons().get(2).isSelected())
-            return "Otro";
-        else 
-            return null;
+        return (GetRadioButtons().get(0).isSelected() ? Sex.MALE : 
+               (GetRadioButtons().get(1).isSelected() ? Sex.FEMALE : Sex.OTHER));
     }
 }
