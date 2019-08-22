@@ -16,6 +16,7 @@ import javax.swing.ButtonGroup;
 import javax.swing.JLabel;
 
 import Model.DataConnectionHandler.DataConnectionHandler;
+import View.ErrorPanel.TypeError;
 
 /**
  * 
@@ -120,7 +121,7 @@ public abstract class FormPanel extends Panel
 
         } catch (ClassNotFoundException | SQLException | IOException e) 
         {
-            System.err.println("Error: Ocurrio un error al establecer una conexion con los datos.");
+            ErrorPanel.ShowError(TypeError.CONNECTION_ERROR);
         }
 
         return result;
