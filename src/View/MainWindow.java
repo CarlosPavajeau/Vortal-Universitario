@@ -11,7 +11,9 @@ import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.Icon;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
@@ -28,6 +30,7 @@ public class MainWindow extends JFrame
     private static final long serialVersionUID = 9040978770256604819L;
 
     private static List<Panel> m_panels;
+    public static final MainWindow m_mainWindow = new MainWindow();
     private JPanel m_mainPanel;
 
     public static enum Panels
@@ -135,6 +138,11 @@ public class MainWindow extends JFrame
         {
             e.printStackTrace();
 		}
+    }
+
+    public static void ShowPopUpWindow(String title, String message, int messageType, Icon icon)
+    {
+        JOptionPane.showMessageDialog(m_mainWindow, message, title, messageType, icon);
     }
 
     public static void LoginAction(ActionEvent evt, TypeUser user)
