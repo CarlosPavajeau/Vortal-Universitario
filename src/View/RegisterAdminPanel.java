@@ -7,12 +7,13 @@ package View;
 
 import java.awt.event.ActionEvent;
 
-import javax.swing.JOptionPane;
-
 import Model.Admin;
 import Model.DataConnectionHandler.DataConnectionHandler;
 import Model.DataConnectionHandler.LoginDataHandler;
+import View.ErrorPanel.TypeError;
 import View.MainWindow.Panels;
+import View.SuccesPanel.TypeSucces;
+import View.WarningPanel.TypeWarning;
 
 /**
  * 
@@ -49,18 +50,21 @@ public class RegisterAdminPanel extends FormPanel
                 Admin admin = new Admin(code, user, password);
                 DataConnectionHandler dataConnectionHandler = new LoginDataHandler("Admin.dat");
                 
-                SaveData(admin, dataConnectionHandler);
-                ClearFormPanel();
-                JOptionPane.showMessageDialog(this, "Registro de administrador exitoso!");
-                MainWindow.ChangePanel(Panels.REGISTER_ADMIN_PANEL, Panels.START_PANEL);
+                if (SaveData(admin, dataConnectionHandler))
+                {
+                    SuccesPanel.ShowSucces(TypeSucces.REGISTERED_ADMIN);
+                    ClearFormPanel();
+                    MainWindow.ChangePanel(Panels.REGISTER_ADMIN_PANEL, Panels.START_PANEL);
+                }
             } 
             catch (Exception exception)
             {
+                ErrorPanel.ShowError(TypeError.CONNECTION_ERROR);
                 Exit(null);
             }
         }
         else
-            JOptionPane.showMessageDialog(this, "Campos invalidos");
+            WarningPanel.ShowWarning(TypeWarning.INVALID_FIELDS);
     }
 
     private void Exit(ActionEvent evt)

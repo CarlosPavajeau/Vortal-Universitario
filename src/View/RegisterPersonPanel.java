@@ -7,15 +7,16 @@ package View;
 
 import java.awt.event.ActionEvent;
 
-import javax.swing.JOptionPane;
-
 import Model.Person;
 import Model.Professor;
 import Model.Sex;
 import Model.Student;
 import Model.DataConnectionHandler.DataConnectionHandler;
 import Model.DataConnectionHandler.PersonDataHandler;
+import View.ErrorPanel.TypeError;
 import View.MainWindow.Panels;
+import View.SuccesPanel.TypeSucces;
+import View.WarningPanel.TypeWarning;
 
 /**
  * 
@@ -78,21 +79,21 @@ public class RegisterPersonPanel extends FormPanel
                  
                 if (SaveData(person, dataConnectionHandler))
                 {
-                    JOptionPane.showMessageDialog(this, "Registro de persona exitoso");
+                    SuccesPanel.ShowSucces(TypeSucces.REGISTERED_PERSON);
                     MainWindow.ChangePanel(Panels.REGISTER_PERSON_PANEL, Panels.ADMIN_PANEL);
                     ClearFormPanel();
                 }
                 else
-                    JOptionPane.showMessageDialog(this, "Estudiante/Professor ya registrado");
+                    WarningPanel.ShowWarning(TypeWarning.PERSON_ALREADY_REGISTERED);
 
             } catch (Exception exception) 
             {
-                exception.printStackTrace();
+                ErrorPanel.ShowError(TypeError.CONNECTION_ERROR);
                 ClearFormPanel();
             }
         }
         else
-            JOptionPane.showMessageDialog(this, "Campos invalidos");
+            WarningPanel.ShowWarning(TypeWarning.INVALID_FIELDS);
     }
 
     @Override

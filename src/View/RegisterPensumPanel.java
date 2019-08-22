@@ -8,14 +8,15 @@ package View;
 import java.awt.event.ActionEvent;
 import java.io.IOException;
 
-import javax.swing.JOptionPane;
-
 import Model.Pensum;
 import Model.PostGraduate;
 import Model.UnderGraduate;
 import Model.DataConnectionHandler.DataConnectionHandler;
 import Model.DataConnectionHandler.PensumDataHandler;
+import View.ErrorPanel.TypeError;
 import View.MainWindow.Panels;
+import View.SuccesPanel.TypeSucces;
+import View.WarningPanel.TypeWarning;
 
 /**
  * 
@@ -69,20 +70,20 @@ public class RegisterPensumPanel extends FormPanel
 
                 if (SaveData(pensum, dataConnectionHandler))
                 {
-                    JOptionPane.showMessageDialog(this, "Registro de PEMSUM exitoso!");
+                    SuccesPanel.ShowSucces(TypeSucces.REGISTERED_PENSUM);
                     MainWindow.ChangePanel(Panels.REGISTER_PENSUM_PANEL, Panels.PENSUM_HANDLER_PANEL);
                     ClearFormPanel();
                 }
                 else
-                    JOptionPane.showMessageDialog(this, "PEMSUM ya registrado. Digite otro código.");
+                    WarningPanel.ShowWarning(TypeWarning.PENSUM_ALREADY_REGISTERED);
             }
             catch (IOException exception)
             {
-               
+                ErrorPanel.ShowError(TypeError.CONNECTION_ERROR);
             }
         }
         else
-            JOptionPane.showMessageDialog(this, "Campos invalidos");
+            WarningPanel.ShowWarning(TypeWarning.INVALID_FIELDS);
 	}
 
     @Override

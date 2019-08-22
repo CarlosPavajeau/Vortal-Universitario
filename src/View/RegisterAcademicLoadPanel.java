@@ -9,15 +9,16 @@ import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.sql.SQLException;
 
-import javax.swing.JOptionPane;
-
 import Model.Professor;
 import Model.Subject;
 import Model.TypeGroup;
 import Model.DataConnectionHandler.DataConnectionHandler;
 import Model.DataConnectionHandler.PersonDataHandler;
 import Model.DataConnectionHandler.SubjectDataHandler;
+import View.ErrorPanel.TypeError;
 import View.MainWindow.Panels;
+import View.SuccesPanel.TypeSucces;
+import View.WarningPanel.TypeWarning;
 
 /**
  * 
@@ -28,7 +29,7 @@ public class RegisterAcademicLoadPanel extends FormPanel
 
     public RegisterAcademicLoadPanel()
     {
-        super("REGISTRO Y ASIGNACIÓN DE CARGA ACADEMICA");
+        super("REGISTRO Y ASIGNACIÓN DE CARGA ACADÉMICA");
     }
 
     @Override
@@ -50,41 +51,49 @@ public class RegisterAcademicLoadPanel extends FormPanel
             {
                 DataConnectionHandler dataConnectionHandler = new PersonDataHandler();
                 DataConnectionHandler subjectConnectionHandler = new SubjectDataHandler();
-                Subject subject = null;
-                Professor professor = null;
+
                 if (!dataConnectionHandler.ConnectWithData() || !subjectConnectionHandler.ConnectWithData())
                 {
-                    JOptionPane.showMessageDialog(this, "Error: No existen datos");
+                    ErrorPanel.ShowError(TypeError.WITHOOUT_DATA);
+                    ClearFormPanel();
                     MainWindow.ChangePanel(Panels.REGISTER_ACADEMIC_LOAD_PANEL, Panels.PROFESSOR_HANDLER_PANEL);
                 }
 
-                subject = (Subject)subjectConnectionHandler.Select(new Subject(GetSubjectCode()));
+                Subject subject = (Subject)subjectConnectionHandler.Select(new Subject(GetSubjectCode()));
                 if (subject != null)
                 {
-                    professor = (Professor)dataConnectionHandler.Select(new Professor(GetProfessorCode()));
+                    Professor professor = (Professor)dataConnectionHandler.Select(new Professor(GetProfessorCode()));
                     if (professor != null)
                     {
                         if (professor.AddAcademicLoad(GetGroupNumber(), GetLimitOfStudents(), GetTypeGroup(), subject))
                         {
-                            JOptionPane.showMessageDialog(this, "Carga academica agregada con exito");
-                            ClearFormPanel();
-                            MainWindow.ChangePanel(Panels.REGISTER_ACADEMIC_LOAD_PANEL, Panels.PROFESSOR_HANDLER_PANEL);
+                            if (dataConnectionHandler.Update(professor))
+                            {
+                                SuccesPanel.ShowSucces(TypeSucces.REGISTERED_ACADEMIC_LOAD);
+                                ClearFormPanel();
+                                MainWindow.ChangePanel(Panels.REGISTER_ACADEMIC_LOAD_PANEL, Panels.PROFESSOR_HANDLER_PANEL);
+                            }
+                            else
+                                ErrorPanel.ShowError(TypeError.UPDATE_ERROR);
                         }
                         else
-                            JOptionPane.showMessageDialog(this, "El profesor ya posee la carga academica digitada");
+                            WarningPanel.ShowWarning(TypeWarning.ACADEMIC_LOAD_ALREADY_REGISTERED);;
                     }
+                    else
+                        WarningPanel.ShowWarning(TypeWarning.PROFESOR_NOT_REGISTER);
                 }
-                dataConnectionHandler.Update(professor);
+                else
+                    WarningPanel.ShowWarning(TypeWarning.SUBJECT_NOT_REGISTER);
                 dataConnectionHandler.CloseDataConnection();
                 subjectConnectionHandler.CloseDataConnection();
 
             } catch (ClassNotFoundException | SQLException | IOException exception)
             {
-                exception.printStackTrace();
+                ErrorPanel.ShowError(TypeError.CONNECTION_ERROR);
             }
             catch (ClassCastException exception)
             {
-                JOptionPane.showMessageDialog(this, "ERROR, El codigo digitado no corresponde con un profesor");   
+                ErrorPanel.ShowError(TypeError.INVALID_PROFESSOR_CODE);
             }
         }
 	}

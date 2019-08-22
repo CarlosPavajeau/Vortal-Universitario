@@ -7,12 +7,13 @@ package View;
 
 import java.awt.event.ActionEvent;
 
-import javax.swing.JOptionPane;
-
 import Model.AcademicSemester;
 import Model.DataConnectionHandler.AcademicSemesterDataHandler;
 import Model.DataConnectionHandler.DataConnectionHandler;
+import View.ErrorPanel.TypeError;
 import View.MainWindow.Panels;
+import View.SuccesPanel.TypeSucces;
+import View.WarningPanel.TypeWarning;
 
 /**
  * 
@@ -54,24 +55,23 @@ public class RegisterAcademicSemesterPanel extends FormPanel
 
                     if (SaveData(academicSemester, dataConnectionHandler))
                     {
-                        JOptionPane.showMessageDialog(this, "Semestre académico registrado con éxito!");
+                        SuccesPanel.ShowSucces(TypeSucces.REGISTERED_ACADEMIC_SEMESTER);
+                        ClearFormPanel();
                         MainWindow.ChangePanel(Panels.REGISTER_ACADEMIC_SEMESTER_PANEL, Panels.ACADEMIC_SEMESTER_HANDLER_PANEL);
                     }
                     else
-                        JOptionPane.showMessageDialog(this, "Semestre académico ya registrado");
-
-                    ClearFormPanel();
+                        WarningPanel.ShowWarning(TypeWarning.ACADEMIC_SEMESTER_ALREADY_REGISTERED);
                 }
                 else
-                    JOptionPane.showMessageDialog(this, "Campos inválidos, revise el número de créditos");
+                    WarningPanel.ShowWarning(TypeWarning.INVALID_CREDIT_NUMBER);
             }
             catch (Exception exception)
             {
-                exception.printStackTrace();
+                ErrorPanel.ShowError(TypeError.CONNECTION_ERROR);
             }
         }
         else
-            JOptionPane.showMessageDialog(this, "Campos inválidos");
+            WarningPanel.ShowWarning(TypeWarning.INVALID_FIELDS);
 	}
 
     @Override
