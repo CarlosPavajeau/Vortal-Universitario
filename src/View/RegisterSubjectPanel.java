@@ -7,12 +7,13 @@ package View;
 
 import java.awt.event.ActionEvent;
 
-import javax.swing.JOptionPane;
-
 import Model.Subject;
 import Model.DataConnectionHandler.DataConnectionHandler;
 import Model.DataConnectionHandler.SubjectDataHandler;
+import View.ErrorPanel.TypeError;
 import View.MainWindow.Panels;
+import View.SuccesPanel.TypeSucces;
+import View.WarningPanel.TypeWarning;
 
 /**
  * 
@@ -42,40 +43,33 @@ public class RegisterSubjectPanel extends FormPanel
         {
             try
             {
-                DataConnectionHandler dataConnectionHandler = new SubjectDataHandler();
-                if (!dataConnectionHandler.ConnectWithData())
-                    dataConnectionHandler.CreateDataConnection();
-                dataConnectionHandler.ConnectWithData();
-
                 String code, name;
                 int credits, recommendedSemester;
 
-                code = GetContentField(0);
-                name = GetContentField(1);
-                credits = Integer.parseInt(GetContentField(2));
-                recommendedSemester = Integer.parseInt(GetContentField(3));
+                code                = GetCode();
+                name                = GetName();
+                credits             = GetCredits();
+                recommendedSemester = GetRecommendedSemester();
 
                 Subject subject = new Subject(code, name, credits, recommendedSemester);
+                DataConnectionHandler dataConnectionHandler = new SubjectDataHandler();
 
-                if (dataConnectionHandler.Insert(subject))
+                if (SaveData(subject, dataConnectionHandler))
                 {
-                    JOptionPane.showMessageDialog(this, "Asignatura registrada con éxito!");
+                    SuccesPanel.ShowSucces(TypeSucces.REGISTERED_SUBJECT);
+                    ClearFormPanel();
                     MainWindow.ChangePanel(Panels.REGISTER_SUBJECT_PANEL, Panels.SUBJECT_HANDLER_PANEL);
-                    dataConnectionHandler.CloseDataConnection();
                 }
                 else
-                    JOptionPane.showMessageDialog(this, "Asignatura ya registrada");
-
-                    ClearFormPanel();
-
+                    WarningPanel.ShowWarning(TypeWarning.SUBJECT_ALREADY_REGISTERED);
             }
             catch (Exception exception)
             {
-                exception.printStackTrace();
+                ErrorPanel.ShowError(TypeError.CONNECTION_ERROR);
             }
         }
         else
-            JOptionPane.showMessageDialog(this, "Campos inválidos");
+            WarningPanel.ShowWarning(TypeWarning.INVALID_FIELDS);
     }
 
     @Override
@@ -89,5 +83,25 @@ public class RegisterSubjectPanel extends FormPanel
     protected void InitPanel() 
     {
         AddRegisterButton(TypeButton.BUTTON_REGISTER);
+    }
+
+    private String GetCode()
+    {
+        return GetContentField(0);
+    }
+
+    private String GetName()
+    {
+        return GetContentField(1);
+    }
+
+    private int GetCredits()
+    {
+        return GetIntContentField(2);
+    }
+
+    private int GetRecommendedSemester()
+    {
+        return GetIntContentField(3);
     }
 }
