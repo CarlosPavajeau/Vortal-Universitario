@@ -7,9 +7,9 @@ package View;
 
 import java.awt.Color;
 import java.awt.Frame;
-import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 import javax.swing.Icon;
 import javax.swing.JFrame;
@@ -30,6 +30,7 @@ public class MainWindow extends JFrame
     private static final long serialVersionUID = 9040978770256604819L;
 
     private static List<Panel> m_panels;
+    private static Stack<Panel> m_panelsStack;
     public static final MainWindow m_mainWindow = new MainWindow();
     private JPanel m_mainPanel;
 
@@ -67,6 +68,7 @@ public class MainWindow extends JFrame
     private void initComponents() 
     {
         m_panels = new ArrayList<>();
+        m_panelsStack = new Stack<>();
         m_mainPanel = new JPanel();
         setContentPane(m_mainPanel);
         m_mainPanel.setBackground(Color.WHITE);
@@ -145,10 +147,11 @@ public class MainWindow extends JFrame
         JOptionPane.showMessageDialog(m_mainWindow, message, title, messageType, icon);
     }
 
-    public static void LoginAction(ActionEvent evt, TypeUser user)
+    public static void LoginAction(TypeUser user)
     {
         ((LoginPanel)GetPanel(Panels.LOGIN_PANEL)).SetUser(user);
-        MainWindow.ChangePanel(Panels.START_PANEL, Panels.LOGIN_PANEL);   
+        PushPanel(GetPanel(Panels.START_PANEL));
+        ShowPanel(Panels.LOGIN_PANEL);   
     }
 
     public static void ChangePanel(Panels from, Panels to)
@@ -180,12 +183,24 @@ public class MainWindow extends JFrame
         }
     }
 
+    public static void PushPanel(Panel panel)
+    {
+        panel.setVisible(false);
+        m_panelsStack.push(panel);
+    }
+
+    public static void PopPanel()
+    {
+        Panel panel = m_panelsStack.pop();
+        panel.setVisible(true);
+    }
+
     private static void HidePanel(Panels panel)
     {
         MainWindow.ChangePanelVisibilitiy(panel, false);
     }
 
-    private static void ShowPanel(Panels panel)
+    public static void ShowPanel(Panels panel)
     {
         MainWindow.ChangePanelVisibilitiy(panel, true);
     }
