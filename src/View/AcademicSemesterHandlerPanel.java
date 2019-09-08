@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019-2019 Carlos Pavajeau - Euder Calvo
+ * Copyright (C) 2019 Carlos Pavajeau
  * 
  */
 
