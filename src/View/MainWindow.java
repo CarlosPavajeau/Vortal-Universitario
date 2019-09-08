@@ -20,7 +20,6 @@ import javax.swing.WindowConstants;
 import Model.DataConnectionHandler.DataConnectionHandler;
 import Model.DataConnectionHandler.LoginDataHandler;
 import View.LoginPanel.TypeUser;
-import View.RegisterPersonPanel.TypePerson;
 
 /**
  * 
@@ -131,10 +130,10 @@ public class MainWindow extends JFrame
             {
                 dataConnectionHandler.CreateDataConnection();
                 dataConnectionHandler.CloseDataConnection();
-                MainWindow.ShowPanel(Panels.REGISTER_ADMIN_PANEL);
+                MainWindow.ShowPanel(GetPanel(Panels.REGISTER_ADMIN_PANEL));
             }
             else
-                MainWindow.ShowPanel(Panels.START_PANEL);
+                MainWindow.ShowPanel(GetPanel(Panels.START_PANEL));
         } 
         catch (Exception e) 
         {
@@ -149,25 +148,15 @@ public class MainWindow extends JFrame
 
     public static void LoginAction(TypeUser user)
     {
-        ((LoginPanel)GetPanel(Panels.LOGIN_PANEL)).SetUser(user);
-        PushPanel(GetPanel(Panels.START_PANEL));
-        ShowPanel(Panels.LOGIN_PANEL);   
+        LoginPanel loginPanel = ((LoginPanel)GetPanel(Panels.LOGIN_PANEL));
+        loginPanel.SetUser(user);
+        PushPanel(loginPanel);
+        ShowPanel(loginPanel);   
     }
 
     public static void ChangePanel(Panels from, Panels to)
     {
-        if (to == Panels.REGISTER_PERSON_PANEL)
-        {
-            RegisterPersonPanel personPanel = (RegisterPersonPanel)GetPanel(to);
 
-            if (from == Panels.PROFESSOR_HANDLER_PANEL)
-                personPanel.SetTypePerson(TypePerson.PROFESSOR);
-            else
-                personPanel.SetTypePerson(TypePerson.STUDENT);
-        }
-
-        MainWindow.HidePanel(from);
-        MainWindow.ShowPanel(to);
     }
 
     public static Panel GetPanel(Panels panel)
@@ -195,30 +184,18 @@ public class MainWindow extends JFrame
         panel.setVisible(true);
     }
 
-    private static void HidePanel(Panels panel)
+    public static void HidePanel(Panel panel)
     {
         MainWindow.ChangePanelVisibilitiy(panel, false);
     }
 
-    public static void ShowPanel(Panels panel)
+    public static void ShowPanel(Panel panel)
     {
         MainWindow.ChangePanelVisibilitiy(panel, true);
     }
 
-    private static void ChangePanelVisibilitiy(Panels panel, boolean visibility)
+    private static void ChangePanelVisibilitiy(Panel panel, boolean visibility)
     {
-        try
-        {
-            Panel aPanel = GetPanel(panel);
-
-            if (aPanel instanceof StartPanel)
-                ((StartPanel)aPanel).EnableButtons();
-
-            aPanel.setVisible(visibility);
-        }
-        catch (IndexOutOfBoundsException exception)
-        {
-            exception.printStackTrace();
-        }
+        panel.setVisible(visibility);
     }
 }
