@@ -130,10 +130,10 @@ public class MainWindow extends JFrame
             {
                 dataConnectionHandler.CreateDataConnection();
                 dataConnectionHandler.CloseDataConnection();
-                MainWindow.ShowPanel(GetPanel(Panels.REGISTER_ADMIN_PANEL));
+                MainWindow.ShowPanel(Panels.REGISTER_ADMIN_PANEL);
             }
             else
-                MainWindow.ShowPanel(GetPanel(Panels.START_PANEL));
+                MainWindow.ShowPanel(Panels.START_PANEL);
         } 
         catch (Exception e) 
         {
@@ -150,8 +150,8 @@ public class MainWindow extends JFrame
     {
         LoginPanel loginPanel = ((LoginPanel)GetPanel(Panels.LOGIN_PANEL));
         loginPanel.SetUser(user);
-        PushPanel(loginPanel);
-        ShowPanel(loginPanel);   
+        PushPanel(GetPanel(Panels.START_PANEL));
+        ShowPanel(Panels.LOGIN_PANEL);   
     }
 
     public static void ChangePanel(Panels from, Panels to)
@@ -180,8 +180,7 @@ public class MainWindow extends JFrame
 
     public static void PopPanel()
     {
-        Panel panel = m_panelsStack.pop();
-        panel.setVisible(true);
+        m_panelsStack.pop().setVisible(true);
     }
 
     public static void HidePanel(Panel panel)
@@ -189,9 +188,9 @@ public class MainWindow extends JFrame
         MainWindow.ChangePanelVisibilitiy(panel, false);
     }
 
-    public static void ShowPanel(Panel panel)
+    public static void ShowPanel(Panels panel)
     {
-        MainWindow.ChangePanelVisibilitiy(panel, true);
+        MainWindow.ChangePanelVisibilitiy(GetPanel(panel), true);
     }
 
     private static void ChangePanelVisibilitiy(Panel panel, boolean visibility)
