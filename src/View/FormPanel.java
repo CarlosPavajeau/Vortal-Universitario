@@ -169,6 +169,7 @@ public abstract class FormPanel extends Panel
     @Override
     protected void ReturnButtonAction() 
     {
+        super.ReturnButtonAction();
         ClearFormPanel();
     }
 
