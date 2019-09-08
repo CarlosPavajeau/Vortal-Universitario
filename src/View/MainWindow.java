@@ -195,6 +195,8 @@ public class MainWindow extends JFrame
 
     private static void ChangePanelVisibilitiy(Panel panel, boolean visibility)
     {
+        if (panel instanceof StartPanel)
+            ((StartPanel)panel).EnableButtons();
         panel.setVisible(visibility);
     }
 }
