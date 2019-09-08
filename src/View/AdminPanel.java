@@ -59,6 +59,6 @@ public class AdminPanel extends Panel
         AddCenterComponentY(new Button(TypeButton.BUTTON_ICON_PROFESSOR_HANDLER, 
                             (ActionEvent evt) -> { MainWindow.ChangePanel(Panels.ADMIN_PANEL, Panels.PROFESSOR_HANDLER_PANEL); }), 
                             810);
-        AddButton(TypeButton.BUTTON_LOGOUT, 775, 625, (ActionEvent evt) -> { MainWindow.ChangePanel(Panels.ADMIN_PANEL, Panels.START_PANEL); });
+        AddButton(TypeButton.BUTTON_LOGOUT, 775, 625, (ActionEvent evt) -> { ReturnButtonAction(); });
     }
 }
