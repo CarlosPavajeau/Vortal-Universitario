@@ -20,7 +20,7 @@ public class PostGraduate extends Pensum
 {
     private static final long serialVersionUID = -7189561827535755483L;
     
-    private String m_requiredTitle;
+    private String requiredTitle;
 
     /**
      * Initialize a new {@code PostGraduate} with these characteristics.
@@ -34,10 +34,10 @@ public class PostGraduate extends Pensum
      * @param subjects subjects that belong or will belong to this {@code PostGraduate}.
      * @param requiredTitle it will the required title.
      */
-    public PostGraduate(String code, String name, String description, String campus, int semesters, int globalLessonLoad, ArrayList<Subject> subjects, String requiredTitle)
+    public PostGraduate(String code, String name, String description, String campus, int semesters, int globalLessonLoad, ArrayList<Subject> subjects, String required_title)
     {
         super(code, name, description, campus, semesters, globalLessonLoad, subjects);
-        m_requiredTitle = requiredTitle;
+        requiredTitle = required_title;
     }
 
     /**
@@ -46,15 +46,15 @@ public class PostGraduate extends Pensum
      */
     public String GetRequiredTitle()
     {
-        return m_requiredTitle;
+        return requiredTitle;
     }
 
     /**
      * This method sets a new required title for this object {@code PostGraduate}.
-     * @param requiredTitle will be a new required title of this {@code PostGraduate}.
+     * @param required_title will be a new required title of this {@code PostGraduate}.
      */
-    public void SetRequiredTitle(String requiredTitle)
+    public void SetRequiredTitle(String required_title)
     {
-        m_requiredTitle = requiredTitle;
+        requiredTitle = required_title;
     }
 }

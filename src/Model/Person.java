@@ -21,39 +21,39 @@ public abstract class Person extends Entity
 {
     private static final long serialVersionUID = -7773874238710016793L;
     
-    private String m_firstName;
-    private String m_secondName;
-    private String m_lastName;
-    private String m_secondLastName;
-    private byte m_age;
-    private Calendar m_dateOfBorn;
-    private Sex m_sex;
-    private Login m_login;
+    private String firstName;
+    private String secondName;
+    private String lastName;
+    private String secondLastName;
+    private byte age;
+    private Calendar dateOfBorn;
+    private Sex sex;
+    private Login login;
 
     /**
      * Initialize a new {@code Person} with these characteristics.
      * As in {@code Entity} the code is unique. 
      * @param code that is to be assigned to the object. In this case, the code will be 
      * ID or DNI (T.I. - C.C.) of {@code Person}.
-     * @param firstName will be the first name that have this {@code Person}.
-     * @param secondName will be the second name that have this {@code Person}.
-     * @param lastName will be the last name that have this {@code Person}.
-     * @param secondLastName will be the second last name that have this {@code Person}.
-     * @param dateOfBorn will be the date of born that have this {@code Person}.
-     * @param sex will be the sex that have this {@code Person}.
+     * @param first_name will be the first name that have this {@code Person}.
+     * @param second_name will be the second name that have this {@code Person}.
+     * @param last_name will be the last name that have this {@code Person}.
+     * @param second_last_name will be the second last name that have this {@code Person}.
+     * @param date_of_born will be the date of born that have this {@code Person}.
+     * @param _sex will be the sex that have this {@code Person}.
      */
-    public Person(String code, String firstName, String secondName, String lastName, String secondLastName,
-                  String dateOfBorn, Sex sex)
+    public Person(String code, String first_name, String second_name, String last_name, String second_last_name,
+                  String date_of_born, Sex _sex)
     {
         super(code);
-        m_firstName = firstName;
-        m_secondName = secondName;
-        m_lastName = lastName;
-        m_secondLastName = secondLastName;
-        GenerateDateOfBorn(dateOfBorn);
+        firstName = first_name;
+        secondName = second_name;
+        lastName = last_name;
+        secondLastName = second_last_name;
+        GenerateDateOfBorn(date_of_born);
         SetAge();
-        m_sex = sex;
-        m_login = new Login(code, code);
+        sex = _sex;
+        login = new Login(code, code);
     }
 
     public Person(String code)
@@ -67,7 +67,7 @@ public abstract class Person extends Entity
      */
     public String GerFirstName()
     {
-        return m_firstName;
+        return firstName;
     }
 
     /**
@@ -76,7 +76,7 @@ public abstract class Person extends Entity
      */
     public String GetSecondName()
     {
-        return m_secondName;
+        return secondName;
     }
 
     /**
@@ -85,7 +85,7 @@ public abstract class Person extends Entity
      */
     public String GetLastName()
     {
-        return m_lastName;
+        return lastName;
     }
 
     /**
@@ -94,7 +94,7 @@ public abstract class Person extends Entity
      */
     public String GetSecondLastName()
     {
-        return m_secondLastName;
+        return secondLastName;
     }
 
     /**
@@ -103,7 +103,7 @@ public abstract class Person extends Entity
      */
     public byte GetAge()
     {
-        return m_age;
+        return age;
     }
 
     /**
@@ -112,7 +112,7 @@ public abstract class Person extends Entity
      */
     public String GetDateOfBorn()
     {
-        return m_dateOfBorn.toString();
+        return dateOfBorn.toString();
     }
 
     /**
@@ -121,7 +121,7 @@ public abstract class Person extends Entity
      */
     public String GetSex()
     {
-        return m_sex.GetSex();
+        return sex.GetSex();
     }
 
     /**
@@ -130,43 +130,43 @@ public abstract class Person extends Entity
      */
     public Login GetLogin()
     {
-        return m_login;
+        return login;
     }
 
     /**
      * This method sets a new first name for this object {@code Person}.
-     * @param firstName will be a new first name of this {@code Person}.
+     * @param first_name will be a new first name of this {@code Person}.
      */
-    public void SetFirstName(String firstName)
+    public void SetFirstName(String first_name)
     {
-        m_firstName = firstName;
+        firstName = first_name;
     }
 
     /**
      * This method sets a new second name for this object {@code Person}.
-     * @param secondName will be a new second name of this {@code Person}.
+     * @param second_name will be a new second name of this {@code Person}.
      */
-    public void SetSecondName(String secondName)
+    public void SetSecondName(String second_name)
     {
-        m_secondName = secondName;
+        secondName = second_name;
     }
 
     /**
      * This method sets a new last name for this object {@code Person}.
-     * @param lastName will be a new last name of this {@code Person}.
+     * @param last_name will be a new last name of this {@code Person}.
      */
-    public void SetLastName(String lastName)
+    public void SetLastName(String last_name)
     {
-        m_lastName = lastName;
+        lastName = last_name;
     }
 
     /**
      * This method sets a new second last name for this object {@code Person}.
-     * @param secondLastName will be a new second last name of this {@code Person}.
+     * @param second_last_name will be a new second last name of this {@code Person}.
      */
-    public void SetSecondLastName(String secondLastName)
+    public void SetSecondLastName(String second_last_name)
     {
-        m_secondLastName = secondLastName;
+        secondLastName = second_last_name;
     }
 
     /**
@@ -185,9 +185,9 @@ public abstract class Person extends Entity
      * This method sets a new sex for this object {@code Person}.
      * @param sex will be a new sex of this {@code Person}.
      */
-    public void SetSex(Sex sex)
+    public void SetSex(Sex _sex)
     {
-        m_sex = sex;
+        sex = _sex;
     }
 
     /**
@@ -196,15 +196,15 @@ public abstract class Person extends Entity
     private void SetAge()
     {
         Calendar currentlyDate = new GregorianCalendar();
-        m_age = (byte)(currentlyDate.get(Calendar.YEAR) - m_dateOfBorn.get(Calendar.YEAR));
+        age = (byte)(currentlyDate.get(Calendar.YEAR) - dateOfBorn.get(Calendar.YEAR));
     }
 
     /**
      * This method sets a date of born for this object {@code Person}.
      */
-    private void GenerateDateOfBorn(String dateOfBorn)
+    private void GenerateDateOfBorn(String date_of_born)
     {
-        String[] dates = dateOfBorn.split("/");
-        m_dateOfBorn = new GregorianCalendar(Integer.parseInt(dates[0]), Integer.parseInt(dates[1]) - 1, Integer.parseInt(dates[2]));
+        String[] dates = date_of_born.split("/");
+        dateOfBorn = new GregorianCalendar(Integer.parseInt(dates[0]), Integer.parseInt(dates[1]) - 1, Integer.parseInt(dates[2]));
     }
 }

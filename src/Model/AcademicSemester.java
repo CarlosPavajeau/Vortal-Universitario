@@ -19,21 +19,21 @@ public class AcademicSemester implements Comparable<AcademicSemester>, Serializa
 {
     private static final long serialVersionUID = 1473598109107440457L;
 
-    private final int m_semester;
-    private int m_maxCredits;
-    private int m_minCredits;
+    private final int semester;
+    private int maximumCredits;
+    private int minimumCredits;
     
     /**
      * Initialize a new {@code AcademicSemester} with these characteristics.
-     * @param semester that is to be assigned to the object.
-     * @param maxCredits that is to be assigned to the object.
-     * @param minCredits that is to be assigned to the object.
+     * @param _semester that is to be assigned to the object.
+     * @param maximum_credits that is to be assigned to the object.
+     * @param minimum_credits that is to be assigned to the object.
      */
-    public AcademicSemester(int semester, int maxCredits, int minCredits)
+    public AcademicSemester(int _semester, int maximum_credits, int minimum_credits)
     {
-        m_semester = semester;
-        m_maxCredits = maxCredits;
-        m_minCredits = minCredits;
+        semester = _semester;
+        maximumCredits = maximum_credits;
+        minimumCredits = minimum_credits;
     }
 
     /**
@@ -42,43 +42,43 @@ public class AcademicSemester implements Comparable<AcademicSemester>, Serializa
      */
     public int GetSemester()
     {
-        return m_semester;
+        return semester;
     }
 
     /**
      * This method returns the max credits that this {@code AcademicSemester} has. 
      * @return the max credits that this {@code AcademicSemester} has.
      */
-    public int GetMaxCredits()
+    public int GetMaximumCredits()
     {
-        return m_maxCredits;
+        return maximumCredits;
     }
 
     /**
      * This method returns the minimum credits that this {@code AcademicSemester} has. 
      * @return the minimum credits that this {@code AcademicSemester} has.
      */
-    public int GetMinCredits()
+    public int GetMinimumCredits()
     {
-        return m_minCredits;
+        return minimumCredits;
     }
 
     /**
      * This method sets a new max credits for this object {@code AcademicSemester}.
-     * @param maxCredits will be a new max credits of this {@code AcademicSemester}.
+     * @param maximum_credits will be a new max credits of this {@code AcademicSemester}.
      */
-    public void SetMaxCredits(int maxCredits)
+    public void SetMaximumCredits(int maximum_credits)
     {
-        m_maxCredits = maxCredits;
+        maximumCredits = maximum_credits;
     }
 
     /**
      * This method sets a new minimum credits for this object {@code AcademicSemester}.
-     * @param minCredits will be a new minimum credits of this {@code AcademicSemester}.
+     * @param minimum_credits will be a new minimum credits of this {@code AcademicSemester}.
      */
-    public void SetMinCredits(int minCredits)
+    public void SetMinimunCredits(int minimum_credits)
     {
-        m_minCredits = minCredits;
+        minimumCredits = minimum_credits;
     }
 
     @Override

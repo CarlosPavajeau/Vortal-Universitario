@@ -24,16 +24,16 @@ public class ErrorPanel
         
         ;
 
-        private final String m_msgError;
+        private final String errorMessage;
 
-        private TypeError(String msgError)
+        private TypeError(String error_message)
         {
-            m_msgError = msgError;
+            errorMessage = error_message;
         }
 
-        public String GetMsg()
+        public String GetErrorMessage()
         {
-            return m_msgError;
+            return errorMessage;
         }
     }
 
@@ -45,6 +45,6 @@ public class ErrorPanel
 
     public static void ShowError(TypeError typeError)
     {
-        MainWindow.ShowPopUpWindow("Error", ERROR_MSG + typeError.GetMsg(), JOptionPane.ERROR_MESSAGE, ERROR_ICON);
+        MainWindow.ShowPopUpWindow("Error", ERROR_MSG + typeError.GetErrorMessage(), JOptionPane.ERROR_MESSAGE, ERROR_ICON);
     }
 }

@@ -22,8 +22,8 @@ public class Qualification implements Comparable<Qualification>, Serializable
     private static final int ACADEMICS_CORTS = 3;
     private static final int NOTE_EMPTY = -1;
 
-    private Subject m_subject;
-    private float[] m_notes;
+    private Subject subject;
+    private float[] notes;
 
     /**
      * Initialize a new {@code Qualification} with these characteristics.
@@ -39,10 +39,10 @@ public class Qualification implements Comparable<Qualification>, Serializable
      * @param subject that is to be assigned to the object.
      * @param notes it will be the notes that this {@code Qualification} has.
      */
-    public Qualification(Subject subject, float[] notes)
+    public Qualification(Subject _subject, float[] _notes)
     {
-        m_subject = subject;
-        m_notes = notes;
+        subject = _subject;
+        notes = _notes;
     }
 
     /**
@@ -51,7 +51,7 @@ public class Qualification implements Comparable<Qualification>, Serializable
      */
     public Subject GetSubject()
     {
-        return m_subject;
+        return subject;
     }
 
     /**
@@ -60,7 +60,7 @@ public class Qualification implements Comparable<Qualification>, Serializable
      */
     public float[] GetNotes()
     {
-        return m_notes;
+        return notes;
     }
 
     /**
@@ -70,7 +70,7 @@ public class Qualification implements Comparable<Qualification>, Serializable
      */
     public float GetNote(int cort)
     {
-        return m_notes[cort];
+        return notes[cort];
     }
 
     /**
@@ -80,7 +80,7 @@ public class Qualification implements Comparable<Qualification>, Serializable
      */
     public void AddNote(int academicCut, float note)
     {
-        m_notes[academicCut] = note;
+        notes[academicCut] = note;
     }
 
     /**
@@ -89,7 +89,7 @@ public class Qualification implements Comparable<Qualification>, Serializable
      */
     public boolean HasNotes()
     {
-        for (float note : m_notes)
+        for (float note : notes)
             if (!IsNoteEmpty(note))
                 return true;
         return false;
@@ -104,12 +104,12 @@ public class Qualification implements Comparable<Qualification>, Serializable
         float average = 0.0f;
         for (int i = 0; i < ACADEMICS_CORTS; i++)
         {
-            if (!IsNoteEmpty(m_notes[i]))
+            if (!IsNoteEmpty(notes[i]))
             {
                 if (i < ACADEMICS_CORTS - 1)/**First or second academic cut*/
-                    average += m_notes[i] * 0.3; /**30% */
+                    average += notes[i] * 0.3; /**30% */
                 else /**Third academic cut */
-                    average += m_notes[i] * 0.4; /**40% */
+                    average += notes[i] * 0.4; /**40% */
             }
         }
 

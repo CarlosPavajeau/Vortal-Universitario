@@ -21,19 +21,19 @@ public enum Sex implements Serializable
     /**Other sex*/
     OTHER("Otro");
 
-    private final String m_sex;
+    private final String sex;
 
     /**
      * Initialize a new {@code Sex} 
      * @param sex will be a new sex.
      */
-    private Sex(String sex)
+    private Sex(String _sex)
     {
-        m_sex = sex;
+        sex = _sex;
     }
 
     public String GetSex()
     {
-        return m_sex;
+        return sex;
     }
 }

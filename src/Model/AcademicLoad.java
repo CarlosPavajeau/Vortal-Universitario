@@ -21,20 +21,20 @@ public class AcademicLoad implements Comparable<AcademicLoad>, Serializable
 {
     private static final long serialVersionUID = 8554588546116642636L;
     
-    private List<StudentGroup> m_groups;
-    private final Subject m_subject;
+    private List<StudentGroup> groups;
+    private final Subject subject;
 
     /**
      * Initialize a new {@code AcademicLoad} with these characteristics.
-     * @param groupNumbers will be the groups numbers for this {@code AcademicLoad}.
-     * @param limitsOfStudents it will be the limit of students for this {@code AcademicLoad}.
-     * @param typesGroup it will be the group type of each group of this {@code AcademicLoad}.
-     * @param subjects it will be the subject of this {{@code AcademicLoad}}.
+     * @param group_numbers will be the groups numbers for this {@code AcademicLoad}.
+     * @param limits_of_Students it will be the limit of students for this {@code AcademicLoad}.
+     * @param types_group it will be the group type of each group of this {@code AcademicLoad}.
+     * @param _subject it will be the subject of this {{@code AcademicLoad}}.
      */
-    public AcademicLoad(int[] groupNumbers, int[] limitsOfStudents, TypeGroup[] typesGroup, Subject subject)
+    public AcademicLoad(int[] group_numbers, int[] limits_of_Students, TypeGroup[] types_group, Subject _subject)
     {
-        m_subject = subject;
-        m_groups = new ArrayList<>();
+        subject = _subject;
+        groups = new ArrayList<>();
     }
 
     /**
@@ -52,7 +52,7 @@ public class AcademicLoad implements Comparable<AcademicLoad>, Serializable
      */
     public Subject GetSubject()
     {
-        return m_subject;
+        return subject;
     }
 
     /**
@@ -61,7 +61,7 @@ public class AcademicLoad implements Comparable<AcademicLoad>, Serializable
      */
     public List<StudentGroup> GetGroups()
     {
-        return m_groups;
+        return groups;
     }
 
     /**
@@ -74,9 +74,9 @@ public class AcademicLoad implements Comparable<AcademicLoad>, Serializable
     public boolean AddStudentGroup(int groupNumber, int limitOfStudents, TypeGroup typeGroup)
     {
         StudentGroup studentGroup = new StudentGroup(GenerateStudentGroupCode(groupNumber), groupNumber, limitOfStudents, typeGroup);
-        if (m_groups.contains(studentGroup))
+        if (groups.contains(studentGroup))
             return false;
-        return m_groups.add(studentGroup);
+        return groups.add(studentGroup);
     }
 
     /**
@@ -87,7 +87,7 @@ public class AcademicLoad implements Comparable<AcademicLoad>, Serializable
      */
     public boolean RemoveStudentGroup(int groupNumber)
     {
-        return m_groups.remove(new StudentGroup(GenerateStudentGroupCode(groupNumber)));
+        return groups.remove(new StudentGroup(GenerateStudentGroupCode(groupNumber)));
     }
 
     /**
@@ -98,7 +98,7 @@ public class AcademicLoad implements Comparable<AcademicLoad>, Serializable
     public StudentGroup SearchGroup(int groupNumber)
     {
         StudentGroup studentGroup = new StudentGroup(GenerateStudentGroupCode(groupNumber));
-        studentGroup = m_groups.get(m_groups.indexOf(studentGroup));
+        studentGroup = groups.get(groups.indexOf(studentGroup));
         return studentGroup;
     }
 

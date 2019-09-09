@@ -20,17 +20,17 @@ import java.io.Serializable;
 public abstract class Entity implements Comparable<Entity>, Serializable
 {
     private static final long serialVersionUID = 274736873469220325L;
-    private final String m_code;
+    private final String code;
     
     /**
      * Initialize a new {@code Entity} with it's code. 
      * This code identifies the {@code Entity} in the software, also the code is
      * unique and not repeatable by other {@code Entity}.
-     * @param code that is to be assigned to the object.
+     * @param _code that is to be assigned to the object.
      */
-    public Entity(String code)
+    public Entity(String _code)
     {
-        m_code = code;
+        code = _code;
     }
 
     /**
@@ -60,7 +60,7 @@ public abstract class Entity implements Comparable<Entity>, Serializable
      */
     public String GetCode()
     {
-        return m_code;
+        return code;
     }
 
     @Override

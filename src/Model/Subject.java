@@ -20,24 +20,24 @@ public class Subject extends Entity
 {
     private static final long serialVersionUID = -3463036382757628148L;
     
-    private String m_name;
-    private int m_credits;
-    private int m_recommendedSemester;
+    private String name;
+    private int credits;
+    private int recommendedSemester;
 
      /**
      * Initialize a new {@code Subject} with these characteristics.
      * As in {@code Entity} the code is unique. 
-     * @param code that is to be assigned to the object.
-     * @param name it will be the name of the subject.
-     * @param credits will be the number of credits of the subject.
-     * @param recommendedSemester will be te recommended semester of the subject.
+     * @param _code that is to be assigned to the object.
+     * @param _name it will be the name of the subject.
+     * @param _credits will be the number of credits of the subject.
+     * @param recommended_semester will be te recommended semester of the subject.
      */
-    public Subject(String code, String name, int credits, int recommendedSemester)
+    public Subject(String _code, String _name, int _credits, int recommended_semester)
     {
-        super(code);
-        m_name = name;
-        m_credits = credits;
-        m_recommendedSemester = recommendedSemester;
+        super(_code);
+        name = _name;
+        credits = _credits;
+        recommendedSemester = recommended_semester;
     }
 
     /**
@@ -63,7 +63,7 @@ public class Subject extends Entity
      */
     public String GetName()
     {
-        return m_name;
+        return name;
     }
 
     /**
@@ -72,7 +72,7 @@ public class Subject extends Entity
      */
     public int GetCredits()
     {
-        return m_credits;
+        return credits;
     }
 
     /**
@@ -82,34 +82,34 @@ public class Subject extends Entity
      */
     public int GetRecommendedSemester()
     {
-        return m_recommendedSemester;
+        return recommendedSemester;
     }
 
     /**
      * This method sets a new name for this {@code Subject}.
-     * @param name will be a new name of this {@code Subject}.
+     * @param _name will be a new name of this {@code Subject}.
      */
-    public void SetName(String name)
+    public void SetName(String _name)
     {
-        m_name = name;
+        name = _name;
     }
 
     /**
      * This method sets a new credits for this {@code Subject}.
      * @param credits will be a new credits of this object {@code Subject}.
      */
-    public void SetCredits(int credits)
+    public void SetCredits(int _credits)
     {
-        m_credits = credits;
+        credits = _credits;
     }
 
     /**
      * This method sets a recommended new semester for this {@code Subject}.
-     * @param recommendedSemester will be a recommended new semester of 
+     * @param recommended_semester will be a recommended new semester of 
      * this object {@code Subject}.
      */
-    public void SetRecommendedSemester(int recommendedSemester)
+    public void SetRecommendedSemester(int recommended_semester)
     {
-        m_recommendedSemester = recommendedSemester;
+        recommendedSemester = recommended_semester;
     }
 }

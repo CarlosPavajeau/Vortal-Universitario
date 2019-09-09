@@ -17,15 +17,15 @@ public enum TypeGroup
     EVENING("Noche"),
     NONE("NONE");
 
-    private final String m_type;
+    private final String typeGroup;
 
-    private TypeGroup(String type)
+    private TypeGroup(String type_group)
     {
-        m_type = type;
+        typeGroup = type_group;
     }
 
-    public String GetType()
+    public String GetTypeGroup()
     {
-        return m_type;
+        return typeGroup;
     }
 }

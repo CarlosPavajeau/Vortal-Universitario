@@ -25,9 +25,9 @@ public abstract class FormPanel extends Panel
 {
     private static final long serialVersionUID = -8968908404958389317L;
     
-    private List<Field> m_fields;
-    private List<RadioButton> m_radioButtons;
-    private ButtonGroup m_buttonGroup;
+    private List<Field> fields;
+    private List<RadioButton> radioButtons;
+    private ButtonGroup buttonGroup;
 
     public FormPanel(String title)
     {
@@ -37,9 +37,9 @@ public abstract class FormPanel extends Panel
 
     private void initComponents()
     {
-        m_fields = new ArrayList<>();
-        m_radioButtons = new ArrayList<>(0);
-        m_buttonGroup = new ButtonGroup();
+        fields = new ArrayList<>();
+        radioButtons = new ArrayList<>(0);
+        buttonGroup = new ButtonGroup();
         InitFields();
         if (!(this instanceof RegisterAdminPanel))
             AddReturnButton();
@@ -47,12 +47,12 @@ public abstract class FormPanel extends Panel
 
     public List<Field> GetFields()
     {
-        return m_fields;
+        return fields;
     }
 
     public List<RadioButton> GetRadioButtons()
     {
-        return m_radioButtons;
+        return radioButtons;
     }
 
     public void AddField(Field textField, String text, int x, int y)
@@ -60,7 +60,7 @@ public abstract class FormPanel extends Panel
         JLabel ltext = new JLabel(text);
         ltext.setFont(new Font("Microsoft Sans Serif", 0, 16));
         ltext.setSize(text.length() * 16, 20);
-        m_fields.add(textField);
+        fields.add(textField);
         AddComponent(ltext, x, y);
         AddComponent(textField, x, y + ltext.getHeight());
     }
@@ -83,8 +83,8 @@ public abstract class FormPanel extends Panel
     public void AddRadioButton(String textButton, int x, int y)
     {
         RadioButton radioButton = new RadioButton(textButton);
-        m_radioButtons.add(radioButton);
-        m_buttonGroup.add(radioButton);
+        radioButtons.add(radioButton);
+        buttonGroup.add(radioButton);
         AddComponent(radioButton, x, y);
     }
 
@@ -180,6 +180,6 @@ public abstract class FormPanel extends Panel
 
     private void ClearRadioButtons()
     {
-        m_buttonGroup.clearSelection();
+        buttonGroup.clearSelection();
     }
 }

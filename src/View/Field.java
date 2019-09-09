@@ -26,20 +26,20 @@ public abstract class Field extends JPasswordField
     public static final int DATE_FIELD          = 0x00000008;
     public static final int FLOAT_FIELD         = 0x00000010;
     
-    private final String m_defaultText;
-    private final int m_typeField;
+    private final String defaultText;
+    private final int typeField;
 
-    public Field(int width, int height, String defaultText, int typeField)
+    public Field(int width, int height, String default_text, int type_field)
     {
         super();
-        m_defaultText = defaultText;
-        m_typeField = typeField;
+        defaultText = default_text;
+        typeField = type_field;
         setFont(new Font("Microsoft Sans Serif", 0, 16));
         setForeground(Color.GRAY);
         setPreferredSize(new Dimension(width, height));
         setSize(new Dimension(width, height));
         setHorizontalAlignment(JPasswordField.LEFT);
-        setText(m_defaultText);
+        setText(defaultText);
         setEchoChar((char)0);
         setBorder(new RoundRectBorder());
         addFocusListener(new FocusAdapter() 
@@ -62,7 +62,7 @@ public abstract class Field extends JPasswordField
      */
     public boolean IsValidField()
     {
-        switch (m_typeField)
+        switch (typeField)
         {
             case TextField.OBLIGATORY_FIELD: 
                 return ValidateObligatoryField();
@@ -98,7 +98,7 @@ public abstract class Field extends JPasswordField
      */
     private boolean ValidateObligatoryField()
     {
-        return !(String.valueOf(getPassword()).isEmpty() || String.valueOf(getPassword()).equals(m_defaultText));
+        return !(String.valueOf(getPassword()).isEmpty() || String.valueOf(getPassword()).equals(defaultText));
     }
 
     /**
@@ -139,7 +139,7 @@ public abstract class Field extends JPasswordField
      */
     private void TextFieldFocusGained(FocusEvent evt) 
     {
-        if (String.valueOf(getPassword()).equals(m_defaultText))
+        if (String.valueOf(getPassword()).equals(defaultText))
         {
             if (this instanceof PasswordField) /**Is a PasswordField? */
                 setEchoChar((char)8226);
@@ -166,6 +166,6 @@ public abstract class Field extends JPasswordField
     {
         setEchoChar((char)0);
         setForeground(Color.GRAY);
-        setText(m_defaultText);
+        setText(defaultText);
     }
 }

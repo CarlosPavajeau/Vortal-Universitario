@@ -21,15 +21,15 @@ public enum TableNames
     STUDENTS_ENROLLED_IN_GROUP("Student_Enrolled_In_Group")
     ;
 
-    private final String m_tableName;
+    private final String name;
 
-    private TableNames(String tableName)
+    private TableNames(String _tableName)
     {
-        m_tableName = tableName;
+        name = _tableName;
     }
 
     public String GetTableName()
     {
-        return m_tableName;
+        return name;
     }
 }

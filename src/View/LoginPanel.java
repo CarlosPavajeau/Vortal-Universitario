@@ -33,16 +33,16 @@ public class LoginPanel extends FormPanel
         STUDENT
     }
 
-    private TypeUser m_user;
+    private TypeUser typeOfUser;
 
     public LoginPanel()
     {
         super("INICIO DE SESIÓN");
     }
 
-    public void SetUser(TypeUser user)
+    public void SetUser(TypeUser type_of_user)
     {
-        m_user = user;
+        typeOfUser = type_of_user;
     }
 
     @Override
@@ -65,7 +65,7 @@ public class LoginPanel extends FormPanel
             
             try
             {
-                switch (m_user)
+                switch (typeOfUser)
                 {
                     case ADMIN:
                     {

@@ -18,18 +18,18 @@ public class Login implements Serializable
 {
     private static final long serialVersionUID = 6453223500086846374L;
     
-    private String m_user;
-    private String m_password;
+    private String user;
+    private String password;
 
     /**
      * Initialize a new {@code Login} with these characteristics.
-     * @param user that is to be assigned to the object.
-     * @param password that is to be assigned to the object.
+     * @param _user that is to be assigned to the object.
+     * @param _password that is to be assigned to the object.
      */
-    public Login(String user, String password)
+    public Login(String _user, String _password)
     {
-        m_user = user;
-        m_password = password;
+        user = _user;
+        password = _password;
     }
 
     /**
@@ -38,7 +38,7 @@ public class Login implements Serializable
      */
     public String GetUser()
     {
-        return m_user;
+        return user;
     }
 
     /**
@@ -47,25 +47,25 @@ public class Login implements Serializable
      */
     public String GetPassword()
     {
-        return m_password;
+        return password;
     }
 
     /**
      * This method sets a new user for this object {@code Login}.
-     * @param user will be a new user of this {@code Login}.
+     * @param _user will be a new user of this {@code Login}.
      */
-    public void SetUser(String user)
+    public void SetUser(String _user)
     {
-        m_user = user;
+        user = _user;
     }
 
     /**
      * This method sets a new password for this object {@code Login}.
      * @param password will be a new password of this {@code Login}.
      */
-    public void SetPassword(String password)
+    public void SetPassword(String _password)
     {
-        m_password = password;
+        password = _password;
     }
 
     /**
@@ -84,8 +84,8 @@ public class Login implements Serializable
     {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((m_password == null) ? 0 : m_password.hashCode());
-        result = prime * result + ((m_user == null) ? 0 : m_user.hashCode());
+        result = prime * result + ((password == null) ? 0 : password.hashCode());
+        result = prime * result + ((user == null) ? 0 : user.hashCode());
         return result;
     }
 
@@ -99,15 +99,15 @@ public class Login implements Serializable
         if (getClass() != obj.getClass())
             return false;
         Login other = (Login) obj;
-        if (m_password == null) {
-            if (other.m_password != null)
+        if (password == null) {
+            if (other.password != null)
                 return false;
-        } else if (!m_password.equals(other.m_password))
+        } else if (!password.equals(other.password))
             return false;
-        if (m_user == null) {
-            if (other.m_user != null)
+        if (user == null) {
+            if (other.user != null)
                 return false;
-        } else if (!m_user.equals(other.m_user))
+        } else if (!user.equals(other.user))
             return false;
         return true;
     }

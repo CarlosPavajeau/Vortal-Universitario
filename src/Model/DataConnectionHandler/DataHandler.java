@@ -18,7 +18,7 @@ import Data.FileConnectionHandler;
  */
 public  class DataHandler implements DataConnectionHandler
 {
-    private DataConnection m_dataConnection;
+    private DataConnection dataConnection;
 
     /**
      * @throws FileNotFoundException
@@ -37,57 +37,57 @@ public  class DataHandler implements DataConnectionHandler
      */
     public void CloseDB() throws SQLException, IOException, ClassNotFoundException
     {
-        m_dataConnection.CloseDataConnection();
+        dataConnection.CloseDataConnection();
     }
 
     @Override
     public boolean Insert(Object anObject) throws ClassNotFoundException, SQLException, IOException
     {
-        return m_dataConnection.Insert(anObject);
+        return dataConnection.Insert(anObject);
     }
 
     @Override
     public Object Select(Object anObject) throws ClassNotFoundException, SQLException, IOException 
     {
-        return m_dataConnection.Select(anObject);
+        return dataConnection.Select(anObject);
     }
 
     @Override
     public boolean Update(Object anObject) throws ClassNotFoundException, SQLException, IOException 
     {
-        return m_dataConnection.Update(anObject);
+        return dataConnection.Update(anObject);
     }
 
     @Override
     public boolean Delete(Object anObject) throws ClassNotFoundException, SQLException, IOException 
     {
-        return m_dataConnection.Delete(anObject);
+        return dataConnection.Delete(anObject);
     }
 
     @Override
     public void CloseDataConnection() throws SQLException, ClassNotFoundException, IOException 
     {
-        m_dataConnection.CloseDataConnection();
+        dataConnection.CloseDataConnection();
     }
 
     @Override
     public boolean ConnectWithData() throws SQLException, ClassNotFoundException, IOException 
     {
-        return m_dataConnection.ConnectWithData();
+        return dataConnection.ConnectWithData();
     }
 
     @Override
     public void CreateDataConnection() throws SQLException, ClassNotFoundException, IOException 
     {
-        m_dataConnection.CreateDataConnection();
+        dataConnection.CreateDataConnection();
     }
 
     private void SetModeConnection(String fileName) throws FileNotFoundException
     {
         if (DEFAULT_CONNECTION_MODE.equals(CONNECTION_WITH_FILES))
-            m_dataConnection = new FileConnectionHandler(fileName);
+            dataConnection = new FileConnectionHandler(fileName);
         else
-            m_dataConnection = new DBConnectionHandler();
+            dataConnection = new DBConnectionHandler();
     }
     
 }

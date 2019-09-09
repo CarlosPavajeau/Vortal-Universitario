@@ -26,13 +26,13 @@ public abstract class Panel extends JPanel
 
     private static final long serialVersionUID = 6607745560865183345L;
 
-    private List<Button> m_buttons;
-    private final String m_title;
+    private List<Button> buttons;
+    private final String title;
 
-    public Panel(String title)
+    public Panel(String _title)
     {
         super();
-        m_title = title;
+        title = _title;
         initComponents();
         InitPanel();
         SetTitle();
@@ -40,7 +40,7 @@ public abstract class Panel extends JPanel
 
     private void initComponents()
     {
-        m_buttons = new ArrayList<>();
+        buttons = new ArrayList<>();
         setBackground(Color.WHITE);
         setMaximumSize(new Dimension(1000, 700));
         setMinimumSize(new Dimension(1000, 700));
@@ -52,7 +52,7 @@ public abstract class Panel extends JPanel
 
     public List<Button> GetButtons()
     {
-        return m_buttons;
+        return buttons;
     }
 
     public void AddButton(TypeButton typeButton, int x, int y, ActionListener l)
@@ -66,7 +66,7 @@ public abstract class Panel extends JPanel
         component.setLocation(new Point(x, y));
 
         if (component instanceof Button)
-            m_buttons.add((Button) component);   
+            buttons.add((Button) component);   
             
         add(component);
     }
@@ -105,12 +105,12 @@ public abstract class Panel extends JPanel
 
     private void SetTitle()
     {
-        JLabel title = new JLabel(m_title);
-        title.setFont(new Font("Microsoft Sans Serif", 0, 25));
-        title.setHorizontalAlignment(JLabel.CENTER);
-        title.setBounds(0, 5, 700, 100);
-        int x = (getWidth() - title.getWidth()) / 2;
-        title.setBounds(x, 5, 700, 100);
-        add(title);
+        JLabel titleOfPanel = new JLabel(title);
+        titleOfPanel.setFont(new Font("Microsoft Sans Serif", 0, 25));
+        titleOfPanel.setHorizontalAlignment(JLabel.CENTER);
+        titleOfPanel.setBounds(0, 5, 700, 100);
+        int x = (getWidth() - titleOfPanel.getWidth()) / 2;
+        titleOfPanel.setBounds(x, 5, 700, 100);
+        add(titleOfPanel);
     }
 }

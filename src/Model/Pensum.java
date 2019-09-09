@@ -24,13 +24,13 @@ public abstract class Pensum extends Entity implements SubjectHandler
 {
     private static final long serialVersionUID = -5371456265746468553L;
     
-    private String m_name;
-    private String m_description;
-    private String m_campus;
-    private int m_semesters;
-    private int m_credits;
-    private int m_globalLessonLoad;
-    private ArrayList<Subject> m_subjects;
+    private String name;
+    private String description;
+    private String campus;
+    private int semesters;
+    private int credits;
+    private int globalLessonLoad;
+    private ArrayList<Subject> subjects;
 
     /**
      * Initialize a new {@code Pensum} with these characteristics.
@@ -43,16 +43,16 @@ public abstract class Pensum extends Entity implements SubjectHandler
      * @param globalLessonLoad minimum credits required or global credits of the {@code Pensum}.
      * @param subjects subjects that belong or will belong to this {@code Pensum}.
      */
-    public Pensum(String code, String name, String description, String campus, int semesters, int globalLessonLoad, ArrayList<Subject> subjects)
+    public Pensum(String code, String _name, String _description, String _campus, int _semesters, int global_lesson_load, ArrayList<Subject> _subjects)
     {
         super(code);
-        m_name = name;
-        m_description = description;
-        m_campus = campus;
-        m_semesters = semesters;
-        m_globalLessonLoad = globalLessonLoad;
-        m_credits = 0;
-        m_subjects = (subjects != null) ? subjects : new ArrayList<>();
+        name = _name;
+        description = _description;
+        campus = _campus;
+        semesters = _semesters;
+        globalLessonLoad = global_lesson_load;
+        credits = 0;
+        subjects = (subjects != null) ? subjects : new ArrayList<>();
     }
 
     /**
@@ -61,7 +61,7 @@ public abstract class Pensum extends Entity implements SubjectHandler
      */
     public String GetName()
     {
-        return m_name;
+        return name;
     }
 
     /**
@@ -70,7 +70,7 @@ public abstract class Pensum extends Entity implements SubjectHandler
      */
     public String GetDescription()
     {
-        return m_description;
+        return description;
     }
 
     /**
@@ -79,7 +79,7 @@ public abstract class Pensum extends Entity implements SubjectHandler
      */
     public String GetCampus()
     {
-        return m_campus;
+        return campus;
     }
 
     /**
@@ -88,7 +88,7 @@ public abstract class Pensum extends Entity implements SubjectHandler
      */
     public int GetSemesters()
     {
-        return m_semesters;
+        return semesters;
     }
 
     /**
@@ -97,7 +97,7 @@ public abstract class Pensum extends Entity implements SubjectHandler
      */
     public int GetCredits()
     {
-        return m_credits;
+        return credits;
     }
 
     /**
@@ -106,7 +106,7 @@ public abstract class Pensum extends Entity implements SubjectHandler
      */
     public int GetGlobalLessonLoad()
     {
-        return m_globalLessonLoad;
+        return globalLessonLoad;
     }
 
     /**
@@ -115,52 +115,52 @@ public abstract class Pensum extends Entity implements SubjectHandler
      */
     public ArrayList<Subject> GetSubjects()
     {
-        return m_subjects;
+        return subjects;
     }
 
     /**
      * This method sets a new name for this object {@code Pensum}.
      * @param name will be a new name of this {@code Pensum}.
      */
-    public void SetName(String name)
+    public void SetName(String _name)
     {
-        m_name = name;
+        name = _name;
     }
 
     /**
      * This method sets a new description for this object {@code Pensum}.
      * @param description will be a new description of this {@code Pensum}.
      */
-    public void SetDescription(String description)
+    public void SetDescription(String _description)
     {
-        m_description = description;
+        description = _description;
     }
 
     /**
      * This method sets a new campus for this object {@code Pensum}.
      * @param campus will be a new campus of this {@code Pensum}.
      */
-    public void SetCampus(String campus)
+    public void SetCampus(String _campus)
     {
-        m_campus = campus;
+        campus = _campus;
     }
 
     /**
      * This method sets a new semesters for this object {@code Pensum}.
      * @param semesters will be a new semesters of this {@code Pensum}.
      */
-    public void SetSemesters(int semesters)
+    public void SetSemesters(int _semesters)
     {
-        m_semesters = semesters;
+        semesters = _semesters;
     }
 
     /**
      * This method sets a new credits for this object {@code Pensum}.
      * @param globalLessonLoad will be a new credits of this {@code Pensum}.
      */
-    public void SetGlobalLessonLoad(int globalLessonLoad)
+    public void SetGlobalLessonLoad(int _globalLessonLoad)
     {
-        m_globalLessonLoad = globalLessonLoad;
+        globalLessonLoad = _globalLessonLoad;
     }
     
     @Override
@@ -168,18 +168,18 @@ public abstract class Pensum extends Entity implements SubjectHandler
     {
         if (!CanAddThisSubject(subject))
             throw new ExceededCreditsException("Créditos insufucientes...");
-        else if (m_subjects.contains(subject))
+        else if (subjects.contains(subject))
             return false;
-        m_credits += subject.GetCredits();
-        return m_subjects.add(subject);
+        credits += subject.GetCredits();
+        return subjects.add(subject);
     }
 
     @Override
     public boolean RemoveSubject(Subject subject)
     {
-        if (m_subjects.remove(subject))
+        if (subjects.remove(subject))
         {
-            m_credits -= subject.GetCredits();
+            credits -= subject.GetCredits();
             return true;
         }
         return false;

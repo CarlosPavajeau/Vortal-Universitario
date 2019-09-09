@@ -23,30 +23,30 @@ public class FileConnectionHandler implements DataConnection, Serializable
 {
     private static final long serialVersionUID = -7926699142824489196L;
 
-    private File m_file;
-    private Record m_records;
+    private File file;
+    private Record records;
 
     private class Record implements Serializable
     {
         private static final long serialVersionUID = -8020776646032448921L;
-        private ArrayList<Object> m_record;
+        private ArrayList<Object> record;
 
         public Record()
         {
-            m_record = new ArrayList<>();
+            record = new ArrayList<>();
         }
         
         public boolean AddRecord(Object anObject)
         {
-            return m_record.add(anObject);
+            return record.add(anObject);
         }
 
         public boolean UpdateRecord(Object anObject)
         {
-            if (m_record.contains(anObject))
+            if (record.contains(anObject))
             {
-                m_record.remove(anObject);
-                return m_record.add(anObject);
+                record.remove(anObject);
+                return record.add(anObject);
             }
             return false;
         }
@@ -55,7 +55,7 @@ public class FileConnectionHandler implements DataConnection, Serializable
         {
             try
             {
-                return m_record.get(m_record.indexOf(anObject));
+                return record.get(record.indexOf(anObject));
             }
             catch(IndexOutOfBoundsException exception)
             {
@@ -65,20 +65,20 @@ public class FileConnectionHandler implements DataConnection, Serializable
 
         public boolean RemoveRecord(Object anObject)
         {
-            return m_record.remove(anObject);
+            return record.remove(anObject);
         }
 
         public boolean isEmpty()
         {
-            return m_record.isEmpty();
+            return record.isEmpty();
         }
     }
 
 
     public FileConnectionHandler(String fileName) throws FileNotFoundException
     {
-        m_file = new File(fileName);
-        m_records = new Record();
+        file = new File(fileName);
+        records = new Record();
     }
 
     @Override
@@ -86,7 +86,7 @@ public class FileConnectionHandler implements DataConnection, Serializable
     {
         if (!IsItRegistered(anObject))
         {
-            m_records.AddRecord(anObject);
+            records.AddRecord(anObject);
             WriteRecords();
             return true;
         }
@@ -102,7 +102,7 @@ public class FileConnectionHandler implements DataConnection, Serializable
     @Override
     public boolean Update(Object anObject) throws IOException, ClassNotFoundException 
     {
-        m_records.UpdateRecord(anObject);
+        records.UpdateRecord(anObject);
         WriteRecords();
         return true;
     }
@@ -110,7 +110,7 @@ public class FileConnectionHandler implements DataConnection, Serializable
     @Override
     public boolean Delete(Object anObject) throws IOException, ClassNotFoundException 
     {
-        boolean result = m_records.RemoveRecord(anObject);
+        boolean result = records.RemoveRecord(anObject);
         if (result)
             WriteRecords();
         return result;
@@ -125,16 +125,16 @@ public class FileConnectionHandler implements DataConnection, Serializable
     @Override
     public boolean ThereIsRecords() throws IOException 
     {
-        return !m_records.isEmpty();
+        return !records.isEmpty();
 	}
 
     @Override
     public void CreateDataConnection() throws ClassNotFoundException, IOException 
     {
-        if (!m_file.exists())
+        if (!file.exists())
         {
             
-            try (FileOutputStream file = new FileOutputStream(m_file))
+            try (FileOutputStream fileToCreatre = new FileOutputStream(file))
             {
             } 
             catch (IOException exception)
@@ -169,15 +169,15 @@ public class FileConnectionHandler implements DataConnection, Serializable
     
     private Object SearchObject(Object anObject) throws IOException, ClassNotFoundException
     {
-        return m_records.SelectRecord(anObject);
+        return records.SelectRecord(anObject);
     }
 
     private void ReadRecords() throws ClassNotFoundException, IOException
     {
-        try(FileInputStream fileInputStream = new FileInputStream(m_file);
+        try(FileInputStream fileInputStream = new FileInputStream(file);
             ObjectInputStream inputStream = new ObjectInputStream(fileInputStream))
         {
-            m_records = (Record)inputStream.readObject();
+            records = (Record)inputStream.readObject();
         } 
         catch (IOException exception)
         {
@@ -187,10 +187,10 @@ public class FileConnectionHandler implements DataConnection, Serializable
 
     private void WriteRecords() throws IOException
     {
-        try(FileOutputStream fileOutputStream = new FileOutputStream(m_file); 
+        try(FileOutputStream fileOutputStream = new FileOutputStream(file); 
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream))
         {
-            objectOutputStream.writeObject(m_records);
+            objectOutputStream.writeObject(records);
         }
         catch (IOException exception)
         {

@@ -25,14 +25,14 @@ public class DBConnectionHandler implements DataConnection
     private static final String WHERE_COMMAND = "WHERE ";
 
 
-    private Connection m_connection;
+    private Connection connection;
     
     /**
      * 
      */
     public DBConnectionHandler()
     {
-        m_connection = null;
+        connection = null;
     }
 
     /**
@@ -41,8 +41,8 @@ public class DBConnectionHandler implements DataConnection
     public void CreateDB() throws SQLException, ClassNotFoundException
     {
         Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
-        m_connection = DriverManager.getConnection("jdbc:derby:DB/Derby.DB;create=true");
-        if (m_connection != null)
+        connection = DriverManager.getConnection("jdbc:derby:DB/Derby.DB;create=true");
+        if (connection != null)
         {
             CreatePersonTable();
             CreateAcademicLoadTable();
@@ -63,8 +63,8 @@ public class DBConnectionHandler implements DataConnection
     public boolean ConectWithDB() throws SQLException, ClassNotFoundException
     {
         Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
-        m_connection = DriverManager.getConnection("jdbc:derby:DB/Derby.DB");
-        return m_connection != null;
+        connection = DriverManager.getConnection("jdbc:derby:DB/Derby.DB");
+        return connection != null;
     }
 
     /**
@@ -73,7 +73,7 @@ public class DBConnectionHandler implements DataConnection
      */
     public void CloseDB() throws SQLException
     {
-        m_connection.close();
+        connection.close();
     }
 
     /**
@@ -203,7 +203,7 @@ public class DBConnectionHandler implements DataConnection
      */
     private void ExecuteCommand(String command) throws SQLException
     {
-        PreparedStatement pst = m_connection.prepareStatement(command);
+        PreparedStatement pst = connection.prepareStatement(command);
         pst.execute();
         pst.close();
     }

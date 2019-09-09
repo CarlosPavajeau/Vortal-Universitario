@@ -29,16 +29,16 @@ public class WarningPanel
         INVALID_FIELDS("Campos invalidos.")
         ;
 
-        private final String m_msgWarning; 
+        private final String msgWarning; 
 
         private TypeWarning(String msg)
         {
-            m_msgWarning = msg;
+            msgWarning = msg;
         }
 
         public String GetMsg()
         {
-            return m_msgWarning;
+            return msgWarning;
         }
     }
 

@@ -20,7 +20,7 @@ public class Professor extends Person
 {
     private static final long serialVersionUID = 8586935019723181036L;
     
-    List<AcademicLoad> m_academicLoads;
+    List<AcademicLoad> academicLoads;
 
     /**
      * Initialize a new {@code Professor} with these characteristics.
@@ -61,11 +61,11 @@ public class Professor extends Person
                      Subject[] subjects)
     {
         super(code, firstName, secondName, lastName, secondLastName, dateOfBorn, sex);
-        m_academicLoads = new ArrayList<>();
+        academicLoads = new ArrayList<>();
         if (subjects != null && subjects.length > 0)
         {
             for (int i = 0; i < subjects.length; ++i)
-                m_academicLoads.add(new AcademicLoad(numGroups[i], limitOfStudents[i], typeGroups[i], subjects[i]));
+                academicLoads.add(new AcademicLoad(numGroups[i], limitOfStudents[i], typeGroups[i], subjects[i]));
         }
     }
 
@@ -84,7 +84,7 @@ public class Professor extends Person
      */
     public List<AcademicLoad> GetAcademicLoads()
     {
-        return m_academicLoads;
+        return academicLoads;
     }
 
     /**

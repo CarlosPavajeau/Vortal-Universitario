@@ -17,22 +17,22 @@ public class AdminPanel extends Panel
 {
     private static final long serialVersionUID = 1369914050610515081L;
 
-    private Admin m_admin;
+    private Admin admin;
     
     public AdminPanel()
     {
         super("BIENVENIDO ADMINISTRADOR");
-        m_admin = null;
+        admin = null;
     }
 
-    public void SetAdmin(Admin admin)
+    public void SetAdmin(Admin _admin)
     {
-        m_admin = admin;
+        admin = _admin;
     }
 
     public Admin GetAdmin()
     {
-        return m_admin;
+        return admin;
     }
 
     @Override

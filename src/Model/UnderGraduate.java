@@ -21,7 +21,7 @@ public class UnderGraduate extends Pensum
 {
     private static final long serialVersionUID = 5032281764008717464L;
     
-    private String m_titleToGrand;
+    private String titleToGrand;
 
     /**
      * Initialize a new {@code UnderGraduate} with these characteristics.
@@ -33,12 +33,12 @@ public class UnderGraduate extends Pensum
      * @param semesters duration in semesters of {@code UnderGraduate}.
      * @param globalLessonLoad minimum credits required or global credits of the {@code UnderGraduate}.
      * @param subjects subjects that belong or will belong to this {@code UnderGraduate}.
-     * @param titleToGrand it will the title to grand.
+     * @param title_to_grand it will the title to grand.
      */
-    public UnderGraduate(String code, String name, String description, String campus, int semesters, int globalLessonLoad, ArrayList<Subject> subjects, String titleToGrand)
+    public UnderGraduate(String code, String name, String description, String campus, int semesters, int globalLessonLoad, ArrayList<Subject> subjects, String title_to_grand)
     {
         super(code, name, description, campus, semesters, globalLessonLoad, subjects);
-        m_titleToGrand = titleToGrand;
+        titleToGrand = title_to_grand;
     }
 
     /**
@@ -47,15 +47,15 @@ public class UnderGraduate extends Pensum
      */
     public String GetTitleToGrand()
     {
-        return m_titleToGrand;
+        return titleToGrand;
     }
 
     /**
      * This method sets a new title to grand for this object {@code UnderGraduate}.
-     * @param titleToGrand will be a new title to grand of this {@code UnderGraduate}.
+     * @param title_to_grand will be a new title to grand of this {@code UnderGraduate}.
      */
-    public void SetTitleToGrand(String titleToGrand)
+    public void SetTitleToGrand(String title_to_grand)
     {
-        m_titleToGrand = titleToGrand;
+        titleToGrand = title_to_grand;
     }
 }

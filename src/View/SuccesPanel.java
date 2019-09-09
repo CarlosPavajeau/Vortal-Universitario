@@ -26,16 +26,16 @@ public class SuccesPanel
         
         ;
 
-        private final String m_msgSucces;
+        private final String succesMessage;
 
-        private TypeSucces(String msgSucces)
+        private TypeSucces(String succes_message)
         {
-            m_msgSucces = msgSucces;
+            succesMessage = succes_message;
         }
 
-        public String GetMsg()
+        public String GetSuccesMessage()
         {
-            return m_msgSucces;
+            return succesMessage;
         }
     }
 
@@ -47,6 +47,6 @@ public class SuccesPanel
 
     public static void ShowSucces(TypeSucces typeSucces)
     {
-        MainWindow.ShowPopUpWindow("Éxito", SUCCES_MSG + typeSucces.GetMsg(), JOptionPane.INFORMATION_MESSAGE, SUCCES_ICON);
+        MainWindow.ShowPopUpWindow("Éxito", SUCCES_MSG + typeSucces.GetSuccesMessage(), JOptionPane.INFORMATION_MESSAGE, SUCCES_ICON);
     }
 }

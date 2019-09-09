@@ -19,7 +19,7 @@ public class Main
     {
         EventQueue.invokeLater(() -> 
         {
-            MainWindow.m_mainWindow.setVisible(true);
+            MainWindow.mainWindow.setVisible(true);
         });
     }
 }

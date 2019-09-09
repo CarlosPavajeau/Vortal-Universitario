@@ -15,15 +15,15 @@ public enum TableFields
                         "monthOfBorrn varchar(10), dayOfBorn varchar(10), sex varchar(15), type varchar(5))");
     ;
 
-    private final String m_fields;
+    private final String fields;
 
-    private TableFields(String fields)
+    private TableFields(String _fields)
     {
-        m_fields = fields;
+        fields = _fields;
     }
 
     public String GetFields()
     {
-        return m_fields;
+        return fields;
     }
 }

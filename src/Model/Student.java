@@ -22,30 +22,30 @@ public class Student extends Person implements SubjectHandler
 {
     private static final long serialVersionUID = 188478517140819571L;
     
-    private ArrayList<Qualification> m_qualifications;
-    private ArrayList<Qualification> m_curseSubjects;
-    private ArrayList<Float> m_semesterAverage;
-    private float m_generalAverage;
-    private int m_registeredCredits;
-    private int m_currentSemester;
-    private String m_isMatriculateIn;
+    private ArrayList<Qualification> qualifications;
+    private ArrayList<Qualification> curseSubjects;
+    private ArrayList<Float> semesterAverage;
+    private float generalAverage;
+    private int registeredCredits;
+    private int currentSemester;
+    private String isMatriculateIn;
 
     /**
      * Initialize a new {@code Student} with these characteristics.
      * As in {@code Entity} the code is unique. 
      * @param code that is to be assigned to the object. In this case, the code will be 
      * ID or DNI (T.I. - C.C.) of {@code Student}.
-     * @param firstName will be the first name that will have this {@code Student}.
-     * @param secondName will be the second name that will have this {@code Student}.
-     * @param lastName will be the last name that will have this {@code Student}.
-     * @param secondLastName will be the second last name that will have this {@code Student}.
-     * @param dateOfBorn will be the date of born that will have this {@code Student}.
-     * @param sex will be the sex that will have this {@code Student}.
+     * @param first_name will be the first name that will have this {@code Student}.
+     * @param second_name will be the second name that will have this {@code Student}.
+     * @param last_name will be the last name that will have this {@code Student}.
+     * @param secon_last_name will be the second last name that will have this {@code Student}.
+     * @param date_of_born will be the date of born that will have this {@code Student}.
+     * @param _sex will be the _sex that will have this {@code Student}.
      */
-    public Student(String code, String firstName, String secondName, String lastName, String secondLastName,
-                   String dateOfBorn, Sex sex)
+    public Student(String code, String first_name, String second_name, String last_name, String secon_last_name,
+                   String date_of_born, Sex _sex)
     {
-        this(code, firstName, secondName, lastName, secondLastName, dateOfBorn, sex, null, null, null, 0.0f, 0, 0, "");
+        this(code, first_name, second_name, last_name, secon_last_name, date_of_born, _sex, null, null, null, 0.0f, 0, 0, "");
     }
 
     /**
@@ -53,31 +53,31 @@ public class Student extends Person implements SubjectHandler
      * As in {@code Student} the code is unique. 
      * @param code that is to be assigned to the object. In this case, the code will be 
      * ID or DNI (T.I. - C.C.) of {@code Student}.
-     * @param firstName will be the first name that will have this {@code Student}.
-     * @param secondName will be the second name that will have this {@code Student}.
-     * @param lastName will be the last name that will have this {@code Student}.
-     * @param secondLastName will be the second last name that will have this {@code Student}.
-     * @param dateOfBorn will be the date of born that will have this {@code Student}.
-     * @param sex will be the sex that will have this {@code Student}.
+     * @param first_name will be the first name that will have this {@code Student}.
+     * @param second_name will be the second name that will have this {@code Student}.
+     * @param last_name will be the last name that will have this {@code Student}.
+     * @param secon_last_name will be the second last name that will have this {@code Student}.
+     * @param date_of_born will be the date of born that will have this {@code Student}.
+     * @param _sex will be the _sex that will have this {@code Student}.
      * @param qualifications will be the qualificationx that will have this {@code Student}.
      * @param semesterAverage will be the semester average that will have this {@code Student}.
-     * @param generalAverage will be the general average that will have this {@code Student}.
-     * @param registeredCredits will be the registered credits that will have this {@code Student}.
-     * @param currentSemester will be the current semester that will have this {@code Student}.
-     * @param isMatriculateIn will be the pensum where this {@code Student} be matriculate.
+     * @param general_average will be the general average that will have this {@code Student}.
+     * @param registered_credits will be the registered credits that will have this {@code Student}.
+     * @param current_semester will be the current semester that will have this {@code Student}.
+     * @param is_matriculate_in will be the pensum where this {@code Student} be matriculate.
      */
-    public Student(String code, String firstName, String secondName, String lastName, String secondLastName,
-                   String dateOfBorn, Sex sex, ArrayList<Qualification> qualifications, ArrayList<Qualification> curseSubjects, ArrayList<Float> semesterAverage,
-                   float generalAverage, int registeredCredits, int currentSemester, String isMatriculateIn)
+    public Student(String code, String first_name, String second_name, String last_name, String secon_last_name,
+                   String date_of_born, Sex _sex, ArrayList<Qualification> qualifications, ArrayList<Qualification> curseSubjects, ArrayList<Float> semesterAverage,
+                   float general_average, int registered_credits, int current_semester, String is_matriculate_in)
     {
-        super(code, firstName, secondName, lastName, secondLastName, dateOfBorn, sex);
-        m_qualifications = (qualifications != null) ? qualifications : new ArrayList<>();
-        m_curseSubjects = (curseSubjects != null) ? curseSubjects : new ArrayList<>();
-        m_semesterAverage = (semesterAverage != null) ? semesterAverage : new ArrayList<>();
-        m_generalAverage = generalAverage;
-        m_registeredCredits = registeredCredits;
-        m_currentSemester = currentSemester;
-        m_isMatriculateIn = isMatriculateIn;
+        super(code, first_name, second_name, last_name, secon_last_name, date_of_born, _sex);
+        qualifications = (qualifications != null) ? qualifications : new ArrayList<>();
+        curseSubjects = (curseSubjects != null) ? curseSubjects : new ArrayList<>();
+        semesterAverage = (semesterAverage != null) ? semesterAverage : new ArrayList<>();
+        generalAverage = general_average;
+        registeredCredits = registered_credits;
+        currentSemester = current_semester;
+        isMatriculateIn = is_matriculate_in;
     }
 
     /**
@@ -95,7 +95,7 @@ public class Student extends Person implements SubjectHandler
      */
     public float GetGeneralAverage()
     {
-        return m_generalAverage;
+        return generalAverage;
     }
 
     /**
@@ -104,7 +104,7 @@ public class Student extends Person implements SubjectHandler
      */
     public int GetRegisteredCredits()
     {
-        return m_registeredCredits;
+        return registeredCredits;
     }
 
     /**
@@ -113,7 +113,7 @@ public class Student extends Person implements SubjectHandler
      */
     public int GetCurrentSemester()
     {
-        return m_currentSemester;
+        return currentSemester;
     }
 
     /**
@@ -134,7 +134,7 @@ public class Student extends Person implements SubjectHandler
      */
     public ArrayList<Float> GetSemesterAverage()
     {
-        return m_semesterAverage;
+        return semesterAverage;
     }
 
     /**
@@ -144,7 +144,7 @@ public class Student extends Person implements SubjectHandler
      */
     public float GetQualification(Subject subject, int cort) throws IndexOutOfBoundsException
     {
-        return m_qualifications.get(m_qualifications.indexOf(new Qualification(subject))).GetNote(cort);
+        return qualifications.get(qualifications.indexOf(new Qualification(subject))).GetNote(cort);
     }
 
     /**
@@ -153,16 +153,16 @@ public class Student extends Person implements SubjectHandler
      */
     public ArrayList<Qualification> GetCurseSubjects()
     {
-        return m_curseSubjects;
+        return curseSubjects;
     }
 
     /**
      * 
-     * @param generalAverage
+     * @param general_average
      */
-    public void SetGeneralAverage(float generalAverage)
+    public void SetGeneralAverage(float general_average)
     {
-        m_generalAverage = generalAverage;
+        generalAverage = general_average;
     }
 
     /**
@@ -173,9 +173,9 @@ public class Student extends Person implements SubjectHandler
      */
     public boolean MatriculateIn(String pensum)
     {
-        if (m_isMatriculateIn == null || !m_isMatriculateIn.isEmpty())
+        if (isMatriculateIn == null || !isMatriculateIn.isEmpty())
             return false;
-        m_isMatriculateIn = pensum;
+        isMatriculateIn = pensum;
         return true;
     }
 
@@ -187,7 +187,7 @@ public class Student extends Person implements SubjectHandler
      */
     public boolean IsMatriculateIn(String pensum)
     {
-        return pensum.equals(m_isMatriculateIn);
+        return pensum.equals(isMatriculateIn);
     }
 
     @Override
@@ -197,20 +197,20 @@ public class Student extends Person implements SubjectHandler
             throw new ExceededCreditsException("Créditos insuficientes...");
 
         Qualification qualification = new Qualification(subject);
-        if (m_qualifications.contains(qualification))
+        if (qualifications.contains(qualification))
             return false;
-        m_registeredCredits += qualification.GetSubject().GetCredits();
-        return m_qualifications.add(qualification);
+        registeredCredits += qualification.GetSubject().GetCredits();
+        return qualifications.add(qualification);
     }
 
     @Override
     public boolean RemoveSubject(Subject subject)
     {
-        Qualification qualification = m_qualifications.get(m_qualifications.indexOf(new Qualification(subject)));
+        Qualification qualification = qualifications.get(qualifications.indexOf(new Qualification(subject)));
         if (qualification.HasNotes())
             return false;
-        m_registeredCredits -= qualification.GetSubject().GetCredits();
-        return m_qualifications.remove(qualification);
+        registeredCredits -= qualification.GetSubject().GetCredits();
+        return qualifications.remove(qualification);
     }
 
     @Override
@@ -223,7 +223,7 @@ public class Student extends Person implements SubjectHandler
     public int GetAvailableCredits()
     {
         AcademicSemester academicSemester = new AcademicSemester(GetCurrentSemester(), 0, 0);
-        return academicSemester.GetMaxCredits() - GetRegisteredCredits();
+        return academicSemester.GetMaximumCredits() - GetRegisteredCredits();
     }
 
     /**
@@ -232,9 +232,9 @@ public class Student extends Person implements SubjectHandler
     public void UpdateGeneralAverage()
     {
         float newAverage = 0.0f;
-        for (Float average : m_semesterAverage)
+        for (Float average : semesterAverage)
             newAverage += average.floatValue();
-        newAverage /= m_semesterAverage.size();
+        newAverage /= semesterAverage.size();
         SetGeneralAverage(newAverage);
     }
 
@@ -244,9 +244,9 @@ public class Student extends Person implements SubjectHandler
     public void AddNewSemesterAverage()
     {
         float newSemesterAverage = 0.0f;
-        for (Qualification qualification : m_qualifications)
+        for (Qualification qualification : qualifications)
             newSemesterAverage += qualification.GetAverage() * (qualification.GetSubject().GetCredits() / GetRegisteredCredits());
-        m_semesterAverage.add(Float.valueOf(newSemesterAverage));
+        semesterAverage.add(Float.valueOf(newSemesterAverage));
     }
 
     /**
@@ -254,6 +254,6 @@ public class Student extends Person implements SubjectHandler
      */
     public void UpdateCurrentSemester()
     {
-        ++m_currentSemester;
+        ++currentSemester;
     }
 }

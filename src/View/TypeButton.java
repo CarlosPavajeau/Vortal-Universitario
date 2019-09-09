@@ -44,16 +44,16 @@ public enum TypeButton
     BUTTON_ICON_VIEW_QUALIFICATIONS("Icon_ViewQualifications", "Ver calificaciones", TypeButton.BUTTON_WITH_SIZE_100x100),
     BUTTON_ICON_VIEW_STUDENT_SUBJECTS("Icon_ViewStudentSubjects", "Ver asignaturas de estudiante", TypeButton.BUTTON_WITH_SIZE_100x100),
     /**200x200 buttons */
-    BUTTON_ICON_I_AM_ADMIN("I'm_Admin", "Soy Administrador", TypeButton.BUTTON_WITH_SIZE_200x200),
-    BUTTON_ICON_I_AM_PROFESSOR("I'm_Professor", "Soy Professor", TypeButton.BUTTON_WITH_SIZE_200x200),
-    BUTTON_ICON_I_AM_STUDENT("I'm_Student", "Soy Estudiante", TypeButton.BUTTON_WITH_SIZE_200x200)
+    BUTTON_ICON_I_AM_ADMIN("I'Admin", "Soy Administrador", TypeButton.BUTTON_WITH_SIZE_200x200),
+    BUTTON_ICON_I_AM_PROFESSOR("I'Professor", "Soy Professor", TypeButton.BUTTON_WITH_SIZE_200x200),
+    BUTTON_ICON_I_AM_STUDENT("I'Student", "Soy Estudiante", TypeButton.BUTTON_WITH_SIZE_200x200)
     ;
 
-    private final String m_src;
-    private final String m_rolloverSrc;
-    private final String m_pressedSrc;
-    private final int m_width, m_heigth;
-    private final String m_text;
+    private final String src;
+    private final String rolloverSrc;
+    private final String pressedSrc;
+    private final int width, heigth;
+    private final String text;
 
     private static final String STANDARD_BUTTONS_SRC = "/View/Assets/Buttons/";
     private static final String BUTTONS_WITH_ICONS100x100_SRC = "/View/Assets/Icons/100x100/";
@@ -85,82 +85,82 @@ public enum TypeButton
     {
         if (typeButton == TypeButton.STANDARD_BUTTON)
         {
-            m_src = STANDARD_BUTTONS_SRC + buttonName + BUTTON_EXT;
+            src = STANDARD_BUTTONS_SRC + buttonName + BUTTON_EXT;
 
-            m_rolloverSrc = STANDARD_BUTTONS_SRC + buttonName +
+            rolloverSrc = STANDARD_BUTTONS_SRC + buttonName +
                             BUTTON_ROLLOVER_SUFFIX + BUTTON_EXT;
-            m_pressedSrc = STANDARD_BUTTONS_SRC + buttonName + 
+            pressedSrc = STANDARD_BUTTONS_SRC + buttonName + 
                             BUTTON_PRESSED_SUFFIX + BUTTON_EXT;
 
-            m_width = STANDARD_BUTTON_SIZE_WIDTH;
-            m_heigth = STANDARD_BUTTON_SIZE_HEIGHT;
+            width = STANDARD_BUTTON_SIZE_WIDTH;
+            heigth = STANDARD_BUTTON_SIZE_HEIGHT;
         }
         else if (typeButton == TypeButton.BUTTON_WITH_SIZE_50x50)
         {
-            m_src = BUTTONS_WITH_ICONS50x50_SRC + buttonName + BUTTON_EXT;
+            src = BUTTONS_WITH_ICONS50x50_SRC + buttonName + BUTTON_EXT;
 
-            m_rolloverSrc = BUTTONS_WITH_ICONS50x50_SRC + buttonName + 
+            rolloverSrc = BUTTONS_WITH_ICONS50x50_SRC + buttonName + 
                             BUTTON_ROLLOVER_SUFFIX + BUTTON_EXT;
-            m_pressedSrc = BUTTONS_WITH_ICONS50x50_SRC + buttonName + 
+            pressedSrc = BUTTONS_WITH_ICONS50x50_SRC + buttonName + 
                             BUTTON_PRESSED_SUFFIX + BUTTON_EXT;
 
-            m_width = BUTTONS_WITH_ICONS50x50_WIDTH;
-            m_heigth = BUTTONS_WITH_ICONS50x50_HEIGHT;
+            width = BUTTONS_WITH_ICONS50x50_WIDTH;
+            heigth = BUTTONS_WITH_ICONS50x50_HEIGHT;
         }
         else if (typeButton == TypeButton.BUTTON_WITH_SIZE_100x100)
         {
-            m_src = BUTTONS_WITH_ICONS100x100_SRC + buttonName + BUTTON_EXT;
+            src = BUTTONS_WITH_ICONS100x100_SRC + buttonName + BUTTON_EXT;
 
-            m_rolloverSrc = BUTTONS_WITH_ICONS100x100_SRC + buttonName + 
+            rolloverSrc = BUTTONS_WITH_ICONS100x100_SRC + buttonName + 
                             BUTTON_ROLLOVER_SUFFIX + BUTTON_EXT;
-            m_pressedSrc = BUTTONS_WITH_ICONS100x100_SRC + buttonName + 
+            pressedSrc = BUTTONS_WITH_ICONS100x100_SRC + buttonName + 
                             BUTTON_PRESSED_SUFFIX + BUTTON_EXT;
 
-            m_width = BUTTONS_WITH_ICONS100x100_WIDTH;
-            m_heigth = BUTTONS_WITH_ICONS100x100_HEIGHT;
+            width = BUTTONS_WITH_ICONS100x100_WIDTH;
+            heigth = BUTTONS_WITH_ICONS100x100_HEIGHT;
         } 
         else
         {
-            m_src = BUTTONS_WITH_ICONS200x200_SRC + buttonName + BUTTON_EXT;
+            src = BUTTONS_WITH_ICONS200x200_SRC + buttonName + BUTTON_EXT;
 
-            m_rolloverSrc = BUTTONS_WITH_ICONS200x200_SRC + buttonName + 
+            rolloverSrc = BUTTONS_WITH_ICONS200x200_SRC + buttonName + 
                             BUTTON_ROLLOVER_SUFFIX + BUTTON_EXT;
-            m_pressedSrc = BUTTONS_WITH_ICONS200x200_SRC + buttonName + 
+            pressedSrc = BUTTONS_WITH_ICONS200x200_SRC + buttonName + 
                             BUTTON_PRESSED_SUFFIX + BUTTON_EXT;
 
-            m_width = BUTTONS_WITH_ICONS200x200_WIDTH;
-            m_heigth = BUTTONS_WITH_ICONS200x200_HEIGHT;
+            width = BUTTONS_WITH_ICONS200x200_WIDTH;
+            heigth = BUTTONS_WITH_ICONS200x200_HEIGHT;
         }
-        m_text = tex;
+        text = tex;
     }
 
     public String GetSRC()
     {
-        return m_src;
+        return src;
     }
 
     public String GetRolloverSRC()
     {
-        return m_rolloverSrc;
+        return rolloverSrc;
     }
 
     public String GetPressedSRC()
     {
-        return m_pressedSrc;
+        return pressedSrc;
     }
 
     public int GetWidth()
     {
-        return m_width;
+        return width;
     }
 
     public int GetHeigth()
     {
-        return m_heigth;
+        return heigth;
     }
 
     public String GetText()
     {
-        return m_text;
+        return text;
     }
 }

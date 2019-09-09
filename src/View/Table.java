@@ -15,12 +15,12 @@ public class Table extends JTable
 {
     private static final long serialVersionUID = 6281155193179910464L;
 
-    private final String[] m_columnNames;
+    private final String[] columnNames;
 
-    public Table(String... columnNames)
+    public Table(String... _columnNames)
     {
-        m_columnNames = columnNames;
-        setModel(new DefaultTableModel(null,m_columnNames) {
+        columnNames = _columnNames;
+        setModel(new DefaultTableModel(null,columnNames) {
             boolean[] canEdit = new boolean [] {
                 false, false, false, false
             };

@@ -29,9 +29,9 @@ public class MainWindow extends JFrame
 {
     private static final long serialVersionUID = 9040978770256604819L;
 
-    private static List<Panel> m_panels;
-    public static final MainWindow m_mainWindow = new MainWindow();
-    private JPanel m_mainPanel;
+    private static List<Panel> panels;
+    public static final MainWindow mainWindow = new MainWindow();
+    private JPanel mainPanel;
 
     public static enum Panels
     {
@@ -66,10 +66,10 @@ public class MainWindow extends JFrame
 
     private void initComponents() 
     {
-        m_panels = new ArrayList<>();
-        m_mainPanel = new JPanel();
-        setContentPane(m_mainPanel);
-        m_mainPanel.setBackground(Color.WHITE);
+        panels = new ArrayList<>();
+        mainPanel = new JPanel();
+        setContentPane(mainPanel);
+        mainPanel.setBackground(Color.WHITE);
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Vortal Universitario");
         setBackground(Color.WHITE);
@@ -79,33 +79,33 @@ public class MainWindow extends JFrame
 
     private void InitFormPanels()
     {
-        m_panels.add(new RegisterAcademicLoadPanel());
-        m_panels.add(new RegisterAcademicSemesterPanel());
-        m_panels.add(new RegisterAdminPanel());
-        m_panels.add(new RegisterNotesPanel());
-        m_panels.add(new RegisterPensumPanel());
-        m_panels.add(new RegisterPersonPanel());
-        m_panels.add(new RegisterSubjectPanel());
+        panels.add(new RegisterAcademicLoadPanel());
+        panels.add(new RegisterAcademicSemesterPanel());
+        panels.add(new RegisterAdminPanel());
+        panels.add(new RegisterNotesPanel());
+        panels.add(new RegisterPensumPanel());
+        panels.add(new RegisterPersonPanel());
+        panels.add(new RegisterSubjectPanel());
     }
 
     private void InitHandlingPanels()
     {
-        m_panels.add(new DataHandlerPanel());
-        m_panels.add(new StudentHandlerPanel());
-        m_panels.add(new ProfessorHandlerPanel());
-        m_panels.add(new SubjectHandlerPanel());
-        m_panels.add(new PensumHandlerPanel());
-        m_panels.add(new AcademicSemesterHandlerPanel());
-        m_panels.add(new StudentGroupHandlerPanel());
+        panels.add(new DataHandlerPanel());
+        panels.add(new StudentHandlerPanel());
+        panels.add(new ProfessorHandlerPanel());
+        panels.add(new SubjectHandlerPanel());
+        panels.add(new PensumHandlerPanel());
+        panels.add(new AcademicSemesterHandlerPanel());
+        panels.add(new StudentGroupHandlerPanel());
     }
 
     private void InitPanels()
     {
-        m_panels.add(new StartPanel());
-        m_panels.add(new StudentPanel());
-        m_panels.add(new ProfessorPanel());
-        m_panels.add(new AdminPanel());
-        m_panels.add(new LoginPanel());
+        panels.add(new StartPanel());
+        panels.add(new StudentPanel());
+        panels.add(new ProfessorPanel());
+        panels.add(new AdminPanel());
+        panels.add(new LoginPanel());
         InitFormPanels();
         InitHandlingPanels();
         AddPanels();
@@ -113,7 +113,7 @@ public class MainWindow extends JFrame
 
     private void AddPanels()
     {
-        for (Panel panel : m_panels)
+        for (Panel panel : panels)
         {
             panel.setVisible(false);
             add(panel);
@@ -142,7 +142,7 @@ public class MainWindow extends JFrame
 
     public static void ShowPopUpWindow(String title, String message, int messageType, Icon icon)
     {
-        JOptionPane.showMessageDialog(m_mainWindow, message, title, messageType, icon);
+        JOptionPane.showMessageDialog(mainWindow, message, title, messageType, icon);
     }
 
     public static void LoginAction(ActionEvent evt, TypeUser user)
@@ -171,7 +171,7 @@ public class MainWindow extends JFrame
     {
         try
         {
-            return m_panels.get(panel.ordinal());
+            return panels.get(panel.ordinal());
         }
         catch (IndexOutOfBoundsException exception)
         {

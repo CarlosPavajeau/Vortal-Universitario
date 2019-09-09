@@ -20,10 +20,10 @@ public class StudentGroup extends Entity
 {
     private static final long serialVersionUID = 8673155443301130624L;
     
-    private final int m_groupNumber;
-    private final int m_limitOfStudents;
-    private ArrayList<Student> m_students;
-    private TypeGroup m_type;
+    private final int groupNumber;
+    private final int limitOfStudents;
+    private ArrayList<Student> students;
+    private TypeGroup typeGroup;
 
     /**
      * Initialize a new {@code StudentGroup} with these characteristics.
@@ -45,13 +45,13 @@ public class StudentGroup extends Entity
      * @param typeGroup will be the type of group that will have this {@code StudentGroup}.
      * @param students it will be the students who will have this {@code StudentGroup}.
      */
-    public StudentGroup(String code, int groupNumber, int limitOfStudents, TypeGroup typeGroup, ArrayList<Student> students)
+    public StudentGroup(String _code, int _groupNumber, int _limitOfStudents, TypeGroup _typeGroup, ArrayList<Student> _students)
     {
-        super(code);
-        m_groupNumber = groupNumber;
-        m_limitOfStudents = limitOfStudents;
-        m_students = students;
-        m_type = typeGroup;
+        super(_code);
+        groupNumber = _groupNumber;
+        limitOfStudents = _limitOfStudents;
+        students = _students;
+        typeGroup = _typeGroup;
     }
 
     /**
@@ -70,7 +70,7 @@ public class StudentGroup extends Entity
      */
     public int GetGroupNumber()
     {
-        return m_groupNumber;
+        return groupNumber;
     }
 
     /**
@@ -79,7 +79,7 @@ public class StudentGroup extends Entity
      */
     public int GetLimitOfStudents()
     {
-        return m_limitOfStudents;
+        return limitOfStudents;
     }
 
     /**
@@ -88,25 +88,25 @@ public class StudentGroup extends Entity
      */
     public ArrayList<Student> GetStudents()
     {
-        return m_students;
+        return students;
     }
 
     /**
      * This method returns the type of group that is this {@code StudentGroup}.
      * @return the the type of group that is this {@code StudentGroup}.
      */
-    public String GetType()
+    public String GetTypeGroup()
     {
-        return m_type.GetType();
+        return typeGroup.GetTypeGroup();
     }
 
     /**
      * This method sets the type of group for this {@code StudentGroup}.
-     * @param type the type of group to process.
+     * @param typeGroup the type of group to process.
      */
-    public final void SetType(TypeGroup type)
+    public final void SetType(TypeGroup type_Group)
     {
-        m_type = type;
+        typeGroup = type_Group;
     }
 
     /**
@@ -138,7 +138,7 @@ public class StudentGroup extends Entity
      */
     public void CloseGroup()
     {
-        m_students.clear();
+        students.clear();
     }
 
     /**
@@ -148,7 +148,7 @@ public class StudentGroup extends Entity
      */
     public boolean IsEmpty()
     {
-        return m_students.isEmpty();
+        return students.isEmpty();
     }
 
     /**
@@ -158,7 +158,7 @@ public class StudentGroup extends Entity
      */
     public boolean IsFull()
     {
-        return m_students.size() >= GetLimitOfStudents();
+        return students.size() >= GetLimitOfStudents();
     }
 
     @Override
@@ -166,9 +166,9 @@ public class StudentGroup extends Entity
     {
         final int prime = 31;
         int result = super.hashCode();
-        result = prime * result + m_groupNumber;
-        result = prime * result + m_limitOfStudents;
-        result = prime * result + ((m_type == null) ? 0 : m_type.hashCode());
+        result = prime * result + groupNumber;
+        result = prime * result + limitOfStudents;
+        result = prime * result + ((typeGroup == null) ? 0 : typeGroup.hashCode());
         return result;
     }
 
@@ -182,11 +182,11 @@ public class StudentGroup extends Entity
         if (getClass() != obj.getClass())
             return false;
         StudentGroup other = (StudentGroup) obj;
-        if (m_groupNumber != other.m_groupNumber)
+        if (groupNumber != other.groupNumber)
             return false;
-        if (m_limitOfStudents != other.m_limitOfStudents)
+        if (limitOfStudents != other.limitOfStudents)
             return false;
-        if (m_type != other.m_type)
+        if (typeGroup != other.typeGroup)
             return false;
         return true;
     }

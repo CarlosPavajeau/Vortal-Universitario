@@ -31,22 +31,22 @@ public class RegisterPersonPanel extends FormPanel
         PROFESSOR
     }
     
-    private TypePerson m_typePerson;
+    private TypePerson typePerson;
 
     public RegisterPersonPanel()
     {
         super("REGISTRO DE PERSONA");
-        m_typePerson = TypePerson.STUDENT;
+        typePerson = TypePerson.STUDENT;
     }
 
     public TypePerson GetTypePerson()
     {
-        return m_typePerson;
+        return typePerson;
     }
 
-    public void SetTypePerson(TypePerson typePerson)
+    public void SetTypePerson(TypePerson _typePerson)
     {
-        m_typePerson = typePerson;
+        typePerson = _typePerson;
     }
 
     @Override
