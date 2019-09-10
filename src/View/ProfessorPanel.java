@@ -7,8 +7,6 @@ package View;
 
 import java.awt.event.ActionEvent;
 
-import View.MainWindow.Panels;
-
 /**
  * 
  */
@@ -26,6 +24,6 @@ public class ProfessorPanel extends Panel
     {
         AddCenterComponentY(new Button(TypeButton.BUTTON_ICON_DATA_MANAGER, null), 350);
         AddCenterComponentY(new Button(TypeButton.BUTTON_ICON_STUDENT_HANDLER, null), 500);
-        AddButton(TypeButton.BUTTON_LOGOUT, 775, 625, (ActionEvent evt) -> { MainWindow.ChangePanel(Panels.PROFESSOR_PANEL, Panels.START_PANEL); });
+        AddButton(TypeButton.BUTTON_LOGOUT, 775, 625, (ActionEvent evt) -> { ReturnToBehindPanel(); });
     }
 }
