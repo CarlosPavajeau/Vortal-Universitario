@@ -11,7 +11,6 @@ import Model.Subject;
 import Model.DataConnectionHandler.DataConnectionHandler;
 import Model.DataConnectionHandler.SubjectDataHandler;
 import View.ErrorPanel.TypeError;
-import View.MainWindow.Panels;
 import View.SuccesPanel.TypeSucces;
 import View.WarningPanel.TypeWarning;
 
@@ -57,8 +56,7 @@ public class RegisterSubjectPanel extends FormPanel
                 if (SaveData(subject, dataConnectionHandler))
                 {
                     SuccesPanel.ShowSucces(TypeSucces.REGISTERED_SUBJECT);
-                    ClearFormPanel();
-                    MainWindow.ChangePanel(Panels.REGISTER_SUBJECT_PANEL, Panels.SUBJECT_HANDLER_PANEL);
+                    ClearAndReturnToBehindPanel();
                 }
                 else
                     WarningPanel.ShowWarning(TypeWarning.SUBJECT_ALREADY_REGISTERED);
@@ -71,14 +69,7 @@ public class RegisterSubjectPanel extends FormPanel
         else
             WarningPanel.ShowWarning(TypeWarning.INVALID_FIELDS);
     }
-
-    @Override
-    protected void ReturnButtonAction() 
-    {
-        super.ReturnButtonAction();
-        MainWindow.ChangePanel(Panels.REGISTER_SUBJECT_PANEL, Panels.SUBJECT_HANDLER_PANEL);
-    }
-
+    
     @Override
     protected void InitPanel() 
     {

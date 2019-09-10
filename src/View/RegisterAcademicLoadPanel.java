@@ -16,7 +16,6 @@ import Model.DataConnectionHandler.DataConnectionHandler;
 import Model.DataConnectionHandler.PersonDataHandler;
 import Model.DataConnectionHandler.SubjectDataHandler;
 import View.ErrorPanel.TypeError;
-import View.MainWindow.Panels;
 import View.SuccesPanel.TypeSucces;
 import View.WarningPanel.TypeWarning;
 
@@ -55,8 +54,7 @@ public class RegisterAcademicLoadPanel extends FormPanel
                 if (!dataConnectionHandler.ConnectWithData() || !subjectConnectionHandler.ConnectWithData())
                 {
                     ErrorPanel.ShowError(TypeError.WITHOOUT_DATA);
-                    ClearFormPanel();
-                    MainWindow.ChangePanel(Panels.REGISTER_ACADEMIC_LOAD_PANEL, Panels.PROFESSOR_HANDLER_PANEL);
+                    ReturnToBehindPanel();
                 }
 
                 Subject subject = (Subject)subjectConnectionHandler.Select(new Subject(GetSubjectCode()));
@@ -70,8 +68,7 @@ public class RegisterAcademicLoadPanel extends FormPanel
                             if (dataConnectionHandler.Update(professor))
                             {
                                 SuccesPanel.ShowSucces(TypeSucces.REGISTERED_ACADEMIC_LOAD);
-                                ClearFormPanel();
-                                MainWindow.ChangePanel(Panels.REGISTER_ACADEMIC_LOAD_PANEL, Panels.PROFESSOR_HANDLER_PANEL);
+                                ClearAndReturnToBehindPanel();
                             }
                             else
                                 ErrorPanel.ShowError(TypeError.UPDATE_ERROR);
@@ -96,15 +93,8 @@ public class RegisterAcademicLoadPanel extends FormPanel
                 ErrorPanel.ShowError(TypeError.INVALID_PROFESSOR_CODE);
             }
         }
-	}
-
-    @Override
-    protected void ReturnButtonAction()
-    {
-        super.ReturnButtonAction();
-        MainWindow.ChangePanel(Panels.REGISTER_ACADEMIC_LOAD_PANEL, Panels.PROFESSOR_HANDLER_PANEL);   
     }
-
+    
     @Override
     protected void InitPanel() 
     {

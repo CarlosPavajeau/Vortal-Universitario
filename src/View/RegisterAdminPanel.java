@@ -53,8 +53,7 @@ public class RegisterAdminPanel extends FormPanel
                 if (SaveData(admin, dataConnectionHandler))
                 {
                     SuccesPanel.ShowSucces(TypeSucces.REGISTERED_ADMIN);
-                    ClearFormPanel();
-                    MainWindow.ChangePanel(Panels.REGISTER_ADMIN_PANEL, Panels.START_PANEL);
+                    MainWindow.ChangePanel(this, Panels.START_PANEL);
                 }
             } 
             catch (Exception exception)
