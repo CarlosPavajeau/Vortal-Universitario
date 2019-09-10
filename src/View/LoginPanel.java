@@ -7,8 +7,6 @@ package View;
 
 import java.awt.event.ActionEvent;
 
-import javax.swing.JOptionPane;
-
 import Model.Admin;
 import Model.Person;
 import Model.Professor;
@@ -117,9 +115,7 @@ public class LoginPanel extends FormPanel
             }
         }
         else
-        {
-            JOptionPane.showMessageDialog(this, "Por favor digite su usuario y/o contraseña");
-        }
+            WarningPanel.ShowWarning(TypeWarning.INVALID_FIELDS);
 	}
 
     @Override
