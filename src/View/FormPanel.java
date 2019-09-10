@@ -165,12 +165,17 @@ public abstract class FormPanel extends Panel
 
     protected abstract void InitFields();
     protected abstract void RegisterButtonAction(ActionEvent evt);
-
     @Override
-    protected void ReturnButtonAction() 
+    protected void ReturnToBehindPanel() 
     {
-        super.ReturnButtonAction();
+        super.ReturnToBehindPanel();
         ClearFormPanel();
+    }
+
+    protected void ClearAndReturnToBehindPanel()
+    {
+        ClearFormPanel();
+        ReturnToBehindPanel();
     }
 
     private void ClearFields()
