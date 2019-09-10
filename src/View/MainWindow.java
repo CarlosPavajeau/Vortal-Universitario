@@ -154,9 +154,10 @@ public class MainWindow extends JFrame
         ShowPanel(Panels.LOGIN_PANEL);   
     }
 
-    public static void ChangePanel(Panels from, Panels to)
+    public static void ChangePanel(Panel panelToHide, Panels panelToShow)
     {
-
+        MainWindow.PushPanel(panelToHide);
+        MainWindow.ShowPanel(panelToShow);
     }
 
     public static Panel GetPanel(Panels panel)
