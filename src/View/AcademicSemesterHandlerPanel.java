@@ -25,15 +25,9 @@ public class AcademicSemesterHandlerPanel extends Panel
     protected void InitPanel() 
     {
         AddCenterComponentY(new Button(TypeButton.BUTTON_ICON_ADD_ACADEMIC_SEMESTER, 
-                            (ActionEvent evt) -> { MainWindow.ChangePanel(Panels.ACADEMIC_SEMESTER_HANDLER_PANEL, Panels.REGISTER_ACADEMIC_SEMESTER_PANEL); } ), 
+                            (ActionEvent evt) -> { MainWindow.ChangePanel(this, Panels.REGISTER_ACADEMIC_SEMESTER_PANEL); } ), 
                             350);
         AddCenterComponentY(new Button(TypeButton.BUTTON_ICON_DELETE_ACADEMIC_SEMESTER, null), 500);
         AddReturnButton();
-    }
-
-    @Override
-    protected void ReturnButtonAction()
-    {
-        MainWindow.ChangePanel(Panels.ACADEMIC_SEMESTER_HANDLER_PANEL, Panels.ADMIN_PANEL);
     }
 }
