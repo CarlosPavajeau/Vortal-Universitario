@@ -44,9 +44,9 @@ public enum TypeButton
     BUTTON_ICON_VIEW_QUALIFICATIONS("Icon_ViewQualifications", "Ver calificaciones", TypeButton.BUTTON_WITH_SIZE_100x100),
     BUTTON_ICON_VIEW_STUDENT_SUBJECTS("Icon_ViewStudentSubjects", "Ver asignaturas de estudiante", TypeButton.BUTTON_WITH_SIZE_100x100),
     /**200x200 buttons */
-    BUTTON_ICON_I_AM_ADMIN("I'Admin", "Soy Administrador", TypeButton.BUTTON_WITH_SIZE_200x200),
-    BUTTON_ICON_I_AM_PROFESSOR("I'Professor", "Soy Professor", TypeButton.BUTTON_WITH_SIZE_200x200),
-    BUTTON_ICON_I_AM_STUDENT("I'Student", "Soy Estudiante", TypeButton.BUTTON_WITH_SIZE_200x200)
+    BUTTON_ICON_I_AM_ADMIN("I'm_Admin", "Soy Administrador", TypeButton.BUTTON_WITH_SIZE_200x200),
+    BUTTON_ICON_I_AM_PROFESSOR("I'm_Professor", "Soy Professor", TypeButton.BUTTON_WITH_SIZE_200x200),
+    BUTTON_ICON_I_AM_STUDENT("I'm_Student", "Soy Estudiante", TypeButton.BUTTON_WITH_SIZE_200x200)
     ;
 
     private final String src;
