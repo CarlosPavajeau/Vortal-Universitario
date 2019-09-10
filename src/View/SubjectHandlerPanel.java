@@ -25,15 +25,9 @@ public class SubjectHandlerPanel extends Panel
     protected void InitPanel() 
     {
         AddCenterComponentY(new Button(TypeButton.BUTTON_ICON_ADD_SUBJECT, 
-                            (ActionEvent evt) -> { MainWindow.ChangePanel(Panels.SUBJECT_HANDLER_PANEL, Panels.REGISTER_SUBJECT_PANEL); }), 
+                            (ActionEvent evt) -> { MainWindow.ChangePanel(this, Panels.REGISTER_SUBJECT_PANEL); }), 
                             350);
         AddCenterComponentY(new Button(TypeButton.BUTTON_ICON_DELETE_SUBJECT, null), 500);
         AddReturnButton();
-    }
-
-    @Override
-    protected void ReturnButtonAction()
-    {
-        MainWindow.ChangePanel(Panels.SUBJECT_HANDLER_PANEL, Panels.ADMIN_PANEL);
     }
 }

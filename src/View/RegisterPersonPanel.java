@@ -14,7 +14,6 @@ import Model.Student;
 import Model.DataConnectionHandler.DataConnectionHandler;
 import Model.DataConnectionHandler.PersonDataHandler;
 import View.ErrorPanel.TypeError;
-import View.MainWindow.Panels;
 import View.SuccesPanel.TypeSucces;
 import View.WarningPanel.TypeWarning;
 
@@ -78,34 +77,23 @@ public class RegisterPersonPanel extends FormPanel
                 DataConnectionHandler dataConnectionHandler = new PersonDataHandler();
                  
                 if (SaveData(person, dataConnectionHandler))
-                {
                     SuccesPanel.ShowSucces(TypeSucces.REGISTERED_PERSON);
-                    MainWindow.ChangePanel(Panels.REGISTER_PERSON_PANEL, Panels.ADMIN_PANEL);
-                    ClearFormPanel();
-                }
                 else
                     WarningPanel.ShowWarning(TypeWarning.PERSON_ALREADY_REGISTERED);
 
             } catch (Exception exception) 
             {
                 ErrorPanel.ShowError(TypeError.CONNECTION_ERROR);
-                ClearFormPanel();
+            }
+            finally
+            {
+                ClearAndReturnToBehindPanel();
             }
         }
         else
             WarningPanel.ShowWarning(TypeWarning.INVALID_FIELDS);
     }
-
-    @Override
-    protected void ReturnButtonAction() 
-    {
-        super.ReturnButtonAction();
-        if (GetTypePerson() == TypePerson.PROFESSOR)
-            MainWindow.ChangePanel(Panels.REGISTER_PERSON_PANEL, Panels.PROFESSOR_HANDLER_PANEL);
-        else
-            MainWindow.ChangePanel(Panels.REGISTER_PERSON_PANEL, Panels.STUDENT_HANDLER_PANEL);
-    }
-
+    
     @Override
     protected void InitPanel() 
     {

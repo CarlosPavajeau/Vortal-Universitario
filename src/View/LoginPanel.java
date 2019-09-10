@@ -7,8 +7,6 @@ package View;
 
 import java.awt.event.ActionEvent;
 
-import javax.swing.JOptionPane;
-
 import Model.Admin;
 import Model.Person;
 import Model.Professor;
@@ -17,7 +15,8 @@ import Model.DataConnectionHandler.DataConnectionHandler;
 import Model.DataConnectionHandler.LoginDataHandler;
 import Model.DataConnectionHandler.PersonDataHandler;
 
-import static View.MainWindow.Panels;;
+import static View.MainWindow.Panels;
+import static View.WarningPanel.TypeWarning;
 
 /**
  * 
@@ -77,34 +76,29 @@ public class LoginPanel extends FormPanel
                         {
                             AdminPanel adminPanel = (AdminPanel)MainWindow.GetPanel(Panels.ADMIN_PANEL);
                             adminPanel.SetAdmin(admin);
-                            MainWindow.ChangePanel(Panels.LOGIN_PANEL, Panels.ADMIN_PANEL);
+                            MainWindow.ChangePanel(this, Panels.ADMIN_PANEL);
                         }
                         else
-                            JOptionPane.showMessageDialog(this, "Datos incorrectos");
+                            WarningPanel.ShowWarning(TypeWarning.INVALID_DATA);
                         break;
                     }
                     case STUDENT:
-                    {
-                        dataConnectionHandler = new PersonDataHandler();
-                        dataConnectionHandler.ConnectWithData();
-                        Person person = new Student(user);
-                        person = (Student)dataConnectionHandler.Select(person);
-                        if (person != null)
-                            MainWindow.ChangePanel(Panels.LOGIN_PANEL, Panels.STUDENT_PANEL);
-                        else
-                            JOptionPane.showMessageDialog(this, "Datos incorrectos");
-                        break;
-                    }
                     case PROFESSOR:
                     {
                         dataConnectionHandler = new PersonDataHandler();
                         dataConnectionHandler.ConnectWithData();
-                        Person person = new Professor(user);
-                        person = (Professor)dataConnectionHandler.Select(person);
+                        Person person = (typeOfUser == TypeUser.STUDENT) ? new Student(user) : new Professor(user);
+
+                        person = (Person)dataConnectionHandler.Select(person);
+                        
                         if (person != null)
-                            MainWindow.ChangePanel(Panels.LOGIN_PANEL, Panels.PROFESSOR_PANEL);
+                        {
+                            MainWindow.PushPanel(this);
+                            MainWindow.ShowPanel((typeOfUser == TypeUser.STUDENT) ? Panels.STUDENT_PANEL : 
+                                                                                Panels.PROFESSOR_PANEL);
+                        }
                         else
-                            JOptionPane.showMessageDialog(this, "Datos incorrectos");
+                            WarningPanel.ShowWarning(TypeWarning.INVALID_DATA);
                         break;
                     }
                     default:
@@ -117,25 +111,16 @@ public class LoginPanel extends FormPanel
             }
             finally
             {
-                ClearFormPanel();
+                ClearAndReturnToBehindPanel();
             }
         }
         else
-        {
-            JOptionPane.showMessageDialog(this, "Por favor digite su usuario y/o contraseña");
-        }
+            WarningPanel.ShowWarning(TypeWarning.INVALID_FIELDS);
 	}
 
     @Override
     protected void InitPanel() 
     {
         AddReturnButton();
-    }
-
-    @Override
-    protected void ReturnButtonAction()
-    {
-        super.ClearFormPanel();
-        MainWindow.ChangePanel(Panels.LOGIN_PANEL, Panels.START_PANEL);
     }
 }

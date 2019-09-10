@@ -24,14 +24,8 @@ public class StudentHandlerPanel extends Panel
     @Override
     protected void InitPanel() 
     {
-        AddCenterComponentY(new Button(TypeButton.BUTTON_ICON_ADD_OR_DELETE_STUDENT, (ActionEvent evt) -> { MainWindow.ChangePanel(Panels.STUDENT_HANDLER_PANEL, Panels.REGISTER_PERSON_PANEL); }), 350);
+        AddCenterComponentY(new Button(TypeButton.BUTTON_ICON_ADD_OR_DELETE_STUDENT, (ActionEvent evt) -> { MainWindow.ChangePanel(this, Panels.REGISTER_PERSON_PANEL); }), 350);
         AddCenterComponentY(new Button(TypeButton.BUTTON_ICON_VIEW_STUDENT_SUBJECTS, null), 500);
         AddReturnButton();
-    }
-
-    @Override
-    protected void ReturnButtonAction()
-    {
-        MainWindow.ChangePanel(Panels.STUDENT_HANDLER_PANEL, Panels.ADMIN_PANEL);
     }
 }

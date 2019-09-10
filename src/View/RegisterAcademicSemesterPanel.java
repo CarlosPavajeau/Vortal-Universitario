@@ -11,7 +11,6 @@ import Model.AcademicSemester;
 import Model.DataConnectionHandler.AcademicSemesterDataHandler;
 import Model.DataConnectionHandler.DataConnectionHandler;
 import View.ErrorPanel.TypeError;
-import View.MainWindow.Panels;
 import View.SuccesPanel.TypeSucces;
 import View.WarningPanel.TypeWarning;
 
@@ -56,8 +55,7 @@ public class RegisterAcademicSemesterPanel extends FormPanel
                     if (SaveData(academicSemester, dataConnectionHandler))
                     {
                         SuccesPanel.ShowSucces(TypeSucces.REGISTERED_ACADEMIC_SEMESTER);
-                        ClearFormPanel();
-                        MainWindow.ChangePanel(Panels.REGISTER_ACADEMIC_SEMESTER_PANEL, Panels.ACADEMIC_SEMESTER_HANDLER_PANEL);
+                        ClearAndReturnToBehindPanel();
                     }
                     else
                         WarningPanel.ShowWarning(TypeWarning.ACADEMIC_SEMESTER_ALREADY_REGISTERED);
@@ -73,13 +71,6 @@ public class RegisterAcademicSemesterPanel extends FormPanel
         else
             WarningPanel.ShowWarning(TypeWarning.INVALID_FIELDS);
 	}
-
-    @Override
-    protected void ReturnButtonAction() 
-    {
-        super.ReturnButtonAction();
-        MainWindow.ChangePanel(Panels.REGISTER_ACADEMIC_SEMESTER_PANEL, Panels.ACADEMIC_SEMESTER_HANDLER_PANEL);
-    }
 
     @Override
     protected void InitPanel() 

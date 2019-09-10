@@ -7,8 +7,6 @@ package View;
 
 import java.awt.event.ActionEvent;
 
-import View.MainWindow.Panels;
-
 /**
  * 
  */
@@ -36,13 +34,6 @@ public class RegisterNotesPanel extends FormPanel
     {
         if (!ValidateFields())
             System.out.println("Error: Campos invalidos");
-    }
-
-    @Override
-    protected void ReturnButtonAction() 
-    {
-        super.ReturnButtonAction();
-        MainWindow.ChangePanel(Panels.REGISTER_NOTES_PANEL, Panels.PROFESSOR_PANEL);
     }
 
     @Override

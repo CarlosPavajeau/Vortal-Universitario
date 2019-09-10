@@ -14,7 +14,6 @@ import Model.UnderGraduate;
 import Model.DataConnectionHandler.DataConnectionHandler;
 import Model.DataConnectionHandler.PensumDataHandler;
 import View.ErrorPanel.TypeError;
-import View.MainWindow.Panels;
 import View.SuccesPanel.TypeSucces;
 import View.WarningPanel.TypeWarning;
 
@@ -71,8 +70,7 @@ public class RegisterPensumPanel extends FormPanel
                 if (SaveData(pensum, dataConnectionHandler))
                 {
                     SuccesPanel.ShowSucces(TypeSucces.REGISTERED_PENSUM);
-                    MainWindow.ChangePanel(Panels.REGISTER_PENSUM_PANEL, Panels.PENSUM_HANDLER_PANEL);
-                    ClearFormPanel();
+                    ClearAndReturnToBehindPanel();
                 }
                 else
                     WarningPanel.ShowWarning(TypeWarning.PENSUM_ALREADY_REGISTERED);
@@ -84,15 +82,8 @@ public class RegisterPensumPanel extends FormPanel
         }
         else
             WarningPanel.ShowWarning(TypeWarning.INVALID_FIELDS);
-	}
-
-    @Override
-    protected void ReturnButtonAction() 
-    {
-        super.ReturnButtonAction();
-        MainWindow.ChangePanel(Panels.REGISTER_PENSUM_PANEL, Panels.PENSUM_HANDLER_PANEL);
     }
-
+    
     @Override
     protected void InitPanel() 
     {

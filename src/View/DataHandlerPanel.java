@@ -5,8 +5,6 @@
 
 package View;
 
-import View.MainWindow.Panels;
-
 /**
  * 
  */
@@ -25,11 +23,5 @@ public class DataHandlerPanel extends Panel
         AddCenterComponentY(new Button(TypeButton.BUTTON_ICON_ACCESS_DATA_MANAGER, null), 375);
         AddCenterComponentY(new Button(TypeButton.BUTTON_ICON_PERSONAL_DATA_MANAGER, null), 525);
         AddReturnButton();
-    }
-
-    @Override
-    protected void ReturnButtonAction()
-    {
-        MainWindow.ChangePanel(Panels.DATA_HANDLER_PANEL, Panels.ADMIN_PANEL);
     }
 }

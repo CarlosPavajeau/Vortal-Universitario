@@ -5,10 +5,6 @@
 
 package View;
 
-import java.awt.event.ActionEvent;
-
-import View.MainWindow.Panels;
-
 /**
  * 
  */
@@ -28,11 +24,4 @@ public class StudentGroupHandlerPanel extends Panel
         AddCenterComponentY(new Button(TypeButton.BUTTON_ICON_DELETE_STUDENTGROUP, null), 500);
         AddReturnButton();
     }
-
-    @Override
-    protected void ReturnButtonAction()
-    {
-        MainWindow.ChangePanel(Panels.STUDENT_GROUP_HANDLER_PANEL, Panels.ADMIN_PANEL);
-    }
-    
 }

@@ -7,9 +7,9 @@ package View;
 
 import java.awt.Color;
 import java.awt.Frame;
-import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 import javax.swing.Icon;
 import javax.swing.JFrame;
@@ -20,7 +20,6 @@ import javax.swing.WindowConstants;
 import Model.DataConnectionHandler.DataConnectionHandler;
 import Model.DataConnectionHandler.LoginDataHandler;
 import View.LoginPanel.TypeUser;
-import View.RegisterPersonPanel.TypePerson;
 
 /**
  * 
@@ -30,6 +29,7 @@ public class MainWindow extends JFrame
     private static final long serialVersionUID = 9040978770256604819L;
 
     private static List<Panel> panels;
+    private static Stack<Panel> panelsStack;
     public static final MainWindow mainWindow = new MainWindow();
     private JPanel mainPanel;
 
@@ -145,26 +145,18 @@ public class MainWindow extends JFrame
         JOptionPane.showMessageDialog(mainWindow, message, title, messageType, icon);
     }
 
-    public static void LoginAction(ActionEvent evt, TypeUser user)
+    public static void LoginAction(TypeUser user)
     {
-        ((LoginPanel)GetPanel(Panels.LOGIN_PANEL)).SetUser(user);
-        MainWindow.ChangePanel(Panels.START_PANEL, Panels.LOGIN_PANEL);   
+        LoginPanel loginPanel = ((LoginPanel)GetPanel(Panels.LOGIN_PANEL));
+        loginPanel.SetUser(user);
+        PushPanel(GetPanel(Panels.START_PANEL));
+        ShowPanel(Panels.LOGIN_PANEL);   
     }
 
-    public static void ChangePanel(Panels from, Panels to)
+    public static void ChangePanel(Panel panelToHide, Panels panelToShow)
     {
-        if (to == Panels.REGISTER_PERSON_PANEL)
-        {
-            RegisterPersonPanel personPanel = (RegisterPersonPanel)GetPanel(to);
-
-            if (from == Panels.PROFESSOR_HANDLER_PANEL)
-                personPanel.SetTypePerson(TypePerson.PROFESSOR);
-            else
-                personPanel.SetTypePerson(TypePerson.STUDENT);
-        }
-
-        MainWindow.HidePanel(from);
-        MainWindow.ShowPanel(to);
+        MainWindow.PushPanel(panelToHide);
+        MainWindow.ShowPanel(panelToShow);
     }
 
     public static Panel GetPanel(Panels panel)
@@ -180,30 +172,31 @@ public class MainWindow extends JFrame
         }
     }
 
-    private static void HidePanel(Panels panel)
+    public static void PushPanel(Panel panel)
+    {
+        panel.setVisible(false);
+        panelsStack.push(panel);
+    }
+
+    public static void PopPanel()
+    {
+        panelsStack.pop().setVisible(true);
+    }
+
+    public static void HidePanel(Panel panel)
     {
         MainWindow.ChangePanelVisibilitiy(panel, false);
     }
 
-    private static void ShowPanel(Panels panel)
+    public static void ShowPanel(Panels panel)
     {
-        MainWindow.ChangePanelVisibilitiy(panel, true);
+        MainWindow.ChangePanelVisibilitiy(GetPanel(panel), true);
     }
 
-    private static void ChangePanelVisibilitiy(Panels panel, boolean visibility)
+    private static void ChangePanelVisibilitiy(Panel panel, boolean visibility)
     {
-        try
-        {
-            Panel aPanel = GetPanel(panel);
-
-            if (aPanel instanceof StartPanel)
-                ((StartPanel)aPanel).EnableButtons();
-
-            aPanel.setVisible(visibility);
-        }
-        catch (IndexOutOfBoundsException exception)
-        {
-            exception.printStackTrace();
-        }
+        if (panel instanceof StartPanel)
+            ((StartPanel)panel).EnableButtons();
+        panel.setVisible(visibility);
     }
 }

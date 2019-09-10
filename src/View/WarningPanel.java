@@ -26,7 +26,8 @@ public class WarningPanel
         PROFESOR_NOT_REGISTER("El código digitado no corresponde a un profesor registrado."),
         SUBJECT_NOT_REGISTER("El código digitado no corresponde a una asignatura registrada."),
         INVALID_CREDIT_NUMBER("Número de créditos inválido."),
-        INVALID_FIELDS("Campos invalidos.")
+        INVALID_FIELDS("Campos invalidos."),
+        INVALID_DATA("Datos incorrectos."),
         ;
 
         private final String msgWarning; 

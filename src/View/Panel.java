@@ -73,12 +73,13 @@ public abstract class Panel extends JPanel
 
     protected void AddReturnButton()
     {
-        AddButton(TypeButton.BUTTON_ICON_RETURN, 5, 0, (ActionEvent evt) -> { ReturnButtonAction(); });
+        AddButton(TypeButton.BUTTON_ICON_RETURN, 5, 0, (ActionEvent evt) -> { ReturnToBehindPanel(); });
     }
 
-    protected void ReturnButtonAction()
+    protected void ReturnToBehindPanel()
     {
-        
+        setVisible(false);
+        MainWindow.PopPanel();
     }
 
     protected abstract void InitPanel();

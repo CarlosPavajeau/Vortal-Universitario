@@ -24,16 +24,10 @@ public class PensumHandlerPanel extends Panel
     @Override
     protected void InitPanel() 
     {
-        AddCenterComponentY(new Button(TypeButton.BUTTON_ICON_ADD_PENSUM, (ActionEvent evt) -> { MainWindow.ChangePanel(Panels.PENSUM_HANDLER_PANEL, Panels.REGISTER_PENSUM_PANEL); }), 200);
+        AddCenterComponentY(new Button(TypeButton.BUTTON_ICON_ADD_PENSUM, (ActionEvent evt) -> { MainWindow.ChangePanel(this, Panels.REGISTER_PENSUM_PANEL); }), 200);
         AddCenterComponentY(new Button(TypeButton.BUTTON_ICON_DELETE_PENSUM, null), 350);
         AddCenterComponentY(new Button(TypeButton.BUTTON_ICON_ADD_SUBJECT, null), 500);
         AddCenterComponentY(new Button(TypeButton.BUTTON_ICON_DELETE_SUBJECT, null), 650);
         AddReturnButton();
-    }
-
-    @Override
-    protected void ReturnButtonAction()
-    {
-        MainWindow.ChangePanel(Panels.PENSUM_HANDLER_PANEL, Panels.ADMIN_PANEL);
     }
 }
