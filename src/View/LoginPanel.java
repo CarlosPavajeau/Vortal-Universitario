@@ -78,8 +78,7 @@ public class LoginPanel extends FormPanel
                         {
                             AdminPanel adminPanel = (AdminPanel)MainWindow.GetPanel(Panels.ADMIN_PANEL);
                             adminPanel.SetAdmin(admin);
-                            MainWindow.PushPanel(this);
-                            MainWindow.ShowPanel(Panels.ADMIN_PANEL);
+                            MainWindow.ChangePanel(this, Panels.ADMIN_PANEL);
                         }
                         else
                             WarningPanel.ShowWarning(TypeWarning.INVALID_DATA);
@@ -114,7 +113,7 @@ public class LoginPanel extends FormPanel
             }
             finally
             {
-                ClearFormPanel();
+                ClearAndReturnToBehindPanel();
             }
         }
         else
