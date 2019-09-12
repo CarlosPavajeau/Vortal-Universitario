@@ -53,12 +53,15 @@ public class RegisterAdminPanel extends FormPanel
                 if (SaveData(admin, dataConnectionHandler))
                 {
                     SuccesPanel.ShowSucces(TypeSucces.REGISTERED_ADMIN);
-                    MainWindow.ChangePanel(this, Panels.START_PANEL);
+                    setVisible(false);
+                    MainWindow.ShowPanel(Panels.START_PANEL);
                 }
             } 
-            catch (Exception exception)
+            catch (Exception exeption)
             {
                 ErrorPanel.ShowError(TypeError.CONNECTION_ERROR);
+                System.out.println(exeption.getMessage());
+                exeption.printStackTrace();
                 Exit(null);
             }
         }
