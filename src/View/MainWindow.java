@@ -67,6 +67,7 @@ public class MainWindow extends JFrame
     private void initComponents() 
     {
         panels = new ArrayList<>();
+        panelsStack = new Stack<>();
         mainPanel = new JPanel();
         setContentPane(mainPanel);
         mainPanel.setBackground(Color.WHITE);
