@@ -181,7 +181,7 @@ public class MainWindow extends JFrame
 
     public static void PopPanel()
     {
-        panelsStack.pop().setVisible(true);
+        ChangePanelVisibilitiy(panelsStack.pop(), true);
     }
 
     public static void HidePanel(Panel panel)
