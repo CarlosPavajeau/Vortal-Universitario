@@ -105,13 +105,13 @@ public class LoginPanel extends FormPanel
                         return;
                 }
             }
-            catch (Exception exception)
+            catch (Exception exeption)
             {
 
             }
             finally
             {
-                ClearAndReturnToBehindPanel();
+                ClearFormPanel();
             }
         }
         else
