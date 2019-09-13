@@ -79,7 +79,7 @@ public abstract class Panel extends JPanel
     protected void ReturnToBehindPanel()
     {
         setVisible(false);
-        MainWindow.PopPanel();
+        PanelHandler.PopPanel();
     }
 
     protected abstract void InitPanel();

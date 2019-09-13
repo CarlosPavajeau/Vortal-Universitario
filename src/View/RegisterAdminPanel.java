@@ -11,7 +11,7 @@ import Model.Admin;
 import Model.DataConnectionHandler.DataConnectionHandler;
 import Model.DataConnectionHandler.LoginDataHandler;
 import View.ErrorPanel.TypeError;
-import View.MainWindow.Panels;
+import View.PanelHandler.Panels;
 import View.SuccesPanel.TypeSucces;
 import View.WarningPanel.TypeWarning;
 
@@ -54,7 +54,7 @@ public class RegisterAdminPanel extends FormPanel
                 {
                     SuccesPanel.ShowSucces(TypeSucces.REGISTERED_ADMIN);
                     setVisible(false);
-                    MainWindow.ShowPanel(Panels.START_PANEL);
+                    PanelHandler.ShowPanel(Panels.START_PANEL);
                 }
             } 
             catch (Exception exeption)

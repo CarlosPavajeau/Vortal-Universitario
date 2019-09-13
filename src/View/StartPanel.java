@@ -29,17 +29,17 @@ public class StartPanel extends Panel
         Button imProfessorButton = new Button(TypeButton.BUTTON_ICON_I_AM_PROFESSOR, 
                                             (ActionEvent evt) -> 
                                             {
-                                                MainWindow.LoginAction(TypeUser.PROFESSOR); 
+                                                PanelHandler.ShowLoginPanel(TypeUser.PROFESSOR); 
                                             });
         Button imStudentButton = new Button(TypeButton.BUTTON_ICON_I_AM_STUDENT, 
                                             (ActionEvent evt) -> 
                                             { 
-                                                MainWindow.LoginAction(TypeUser.STUDENT); 
+                                                PanelHandler.ShowLoginPanel(TypeUser.STUDENT); 
                                             });
         Button imAdminButton = new Button(TypeButton.BUTTON_ICON_I_AM_ADMIN, 
                                             (ActionEvent evt) -> 
                                             { 
-                                                MainWindow.LoginAction(TypeUser.ADMIN); 
+                                                PanelHandler.ShowLoginPanel(TypeUser.ADMIN); 
                                             });
 
         AddComponent(imProfessorButton, 100, 100);

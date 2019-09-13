@@ -15,7 +15,7 @@ import Model.DataConnectionHandler.DataConnectionHandler;
 import Model.DataConnectionHandler.LoginDataHandler;
 import Model.DataConnectionHandler.PersonDataHandler;
 
-import static View.MainWindow.Panels;
+import static View.PanelHandler.Panels;
 import static View.WarningPanel.TypeWarning;
 
 /**
@@ -74,9 +74,9 @@ public class LoginPanel extends FormPanel
                         admin = (Admin)dataConnectionHandler.Select(admin);
                         if (admin != null)
                         {
-                            AdminPanel adminPanel = (AdminPanel)MainWindow.GetPanel(Panels.ADMIN_PANEL);
+                            AdminPanel adminPanel = (AdminPanel)PanelHandler.GetPanel(Panels.ADMIN_PANEL);
                             adminPanel.SetAdmin(admin);
-                            MainWindow.ChangePanel(this, Panels.ADMIN_PANEL);
+                            PanelHandler.ChangePanel(this, Panels.ADMIN_PANEL);
                         }
                         else
                             WarningPanel.ShowWarning(TypeWarning.INVALID_DATA);
@@ -93,8 +93,8 @@ public class LoginPanel extends FormPanel
                         
                         if (person != null)
                         {
-                            MainWindow.PushPanel(this);
-                            MainWindow.ShowPanel((typeOfUser == TypeUser.STUDENT) ? Panels.STUDENT_PANEL : 
+                            PanelHandler.PushPanel(this);
+                            PanelHandler.ShowPanel((typeOfUser == TypeUser.STUDENT) ? Panels.STUDENT_PANEL : 
                                                                                 Panels.PROFESSOR_PANEL);
                         }
                         else

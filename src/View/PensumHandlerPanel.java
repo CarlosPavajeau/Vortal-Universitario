@@ -7,7 +7,7 @@ package View;
 
 import java.awt.event.ActionEvent;
 
-import View.MainWindow.Panels;
+import View.PanelHandler.Panels;
 
 /**
  * 
@@ -24,7 +24,7 @@ public class PensumHandlerPanel extends Panel
     @Override
     protected void InitPanel() 
     {
-        AddCenterComponentY(new Button(TypeButton.BUTTON_ICON_ADD_PENSUM, (ActionEvent evt) -> { MainWindow.ChangePanel(this, Panels.REGISTER_PENSUM_PANEL); }), 200);
+        AddCenterComponentY(new Button(TypeButton.BUTTON_ICON_ADD_PENSUM, (ActionEvent evt) -> { PanelHandler.ChangePanel(this, Panels.REGISTER_PENSUM_PANEL); }), 200);
         AddCenterComponentY(new Button(TypeButton.BUTTON_ICON_DELETE_PENSUM, null), 350);
         AddCenterComponentY(new Button(TypeButton.BUTTON_ICON_ADD_SUBJECT, null), 500);
         AddCenterComponentY(new Button(TypeButton.BUTTON_ICON_DELETE_SUBJECT, null), 650);
