@@ -50,6 +50,8 @@ public abstract class Panel extends JPanel
         setLayout(null);
     }
 
+    protected abstract void InitPanel();
+
     public List<Button> GetButtons()
     {
         return buttons;
@@ -82,8 +84,6 @@ public abstract class Panel extends JPanel
         PanelHandler.PopPanel();
     }
 
-    protected abstract void InitPanel();
-
     protected void AddCenterComponentX(Component component, int y)
     {
         AddComponent(component, Panel.WhereCenterX(this, component), y);
@@ -107,11 +107,16 @@ public abstract class Panel extends JPanel
     private void SetTitle()
     {
         JLabel titleOfPanel = new JLabel(title);
+        MakeTitle(titleOfPanel);
+        add(titleOfPanel);
+    }
+
+    private void MakeTitle(JLabel titleOfPanel) 
+    {
         titleOfPanel.setFont(new Font("Microsoft Sans Serif", 0, 25));
         titleOfPanel.setHorizontalAlignment(JLabel.CENTER);
         titleOfPanel.setBounds(0, 5, 700, 100);
         int x = (getWidth() - titleOfPanel.getWidth()) / 2;
         titleOfPanel.setBounds(x, 5, 700, 100);
-        add(titleOfPanel);
     }
 }
