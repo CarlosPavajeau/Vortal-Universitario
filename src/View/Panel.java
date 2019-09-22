@@ -8,14 +8,13 @@ package View;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.Point;
+import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
@@ -106,17 +105,9 @@ public abstract class Panel extends JPanel
 
     private void SetTitle()
     {
-        JLabel titleOfPanel = new JLabel(title);
-        MakeTitle(titleOfPanel);
+        Label titleOfPanel = new Label(title, new Rectangle(700, 100), 25);
+        int whereCenterTitle = WhereCenterX(this, titleOfPanel);
+        titleOfPanel.setLocation(new Point(whereCenterTitle, 5));
         add(titleOfPanel);
-    }
-
-    private void MakeTitle(JLabel titleOfPanel) 
-    {
-        titleOfPanel.setFont(new Font("Microsoft Sans Serif", 0, 25));
-        titleOfPanel.setHorizontalAlignment(JLabel.CENTER);
-        titleOfPanel.setBounds(0, 5, 700, 100);
-        int x = (getWidth() - titleOfPanel.getWidth()) / 2;
-        titleOfPanel.setBounds(x, 5, 700, 100);
     }
 }
