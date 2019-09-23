@@ -56,25 +56,24 @@ public abstract class Panel extends JPanel
         return buttons;
     }
 
-    public void AddButton(TypeButton typeButton, int x, int y, ActionListener l)
+    public void AddButton(TypeButton typeButton, Point buttonPosition, ActionListener buttonAction)
     {
-        Button button = new Button(typeButton, l);
-        AddComponent(button, x, y);
+        Button button = new Button(typeButton, buttonAction);
+        AddComponent(button, buttonPosition);
     }
 
-    public void AddComponent(Component component, int x, int y)
+    public void AddComponent(Component component, Point componentPosition)
     {
-        component.setLocation(new Point(x, y));
+        component.setLocation(componentPosition);
 
         if (component instanceof Button)
-            buttons.add((Button) component);   
-            
+            buttons.add((Button)component);
         add(component);
     }
 
     protected void AddReturnButton()
     {
-        AddButton(TypeButton.BUTTON_ICON_RETURN, 5, 0, (ActionEvent evt) -> { ReturnToBehindPanel(); });
+        AddButton(TypeButton.BUTTON_ICON_RETURN, new Point(5, 0), (ActionEvent evt) -> { ReturnToBehindPanel(); });
     }
 
     protected void ReturnToBehindPanel()
@@ -85,12 +84,12 @@ public abstract class Panel extends JPanel
 
     protected void AddCenterComponentX(Component component, int y)
     {
-        AddComponent(component, Panel.WhereCenterX(this, component), y);
+        AddComponent(component, new Point(Panel.WhereCenterX(this, component), y));
     }
 
     protected void AddCenterComponentY(Component component, int x)
     {
-        AddComponent(component, x, Panel.WhereCenterY(this, component));
+        AddComponent(component, new Point(x, Panel.WhereCenterY(this, component)));
     }
 
     protected static int WhereCenterX(Panel panel, Component component)
