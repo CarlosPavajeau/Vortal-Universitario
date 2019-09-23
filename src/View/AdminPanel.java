@@ -5,6 +5,7 @@
 
 package View;
 
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 
 import Model.Admin;
@@ -59,6 +60,6 @@ public class AdminPanel extends Panel
         AddCenterComponentY(new Button(TypeButton.BUTTON_ICON_PROFESSOR_HANDLER, 
                             (ActionEvent evt) -> { PanelHandler.ChangePanel(this, Panels.PROFESSOR_HANDLER_PANEL); }), 
                             810);
-        AddButton(TypeButton.BUTTON_LOGOUT, 775, 625, (ActionEvent evt) -> { ReturnToBehindPanel(); });
+        AddButton(TypeButton.BUTTON_LOGOUT, new Point(775, 625), (ActionEvent evt) -> { ReturnToBehindPanel(); });
     }
 }

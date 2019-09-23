@@ -5,6 +5,7 @@
 
 package View;
 
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -34,11 +35,11 @@ public class RegisterAcademicLoadPanel extends FormPanel
     @Override
     public void InitFields() 
     {
-        AddField(new TextField(300, 50, "Digite el código del profesor", TextField.OBLIGATORY_FIELD + TextField.NUMERIC_FIELD), "Código del profesor: ", 50, 150);
-        AddField(new TextField(300, 50, "Digite el código de la asignatura", TextField.OBLIGATORY_FIELD + TextField.NUMERIC_FIELD), "Código de la asignatura: ", 400, 150);
-        AddField(new TextField(300, 50, "Digite el número del grupo", TextField.OBLIGATORY_FIELD + TextField.NUMERIC_FIELD), "Número del grupo: ", 50, 250);
-        AddField(new TextField(300, 50, "Digite el límite de estudiantes", TextField.OBLIGATORY_FIELD + TextField.NUMERIC_FIELD), "Límite de estudiantes: ", 400, 250);
-        AddRadioButtons("Tipo de grupo: ", 50, 400, "Mañana", "Tarde", "Noche");
+        AddField(new TextField("Digite el código del profesor", TextField.OBLIGATORY_FIELD + TextField.NUMERIC_FIELD), "Código del profesor: ", new Point(50, 150));
+        AddField(new TextField("Digite el código de la asignatura", TextField.OBLIGATORY_FIELD + TextField.NUMERIC_FIELD), "Código de la asignatura: ", new Point(400, 150));
+        AddField(new TextField("Digite el número del grupo", TextField.OBLIGATORY_FIELD + TextField.NUMERIC_FIELD), "Número del grupo: ", new Point(50, 250));
+        AddField(new TextField("Digite el límite de estudiantes", TextField.OBLIGATORY_FIELD + TextField.NUMERIC_FIELD), "Límite de estudiantes: ", new Point(400, 250));
+        AddRadioButtons("Tipo de grupo: ", new Point(50, 400), "Mañana", "Tarde", "Noche");
     }
 
     @Override

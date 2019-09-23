@@ -47,8 +47,8 @@ public class LoginPanel extends FormPanel
     @Override
     protected void InitFields() 
     {
-        AddCenterField(new TextField(300, 50, "Digite su usuario", TextField.OBLIGATORY_FIELD), "Usuario: ", 150);
-        AddCenterField(new PasswordField(300, 50, "Digite su contraseña"), "Contraseña: ", 250);
+        AddCenterField(new TextField("Digite su usuario", TextField.OBLIGATORY_FIELD), "Usuario: ", 150);
+        AddCenterField(new PasswordField("Digite su contraseña"), "Contraseña: ", 250);
         AddCenterComponentX(new Button(TypeButton.BUTTON_LOGIN, ((ActionEvent evt) -> { RegisterButtonAction(evt); })), 600);
     }
 

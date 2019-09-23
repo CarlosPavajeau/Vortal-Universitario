@@ -5,6 +5,7 @@
 
 package View;
 
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.io.IOException;
 
@@ -32,16 +33,16 @@ public class RegisterPensumPanel extends FormPanel
     @Override
     public void InitFields() 
     {
-        AddField(new TextField(300, 50, "Digite el código del pensum", TextField.OBLIGATORY_FIELD + TextField.NUMERIC_FIELD), "Código: ", 50, 150);
-        AddField(new TextField(300, 50, "Digite el nombre del pensum", TextField.OBLIGATORY_FIELD + TextField.ALPHA_FIELD), "Nombre: ", 400, 150);
-        AddField(new TextField(400, 50, "Descripción (Opcional)", 0), "Descripción: ", 50, 250);
-        AddField(new TextField(300, 50, "Digite el campus", TextField.OBLIGATORY_FIELD + TextField.ALPHA_FIELD), "Campus: ", 50, 350);
-        AddField(new TextField(300, 50, "Digite el número de semestres", TextField.OBLIGATORY_FIELD + TextField.NUMERIC_FIELD), "Semestres: ", 400, 350);
-        AddField(new TextField(300, 50, "Digite la carga lectiva global",
-                TextField.OBLIGATORY_FIELD + TextField.NUMERIC_FIELD), "Carga lectiva global: ", 50, 450);
-        AddField(new TextField(300, 50, "Digite el título", TextField.OBLIGATORY_FIELD + TextField.ALPHA_FIELD),
-                "Título (Requerido/A otorgar): ", 400, 450);
-        AddRadioButtons("Tipo: ", 50, 550, "Pregrado", "Posgrado");
+        AddField(new TextField("Digite el código del pensum", TextField.OBLIGATORY_FIELD + TextField.NUMERIC_FIELD), "Código: ", new Point(50, 150));
+        AddField(new TextField("Digite el nombre del pensum", TextField.OBLIGATORY_FIELD + TextField.ALPHA_FIELD), "Nombre: ", new Point(400, 150));
+        AddField(new TextField(400, 50, "Descripción (Opcional)", 0), "Descripción: ", new Point(50, 250));
+        AddField(new TextField("Digite el campus", TextField.OBLIGATORY_FIELD + TextField.ALPHA_FIELD), "Campus: ", new Point(50, 350));
+        AddField(new TextField("Digite el número de semestres", TextField.OBLIGATORY_FIELD + TextField.NUMERIC_FIELD), "Semestres: ", new Point(400, 350));
+        AddField(new TextField("Digite la carga lectiva global",
+                TextField.OBLIGATORY_FIELD + TextField.NUMERIC_FIELD), "Carga lectiva global: ", new Point(50, 450));
+        AddField(new TextField("Digite el título", TextField.OBLIGATORY_FIELD + TextField.ALPHA_FIELD),
+                "Título (Requerido/A otorgar): ", new Point(400, 450));
+        AddRadioButtons("Tipo: ", new Point(50, 550), "Pregrado", "Posgrado");
     }
 
     @Override

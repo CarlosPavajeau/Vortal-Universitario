@@ -5,6 +5,7 @@
 
 package View;
 
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 
 import Model.Person;
@@ -51,13 +52,13 @@ public class RegisterPersonPanel extends FormPanel
     @Override
     public void InitFields() 
     {
-        AddField(new TextField(300, 50, "Digite su ID", TextField.OBLIGATORY_FIELD + TextField.NUMERIC_FIELD), "Identificación: ", 50, 150);
-        AddField(new TextField(300, 50, "Digite su primer nombre", TextField.OBLIGATORY_FIELD + TextField.ALPHA_FIELD), "Nombres/Apellidos: ", 50, 250);
-        AddField(new TextField(300, 50, "Digite su segundo nombre", TextField.ALPHA_FIELD), "", 400, 250);
-        AddField(new TextField(300, 50, "Digite su primer apellido", TextField.OBLIGATORY_FIELD + TextField.ALPHA_FIELD), "", 50, 315);
-        AddField(new TextField(300, 50, "Digite su segundo apellido", TextField.ALPHA_FIELD), "", 400, 315);
-        AddField(new TextField(200, 50, "aaaa/mm/dd", TextField.OBLIGATORY_FIELD + TextField.DATE_FIELD), "Fecha de nacimiento: ", 50, 415);
-        AddRadioButtons("Sexo: ", 400, 415, "Masculino", "Femenino", "Otro");
+        AddField(new TextField("Digite su ID", TextField.OBLIGATORY_FIELD + TextField.NUMERIC_FIELD), "Identificación: ", new Point(50, 150));
+        AddField(new TextField("Digite su primer nombre", TextField.OBLIGATORY_FIELD + TextField.ALPHA_FIELD), "Nombres/Apellidos: ", new Point(50, 250));
+        AddField(new TextField("Digite su segundo nombre", TextField.ALPHA_FIELD), "", new Point(400, 250));
+        AddField(new TextField("Digite su primer apellido", TextField.OBLIGATORY_FIELD + TextField.ALPHA_FIELD), "", new Point(50, 315));
+        AddField(new TextField("Digite su segundo apellido", TextField.ALPHA_FIELD), "", new Point(400, 315));
+        AddField(new TextField(200, 50, "aaaa/mm/dd", TextField.OBLIGATORY_FIELD + TextField.DATE_FIELD), "Fecha de nacimiento: ", new Point(50, 415));
+        AddRadioButtons("Sexo: ", new Point(400, 415), "Masculino", "Femenino", "Otro");
         AddRegisterButton(TypeButton.BUTTON_REGISTER);
     }
 

@@ -5,6 +5,7 @@
 
 package View;
 
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 
 import Model.Admin;
@@ -30,9 +31,9 @@ public class RegisterAdminPanel extends FormPanel
     @Override
     public void InitFields() 
     {
-        AddField(new TextField(300, 50, "Digite su ID", TextField.OBLIGATORY_FIELD + TextField.NUMERIC_FIELD), "Identificación: ", 50, 150);
-        AddField(new TextField(300, 50, "Digite su usuario", TextField.OBLIGATORY_FIELD), "Usuario: ", 50, 250);
-        AddField(new PasswordField(300, 50, "Digite su contraseña"), "Contraseña: ", 50, 350);
+        AddField(new TextField("Digite su ID", TextField.OBLIGATORY_FIELD + TextField.NUMERIC_FIELD), "Identificación: ", new Point( 50, 150));
+        AddField(new TextField("Digite su usuario", TextField.OBLIGATORY_FIELD), "Usuario: ", new Point(50, 250));
+        AddField(new PasswordField("Digite su contraseña"), "Contraseña: ", new Point(50, 350));
     }
 
     @Override
@@ -78,7 +79,7 @@ public class RegisterAdminPanel extends FormPanel
     protected void InitPanel() 
     {
         AddRegisterButton(TypeButton.BUTTON_REGISTER);
-        AddButton(TypeButton.BUTTON_EXIT, 50, 600, (ActionEvent evt) -> { Exit(evt); });
+        AddButton(TypeButton.BUTTON_EXIT, new Point(50, 600), (ActionEvent evt) -> { Exit(evt); });
     }
 
     private String GetCode()

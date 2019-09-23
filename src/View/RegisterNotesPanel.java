@@ -5,6 +5,7 @@
 
 package View;
 
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 
 /**
@@ -22,11 +23,11 @@ public class RegisterNotesPanel extends FormPanel
     @Override
     public void InitFields() 
     {
-        AddField(new TextField(300, 50, "Digite el código del grupo", TextField.OBLIGATORY_FIELD + TextField.NUMERIC_FIELD), "Código del grupo: ", 50, 150);
-        AddField(new TextField(300, 50, "Digite el código del estudiante", TextField.OBLIGATORY_FIELD + TextField.NUMERIC_FIELD), "Codigo del estudiante", 50, 250);
-        AddField(new TextField(100, 50, "1° corte", TextField.OBLIGATORY_FIELD + TextField.FLOAT_FIELD), "Notas: ", 50, 350);
-        AddField(new TextField(100, 50, "2° corte", TextField.OBLIGATORY_FIELD + TextField.FLOAT_FIELD), "", 165, 350);
-        AddField(new TextField(100, 50, "3° corte", TextField.OBLIGATORY_FIELD + TextField.FLOAT_FIELD), "", 280, 350);
+        AddField(new TextField("Digite el código del grupo", TextField.OBLIGATORY_FIELD + TextField.NUMERIC_FIELD), "Código del grupo: ", new Point(50, 150));
+        AddField(new TextField("Digite el código del estudiante", TextField.OBLIGATORY_FIELD + TextField.NUMERIC_FIELD), "Codigo del estudiante", new Point(50, 150));
+        AddField(new TextField(100, 50, "1° corte", TextField.OBLIGATORY_FIELD + TextField.FLOAT_FIELD), "Notas: ", new Point(50, 350));
+        AddField(new TextField(100, 50, "2° corte", TextField.OBLIGATORY_FIELD + TextField.FLOAT_FIELD), "", new Point(165, 350));
+        AddField(new TextField(100, 50, "3° corte", TextField.OBLIGATORY_FIELD + TextField.FLOAT_FIELD), "", new Point(280, 350));
     }
 
     @Override

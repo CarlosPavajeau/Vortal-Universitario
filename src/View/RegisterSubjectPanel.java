@@ -5,6 +5,7 @@
 
 package View;
 
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 
 import Model.Subject;
@@ -29,10 +30,10 @@ public class RegisterSubjectPanel extends FormPanel
     @Override
     public void InitFields() 
     {
-        AddField(new TextField(300, 50, "Digite el código", TextField.OBLIGATORY_FIELD + TextField.NUMERIC_FIELD), "Código de asignatura: ", 50, 150);
-        AddField(new TextField(300, 50, "Digite el nombre", TextField.OBLIGATORY_FIELD + TextField.ALPHA_FIELD), "Nombre de asignatura: ",400, 150);
-        AddField(new TextField(300, 50, "Digite el número de créditos", TextField.OBLIGATORY_FIELD + TextField.NUMERIC_FIELD), "Número de créditos", 50, 250);
-        AddField(new TextField(300, 50, "Digite el semestre recomendado", TextField.OBLIGATORY_FIELD + TextField.NUMERIC_FIELD), "Semestre recomendado", 400, 250);
+        AddField(new TextField("Digite el código", TextField.OBLIGATORY_FIELD + TextField.NUMERIC_FIELD), "Código de asignatura: ", new Point(50, 150));
+        AddField(new TextField("Digite el nombre", TextField.OBLIGATORY_FIELD + TextField.ALPHA_FIELD), "Nombre de asignatura: ", new Point(400, 150));
+        AddField(new TextField("Digite el número de créditos", TextField.OBLIGATORY_FIELD + TextField.NUMERIC_FIELD), "Número de créditos", new Point(50, 250));
+        AddField(new TextField("Digite el semestre recomendado", TextField.OBLIGATORY_FIELD + TextField.NUMERIC_FIELD), "Semestre recomendado", new Point(400, 250));
     }
 
     @Override

@@ -5,6 +5,7 @@
 
 package View;
 
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 
 /**
@@ -24,6 +25,6 @@ public class ProfessorPanel extends Panel
     {
         AddCenterComponentY(new Button(TypeButton.BUTTON_ICON_DATA_MANAGER, null), 350);
         AddCenterComponentY(new Button(TypeButton.BUTTON_ICON_STUDENT_HANDLER, null), 500);
-        AddButton(TypeButton.BUTTON_LOGOUT, 775, 625, (ActionEvent evt) -> { ReturnToBehindPanel(); });
+        AddButton(TypeButton.BUTTON_LOGOUT, new Point(775, 625), (ActionEvent evt) -> { ReturnToBehindPanel(); });
     }
 }

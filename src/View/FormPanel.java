@@ -17,6 +17,7 @@ import javax.swing.JLabel;
 
 import Model.DataConnectionHandler.DataConnectionHandler;
 import View.ErrorPanel.TypeError;
+import java.awt.Point;
 
 /**
  * 
@@ -55,37 +56,38 @@ public abstract class FormPanel extends Panel
         return radioButtons;
     }
 
-    public void AddField(Field textField, String text, int x, int y)
+    public void AddField(Field field, String text, Point fieldPosition)
     {
         JLabel ltext = new JLabel(text);
         ltext.setFont(new Font("Microsoft Sans Serif", 0, 16));
         ltext.setSize(text.length() * 16, 20);
-        fields.add(textField);
-        AddComponent(ltext, x, y);
-        AddComponent(textField, x, y + ltext.getHeight());
+        fields.add(field);
+        AddComponent(ltext, fieldPosition);
+        fieldPosition.y += ltext.getHeight();
+        AddComponent(field, fieldPosition);
     }
 
-    public void AddRadioButtons(String text, int x, int y, String... ops)
+    public void AddRadioButtons(String text, Point radioButtonsPosition, String... ops)
     {
         JLabel ltext = new JLabel(text);
         ltext.setFont(new Font("Microsoft Sans Serif", 0, 16));
         ltext.setSize(text.length() * 10, 50);
-        AddComponent(ltext, x, y);
+        AddComponent(ltext, radioButtonsPosition);
 
-        int auxX = x + ltext.getWidth();
+        int auxX = radioButtonsPosition.x + ltext.getWidth();
         for (String op : ops)
         {
-            AddRadioButton(op, auxX, y);
+            AddRadioButton(op, new Point(auxX, radioButtonsPosition.y));
             auxX += RadioButton.RADIO_BUTTON_WIDTH;
         }
     }
 
-    public void AddRadioButton(String textButton, int x, int y)
+    public void AddRadioButton(String textButton, Point radioButtonPosition)
     {
         RadioButton radioButton = new RadioButton(textButton);
         radioButtons.add(radioButton);
         buttonGroup.add(radioButton);
-        AddComponent(radioButton, x, y);
+        AddComponent(radioButton, radioButtonPosition);
     }
 
     public boolean ValidateFields()
@@ -144,7 +146,7 @@ public abstract class FormPanel extends Panel
 
     protected void AddCenterField(Field textField, String text, int y)
     {
-        AddField(textField, text, Panel.WhereCenterX(this, textField), y);
+        AddField(textField, text, new Point(Panel.WhereCenterX(this, textField), y));
     }
 
     protected void AddRegisterButton(TypeButton typeButton)
@@ -154,7 +156,7 @@ public abstract class FormPanel extends Panel
 
     protected void AddActionButton(TypeButton typeButton, int whereX)
     {
-        AddButton(typeButton, whereX, 600, (ActionEvent evt) -> { RegisterButtonAction(evt); });
+        AddButton(typeButton, new Point(whereX, 600), (ActionEvent evt) -> { RegisterButtonAction(evt); });
     }
 
     protected void ClearFormPanel()
@@ -165,6 +167,7 @@ public abstract class FormPanel extends Panel
 
     protected abstract void InitFields();
     protected abstract void RegisterButtonAction(ActionEvent evt);
+    
     @Override
     protected void ReturnToBehindPanel() 
     {

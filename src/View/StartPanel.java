@@ -5,6 +5,7 @@
 
 package View;
 
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 
 import Model.DataConnectionHandler.DataConnectionHandler;
@@ -42,10 +43,10 @@ public class StartPanel extends Panel
                                                 PanelHandler.ShowLoginPanel(TypeUser.ADMIN); 
                                             });
 
-        AddComponent(imProfessorButton, 100, 100);
-        AddComponent(imStudentButton, 700, 100);
+        AddComponent(imProfessorButton, new Point(100, 100));
+        AddComponent(imStudentButton, new Point(700, 100));
         AddCenterComponentX(imAdminButton, 400);
-        AddButton(TypeButton.BUTTON_EXIT, 775, 625, (ActionEvent evt) -> { ExitButtonAction(); });
+        AddButton(TypeButton.BUTTON_EXIT, new Point(775, 625), (ActionEvent evt) -> { ExitButtonAction(); });
         EnableButtons();
     }
 
