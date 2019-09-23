@@ -16,4 +16,9 @@ public class PasswordField extends Field
     {
         super(width, height, defaultText, Field.OBLIGATORY_FIELD);
     }
+
+    public PasswordField(String defaultText)
+    {
+        super(defaultText, Field.OBLIGATORY_FIELD);
+    }
 }
