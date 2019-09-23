@@ -56,10 +56,11 @@ public abstract class Field extends JPasswordField
         });
     }
 
-    /**
-     * 
-     * @return
-     */
+    public Field(String defaultText, int typeField)
+    {
+        this(300, 50, defaultText, typeField);
+    }
+
     public boolean IsValidField()
     {
         switch (typeField)
@@ -92,37 +93,21 @@ public abstract class Field extends JPasswordField
         SetDefaultValues();
     }
 
-    /**
-     * 
-     * @return
-     */
     private boolean ValidateObligatoryField()
     {
         return !(String.valueOf(getPassword()).isEmpty() || String.valueOf(getPassword()).equals(defaultText));
     }
 
-    /**
-     * 
-     * @return
-     */
     private boolean ValidateAlphaField()
     {
         return String.valueOf(getPassword()).matches("[a-zA-Z]+");
     }
 
-    /**
-     * 
-     * @return
-     */
     private boolean ValidateNumericField()
     {
         return String.valueOf(getPassword()).matches("(\\d+)");
     }
 
-    /**
-     * 
-     * @return
-     */
     private boolean ValidateDateField()
     {
         return String.valueOf(getPassword()).matches("\\d{4}/\\d{2}/\\d{2}");
@@ -133,10 +118,6 @@ public abstract class Field extends JPasswordField
         return String.valueOf(getPassword()).matches("(\\d+)\\.(\\d+)");
     }
 
-    /**
-     * 
-     * @param evt
-     */
     private void TextFieldFocusGained(FocusEvent evt) 
     {
         if (String.valueOf(getPassword()).equals(defaultText))
@@ -149,19 +130,12 @@ public abstract class Field extends JPasswordField
         }
     }
 
-    /**
-     * 
-     * @param evt
-     */
     private void TextFieldFocusLost(FocusEvent evt)
     {
         if (String.valueOf(getPassword()).isEmpty())
             SetDefaultValues();
     }
 
-    /**
-     * 
-     */
     private void SetDefaultValues()
     {
         setEchoChar((char)0);
