@@ -18,7 +18,7 @@ public class Admin extends Entity
 {
     private static final long serialVersionUID = 3986258342534801127L;
     
-    private Login login;
+    private final AccessData accessData;
 
     /**
      * Initialize a new {@code Admin} with these characteristics.
@@ -29,23 +29,23 @@ public class Admin extends Entity
     public Admin(String code, String user, String password)
     {
         super(code);
-        login = new Login(user, password);
+        accessData = new AccessData(user, password);
     }
 
     /**
      * This method returns the {@code Login} that this {@code Admin} has.
      * @return the {@code Login} that this {@code Admin} has.
      */
-    public Login GetLogin()
+    public AccessData GetLogin()
     {
-        return login;
+        return accessData;
     }
 
     @Override
     public int hashCode()
     {
         final int prime = 31;
-        int result = prime + ((login == null) ? 0 : login.hashCode());
+        int result = prime + ((accessData == null) ? 0 : accessData.hashCode());
         return result;
     }
 
@@ -57,10 +57,10 @@ public class Admin extends Entity
         if (getClass() != obj.getClass())
             return false;
         Admin other = (Admin) obj;
-        if (login == null) {
-            if (other.login != null)
+        if (accessData == null) {
+            if (other.accessData != null)
                 return false;
-        } else if (!login.equals(other.login))
+        } else if (!accessData.equals(other.accessData))
             return false;
         return true;
     }

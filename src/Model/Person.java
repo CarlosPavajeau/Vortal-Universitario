@@ -28,7 +28,7 @@ public abstract class Person extends Entity
     private byte age;
     private Calendar dateOfBorn;
     private Sex sex;
-    private Login login;
+    private AccessData accessData;
 
     /**
      * Initialize a new {@code Person} with these characteristics.
@@ -53,7 +53,7 @@ public abstract class Person extends Entity
         GenerateDateOfBorn(date_of_born);
         SetAge();
         sex = _sex;
-        login = new Login(code, code);
+        accessData = new AccessData(code, code);
     }
 
     public Person(String code)
@@ -125,12 +125,12 @@ public abstract class Person extends Entity
     }
 
     /**
-     * This method returns the login that this {@code Person} has. 
+     * This method returns the accessData that this {@code Person} has. 
      * @return the first name that this {@code Person} has.
      */
-    public Login GetLogin()
+    public AccessData GetLogin()
     {
-        return login;
+        return accessData;
     }
 
     /**
@@ -183,7 +183,7 @@ public abstract class Person extends Entity
 
     /**
      * This method sets a new sex for this object {@code Person}.
-     * @param sex will be a new sex of this {@code Person}.
+     * @param _sex will be a new sex of this {@code Person}.
      */
     public void SetSex(Sex _sex)
     {
