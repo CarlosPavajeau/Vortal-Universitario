@@ -7,7 +7,6 @@ package View;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 
@@ -41,17 +40,17 @@ public abstract class Field extends JPasswordField
         setHorizontalAlignment(JPasswordField.LEFT);
         setText(defaultText);
         setEchoChar((char)0);
-        setBorder(new RoundRectBorder());
+        setBorder(RoundRectBorder.GRAY_BORDER);
         addFocusListener(new FocusAdapter() 
         {
             public void focusGained(FocusEvent evt) 
             {
-                TextFieldFocusGained(evt);
+                TextFieldFocusGained();
             }
 
             public void focusLost(FocusEvent evt)
             {
-                TextFieldFocusLost(evt);
+                TextFieldFocusLost();
             }
         });
     }
@@ -118,7 +117,7 @@ public abstract class Field extends JPasswordField
         return String.valueOf(getPassword()).matches("(\\d+)\\.(\\d+)");
     }
 
-    private void TextFieldFocusGained(FocusEvent evt) 
+    private void TextFieldFocusGained() 
     {
         if (String.valueOf(getPassword()).equals(defaultText))
         {
@@ -127,13 +126,15 @@ public abstract class Field extends JPasswordField
 
             setForeground(Color.BLACK);
             setText("");
+            setBorder(RoundRectBorder.BLUE_BORDER);
         }
     }
 
-    private void TextFieldFocusLost(FocusEvent evt)
+    private void TextFieldFocusLost()
     {
         if (String.valueOf(getPassword()).isEmpty())
             SetDefaultValues();
+        setBorder(RoundRectBorder.GRAY_BORDER);
     }
 
     private void SetDefaultValues()
