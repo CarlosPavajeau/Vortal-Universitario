@@ -5,7 +5,6 @@
 
 package View;
 
-import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -13,11 +12,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.ButtonGroup;
-import javax.swing.JLabel;
 
 import Model.DataConnectionHandler.DataConnectionHandler;
 import View.ErrorPanel.TypeError;
 import java.awt.Point;
+import java.awt.Rectangle;
 
 /**
  * 
@@ -58,27 +57,31 @@ public abstract class FormPanel extends Panel
 
     public void AddField(Field field, String text, Point fieldPosition)
     {
-        JLabel ltext = new JLabel(text);
-        ltext.setFont(new Font("Microsoft Sans Serif", 0, 16));
-        ltext.setSize(text.length() * 16, 20);
+        AddLabel(text, fieldPosition);
+
+        fieldPosition.y += LabelConstants.DEFAULT_LABEL_HEIGHT;
         fields.add(field);
-        AddComponent(ltext, fieldPosition);
-        fieldPosition.y += ltext.getHeight();
         AddComponent(field, fieldPosition);
     }
 
-    public void AddRadioButtons(String text, Point radioButtonsPosition, String... ops)
+    public void AddLabel(String text, Point labelPosition)
     {
-        JLabel ltext = new JLabel(text);
-        ltext.setFont(new Font("Microsoft Sans Serif", 0, 16));
-        ltext.setSize(text.length() * 10, 50);
-        AddComponent(ltext, radioButtonsPosition);
+        Label ltext = new Label(text, new Rectangle(text.length() * FontConstants.DEFAULT_FONT_SIZE,
+                                LabelConstants.DEFAULT_LABEL_HEIGHT));
 
-        int auxX = radioButtonsPosition.x + ltext.getWidth();
-        for (String op : ops)
+        AddComponent(ltext, labelPosition);
+    }
+
+    public void AddRadioButtons(String text, Point radioButtonsPosition, String... options)
+    {
+        AddLabel(text, radioButtonsPosition);
+   
+        radioButtonsPosition.x += (text.length() * FontConstants.BUTTON_FONT_SIZE);
+        
+        for (String option : options)
         {
-            AddRadioButton(op, new Point(auxX, radioButtonsPosition.y));
-            auxX += RadioButton.RADIO_BUTTON_WIDTH;
+            AddRadioButton(option, radioButtonsPosition);
+            radioButtonsPosition.x += RadioButton.RADIO_BUTTON_WIDTH;
         }
     }
 
@@ -92,18 +95,12 @@ public abstract class FormPanel extends Panel
 
     public boolean ValidateFields()
     {
-        for (Field textField : GetFields())
-            if (!textField.IsValidField())
-                return false;
-        return true;
+        return GetFields().stream().noneMatch((textField) -> (!textField.IsValidField()));
     }
 
     public boolean ValidateRadioButtons()
     {
-        for (RadioButton radioButton : GetRadioButtons())
-            if (radioButton.isSelected())
-                return true;
-        return false;
+        return GetRadioButtons().stream().anyMatch((radioButton) -> (radioButton.isSelected()));
     }
 
     protected boolean SaveData(Object anObject, DataConnectionHandler dataConnectionHandler)
