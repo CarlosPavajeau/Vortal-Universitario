@@ -14,11 +14,8 @@ import java.io.Serializable;
  */
 public enum Sex implements Serializable
 {
-    /**Male sex*/
     MALE("Masculino"),
-    /**Female sex*/
     FEMALE("Femenino"),
-    /**Other sex*/
     OTHER("Otro");
 
     private final String sex;
