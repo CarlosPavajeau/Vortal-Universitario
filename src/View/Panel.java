@@ -33,7 +33,6 @@ public abstract class Panel extends JPanel
         super();
         title = _title;
         initComponents();
-        InitPanel();
         SetTitle();
     }
 
@@ -45,8 +44,9 @@ public abstract class Panel extends JPanel
         setMinimumSize(PanelConstants.PANEL_SIZE);
         setPreferredSize(PanelConstants.PANEL_SIZE);
         setSize(PanelConstants.PANEL_SIZE);
-        setBorder(new RoundRectBorder());
+        setBorder(RoundRectBorder.GRAY_BORDER);
         setLayout(null);
+        InitPanel();
     }
 
     protected abstract void InitPanel();
