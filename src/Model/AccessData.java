@@ -8,13 +8,13 @@ package Model;
 import java.io.Serializable;
 
 /**
- * This is the class {@code Login}. Its use is to store the access data 
+ * This is the class {@code AccessData}. Its use is to store the access data 
  * of each user, this access data is his username and password.
  * 
  * @version 1.0
  * @author Carlos Pavajeau - Cantte
  */
-public class Login implements Serializable
+public class AccessData implements Serializable
 {
     private static final long serialVersionUID = 6453223500086846374L;
     
@@ -22,19 +22,19 @@ public class Login implements Serializable
     private String password;
 
     /**
-     * Initialize a new {@code Login} with these characteristics.
+     * Initialize a new {@code AccessData} with these characteristics.
      * @param _user that is to be assigned to the object.
      * @param _password that is to be assigned to the object.
      */
-    public Login(String _user, String _password)
+    public AccessData(String _user, String _password)
     {
         user = _user;
         password = _password;
     }
 
     /**
-     * This method returns the user that has this object {@code Login}.
-     * @return the user that has the {@code Login}.
+     * This method returns the user that has this object {@code AccessData}.
+     * @return the user that has the {@code AccessData}.
      */
     public String GetUser()
     {
@@ -42,8 +42,8 @@ public class Login implements Serializable
     }
 
     /**
-     * This method returns the password that has this object {@code Login}.
-     * @return the password that has the {@code Login}.
+     * This method returns the password that has this object {@code AccessData}.
+     * @return the password that has the {@code AccessData}.
      */
     public String GetPassword()
     {
@@ -51,8 +51,8 @@ public class Login implements Serializable
     }
 
     /**
-     * This method sets a new user for this object {@code Login}.
-     * @param _user will be a new user of this {@code Login}.
+     * This method sets a new user for this object {@code AccessData}.
+     * @param _user will be a new user of this {@code AccessData}.
      */
     public void SetUser(String _user)
     {
@@ -60,8 +60,8 @@ public class Login implements Serializable
     }
 
     /**
-     * This method sets a new password for this object {@code Login}.
-     * @param password will be a new password of this {@code Login}.
+     * This method sets a new password for this object {@code AccessData}.
+     * @param _password will be a new password of this {@code AccessData}.
      */
     public void SetPassword(String _password)
     {
@@ -74,7 +74,7 @@ public class Login implements Serializable
      * @param b
      * @return
      */
-    public static boolean ValidateLogin(Login a, Login b)
+    public static boolean ValidateLogin(AccessData a, AccessData b)
     {
         return a.GetUser().equals(b.GetUser()) && a.GetPassword().equals(b.GetPassword());
     }
@@ -98,7 +98,7 @@ public class Login implements Serializable
             return false;
         if (getClass() != obj.getClass())
             return false;
-        Login other = (Login) obj;
+        AccessData other = (AccessData) obj;
         if (password == null) {
             if (other.password != null)
                 return false;
