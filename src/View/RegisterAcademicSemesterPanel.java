@@ -32,7 +32,7 @@ public class RegisterAcademicSemesterPanel extends FormPanel
     {
         AddField(new TextField("Digite el número del semestre", TextField.OBLIGATORY_FIELD + TextField.NUMERIC_FIELD), "Número de semeste: ", new Point(50, 150));
         AddField(new TextField("Digite los créditos mínimos", TextField.OBLIGATORY_FIELD + TextField.NUMERIC_FIELD), "Créditos mínimos: ", new Point(50, 250));
-        AddField(new TextField("Digite los créditos máximos", TextField.OBLIGATORY_FIELD + TextField.NUMERIC_FIELD), "Cŕeditos máximos: ", new Point(50, 250));
+        AddField(new TextField("Digite los créditos máximos", TextField.OBLIGATORY_FIELD + TextField.NUMERIC_FIELD), "Cŕeditos máximos: ", new Point(400, 250));
     }
 
     @Override
