@@ -71,7 +71,7 @@ public class RegisterPensumPanel extends FormPanel
                 if (SaveData(pensum, dataConnectionHandler))
                 {
                     SuccesPanel.ShowSucces(TypeSucces.REGISTERED_PENSUM);
-                    ClearAndReturnToBehindPanel();
+                    ReturnToBehindPanel();
                 }
                 else
                     WarningPanel.ShowWarning(TypeWarning.PENSUM_ALREADY_REGISTERED);

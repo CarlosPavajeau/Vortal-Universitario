@@ -57,7 +57,7 @@ public class RegisterSubjectPanel extends FormPanel
                 if (SaveData(subject, dataConnectionHandler))
                 {
                     SuccesPanel.ShowSucces(TypeSucces.REGISTERED_SUBJECT);
-                    ClearAndReturnToBehindPanel();
+                    ReturnToBehindPanel();
                 }
                 else
                     WarningPanel.ShowWarning(TypeWarning.SUBJECT_ALREADY_REGISTERED);

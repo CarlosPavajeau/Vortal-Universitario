@@ -69,7 +69,7 @@ public class RegisterAcademicLoadPanel extends FormPanel
                             if (dataConnectionHandler.Update(professor))
                             {
                                 SuccesPanel.ShowSucces(TypeSucces.REGISTERED_ACADEMIC_LOAD);
-                                ClearAndReturnToBehindPanel();
+                                ReturnToBehindPanel();
                             }
                             else
                                 ErrorPanel.ShowError(TypeError.UPDATE_ERROR);

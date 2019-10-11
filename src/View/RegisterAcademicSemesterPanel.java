@@ -56,7 +56,7 @@ public class RegisterAcademicSemesterPanel extends FormPanel
                     if (SaveData(academicSemester, dataConnectionHandler))
                     {
                         SuccesPanel.ShowSucces(TypeSucces.REGISTERED_ACADEMIC_SEMESTER);
-                        ClearAndReturnToBehindPanel();
+                        ReturnToBehindPanel();
                     }
                     else
                         WarningPanel.ShowWarning(TypeWarning.ACADEMIC_SEMESTER_ALREADY_REGISTERED);
