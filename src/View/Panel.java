@@ -41,10 +41,10 @@ public abstract class Panel extends JPanel
     {
         buttons = new ArrayList<>();
         setBackground(Color.WHITE);
-        setMaximumSize(new Dimension(1000, 700));
-        setMinimumSize(new Dimension(1000, 700));
-        setPreferredSize(new Dimension(1000, 700));
-        setSize(new Dimension(1000, 700));
+        setMaximumSize(PanelConstants.PANEL_SIZE);
+        setMinimumSize(PanelConstants.PANEL_SIZE);
+        setPreferredSize(PanelConstants.PANEL_SIZE);
+        setSize(PanelConstants.PANEL_SIZE);
         setBorder(new RoundRectBorder());
         setLayout(null);
     }
@@ -104,9 +104,7 @@ public abstract class Panel extends JPanel
 
     private void SetTitle()
     {
-        Label titleOfPanel = new Label(title, new Rectangle(700, 100), 25);
-        int whereCenterTitle = WhereCenterX(this, titleOfPanel);
-        titleOfPanel.setLocation(new Point(whereCenterTitle, 5));
-        add(titleOfPanel);
+        Label titleOfPanel = new Label(title, new Rectangle(700, 100), FontConstants.TITLE_FONT, Label.CENTER);
+        AddCenterComponentX(titleOfPanel, 5);
     }
 }
