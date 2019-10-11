@@ -17,6 +17,8 @@ import javax.swing.WindowConstants;
 import Model.DataConnectionHandler.DataConnectionHandler;
 import Model.DataConnectionHandler.LoginDataHandler;
 import View.PanelHandler.Panels;
+import java.io.IOException;
+import java.sql.SQLException;
 
 /**
  * 
@@ -25,7 +27,7 @@ public class MainWindow extends JFrame
 {
     private static final long serialVersionUID = 9040978770256604819L;
 
-    public static final MainWindow mainWindow = new MainWindow();
+    public static final MainWindow MainWindow = new MainWindow();
     private JPanel mainPanel;
 
     public MainWindow() 
@@ -51,11 +53,12 @@ public class MainWindow extends JFrame
 
     private void AddPanels()
     {
-        for (Panel panel : PanelHandler.GetPanels())
-        {
+        PanelHandler.GetPanels().stream().map((panel) -> {
             panel.setVisible(false);
+            return panel;
+        }).forEachOrdered((panel) -> {
             add(panel);
-        }
+        });
     }
     
     private void Start()
@@ -72,14 +75,14 @@ public class MainWindow extends JFrame
             else
                 PanelHandler.ShowPanel(Panels.START_PANEL);
         } 
-        catch (Exception e) 
+        catch (IOException | ClassNotFoundException | SQLException e) 
         {
-            e.printStackTrace();
-		}
+            
+        }
     }
 
     public static void ShowPopUpWindow(String title, String message, int messageType, Icon icon)
     {
-        JOptionPane.showMessageDialog(mainWindow, message, title, messageType, icon);
+        JOptionPane.showMessageDialog(MainWindow, message, title, messageType, icon);
     }
 }
