@@ -16,19 +16,25 @@ public class Label extends JLabel
 
     public Label(String text)
     {
-        this(text, new Rectangle(300, 50));
+        this(text, new Rectangle(LabelConstants.DEFAULT_LABEL_WIDTH, LabelConstants.DEFAULT_LABEL_HEIGHT));
     }
 
     public Label(String text, Rectangle size)
     {
-        this(text, size, 16);
+        this(text, size, LabelConstants.DEFAULT_FONT_SIZE);
     }
 
     public Label(String text, Rectangle size, int fontSize)
     {
+        this(text, size, new Font(FontConstants.DEFAULT_FONT_NAME, 
+                                  FontConstants.DEFAULT_FONT_STYLE, fontSize), JLabel.LEFT);
+    }
+
+    public Label(String text, Rectangle size, Font font, int alignment)
+    {
         super(text);
+        setFont(font);
         setBounds(size);
-        setFont(new Font("Microsoft Sans Serif", 0, fontSize));
-        setHorizontalAlignment(JLabel.CENTER);
+        setHorizontalAlignment(alignment);
     }
 }

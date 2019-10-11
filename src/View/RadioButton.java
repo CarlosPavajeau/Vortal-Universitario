@@ -8,7 +8,6 @@ package View;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
-import java.awt.Font;
 
 import javax.swing.ImageIcon;
 import javax.swing.JRadioButton;
@@ -25,7 +24,7 @@ public class RadioButton extends JRadioButton
     private static final String SELECT_ICON_RADIO_BUTTON = "/View/Assets/Icons/15x15/Icon_RadioButtonSelect.png";
 
     public static final byte RADIO_BUTTON_WIDTH = 120;
-    public static final byte RADIO_BUTTON_HEIGHT = 50;
+    public static final byte RADIO_BUTTON_HEIGHT = 20;
 
     public RadioButton(String text)
     {
@@ -33,7 +32,7 @@ public class RadioButton extends JRadioButton
         setIcon(new ImageIcon(getClass().getResource(ICON_RADIO_BUTTON)));
         setRolloverIcon(new ImageIcon(getClass().getResource(ROLLOVER_ICON_RADIO_BUTTON)));
         setSelectedIcon(new ImageIcon(getClass().getResource(SELECT_ICON_RADIO_BUTTON)));
-        setFont(new Font("Microsoft Sans Serif", 0, 16));
+        setFont(FontConstants.DEFAULT_FONT);
         setBackground(Color.WHITE);
         setCursor(new Cursor(Cursor.HAND_CURSOR));
         setSize(new Dimension(RadioButton.RADIO_BUTTON_WIDTH, RadioButton.RADIO_BUTTON_HEIGHT));

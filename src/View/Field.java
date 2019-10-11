@@ -34,7 +34,7 @@ public abstract class Field extends JPasswordField
         super();
         defaultText = default_text;
         typeField = type_field;
-        setFont(new Font("Microsoft Sans Serif", 0, 16));
+        setFont(FontConstants.DEFAULT_FONT);
         setForeground(Color.GRAY);
         setPreferredSize(new Dimension(width, height));
         setSize(new Dimension(width, height));
@@ -122,7 +122,7 @@ public abstract class Field extends JPasswordField
     {
         if (String.valueOf(getPassword()).equals(defaultText))
         {
-            if (this instanceof PasswordField) /**Is a PasswordField? */
+            if (this instanceof PasswordField)
                 setEchoChar((char)8226);
 
             setForeground(Color.BLACK);

@@ -26,7 +26,7 @@ public class Button extends JButton
         setIcon(new ImageIcon(getClass().getResource(typeButton.GetSRC())));
         setHorizontalTextPosition(SwingConstants.CENTER);
         setVerticalTextPosition(SwingConstants.BOTTOM);
-        setFont(new Font("Microsoft Sans Serif", 0, 12));
+        setFont(FontConstants.BUTTON_FONT);
         setIconTextGap(3);
         if (!typeButton.GetText().isEmpty())
         {
