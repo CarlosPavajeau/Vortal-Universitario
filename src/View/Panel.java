@@ -56,6 +56,11 @@ public abstract class Panel extends JPanel
         return buttons;
     }
 
+    protected void AddReturnButton()
+    {
+        AddButton(TypeButton.BUTTON_ICON_RETURN, PanelConstants.RETURN_BUTTON_POSITION, (ActionEvent evt) -> { ReturnToBehindPanel(); });
+    }
+
     public void AddButton(TypeButton typeButton, Point buttonPosition, ActionListener buttonAction)
     {
         Button button = new Button(typeButton, buttonAction);
@@ -65,15 +70,14 @@ public abstract class Panel extends JPanel
     public void AddComponent(Component component, Point componentPosition)
     {
         component.setLocation(componentPosition);
-
         if (component instanceof Button)
             buttons.add((Button)component);
-        add(component);
+        AddComponent(component);
     }
 
-    protected void AddReturnButton()
+    public void AddComponent(Component component)
     {
-        AddButton(TypeButton.BUTTON_ICON_RETURN, new Point(5, 0), (ActionEvent evt) -> { ReturnToBehindPanel(); });
+        add(component);
     }
 
     protected void ReturnToBehindPanel()
@@ -84,27 +88,29 @@ public abstract class Panel extends JPanel
 
     protected void AddCenterComponentX(Component component, int y)
     {
-        AddComponent(component, new Point(Panel.WhereCenterX(this, component), y));
+        AddComponent(component, new Point(WhereCenterX(component.getWidth()), y));
     }
 
     protected void AddCenterComponentY(Component component, int x)
     {
-        AddComponent(component, new Point(x, Panel.WhereCenterY(this, component)));
+        AddComponent(component, new Point(x, WhereCenterY(component.getHeight())));
+    }
+    
+    protected static int WhereCenterX(int componentWidth)
+    {
+        return (PanelConstants.PANEL_WIDTH - componentWidth) / 2;
     }
 
-    protected static int WhereCenterX(Panel panel, Component component)
+    protected static int WhereCenterY(int componentHeight)
     {
-        return (panel.getWidth() - component.getWidth()) / 2;
-    }
-
-    protected static int WhereCenterY(Panel panel, Component component)
-    {
-        return (panel.getHeight() - component.getHeight()) / 2; 
+        return (PanelConstants.PANEL_HEIGHT - componentHeight) / 2;
     }
 
     private void SetTitle()
     {
-        Label titleOfPanel = new Label(title, new Rectangle(700, 100), FontConstants.TITLE_FONT, Label.CENTER);
-        AddCenterComponentX(titleOfPanel, 5);
+        Label titleOfPanel = new Label(title, new Rectangle(WhereCenterX(LabelConstants.LABEL_TITLE_WIDTH), 5, 
+                                       LabelConstants.LABEL_TITLE_WIDTH, LabelConstants.LABEL_TITLE_HEIGHT), 
+                                       FontConstants.TITLE_FONT, Label.CENTER);
+        AddComponent(titleOfPanel);
     }
 }
