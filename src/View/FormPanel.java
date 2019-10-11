@@ -143,7 +143,7 @@ public abstract class FormPanel extends Panel
 
     protected void AddCenterField(Field textField, String text, int y)
     {
-        AddField(textField, text, new Point(Panel.WhereCenterX(this, textField), y));
+        AddField(textField, text, new Point(Panel.WhereCenterX(textField.getWidth()), y));
     }
 
     protected void AddRegisterButton(TypeButton typeButton)
