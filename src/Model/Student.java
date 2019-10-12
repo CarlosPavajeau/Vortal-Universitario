@@ -59,7 +59,7 @@ public class Student extends Person implements SubjectHandler
      * @param secon_last_name will be the second last name that will have this {@code Student}.
      * @param date_of_born will be the date of born that will have this {@code Student}.
      * @param _sex will be the _sex that will have this {@code Student}.
-     * @param qualifications will be the qualificationx that will have this {@code Student}.
+     * @param qualifications will be the qualification that will have this {@code Student}.
      * @param semesterAverage will be the semester average that will have this {@code Student}.
      * @param general_average will be the general average that will have this {@code Student}.
      * @param registered_credits will be the registered credits that will have this {@code Student}.
@@ -125,7 +125,7 @@ public class Student extends Person implements SubjectHandler
      */
     public float GetSemesterAverage(int semester) throws IndexOutOfBoundsException
     {
-        return GetSemesterAverage().get(semester-1).floatValue();
+        return GetSemesterAverage().get(semester-1);
     }
 
     /**
@@ -232,8 +232,7 @@ public class Student extends Person implements SubjectHandler
     public void UpdateGeneralAverage()
     {
         float newAverage = 0.0f;
-        for (Float average : semesterAverage)
-            newAverage += average.floatValue();
+        newAverage = semesterAverage.stream().map((average) -> average).reduce(newAverage, (accumulator, _item) -> accumulator + _item);
         newAverage /= semesterAverage.size();
         SetGeneralAverage(newAverage);
     }
@@ -244,9 +243,10 @@ public class Student extends Person implements SubjectHandler
     public void AddNewSemesterAverage()
     {
         float newSemesterAverage = 0.0f;
-        for (Qualification qualification : qualifications)
-            newSemesterAverage += qualification.GetAverage() * (qualification.GetSubject().GetCredits() / GetRegisteredCredits());
-        semesterAverage.add(Float.valueOf(newSemesterAverage));
+        newSemesterAverage = qualifications.stream().map((qualification) -> 
+                qualification.GetAverage() * (qualification.GetSubject().GetCredits() / GetRegisteredCredits()))
+                .reduce(newSemesterAverage, (accumulator, _item) -> accumulator + _item);
+        semesterAverage.add(newSemesterAverage);
     }
 
     /**

@@ -36,8 +36,8 @@ public class Qualification implements Comparable<Qualification>, Serializable
 
     /**
      * Initialize a new {@code Qualification} with these characteristics.
-     * @param subject that is to be assigned to the object.
-     * @param notes it will be the notes that this {@code Qualification} has.
+     * @param _subject that is to be assigned to the object.
+     * @param _notes it will be the notes that this {@code Qualification} has.
      */
     public Qualification(Subject _subject, float[] _notes)
     {

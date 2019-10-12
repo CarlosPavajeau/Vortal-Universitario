@@ -99,7 +99,7 @@ public class Professor extends Person
     public boolean AddAcademicLoad(int groupNumber, int limitOfStudents, TypeGroup typeGroup, Subject subject)
     {
         int index = GetAcademicLoads().indexOf(new AcademicLoad(subject));
-        AcademicLoad academicLoad = null;
+        AcademicLoad academicLoad;
         if (index != -1)
             academicLoad = GetAcademicLoads().get(index);   
         else
