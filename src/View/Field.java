@@ -40,17 +40,17 @@ public abstract class Field extends JPasswordField
         setHorizontalAlignment(JPasswordField.LEFT);
         setText(defaultText);
         setEchoChar((char)0);
-        setBorder(new RoundRectBorder());
+        setBorder(RoundRectBorder.GRAY_BORDER);
         addFocusListener(new FocusAdapter() 
         {
             public void focusGained(FocusEvent evt) 
             {
-                TextFieldFocusGained(evt);
+                TextFieldFocusGained();
             }
 
             public void focusLost(FocusEvent evt)
             {
-                TextFieldFocusLost(evt);
+                TextFieldFocusLost();
             }
         });
     }
@@ -87,52 +87,69 @@ public abstract class Field extends JPasswordField
         }
     }
 
-    public void Clear()
-    {
-        SetDefaultValues();
-    }
-
     private boolean ValidateObligatoryField()
     {
-        return !(String.valueOf(getPassword()).isEmpty() || String.valueOf(getPassword()).equals(defaultText));
+        return !(IsEmpty() || HasDefaultText());
     }
 
     private boolean ValidateAlphaField()
     {
-        return String.valueOf(getPassword()).matches("[a-zA-Z]+");
+        return GetText().matches("[a-zA-Z]+");
     }
 
     private boolean ValidateNumericField()
     {
-        return String.valueOf(getPassword()).matches("(\\d+)");
+        return GetText().matches("(\\d+)");
     }
 
     private boolean ValidateDateField()
     {
-        return String.valueOf(getPassword()).matches("\\d{4}/\\d{2}/\\d{2}");
+        return GetText().matches("\\d{4}/\\d{2}/\\d{2}");
     }
 
     private boolean ValidateFloatField()
     {
-        return String.valueOf(getPassword()).matches("(\\d+)\\.(\\d+)");
+        return GetText().matches("(\\d+)\\.(\\d+)");
     }
 
-    private void TextFieldFocusGained(FocusEvent evt) 
+    private void TextFieldFocusGained() 
     {
-        if (String.valueOf(getPassword()).equals(defaultText))
+        if (HasDefaultText())
         {
             if (this instanceof PasswordField)
                 setEchoChar((char)8226);
 
             setForeground(Color.BLACK);
             setText("");
+            setBorder(RoundRectBorder.BLUE_BORDER);
         }
     }
 
-    private void TextFieldFocusLost(FocusEvent evt)
+    private boolean HasDefaultText()
     {
-        if (String.valueOf(getPassword()).isEmpty())
-            SetDefaultValues();
+        return GetText().equals(defaultText);
+    }
+
+    private void TextFieldFocusLost()
+    {
+        if (IsEmpty())
+            Clear();
+        setBorder(RoundRectBorder.GRAY_BORDER);
+    }
+
+    private boolean IsEmpty()
+    {
+        return GetText().isEmpty();
+    }
+
+    public String GetText()
+    {
+        return String.valueOf(getPassword());
+    }
+
+    public void Clear()
+    {
+        SetDefaultValues();
     }
 
     private void SetDefaultValues()

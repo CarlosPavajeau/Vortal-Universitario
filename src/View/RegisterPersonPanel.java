@@ -88,7 +88,7 @@ public class RegisterPersonPanel extends FormPanel
             }
             finally
             {
-                ClearAndReturnToBehindPanel();
+                ReturnToBehindPanel();
             }
         }
         else

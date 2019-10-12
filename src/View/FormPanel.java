@@ -128,7 +128,7 @@ public abstract class FormPanel extends Panel
 
     protected String GetContentField(int i)
     {
-        return String.valueOf(GetFields().get(i).getPassword());
+        return GetFields().get(i).GetText();
     }
 
     protected int GetIntContentField(int i)
@@ -170,12 +170,6 @@ public abstract class FormPanel extends Panel
     {
         super.ReturnToBehindPanel();
         ClearFormPanel();
-    }
-
-    protected void ClearAndReturnToBehindPanel()
-    {
-        ClearFormPanel();
-        ReturnToBehindPanel();
     }
 
     private void ClearFields()
