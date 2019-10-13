@@ -36,6 +36,11 @@ public class AcademicSemester implements Comparable<AcademicSemester>, Serializa
         minimumCredits = minimum_credits;
     }
 
+    public AcademicSemester(int _semester)
+    {
+        this(_semester, 0, 0);
+    }
+
     /**
      * This method returns the semester that this {@code AcademicSemester} has. 
      * @return the semester that this {@code AcademicSemester} has.
