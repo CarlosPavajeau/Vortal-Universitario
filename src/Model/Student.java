@@ -5,9 +5,13 @@
 
 package Model;
 
+import Model.DataConnectionHandler.AcademicSemesterDataHandler;
 import java.util.ArrayList;
 
+import Model.DataConnectionHandler.DataConnectionHandler;
 import Model.Exceptions.ExceededCreditsException;
+import java.io.IOException;
+import java.sql.SQLException;
 
 /**
  * This is the class {@code Student}, it represents a student with 
@@ -80,97 +84,58 @@ public class Student extends Person implements SubjectHandler
         isMatriculateIn = is_matriculate_in;
     }
 
-    /**
-     * 
-     * @param code
-     */
     public Student(String code)
     {
         super(code);
     }
 
-    /**
-     * This method returns the general average that this {@code Student} has. 
-     * @return the general average that this {@code Student} has.
-     */
     public float GetGeneralAverage()
     {
         return generalAverage;
     }
 
-    /**
-     * This method returns the registered credits that this {@code Student} has. 
-     * @return the registered credits that this {@code Student} has.
-     */
     public int GetRegisteredCredits()
     {
         return registeredCredits;
     }
 
-    /**
-     * This method returns the current semester that this {@code Student} has. 
-     * @return the current semester that this {@code Student} has.
-     */
     public int GetCurrentSemester()
     {
         return currentSemester;
     }
 
-    /**
-     * This method returns the average of a semester that has this {@code Student}.
-     * @param semester corresponds to the semester where you want to consult the average.
-     * @return The average of the specified semester 
-     * that has this {@code Student}, if it has it.
-     * @throws IndexOutOfBoundsException
-     */
     public float GetSemesterAverage(int semester) throws IndexOutOfBoundsException
     {
         return GetSemesterAverage().get(semester-1);
     }
 
-    /**
-     * This method returns all the semester averages that this {@code Student} has. 
-     * @return All the semester averages that this {@code Student} has.
-     */
     public ArrayList<Float> GetSemesterAverage()
     {
         return semesterAverage;
     }
 
-    /**
-     * This method returns one qualification that correspond with 
-     * one {@code Subject} and one academic cut.
-     * @return the current semester that this {@code Student} has.
-     */
     public float GetQualification(Subject subject, int cort) throws IndexOutOfBoundsException
     {
-        return qualifications.get(qualifications.indexOf(new Qualification(subject))).GetNote(cort);
+        float[] notes = GetQualifications(subject);
+
+        return notes == null ? 0.0f : notes[cort];
     }
 
-    /**
-     * This method returns all cursed subjects if this {@code Student}.
-     * @return all cursed subjects of this {@code Student}.
-     */
+    public float[] GetQualifications(Subject subject)
+    {
+        Qualification _qualification = qualifications.stream()
+                .filter(qualification -> qualification.GetSubject().equals(subject))
+                .findAny()
+                .orElse(null);
+        
+        return _qualification == null ? null : _qualification.GetNotes();
+    }
+
     public ArrayList<Qualification> GetCurseSubjects()
     {
         return curseSubjects;
     }
 
-    /**
-     * 
-     * @param general_average
-     */
-    public void SetGeneralAverage(float general_average)
-    {
-        generalAverage = general_average;
-    }
-
-    /**
-     * This method registers this {@code Student} in a Pensum.
-     * @param pensum it is the code of the Pensum where to register this {@code Student}
-     * @return {@code true} if this {@code Student} was not registered in a Pensum.
-     * {@code false} otherwise.
-     */
     public boolean MatriculateIn(String pensum)
     {
         if (isMatriculateIn == null || !isMatriculateIn.isEmpty())
@@ -179,12 +144,6 @@ public class Student extends Person implements SubjectHandler
         return true;
     }
 
-    /**
-     * This method validates if this {@code Student} belongs to this Pensum. 
-     * @param pensum is the Pensum code to validate.
-     * @return {@code true} if this {@code Student} is registered in the Pensum. 
-     * {@code false} otherwise.
-     */
     public boolean IsMatriculateIn(String pensum)
     {
         return pensum.equals(isMatriculateIn);
@@ -222,24 +181,34 @@ public class Student extends Person implements SubjectHandler
     @Override
     public int GetAvailableCredits()
     {
-        AcademicSemester academicSemester = new AcademicSemester(GetCurrentSemester(), 0, 0);
-        return academicSemester.GetMaximumCredits() - GetRegisteredCredits();
+        try
+        {
+            DataConnectionHandler dataConnectionHandler = new AcademicSemesterDataHandler();
+        
+            if (dataConnectionHandler.ConnectWithData())
+            {
+                AcademicSemester academicSemester = new AcademicSemester(GetCurrentSemester());
+                academicSemester = (AcademicSemester)dataConnectionHandler.Select(academicSemester);
+                
+                return academicSemester == null ? 0 : academicSemester.GetMaximumCredits() - GetRegisteredCredits();
+            }
+        }
+        catch(IOException | ClassNotFoundException | SQLException exception)
+        {
+            return 0;
+        }
+        return 0;
+
     }
 
-    /**
-     * This method updates the general average of this {@code Student}.
-     */
     public void UpdateGeneralAverage()
     {
         float newAverage = 0.0f;
         newAverage = semesterAverage.stream().map((average) -> average).reduce(newAverage, (accumulator, _item) -> accumulator + _item);
         newAverage /= semesterAverage.size();
-        SetGeneralAverage(newAverage);
+        generalAverage = newAverage;
     }
 
-    /**
-     * This method adds a new semester average for this {@code Student}.
-     */
     public void AddNewSemesterAverage()
     {
         float newSemesterAverage = 0.0f;
@@ -249,9 +218,6 @@ public class Student extends Person implements SubjectHandler
         semesterAverage.add(newSemesterAverage);
     }
 
-    /**
-     * This method updates the current semester of this {@code Student}.
-     */
     public void UpdateCurrentSemester()
     {
         ++currentSemester;
