@@ -39,6 +39,7 @@ public class UnderGraduate extends Pensum
     {
         super(code, name, description, campus, semesters, globalLessonLoad, subjects);
         titleToGrand = title_to_grand;
+        SetTitle(titleToGrand);
     }
 
     /**

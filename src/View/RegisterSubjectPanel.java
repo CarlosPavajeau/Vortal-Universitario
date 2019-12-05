@@ -9,8 +9,7 @@ import java.awt.Point;
 import java.awt.event.ActionEvent;
 
 import Model.Subject;
-import Model.DataConnectionHandler.DataConnectionHandler;
-import Model.DataConnectionHandler.SubjectDataHandler;
+import Model.DataConnectionHandler.DBSubjectConnection;
 import View.ErrorPanel.TypeError;
 import View.SuccesPanel.TypeSucces;
 import View.WarningPanel.TypeWarning;
@@ -52,9 +51,9 @@ public class RegisterSubjectPanel extends FormPanel
                 recommendedSemester = GetRecommendedSemester();
 
                 Subject subject = new Subject(code, name, credits, recommendedSemester);
-                DataConnectionHandler dataConnectionHandler = new SubjectDataHandler();
+                DBSubjectConnection dbSubjectConnection = new DBSubjectConnection();
 
-                if (SaveData(subject, dataConnectionHandler))
+                if (dbSubjectConnection.Insert(subject))
                 {
                     SuccesPanel.ShowSucces(TypeSucces.REGISTERED_SUBJECT);
                     ReturnToBehindPanel();

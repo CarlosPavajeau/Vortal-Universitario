@@ -15,7 +15,6 @@ import Model.Subject;
 import Model.TypeGroup;
 import Model.DataConnectionHandler.DataConnectionHandler;
 import Model.DataConnectionHandler.PersonDataHandler;
-import Model.DataConnectionHandler.SubjectDataHandler;
 import View.ErrorPanel.TypeError;
 import View.SuccesPanel.TypeSucces;
 import View.WarningPanel.TypeWarning;
@@ -49,49 +48,45 @@ public class RegisterAcademicLoadPanel extends FormPanel
         {
             try 
             {
-                DataConnectionHandler dataConnectionHandler = new PersonDataHandler();
-                DataConnectionHandler subjectConnectionHandler = new SubjectDataHandler();
+                // DataConnectionHandler dataConnectionHandler = new PersonDataHandler();
+                // DataConnectionHandler subjectConnectionHandler = new SubjectDataHandler();
 
-                if (!dataConnectionHandler.ConnectWithData() || !subjectConnectionHandler.ConnectWithData())
-                {
-                    ErrorPanel.ShowError(TypeError.WITHOOUT_DATA);
-                    ReturnToBehindPanel();
-                }
+                // if (!dataConnectionHandler.ConnectWithData() || !subjectConnectionHandler.ConnectWithData())
+                // {
+                //     ErrorPanel.ShowError(TypeError.WITHOOUT_DATA);
+                //     ReturnToBehindPanel();
+                // }
 
-                Subject subject = (Subject)subjectConnectionHandler.Select(new Subject(GetSubjectCode()));
-                if (subject != null)
-                {
-                    Professor professor = (Professor)dataConnectionHandler.Select(new Professor(GetProfessorCode()));
-                    if (professor != null)
-                    {
-                        if (professor.AddAcademicLoad(GetGroupNumber(), GetLimitOfStudents(), GetTypeGroup(), subject))
-                        {
-                            if (dataConnectionHandler.Update(professor))
-                            {
-                                SuccesPanel.ShowSucces(TypeSucces.REGISTERED_ACADEMIC_LOAD);
-                                ReturnToBehindPanel();
-                            }
-                            else
-                                ErrorPanel.ShowError(TypeError.UPDATE_ERROR);
-                        }
-                        else
-                            WarningPanel.ShowWarning(TypeWarning.ACADEMIC_LOAD_ALREADY_REGISTERED);;
-                    }
-                    else
-                        WarningPanel.ShowWarning(TypeWarning.PROFESOR_NOT_REGISTER);
-                }
-                else
-                    WarningPanel.ShowWarning(TypeWarning.SUBJECT_NOT_REGISTER);
-                dataConnectionHandler.CloseDataConnection();
-                subjectConnectionHandler.CloseDataConnection();
+                // Subject subject = (Subject)subjectConnectionHandler.Select(new Subject(GetSubjectCode()));
+                // if (subject != null)
+                // {
+                //     Professor professor = (Professor)dataConnectionHandler.Select(new Professor(GetProfessorCode()));
+                //     if (professor != null)
+                //     {
+                //         if (professor.AddAcademicLoad(GetGroupNumber(), GetLimitOfStudents(), GetTypeGroup(), subject))
+                //         {
+                //             if (dataConnectionHandler.Update(professor))
+                //             {
+                //                 SuccesPanel.ShowSucces(TypeSucces.REGISTERED_ACADEMIC_LOAD);
+                //                 ReturnToBehindPanel();
+                //             }
+                //             else
+                //                 ErrorPanel.ShowError(TypeError.UPDATE_ERROR);
+                //         }
+                //         else
+                //             WarningPanel.ShowWarning(TypeWarning.ACADEMIC_LOAD_ALREADY_REGISTERED);;
+                //     }
+                //     else
+                //         WarningPanel.ShowWarning(TypeWarning.PROFESOR_NOT_REGISTER);
+                // }
+                // else
+                //     WarningPanel.ShowWarning(TypeWarning.SUBJECT_NOT_REGISTER);
+                // dataConnectionHandler.CloseDataConnection();
+                // subjectConnectionHandler.CloseDataConnection();
 
-            } catch (ClassNotFoundException | SQLException | IOException exception)
-            {
-                ErrorPanel.ShowError(TypeError.CONNECTION_ERROR);
             }
-            catch (ClassCastException exception)
-            {
-                ErrorPanel.ShowError(TypeError.INVALID_PROFESSOR_CODE);
+            finally{
+                
             }
         }
     }

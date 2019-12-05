@@ -9,8 +9,7 @@ import java.awt.Point;
 import java.awt.event.ActionEvent;
 
 import Model.AcademicSemester;
-import Model.DataConnectionHandler.AcademicSemesterDataHandler;
-import Model.DataConnectionHandler.DataConnectionHandler;
+import Model.DataConnectionHandler.DBAcademicSemesterConnection;
 import View.ErrorPanel.TypeError;
 import View.SuccesPanel.TypeSucces;
 import View.WarningPanel.TypeWarning;
@@ -51,9 +50,9 @@ public class RegisterAcademicSemesterPanel extends FormPanel
                 if ((maxCredits > 0 && minCredits > 0) || maxCredits >= minCredits)
                 {
                     AcademicSemester academicSemester = new AcademicSemester(semester, maxCredits, minCredits);
-                    DataConnectionHandler dataConnectionHandler = new AcademicSemesterDataHandler();
+                    DBAcademicSemesterConnection dbAcademicSemesterConnection = new DBAcademicSemesterConnection();
 
-                    if (SaveData(academicSemester, dataConnectionHandler))
+                    if (dbAcademicSemesterConnection.Insert(academicSemester))
                     {
                         SuccesPanel.ShowSucces(TypeSucces.REGISTERED_ACADEMIC_SEMESTER);
                         ReturnToBehindPanel();

@@ -12,8 +12,7 @@ import Model.Person;
 import Model.Professor;
 import Model.Sex;
 import Model.Student;
-import Model.DataConnectionHandler.DataConnectionHandler;
-import Model.DataConnectionHandler.PersonDataHandler;
+import Model.DataConnectionHandler.DBStudentConnection;
 import View.ErrorPanel.TypeError;
 import View.SuccesPanel.TypeSucces;
 import View.WarningPanel.TypeWarning;
@@ -74,13 +73,19 @@ public class RegisterPersonPanel extends FormPanel
                                           GetSecondLastName(), GetDateOfBorn(), GetSex()) : 
                             new Student(GetCode(), GetFirstName(), GetSecondName(), GetLastName(), 
                                         GetSecondLastName(), GetDateOfBorn(), GetSex());
-
-                DataConnectionHandler dataConnectionHandler = new PersonDataHandler();
-                 
-                if (SaveData(person, dataConnectionHandler))
-                    SuccesPanel.ShowSucces(TypeSucces.REGISTERED_PERSON);
+                
+                if (GetTypePerson() == TypePerson.STUDENT)
+                {
+                    DBStudentConnection studentConnection = new DBStudentConnection();
+                    if (studentConnection.Insert((Student)person))
+                        SuccesPanel.ShowSucces(TypeSucces.REGISTERED_PERSON);
+                    else
+                        WarningPanel.ShowWarning(TypeWarning.PERSON_ALREADY_REGISTERED);
+                }
                 else
-                    WarningPanel.ShowWarning(TypeWarning.PERSON_ALREADY_REGISTERED);
+                {
+                    
+                }
 
             } catch (Exception exception) 
             {

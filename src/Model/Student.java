@@ -5,13 +5,8 @@
 
 package Model;
 
-import Model.DataConnectionHandler.AcademicSemesterDataHandler;
 import java.util.ArrayList;
-
-import Model.DataConnectionHandler.DataConnectionHandler;
 import Model.Exceptions.ExceededCreditsException;
-import java.io.IOException;
-import java.sql.SQLException;
 
 /**
  * This is the class {@code Student}, it represents a student with 
@@ -149,6 +144,11 @@ public class Student extends Person implements SubjectHandler
         return pensum.equals(isMatriculateIn);
     }
 
+    public String PensumCode()
+    {
+        return isMatriculateIn;
+    }
+
     @Override
     public boolean AddSubject(Subject subject) throws ExceededCreditsException
     {
@@ -181,24 +181,7 @@ public class Student extends Person implements SubjectHandler
     @Override
     public int GetAvailableCredits()
     {
-        try
-        {
-            DataConnectionHandler dataConnectionHandler = new AcademicSemesterDataHandler();
-        
-            if (dataConnectionHandler.ConnectWithData())
-            {
-                AcademicSemester academicSemester = new AcademicSemester(GetCurrentSemester());
-                academicSemester = (AcademicSemester)dataConnectionHandler.Select(academicSemester);
-                
-                return academicSemester == null ? 0 : academicSemester.GetMaximumCredits() - GetRegisteredCredits();
-            }
-        }
-        catch(IOException | ClassNotFoundException | SQLException exception)
-        {
-            return 0;
-        }
         return 0;
-
     }
 
     public void UpdateGeneralAverage()

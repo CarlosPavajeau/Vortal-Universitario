@@ -38,6 +38,7 @@ public class PostGraduate extends Pensum
     {
         super(code, name, description, campus, semesters, globalLessonLoad, subjects);
         requiredTitle = required_title;
+        SetTitle(requiredTitle);
     }
 
     /**

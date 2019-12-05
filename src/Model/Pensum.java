@@ -27,6 +27,7 @@ public abstract class Pensum extends Entity implements SubjectHandler
     private String name;
     private String description;
     private String campus;
+    private String title;
     private int semesters;
     private int credits;
     private int globalLessonLoad;
@@ -116,6 +117,16 @@ public abstract class Pensum extends Entity implements SubjectHandler
     public ArrayList<Subject> GetSubjects()
     {
         return subjects;
+    }
+
+    public String GetTitle()
+    {
+        return title;
+    }
+
+    public void SetTitle(String title)
+    {
+        this.title = title;
     }
 
     /**

@@ -112,7 +112,7 @@ public abstract class Person extends Entity
      */
     public String GetDateOfBorn()
     {
-        return dateOfBorn.toString();
+        return String.format("%d-%d-%d", dateOfBorn.get(Calendar.YEAR), dateOfBorn.get(Calendar.MONTH), dateOfBorn.get(Calendar.DAY_OF_MONTH));
     }
 
     /**

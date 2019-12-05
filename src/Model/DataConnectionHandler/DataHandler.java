@@ -86,8 +86,6 @@ public  class DataHandler implements DataConnectionHandler
     {
         if (DEFAULT_CONNECTION_MODE.equals(CONNECTION_WITH_FILES))
             dataConnection = new FileConnectionHandler(fileName);
-        else
-            dataConnection = new DBConnectionHandler();
     }
     
 }

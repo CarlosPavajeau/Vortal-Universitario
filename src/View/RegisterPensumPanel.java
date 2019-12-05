@@ -7,13 +7,11 @@ package View;
 
 import java.awt.Point;
 import java.awt.event.ActionEvent;
-import java.io.IOException;
 
 import Model.Pensum;
 import Model.PostGraduate;
 import Model.UnderGraduate;
-import Model.DataConnectionHandler.DataConnectionHandler;
-import Model.DataConnectionHandler.PensumDataHandler;
+import Model.DataConnectionHandler.DBPensumConnection;
 import View.ErrorPanel.TypeError;
 import View.SuccesPanel.TypeSucces;
 import View.WarningPanel.TypeWarning;
@@ -66,9 +64,9 @@ public class RegisterPensumPanel extends FormPanel
                 Pensum pensum = (GetRadioButtons().get(0).isSelected()) ? new UnderGraduate(code, name, description, campus, semesters, globalLessonLoad, null, title) : 
                                                                           new PostGraduate(code, name, description, campus, semesters, globalLessonLoad, null, title);
 
-                DataConnectionHandler dataConnectionHandler = new PensumDataHandler();
+                DBPensumConnection pensumConnection = new DBPensumConnection();
 
-                if (SaveData(pensum, dataConnectionHandler))
+                if (pensumConnection.Insert(pensum))
                 {
                     SuccesPanel.ShowSucces(TypeSucces.REGISTERED_PENSUM);
                     ReturnToBehindPanel();
@@ -76,7 +74,7 @@ public class RegisterPensumPanel extends FormPanel
                 else
                     WarningPanel.ShowWarning(TypeWarning.PENSUM_ALREADY_REGISTERED);
             }
-            catch (IOException exception)
+            catch (Exception exception)
             {
                 ErrorPanel.ShowError(TypeError.CONNECTION_ERROR);
             }
