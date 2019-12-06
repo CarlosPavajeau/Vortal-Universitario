@@ -17,13 +17,13 @@ public class DBStudent extends DbConnection implements IInsert<Student>
         try (PreparedStatement statementStudent = PrepareStatement("INSERT INTO students(person_id, pensum_code) VALUES(?, ?)")) 
         {
             DBPeople people = new DBPeople();
-            
+            people.Open();
             if (!people.Insert(data))
                 return false;
-
-                statementStudent.setString(1, data.GetCode());
-                statementStudent.setString(2, data.PensumCode());
-
+            
+            statementStudent.setString(1, data.GetCode());
+            statementStudent.setString(2, "123");
+            
             return !statementStudent.execute();
 
         } catch (Exception e) 
